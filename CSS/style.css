@@ -11,11 +11,6 @@
 #header {
     font-size: 25px;
     text-align: center;
-    transition: all .3s ease-in-out;
-}
-#header h1:hover {
-    cursor: pointer;
-    color: #398AD7;  
 }
 
 #left {
@@ -34,6 +29,14 @@
     float: right;
 }
 
+#main {
+    text-align: center;
+    width: 70%;
+    margin-top: 5%;
+    margin-left: 15%;
+    margin-right: 15%;
+}
+
 #footer {
     float: right;
     margin-top: 100px;
@@ -47,18 +50,30 @@
 
 /** Classes **/
 
-.button {
+.buttonMain {
     font-size: 30px;
     padding: 10px;
     width: 50%;
     margin-top: 5%;
-    background-color: #070606;
-    color: white;
     border-radius: 10px;
     border: 1px solid #398AD7;
     transition: all .3s ease-in-out;
 }
-.button:hover {
+.buttonMain:hover {
+    cursor: pointer;
+    background-color: #398AD7;
+    background-position: 100% 0;
+    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+}
+
+.buttonDraw {
+    width: 7%;
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid #398AD7;
+    transition: all .3s ease-in-out;
+}
+.buttonDraw:hover {
     cursor: pointer;
     background-color: #398AD7;
     background-position: 100% 0;
@@ -74,4 +89,12 @@ img {
 
 a {
     text-decoration: none;
+}
+
+h1 {
+    transition: all .3s ease-in-out;
+}
+h1:hover {
+    cursor: pointer;
+    color: #398AD7;  
 }
