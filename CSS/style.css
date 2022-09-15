@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css?family=Arvo');
+* {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #070606;
+    color: white;
+}
+
+/** IDs **/
+
+#header {
+    font-size: 25px;
+    text-align: center;
+    transition: all .3s ease-in-out;
+}
+#header h1:hover {
+    cursor: pointer;
+    color: #398AD7;  
+}
+
+#left {
+    text-align: center;
+    width: 30%;
+    margin-top: 5%;
+    float: left;
+}
+
+#right {
+    text-align: center;
+    width: 60%;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    float: right;
+}
+
+#footer {
+    float: right;
+    margin-top: 100px;
+}
+
+#ad {
+    float: right;
+    margin-top: 5%;
+    margin-right: 10%;
+}
+
+/** Classes **/
+
+.button {
+    font-size: 30px;
+    padding: 10px;
+    width: 50%;
+    margin-top: 5%;
+    background-color: #070606;
+    color: white;
+    border-radius: 10px;
+    border: 1px solid #398AD7;
+    transition: all .3s ease-in-out;
+}
+.button:hover {
+    cursor: pointer;
+    background-color: #398AD7;
+    background-position: 100% 0;
+    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+}
+
+/** Tags **/
+
+img {
+    width: 300px;
+    height: 300px;
+}
+
+a {
+    text-decoration: none;
+}
