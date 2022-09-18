@@ -1,7 +1,8 @@
 let tab = [
-    {name:"y",chances:6,rarity:"common",photo:"./img/black_card.png"},
-    {name:"y",chances:7,rarity:"common",photo:"./img/blue_card.png"},
-    {name:"y",chances:6,rarity:"common",photo:"./img/green_card.png"},
-    {name:"y",chances:7,rarity:"common",photo:"./img/red_card.png"},
-    {name:"y",chances:6,rarity:"common",photo:"./img/white_card.png"}
+    {name: "graczyk",    chances: 2,        rarity: "rare",       photo: "../img/cards/kartaGraczyk.png"},
+    {name: "korzen",     chances: 1.5,      rarity: "epic",       photo: "../img/cards/kartaKorzen.png"},
+    {name: "mgr",        chances: 2,        rarity: "rare",       photo: "../img/cards/kartaMgr.png"},
+    {name: "mucha",      chances: 0.5,      rarity: "legendary",  photo: "../img/cards/kartaMucha.png"},
+    {name: "musial",     chances: 2,        rarity: "rare",       photo: "../img/cards/kartaMusial.png"},
+    {name: "smierc",     chances: 0.5,      rarity: "death",      photo: "../img/cards/kartaSmierc.png"}
 ]

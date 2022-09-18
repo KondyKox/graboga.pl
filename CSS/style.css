@@ -60,6 +60,7 @@
 	padding: 10px;
 	height: auto;
 	border: 2px solid #398AD7;
+    transition: all .3s ease-in-out;
 }
 #inventory > .item {
 	float: none;
@@ -100,8 +101,10 @@
 }
 
 .buttonDraw {
-    width: 7%;
+    width: 20%;
+    height: 40px;
     padding: 5px;
+    margin: 5px;
     border-radius: 10px;
     border: 1px solid #398AD7;
     transition: all .3s ease-in-out;
@@ -117,7 +120,7 @@
     height: 100px;
     position: relative;
     margin: 60px auto 30px auto;
-    width: 450px;
+    width: 50%;
 }
 .raffle-roller-holder {
     position: absolute;
