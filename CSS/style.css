@@ -9,7 +9,7 @@
 /** IDs **/
 
 #container {
-    width: 100vh;
+    width: 175vh;
     height: 70vh;
 }
 
@@ -55,14 +55,23 @@
 
 #inventory {
 	margin: 0 auto;
-	width: 100vh;
-	height: auto;
+	display: block;
+    width: 125vh;
+    height: 10vh;
 	border: 2px solid #398AD7;
 }
 #inventory > .item {
+    display: none;
 	float: left;
 	cursor: pointer;
 	margin: 4px 2px 0.5px 2px;
+}
+#inventory:hover {
+    height: 25vh;
+    overflow-y: scroll;
+}
+#inventory:hover > .item {
+    display: block;
 }
 
 /** Classes **/
@@ -103,7 +112,7 @@
     height: 165px;
     position: relative;
     margin: 60px auto 30px auto;
-    width: 450px;
+    width: 800px;
 }
 
 .raffle-roller-holder {
@@ -177,22 +186,3 @@ h1:hover {
     cursor: pointer;
     color: #398AD7;  
 }
-#inventory {
-    border-style: solid;
-    border-width: 1px;
-    display: block;
-    width: 100vh;
-    height: 10vh;
-}
-#inventory > .item {
-    display: none;
-}
-  
-#inventory:hover {
-    height: 25vh;
-    overflow-y: scroll;
-}
-#inventory:hover > .item {
-    display: block;
-}
-  
