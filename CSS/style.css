@@ -6,7 +6,7 @@
     color: white;
 }
 
-/** IDs **/
+/*********************************** IDs ************************************/
 
 #container {
     width: 175vh;
@@ -44,13 +44,19 @@
 
 #footer {
     float: right;
-    margin-top: 100px;
+    margin-top: 120px;
+    width: 100vh;
 }
 
 #ad {
     float: right;
     margin-top: 5%;
     margin-right: 10%;
+}
+
+#login {
+    float: left;
+    margin-top: 33%;
 }
 
 #inventory {
@@ -74,38 +80,32 @@
     display: block;
 }
 
-/** Classes **/
+/******************************* Classes ********************************/
+
+.button {
+    padding: 5px;
+    border-radius: 10px;
+    border: 1px solid #398AD7;
+    transition: all .3s ease-in-out;
+}
+.button:hover {
+    cursor: pointer;
+    background-color: #398AD7;
+    background-position: 100% 0;
+    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+}
 
 .buttonMain {
     font-size: 30px;
     padding: 10px;
     width: 50%;
     margin-top: 5%;
-    border-radius: 10px;
-    border: 1px solid #398AD7;
-    transition: all .3s ease-in-out;
-}
-.buttonMain:hover {
-    cursor: pointer;
-    background-color: #398AD7;
-    background-position: 100% 0;
-    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
 }
 
 .buttonDraw {
     width: 20%;
     height: 40px;
-    padding: 5px;
     margin: 5px;
-    border-radius: 10px;
-    border: 1px solid #398AD7;
-    transition: all .3s ease-in-out;
-}
-.buttonDraw:hover {
-    cursor: pointer;
-    background-color: #398AD7;
-    background-position: 100% 0;
-    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
 }
 
 .raffle-roller {
@@ -160,12 +160,7 @@
 .class_red_item {
 	border-bottom: 4px solid #4e4beb;
 }
-img {
-	width: 300px;
-    height: 300px;
-	border: 0;
-	vertical-align: middle;
-}
+
 .winning-item {
 	border: 2px solid #66b233;
 	position: relative;
@@ -173,7 +168,7 @@ img {
     border-bottom: 4px solid #66b233;
 }
 
-/** Tags **/
+/*********************************** Tags ************************************/
 
 a {
     text-decoration: none;
@@ -185,4 +180,11 @@ h1 {
 h1:hover {
     cursor: pointer;
     color: #398AD7;  
+}
+
+img {
+	width: 300px;
+    height: 300px;
+	border: 0;
+	vertical-align: middle;
 }
