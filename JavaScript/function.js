@@ -62,7 +62,7 @@ function goRoll(rname, rphoto) {
 		$('#CardNumber78').addClass('winning-item');
 		$('#rolled').html(rname);
 		var win_element = "<div class='item class_red_item' style='background-image: url("+rphoto+")'></div>";
-		$(win_element).appendTo('inventory');
+		$(win_element).appendTo('#inventory');
         document.getElementById('Generate').setAttribute("onclick", "Generate()");
 	}, 8500);
 	$('.raffle-roller-container').css('margin-left', '-6995px');
