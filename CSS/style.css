@@ -9,8 +9,8 @@
 /** IDs **/
 
 #container {
-    width: 90%;
-    height: 900px;
+    width: 100vh;
+    height: 70vh;
 }
 
 #header {
@@ -35,7 +35,6 @@
 }
 
 #main {
-    text-align: center;
     width: 70%;
     height: 70%;
     margin-top: 5%;
@@ -56,30 +55,14 @@
 
 #inventory {
 	margin: 0 auto;
-	width: 100%;
-	padding: 10px;
+	width: 100vh;
 	height: auto;
 	border: 2px solid #398AD7;
-    transition: all .3s ease-in-out;
 }
 #inventory > .item {
-	float: none;
+	float: left;
 	cursor: pointer;
 	margin: 4px 2px 0.5px 2px;
-}
-#inventory > .item:hover {
-    width: 150px;
-    height: 150px;
-	background-size: 90%;
-	background-color: #182a38;
-}
-#inventory > .item:active {
-	height: 83px;
-	width: 80px;
-	position: relative;
-	top: -2px;
-	border: 2px solid #356d27;
-	border-bottom: 4px solid #356d27;
 }
 
 /** Classes **/
@@ -117,38 +100,29 @@
 }
 
 .raffle-roller {
-    height: 100px;
+    height: 165px;
     position: relative;
     margin: 60px auto 30px auto;
-    width: 50%;
+    width: 450px;
 }
+
 .raffle-roller-holder {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    height: 100px;
+    height: 165px;
     width: 100%;
-}
-.raffle-roller-holder {
     overflow: hidden;
     border-radius: 2px;
 	border: 1px solid #3c3759;
 }
-.raffle-roller-holder {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 100px;
-    width: 100%;
-}
+
 .raffle-roller-container {
     width: 9999999999999999999px;
     max-width: 999999999999999999px;
-    height: 100px;
+    height: 165px;
     background: #191726;
     margin-left: 0;
     transition: all 8s cubic-bezier(.08,.6,0,1);
@@ -163,12 +137,11 @@
 	left: 50%;
 	background: #d16266;
 }
-
 .item {
 	display: inline-block;
 	margin: 4px 0px 0.5px 5px;
     width: 85px;
-	height: 88px;
+	height: 151px;
 	border: 1px solid #70677c;
 	background: #14202b;
 	background-size: 100%;
@@ -178,7 +151,12 @@
 .class_red_item {
 	border-bottom: 4px solid #4e4beb;
 }
-
+img {
+	width: 300px;
+    height: 300px;
+	border: 0;
+	vertical-align: middle;
+}
 .winning-item {
 	border: 2px solid #66b233;
 	position: relative;
@@ -187,11 +165,6 @@
 }
 
 /** Tags **/
-
-img {
-    width: 300px;
-    height: 300px;
-}
 
 a {
     text-decoration: none;
@@ -204,3 +177,22 @@ h1:hover {
     cursor: pointer;
     color: #398AD7;  
 }
+#inventory {
+    border-style: solid;
+    border-width: 1px;
+    display: block;
+    width: 100vh;
+    height: 10vh;
+}
+#inventory > .item {
+    display: none;
+}
+  
+#inventory:hover {
+    height: 25vh;
+    overflow-y: scroll;
+}
+#inventory:hover > .item {
+    display: block;
+}
+  
