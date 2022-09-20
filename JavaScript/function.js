@@ -65,7 +65,7 @@ function goRoll(rname, rphoto) {
 		$(win_element).appendTo('#inventory');
         document.getElementById('Generate').setAttribute("onclick", "Generate()");
 	}, 8500);
-	$('.raffle-roller-container').css('margin-left', '-6995px');
+	$('.raffle-roller-container').css('margin-left', '-6820px');
 }
 
 function randomInt(min, max) {
