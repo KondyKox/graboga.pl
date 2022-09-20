@@ -15,19 +15,6 @@
             <a href="index.html"><h1>MECHAN - The Card Game</h1><hr></a>
         </div>
 
-        <div id="left">
-            <img src="../img/nauczyciel.png" alt="" style="height: 70vh;">
-        </div>
-
-        <div id="right">
-            <input type="submit" class="buttonMain button" value="Graj">
-            <a href="draw.html"><input type="submit" class="buttonMain button" value="Losuj"></a>
-        </div>
-
-        <div id="footer">
-            <div id="login"><a href="login.php"><input type="submit" class="button" value="Rejestracja / Logowanie"></a></div>
-            <div id="ad"><img src="../img/grafika.png" alt="ad"></div>
-        </div>
     </div>
 </body>
 </html>

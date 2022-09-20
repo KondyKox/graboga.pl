@@ -35,17 +35,23 @@ function Generate() {
 		transition: "sdf",
 		"margin-left": "0px"
 	}, 10).html('');
+	
     let randed2 = GetIndex();
+
     for(let i = 0;i < 101; i++) {
 		let element = '<div id="CardNumber'+i+'" class="item class_red_item" style="background-image:url('+tab[GetIndex()].photo+');"></div>';
 		let randed = randomInt(1,1000);
-		if(randed < 50) {
+
+		if (randed < 50) {
 			element = '<div id="CardNumber'+i+'" class="item class_red_item" style="background-image:url('+tab[GetIndex()].photo+');"></div>';
-		} else if(500 < randed) {
+		} 
+
+		else if (500 < randed) {
 			element = '<div id="CardNumber'+i+'" class="item class_red_item" style="background-image:url('+tab[GetIndex()].photo+');"></div>';
 		}
 		$(element).appendTo('.raffle-roller-container');
 	}
+
     setTimeout(function() {
 		goRoll(tab[randed2].name, tab[randed2].photo);
 	}, 500);
@@ -58,23 +64,20 @@ function goRoll(rname, rphoto) {
 	$('#CardNumber78').css({
 		"background-image": "url("+rphoto+")"
 	});
+
 	setTimeout(function() {
 		$('#CardNumber78').addClass('winning-item');
 		$('#rolled').html(rname);
+
 		var win_element = "<div class='item class_red_item' style='background-image: url("+rphoto+")'></div>";
+
 		$(win_element).appendTo('#inventory');
         document.getElementById('Generate').setAttribute("onclick", "Generate()");
 	}, 8500);
+
 	$('.raffle-roller-container').css('margin-left', '-6820px');
 }
 
 function randomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
-}
-
-function inventory() {
-	$('#inventory').css({
-		height: '50%',
-		transition: 'all .3s ease-in-out'
-	});
 }
