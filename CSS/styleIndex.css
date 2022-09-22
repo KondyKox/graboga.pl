@@ -7,30 +7,28 @@
     float: left;
 }
 
-#right {
+#centerTop {
     text-align: center;
-    width: 60%;
+    width: 40%;
     margin-top: 5%;
     margin-left: 5%;
     margin-right: 5%;
-    float: right;
-}
-
-#footer {
-    float: right;
-    margin-top: 120px;
-    width: 100vh;
-}
-
-#ad {
-    float: right;
-    margin-top: 5%;
-    margin-right: 10%;
-}
-
-#signIn {
     float: left;
-    margin-top: 33%;
+}
+
+#centerBottom {
+    float: left;
+    margin-top: 120px;
+    width: 40%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+#right {
+    text-align: center;
+    float: right;
+    width: 20%;
+    margin-top: -10%;
 }
 
 /******************************* Classes ********************************/
@@ -39,5 +37,14 @@
     font-size: 30px;
     padding: 10px;
     width: 50%;
+    margin-top: 5%;
+}
+
+.ad {
+    height: 23vh;
+}
+
+.links {
+    text-align: center;
     margin-top: 5%;
 }

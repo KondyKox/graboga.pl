@@ -12,7 +12,7 @@
 
 #container {
     width: 175vh;
-    height: 70vh;
+    max-height: 70vh;
 }
 
 #header {
@@ -24,6 +24,7 @@
 
 .button {
     padding: 5px;
+    min-width: 30%;
     border: 1px solid #398AD7;
     transition: all .3s ease-in-out;
 }
@@ -32,6 +33,7 @@
     background-color: #398AD7;
     background-position: 100% 0;
     box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+    transform: translateY(-0.50em);
 }
 
 /*********************************** Tags ************************************/
