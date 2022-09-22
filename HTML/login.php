@@ -1,5 +1,5 @@
 <?php
-// Variables
+// ----------------------------------------------------------------------- Variables
     $login = $_POST['login'];
     $password = $_POST['password'];
 
@@ -14,14 +14,14 @@
     $result1 = mysqli_query($connect, $query1);
     $result2 = mysqli_query($connect, $query2);
 
-// Saving data to arrays
+// ------------------------------------------------------ Saving data to logins array
     $i = 0;
     while ($row = mysqli_fetch_row($result1)) {
         $logins[$i] = $row;
         $i++;
     }
 
-// Functions
+// ------------------------------------------------------------------------ Functions
     function loginUser($login, $password) {
         $j = 0;
         while ($row = mysqli_fetch_row($result2)) {
@@ -43,14 +43,18 @@
                 break;
             }
         }
+
+        $createQuery = "INSERT INTO users VALUES (null, '$login', '$password')";
+        $createResult = mysqli_query($connect, $createQuery);
     }
 
-// Click on buttons
+// ------------------------------------------------------------------- Click on buttons
     if (isset($_POST['signIN']))
         loginUser($login, $password);
 
     else if (isset($_POST['signUp']))
         createUser($login, $password);
+
 
     mysqli_close($connect);
 ?>
