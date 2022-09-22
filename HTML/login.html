@@ -20,17 +20,17 @@
             <form action="login.php" method="post">
                 <h2>Logowanie / Rejestracja</h2>
                 <div class="txtField">
-                    <input type="text" id="username" required>
+                    <input type="text" name="username" required>
                     <span></span>
                     <label>Login</label>
                 </div>
                 <div class="txtField">
-                    <input type="password" id="password" required>
+                    <input type="password" name="password" required>
                     <span></span>
                     <label>Hasło</label>
                 </div>
-                <input type="submit" value="Zaloguj" class="button">
-                <input type="submit" value="Rejestracja" class="button">
+                <input type="submit" value="Zaloguj" class="button" name="signIn">
+                <input type="submit" value="Rejestracja" class="button" name="signUp">
             </form>
         </div>
     </div>
