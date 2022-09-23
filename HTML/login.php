@@ -9,10 +9,8 @@
     }
 
     $query1 = 'SELECT login FROM users';
-    $query2 = 'SELECT password FROM users';
-
-    $result1 = mysqli_query($connect, $query1);
-    $result2 = mysqli_query($connect, $query2);
+    
+    $result1 = mysqli_query($connect, $query1);  
 
 // ------------------------------------------------------ Saving data to logins array
     $i = 0;
@@ -23,16 +21,20 @@
 
 // ------------------------------------------------------------------------ Functions
     function loginUser($login, $password) {
+        for ($i = 0; $i < count($logins); $i++) {
+            if ($login != $logins[$j]) {
+                
+                break;
+            }
+        }
+
+        $query2 = 'SELECT password FROM users';
+        $result2 = mysqli_query($connect, $query2);
+
         $j = 0;
         while ($row = mysqli_fetch_row($result2)) {
             $passwords[$j] = $row;
             $j++;
-        }
-
-        for ($i = 0; $i < count($logins); $i++) {
-            if ($login != $logins[$j]) {
-
-            }
         }
     }
 
@@ -46,6 +48,8 @@
 
         $createQuery = "INSERT INTO users VALUES (null, '$login', '$password')";
         $createResult = mysqli_query($connect, $createQuery);
+
+        echo "<script>alert('Utworzono użytkownika!')</script>"
     }
 
 // ------------------------------------------------------------------- Click on buttons
