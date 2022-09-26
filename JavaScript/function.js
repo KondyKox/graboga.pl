@@ -30,6 +30,8 @@ function GetIndex() {
 }
 
 function Generate() {
+	//let spin = new Audio("spinSound.wav");
+
     document.getElementById('Generate').removeAttribute("onclick");
     $('.raffle-roller-container').css({
 		transition: "sdf",
@@ -38,7 +40,7 @@ function Generate() {
 	
     let randed2 = GetIndex();
 
-    for(let i = 0;i < 101; i++) {
+    for(let i = 0; i < 101; i++) {
 		let element = '<div id="CardNumber'+i+'" class="item class_red_item" style="background-image:url('+tab[GetIndex()].photo+');"></div>';
 		let randed = randomInt(1,1000);
 

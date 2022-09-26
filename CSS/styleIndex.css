@@ -2,7 +2,7 @@
 
 #left {
     text-align: center;
-    width: 30%;
+    width: 20%;
     margin-top: 5%;
     float: left;
 }
@@ -11,7 +11,7 @@
     text-align: center;
     width: 40%;
     margin-top: 5%;
-    margin-left: 5%;
+    margin-left: 10%;
     margin-right: 5%;
     float: left;
 }
@@ -20,7 +20,7 @@
     float: left;
     margin-top: 120px;
     width: 40%;
-    margin-left: 5%;
+    margin-left: 10%;
     margin-right: 5%;
 }
 
