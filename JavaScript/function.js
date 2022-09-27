@@ -56,11 +56,16 @@ function Generate() {
 	}
 
     setTimeout(function() {
-		goRoll(tab[randed2].name, tab[randed2].photo);
+		goRoll(tab[randed2].name, tab[randed2].photo, tab[randed2].rarity);
 	}, 500);
 }
 
-function goRoll(rname, rphoto) {
+var comm = new Audio('../sfx/common.wav');
+var epi = new Audio('../sfx/epic.wav');
+var curs = new Audio('../sfx/cursed.wav');
+var leg = new Audio('../sfx/legendary.wav');
+
+function goRoll(rname, rphoto, rrarity) {
 	$('.raffle-roller-container').css({
 		transition: "all 8s cubic-bezier(.08,.6,0,1)"
 	});
@@ -76,6 +81,13 @@ function goRoll(rname, rphoto) {
 
 		$(win_element).appendTo('#inventory');
         document.getElementById('Generate').setAttribute("onclick", "Generate()");
+		switch(rrarity){
+			case "common": comm.play();break;
+			case "rare": comm.play();break;
+			case "epic": epi.play();break;
+			case "cursed": curs.play();break;
+			case "legendary": leg.play();break;
+		}
 	}, 8500);
 
 	$('.raffle-roller-container').css('margin-left', '-6820px');
