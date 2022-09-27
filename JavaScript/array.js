@@ -1,3 +1,8 @@
+let commonSound     = new Audio("../sfx/common.wav");
+let epicSound       = new Audio("../sfx/epic.wav");
+let cursedSound     = new Audio("../sfx/cursed.wav");
+let legendarySound  = new Audio("../sfx/legendary.wav");
+
 let tab = [
     {name: "graczyk",       chances: 10,            rarity: "epic",            photo: "../img/cards/kartaGraczyk.png"    },
     {name: "korzen",        chances: 10,            rarity: "epic",            photo: "../img/cards/kartaKorzen.png"     },

@@ -30,7 +30,8 @@ function GetIndex() {
 }
 
 function Generate() {
-	//let spin = new Audio("spinSound.wav");
+	let spin = new Audio("../sfx/spinSound.wav");
+	spin.play();
 
     document.getElementById('Generate').removeAttribute("onclick");
     $('.raffle-roller-container').css({
