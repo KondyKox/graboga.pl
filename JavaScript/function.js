@@ -61,7 +61,8 @@ function Generate() {
 }
 
 var comm = new Audio('../sfx/common.wav');
-var epi = new Audio('../sfx/epic.wav');
+var rare = new Audio('../sfx/rare.wav');
+var epic = new Audio('../sfx/epic.wav');
 var curs = new Audio('../sfx/cursed.wav');
 var leg = new Audio('../sfx/legendary.wav');
 
@@ -81,13 +82,20 @@ function goRoll(rname, rphoto, rrarity) {
 
 		$(win_element).appendTo('#inventory');
         document.getElementById('Generate').setAttribute("onclick", "Generate()");
-		switch(rrarity){
-			case "common": comm.play();break;
-			case "rare": comm.play();break;
-			case "epic": epi.play();break;
-			case "cursed": curs.play();break;
-			case "legendary": leg.play();break;
+
+		if (rrarity == "common")
+			comm.play();
+		else if (rrarity == "rare")
+			rare.play();
+		else if (rrarity == "epic")
+			epic.play();
+		else if (rrarity == "legendary")
+			leg.play();
+		else if (rrarity == "cursed") {
+			curs.play();
+			window.close();
 		}
+
 	}, 8500);
 
 	$('.raffle-roller-container').css('margin-left', '-6820px');
