@@ -1,11 +1,11 @@
 <?php
 // ----------------------------------------------------------------------- Variables
-    $login = $_POST['login'];
+    $login = $_POST['username'];
     $password = $_POST['password'];
 
     $connect = mysqli_connect('localhost', 'root', '', 'mechan_card_game');
     if (!$connect) {
-        die("Nie nawiązano połącznia!");
+        die("Nie nawiązano połączenia!");
     }
 
     $query1 = 'SELECT login FROM users';
@@ -37,6 +37,7 @@
             $j++;
         }
     }
+
 
     function createUser($login, $password) {
         for ($i = 0; $i < count($logins); $i++) {
