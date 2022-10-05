@@ -104,3 +104,8 @@ function goRoll(rname, rphoto, rrarity) {
 function randomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
+
+// w trakcie
+function showCard(win_element) {
+	$(win_element).appendTo('#droppedCard');
+}

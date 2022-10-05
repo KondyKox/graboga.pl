@@ -30,6 +30,15 @@
     display: block;
 }
 
+#inventory h3 {
+    margin-left: 10px;
+}
+
+#droppedCard {
+    margin: auto;
+    position: relative;
+}
+
 /******************************* Classes ********************************/
 
 .buttonDraw {
