@@ -83,17 +83,12 @@ function goRoll(rname, rphoto, rrarity) {
 		$(win_element).appendTo('#inventory');
         document.getElementById('Generate').setAttribute("onclick", "Generate()");
 
-		if (rrarity == "common")
-			comm.play();
-		else if (rrarity == "rare")
-			rare.play();
-		else if (rrarity == "epic")
-			epic.play();
-		else if (rrarity == "legendary")
-			leg.play();
-		else if (rrarity == "cursed") {
-			curs.play();
-			window.close();
+		switch(rrarity) {
+			case "common": comm.play(); break;
+			case "rare": rare.play(); break;
+			case "epic": epic.play(); break;
+			case "legendary": leg.play(); break;
+			case "cursed": curs.play(); break;
 		}
 
 	}, 8500);
