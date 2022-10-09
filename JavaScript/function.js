@@ -82,9 +82,9 @@ function goRoll(rname, rphoto, rrarity) {
 		var win_element = "<div class='item class_red_item' style='background-image: url("+rphoto+")'></div>";
 
 		$(win_element).appendTo('#inventory');
-		showCard(win_element);
-        document.getElementById('Generate').setAttribute("onclick", "Generate()");
+		showCard(win_element); 
 
+		// Gra dźwięki i zmienia kolor tła w <div>
 		if (rrarity == "common") {
 			comm.play();
 			$('#result_container').css({backgroundColor: 'green'});
@@ -107,7 +107,7 @@ function goRoll(rname, rphoto, rrarity) {
 		}
 		else if (rrarity == "special") {
 			spec.play();
-			$('#result_container').css({backgroundColor: 'red'});
+			$('#result_container').css({backgroundColor: 'darkred'});
 		}
 
 	}, 8500);
@@ -119,10 +119,10 @@ function randomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function showCard(win_element) {
+function showCard(card) {
 	document.getElementById('result_container').innerHTML = "";
 	document.getElementById('result_container').style.removeProperty('display');
-	$(win_element).css({
+	$(card).css({
 		width: '80%',
 		height: '95%',
 		margin: '2%'
@@ -131,5 +131,6 @@ function showCard(win_element) {
 	setTimeout(timeo,3000);
 }
 let timeo = () => {
+	document.getElementById('Generate').setAttribute("onclick", "Generate()");
 	$('#result_container').css({display: "none"});
 }
