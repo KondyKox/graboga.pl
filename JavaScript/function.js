@@ -81,6 +81,7 @@ function goRoll(rname, rphoto, rrarity) {
 		var win_element = "<div class='item class_red_item' style='background-image: url("+rphoto+")'></div>";
 
 		$(win_element).appendTo('#inventory');
+		showCard(win_element);
         document.getElementById('Generate').setAttribute("onclick", "Generate()");
 
 		switch(rrarity) {
