@@ -15,7 +15,13 @@
     <script src="../JavaScript/function.js"></script>
 </head>
 <body>
-    <div id="container">
+    <center>
+        <div id="result_container" style="display: none;" class="droppedCard">
+            &nbsp;
+        </div>
+    </center>
+
+    <div id="container" style="z-index: 1;">
         <div id="header">
             <a href="index.html"><h1>MECHAN - The Card Game</h1><hr></a>
         </div>
@@ -31,13 +37,11 @@
             <center>
                 <button onclick="Generate();" id="Generate" class="buttonDraw button">Go</button>
                 <button onclick="window.location='';" class="buttonDraw button">Reset</button><br>
-                <div id="droppedCard"></div>
             </center>
         </div>
     </div>
     <div id="inventory">
         <h3> Ekwipunek:</h3><hr style="color: #398AD7;">
-        <div id="cards"></div>
     </div>
 </body>
 </html>

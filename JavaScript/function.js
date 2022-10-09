@@ -65,6 +65,7 @@ var rare = new Audio('../sfx/rare.wav');
 var epic = new Audio('../sfx/epic.wav');
 var curs = new Audio('../sfx/cursed.wav');
 var leg = new Audio('../sfx/legendary.wav');
+var spec = new Audio('../sfx/special.wav');
 
 function goRoll(rname, rphoto, rrarity) {
 	$('.raffle-roller-container').css({
@@ -84,12 +85,29 @@ function goRoll(rname, rphoto, rrarity) {
 		showCard(win_element);
         document.getElementById('Generate').setAttribute("onclick", "Generate()");
 
-		switch(rrarity) {
-			case "common": comm.play(); break;
-			case "rare": rare.play(); break;
-			case "epic": epic.play(); break;
-			case "legendary": leg.play(); break;
-			case "cursed": curs.play(); break;
+		if (rrarity == "common") {
+			comm.play();
+			$('#result_container').css({backgroundColor: 'green'});
+		}
+		else if (rrarity == "rare") {
+			rare.play();
+			$('#result_container').css({backgroundColor: 'blue'});
+		}
+		else if (rrarity == "epic") {
+			epic.play();
+			$('#result_container').css({backgroundColor: 'purple'});
+		}
+		else if (rrarity == "legendary") {
+			leg.play();
+			$('#result_container').css({backgroundColor: 'gold'});
+		}
+		else if (rrarity == "cursed") {
+			curs.play();
+			$('#result_container').css({backgroundColor: 'darkblue'});
+		}
+		else if (rrarity == "special") {
+			spec.play();
+			$('#result_container').css({backgroundColor: 'red'});
 		}
 
 	}, 8500);
@@ -101,7 +119,17 @@ function randomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-// w trakcie
 function showCard(win_element) {
-	$(win_element).appendTo('#droppedCard');
+	document.getElementById('result_container').innerHTML = "";
+	document.getElementById('result_container').style.removeProperty('display');
+	$(win_element).css({
+		width: '80%',
+		height: '95%',
+		margin: '2%'
+	}).appendTo('#result_container');
+
+	setTimeout(timeo,3000);
+}
+let timeo = () => {
+	$('#result_container').css({display: "none"});
 }

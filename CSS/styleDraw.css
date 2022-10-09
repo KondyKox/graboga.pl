@@ -34,12 +34,15 @@
     margin-left: 10px;
 }
 
-#droppedCard {
-    margin: auto;
-    position: relative;
-}
-
 /******************************* Classes ********************************/
+.droppedCard {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    height: 50%;
+    width: 20%;
+    margin: 10% 40% 10% 40%;
+}
 
 .buttonDraw {
     width: 20%;
