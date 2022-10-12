@@ -43,7 +43,7 @@
         for ($i = 0; $i < count($logins); $i++) {
             if ($login == $logins[$i]) {
                 echo '<script>alert("Istnieje już taki użytkownik! Może spróbuj się zalogować.")</script>';
-                break;
+                return null;
             }
         }
 

@@ -9,6 +9,8 @@
 
     <link rel="stylesheet" href="../CSS/style.css">
     <link rel="stylesheet" href="../CSS/styleLogin.css">
+
+    <script src="../JavaScript/login.js"></script>
 </head>
 <body>
     <div id="container">
@@ -17,7 +19,7 @@
         </div>
         
         <div id="login">
-            <form action="login.php" method="post">
+            <form>
                 <h2>Logowanie / Rejestracja</h2>
                 <div class="txtField">
                     <input type="text" name="username" required>
@@ -29,10 +31,9 @@
                     <span></span>
                     <label>Hasło</label>
                 </div>
-                <input type="submit" value="Zaloguj" class="button" name="signIn">
-                <input type="submit" value="Rejestracja" class="button" name="signUp">
+                <input type="submit" value="Zaloguj" class="button" name="signIn" onclick="loginUser()">
+                <input type="submit" value="Rejestracja" class="button" name="signUp" onclick="createUser()">
             </form>
-            <p style="text-align: center; margin-top: 30px;">Formularz jeszcze nie działa.</p>
         </div>
     </div>
 </body>
