@@ -14,5 +14,6 @@ let tab = [
     {name: "mazurek",       chances: 50,            rarity: "common",       id: "c13",            photo: "../img/cards/kartaMazurek.png"    },
     {name: "piateczka",     chances: 20,            rarity: "special",      id: "c14",            photo: "../img/cards/kartaPiateczka.png"  },
     {name: "zelencik",      chances: 20,            rarity: "special",      id: "c15",            photo: "../img/cards/kartaZelencik.png"   },
-    {name: "sobczak2",      chances: 10,            rarity: "epic",         id: "c16",            photo: "../img/cards/kartaZelencik.png"   },
+    {name: "sobczak2",      chances: 10,            rarity: "epic",         id: "c16",            photo: "../img/cards/kartaSobczak2.png"   },
+    {name: "korzen2",       chances: 10,            rarity: "epic",         id: "c17",            photo: "../img/cards/kartaKorzen2.png"    },
 ]
