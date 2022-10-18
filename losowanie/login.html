@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="mechan, mechanik, card game, mechan card game">
+    <title>MECHAN - The Card Game</title>
+
+    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../CSS/styleLogin.css">
+
+    <script src="login.js"></script>
+</head>
+<body>
+    <div id="container">
+        <div id="header">
+            <a href="index.php"><h1>MECHAN - The Card Game</h1><hr></a>
+        </div>
+        
+        <div id="login">
+            <form>
+                <h2>Logowanie / Rejestracja</h2>
+                <div class="txtField">
+                    <input type="text" name="username" required>
+                    <span></span>
+                    <label>Login</label>
+                </div>
+                <div class="txtField">
+                    <input type="password" name="password" required>
+                    <span></span>
+                    <label>Hasło</label>
+                </div>
+                <input type="submit" value="Zaloguj" class="button" name="signIn" onclick="loginUser()">
+                <input type="submit" value="Rejestracja" class="button" name="signUp" onclick="createUser()">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
