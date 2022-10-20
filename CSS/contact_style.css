@@ -1,0 +1,43 @@
+/*********************************** IDs ************************************/
+
+#main {
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+#smaller {
+    font-size: 10px;
+    padding: 10px;
+}
+
+#footer {
+    text-align: center;
+    margin-top: 5%;
+}
+
+#bigger {
+    font-size: 45px;
+}
+
+/*********************************** Tags ************************************/
+
+h2 {
+    font-size: 45px;
+}
+
+h3 {
+    font-size: 35px;
+}
+
+p {
+    font-size: 25px;
+}
+
+#main a {
+    text-decoration: underline;
+    transition: all .1s ease-in-out;
+}
+a:hover {
+    color: #398AD7;
+}
