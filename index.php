@@ -22,6 +22,13 @@ session_start();
             <a href="index.php"><h1>MECHAN - The Card Game</h1><hr></a>
         </div>
 
+        <div id="user">
+            <?php
+                if(isset($_SESSION["username"]))
+                    echo "Zalogowany: " . htmlspecialchars($_SESSION["username"]);
+            ?>
+        </div>
+
         <div id="left">
             <img src="./img/dyrektor.png" alt="Dyrektor Mechanika" style="height: 70vh;">
         </div>
@@ -32,16 +39,14 @@ session_start();
         </div>
 
         <div id="centerBottom">
-            <div id="user"><?php echo htmlspecialchars($_SESSION["username"]); ?></div>
-
-            <?php
-                /* if(!isset($_SESSION["username"])
-                    echo '<div class="links"><a href="login"><input type="submit" class="button" value="Rejestracja / Logowanie"></a></div>';
-                else 
-                    echo '<div class="links"><a href="logout"><input type="submit" class="button" value="Wyloguj"></a></div>'; */
-            ?>
-            
-            <div class="links"><a href="login"><input type="submit" class="button" value="Rejestracja / Logowanie"></a></div>
+            <div class="links">
+                <?php
+                    if(!isset($_SESSION["username"])
+                        echo '<a href="login"><input type="submit" class="button" value="Rejestracja / Logowanie"></a>';
+                    else 
+                        echo '<a href="logout"><input type="submit" class="button" value="Wyloguj"></a>';
+                ?>
+            </div>
             
             <div class="links">
                 <a href="https://github.com/KondyKox/MECHAN-The-Card-Game" target="_blank"><input type="submit" class="button" value="Github"></a>
@@ -53,7 +58,7 @@ session_start();
                 <a href="contact"><input type="submit" class="button" value="Kontakt"></a>
             </div>
             <div style="text-align: center; margin-top: 15%;">
-                <p>Wykonali:<span style="color: #398AD7;"> Konrad Ciesielski</span> i <span style="color: #398AD7;">Michał Wachowski (4ir)</span></p>
+                <p>Wykonali: <span style="color: #398AD7;">Konrad Ciesielski</span> i <span style="color: #398AD7;">Michał Wachowski (4ir)</span></p>
             </div>
         </div>
 

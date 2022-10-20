@@ -112,29 +112,30 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <a href="../index.php"><h1>MECHAN - The Card Game</h1><hr></a>
         </div>
 
-    <div id="login">
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-        <h2>Rejestracja</h2>
-            <div class="txtField">
-                <input type="text" name="username" required class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
-                <span class="invalid-feedback"><?php echo $username_err; ?></span>
-                <label>Login</label>
-            </div>    
-            <div class="txtField">
-                <input type="password" name="password" required class="<?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
-                <span class="invalid-feedback"><?php echo $password_err; ?></span>
-                <label>Hasło</label>
-            </div>
-            <div class="txtField">
-                <input type="password" name="confirm_password" required class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
-                <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
-                <label>Powtórz hasło</label>
-            </div>
-            <div class="txtField">
-                <input type="submit" class="button" value="Zarejestruj się">
-            </div>
-            <p style="text-align: center;">Masz już konto? <a href="../login">Zaloguj się tutaj</a>.</p>
-        </form> 
-    </div>    
+        <div id="login">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                <h2>Rejestracja</h2>
+                <div class="txtField">
+                    <input type="text" name="username" required class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
+                    <span class="invalid-feedback"><?php echo $username_err; ?></span>
+                    <label>Login</label>
+                </div>    
+                <div class="txtField">
+                    <input type="password" name="password" required class="<?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
+                    <span class="invalid-feedback"><?php echo $password_err; ?></span>
+                    <label>Hasło</label>
+                </div>
+                <div class="txtField">
+                    <input type="password" name="confirm_password" required class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
+                    <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
+                    <label>Powtórz hasło</label>
+                </div>
+                <div class="txtField">
+                    <input type="submit" class="button" value="Zarejestruj się">
+                </div>
+                <p style="text-align: center;">Masz już konto? <a href="../login">Zaloguj się tutaj</a>.</p>
+            </form> 
+        </div>
+    </div>
 </body>
 </html>

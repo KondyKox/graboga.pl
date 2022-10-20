@@ -23,6 +23,10 @@
 
 #user {
     text-align: center;
+    width: 50%;
+    height: 5%;
+    position: absolute;
+    top: 15%;
 }
 
 /******************************* Classes ********************************/

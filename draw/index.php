@@ -39,6 +39,8 @@ session_start();
             <a href="../index.php"><h1>MECHAN - The Card Game</h1><hr></a>
         </div>
 
+        <div id="user"><?php echo htmlspecialchars($_SESSION["username"]); ?></div>
+
         <div id="main">
             <div class="raffle-roller">
                 <div class="raffle-roller-holder">
