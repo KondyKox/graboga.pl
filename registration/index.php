@@ -133,7 +133,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="txtField">
                 <input type="submit" class="button" value="Zarejestruj się">
             </div>
-            <p>Masz już konto? <a href="../login">Zaloguj się tutaj</a>.</p>
+            <p style="text-align: center;">Masz już konto? <a href="../login">Zaloguj się tutaj</a>.</p>
         </form> 
     </div>    
 </body>

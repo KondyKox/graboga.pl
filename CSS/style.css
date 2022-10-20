@@ -12,12 +12,16 @@
 
 
 #container {
-    width: 100%;
+    width: 90%;
     max-height: 70vh;
 }
 
 #header {
     font-size: 25px;
+    text-align: center;
+}
+
+#user {
     text-align: center;
 }
 
