@@ -104,6 +104,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                     <span class="invalid-feedback"><?php echo $password_err; ?></span>
                     <label>Hasło</label>
                 </div>
+                <br><br>
                 <div class="txtField">
                     <input type="submit" class="button" value="Zaloguj się">
                 </div>

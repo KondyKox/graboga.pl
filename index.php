@@ -25,7 +25,7 @@ session_start();
         <div id="user">
             <?php
                 if(isset($_SESSION["username"]))
-                    echo "Zalogowany: " . htmlspecialchars($_SESSION["username"]);
+                    echo "Zalogowany: <span style='color: #398AD7'>ja" . htmlspecialchars($_SESSION["username"]) . "</span>";
             ?>
         </div>
 
@@ -41,13 +41,16 @@ session_start();
         <div id="centerBottom">
             <div class="links">
                 <?php
-                    if(!isset($_SESSION["username"])
+                    if(!isset($_SESSION["username"]))
                         echo '<a href="login"><input type="submit" class="button" value="Rejestracja / Logowanie"></a>';
                     else 
                         echo '<a href="logout"><input type="submit" class="button" value="Wyloguj"></a>';
                 ?>
             </div>
-            
+
+            <div class="links">
+                <a href="#"><input type="submit" class="button" value="Opinie"></a>
+            </div>
             <div class="links">
                 <a href="https://github.com/KondyKox/MECHAN-The-Card-Game" target="_blank"><input type="submit" class="button" value="Github"></a>
             </div>

@@ -39,7 +39,12 @@ session_start();
             <a href="../index.php"><h1>MECHAN - The Card Game</h1><hr></a>
         </div>
 
-        <div id="user"><?php echo htmlspecialchars($_SESSION["username"]); ?></div>
+        <div id="user">
+            <?php
+                if(isset($_SESSION["username"]))
+                    echo "Zalogowany: <span style='color: #398AD7'>" . htmlspecialchars($_SESSION["username"]) . "</span>";
+            ?>
+        </div>
 
         <div id="main">
             <div class="raffle-roller">
