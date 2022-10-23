@@ -26,7 +26,7 @@ session_start();
         <div id="user">
             <?php
                 if(isset($_SESSION["username"]))
-                    echo "Zalogowany: <span style='color: #398AD7'>ja" . htmlspecialchars($_SESSION["username"]) . "</span>";
+                    echo "Zalogowany: <span style='color: #398AD7'>" . htmlspecialchars($_SESSION["username"]) . "</span>";
             ?>
         </div>
 
