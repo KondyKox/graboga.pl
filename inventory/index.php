@@ -15,6 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="mechan, mechanik, card game, mechan card game">
     <title>MECHAN - The Card Game</title>
+    <link rel="icon" href="../img/mechan_logo.png">
 
     <link rel="stylesheet" href="../css/style.css">
 
