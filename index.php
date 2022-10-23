@@ -49,9 +49,6 @@ session_start();
             </div>
 
             <div class="links">
-                <a href="#"><input type="submit" class="button" value="Opinie"></a>
-            </div>
-            <div class="links">
                 <a href="https://github.com/KondyKox/MECHAN-The-Card-Game" target="_blank"><input type="submit" class="button" value="Github"></a>
             </div>
             <div class="links">
