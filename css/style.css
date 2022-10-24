@@ -12,7 +12,7 @@
 #container {
     width: 90%;
     max-height: 70vh;
-    margin: 0;
+    margin: auto;
 }
 
 #header {

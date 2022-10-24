@@ -35,11 +35,20 @@
 }
 
 #inventoryMain {
-    margin: 5% auto;
+    margin: 15% auto;
 	display: block;
     width: 125vh;
     height: 125vh;
 	border: 2px solid #398AD7;
+}
+#inventoryMain > .item {
+    display: none;
+	float: left;
+	cursor: pointer;
+	margin: 4px 2px 0.5px 2px;
+}
+#inventoryMain:hover > .item {
+    display: block;
 }
 
 /******************************* Classes ********************************/
