@@ -52,7 +52,7 @@
                 echo "<div class='item class_red_item' onclick='show(this)' style='background-image: url(".$row["photo"].")'></div>";
             }
         ?>
-        <hr style="border-color: #398AD7;"><a href="../draw"><h3>Powót do losowania</h3></a>
     </div>
+    <a href="../draw" style="text-align: center;"><h3>Powót do losowania</h3></a>
 </body>
 </html>
