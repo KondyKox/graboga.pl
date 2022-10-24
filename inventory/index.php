@@ -30,6 +30,14 @@
     <div id="header">
         <a href="../index.php"><h1>MECHAN - The Card Game</h1><hr></a>
     </div>
+
+    <div id="user">
+        <?php
+            if(isset($_SESSION["username"]))
+                echo "Zalogowany: <span style='color: #398AD7'>" . htmlspecialchars($_SESSION["username"]) . "</span>";
+        ?>
+    </div>
+
     <div id="inventoryMain">
         <h3 style="text-align: center;">Twój ekwipunek:</h3><hr style="border-color: #398AD7;">
         <?php
