@@ -75,7 +75,7 @@ function goRoll(rname, rphoto, rrarity, rid) {
 			method: "POST",
 			url: "functions.php",
 			data: { 
-				drop_id: drop_id
+				drop_id: rid
 			}
 		});
 		$(win_element).appendTo('#inventory');
