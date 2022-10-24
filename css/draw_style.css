@@ -33,6 +33,9 @@
 #inventory h3 {
     margin-left: 10px;
 }
+#inventory h3:hover {
+    color: #398AD7;
+}
 
 #inventoryMain {
     margin: 5% auto;
@@ -64,7 +67,7 @@
 .buttonDraw {
     width: 20%;
     height: 40px;
-    margin: 5px;
+    margin: 10px;
 }
 .raffle-roller {
     height: 165px;
