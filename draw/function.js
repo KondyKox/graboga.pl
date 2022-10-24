@@ -71,15 +71,15 @@ function goRoll(rname, rphoto, rrarity, rid) {
 		$('#rolled').html(rname);
 
 		var win_element = "<div class='item class_red_item' style='background-image: url("+rphoto+")'></div>";
-
-		$(win_element).appendTo('#inventory');
-		$.ajax({
+        $.ajax({
 			method: "POST",
-			url: "./functions.php",
+			url: "functions.php",
 			data: { 
-				drop_id: rid
+				drop_id: drop_id
 			}
 		});
+		$(win_element).appendTo('#inventory');
+		
 
 		// Gra dźwięki i zmienia kolor tła w <div>
 		if (rrarity == "common") {

@@ -2,7 +2,7 @@
     session_start();
 
     if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-        header("location: ../logowanie");
+        header("location: ../login");
         exit;
     }
 ?>
@@ -18,6 +18,7 @@
     <link rel="icon" href="../img/mechan_logo.png">
 
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/draw_style.css">
 
     <?php
     require "../config.php";
@@ -26,10 +27,14 @@
 
 </head>
 <body>
-    <div id="inventory">
+    <div id="header">
+        <a href="../index.php"><h1>MECHAN - The Card Game</h1><hr></a>
+    </div>
+    <div id="inventoryMain">
+        <h3 style="text-align: center;">Twój ekwipunek:</h3><hr style="border-color: #398AD7;">
         <?php
-            $sql = "SELECT drops.id, drop_date, drops.user_id,
-                items.id, items.name, items.rarity_id, items.resource as photo, items.chances, items.value
+            $sql = "SELECT drops.id, drops.drop_date, drops.user_id,
+                items.id, items.name, items.rarity, items.resource as photo
                 FROM drops INNER JOIN items ON drops.item_id = items.id
                 WHERE drops.user_id = $sesID
                 ORDER BY drops.id DESC";

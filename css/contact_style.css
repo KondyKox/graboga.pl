@@ -38,6 +38,3 @@ p {
     text-decoration: underline;
     transition: all .1s ease-in-out;
 }
-a:hover {
-    color: #398AD7;
-}

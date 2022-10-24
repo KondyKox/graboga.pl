@@ -62,7 +62,7 @@ session_start();
         </div>
     </div>
     <div id="inventory">
-        <h3> Ekwipunek:</h3><hr style="border-color: #398AD7;">
+        <a href="../inventory"><h3> Ekwipunek:</h3></a><hr style="border-color: #398AD7;">
     </div>
 </body>
 </html>

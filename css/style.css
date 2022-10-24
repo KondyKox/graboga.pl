@@ -47,6 +47,10 @@
 
 a {
     text-decoration: none;
+    transition: all .3s ease-in-out;
+}
+a:hover {
+    color: #398AD7;
 }
 
 h1 {
