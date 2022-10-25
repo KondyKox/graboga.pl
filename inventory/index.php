@@ -19,6 +19,9 @@
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/draw_style.css">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="card.js"></script>
 
     <?php
     require "../config.php";
@@ -27,6 +30,7 @@
 
 </head>
 <body>
+<div id="droppedCard" style="z-index:3; display:none;"></div>
     <div id="header">
         <a href="../index.php"><h1>MECHAN - The Card Game</h1><hr></a>
     </div>
@@ -36,6 +40,15 @@
             if(isset($_SESSION["username"]))
                 echo "Zalogowany: <span style='color: #398AD7'>" . htmlspecialchars($_SESSION["username"]) . "</span>";
         ?>
+        <br><p>
+            <?php
+            $sq0 = "SELECT COUNT(drops.id) as counts FROM drops WHERE drops.user_id = $sesID";
+
+            $result = mysqli_query($link, $sq0);
+            echo "Ilość kart: ".mysqli_fetch_assoc($result)['counts'];
+            echo "<br>";
+        ?>
+        </p>
     </div>
 
     <div id="inventoryMain">

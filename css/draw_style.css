@@ -8,19 +8,12 @@
 }
 
 #inventory {
-	margin: 5% auto;
-	display: block;
-    width: 125vh;
     height: 10vh;
-	border: 2px solid #398AD7;
     transition: all .3s ease-in-out;
     overflow: hidden;
 }
 #inventory > .item {
     display: none;
-	float: left;
-	cursor: pointer;
-	margin: 4px 2px 0.5px 2px;
 }
 #inventory:hover {
     height: 25vh;
@@ -31,19 +24,23 @@
 }
 
 #inventoryMain {
-    margin: 5% auto;
-	display: block;
-    width: 125vh;
     height: 60vh;
-	border: 2px solid #398AD7;
 }
-#inventoryMain > .item {
-	float: left;
+
+/******************************* Classes ********************************/
+
+.inv {
+    margin: 5% auto;
+    display: block;
+    width: 125vh;
+    border: 2px solid #398AD7;
+}
+.inv > .item {
+    float: left;
 	cursor: pointer;
 	margin: 4px 2px 0.5px 2px;
 }
 
-/******************************* Classes ********************************/
 .droppedCard {
     z-index: 2;
     position: absolute;
