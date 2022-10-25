@@ -30,7 +30,7 @@
 
 </head>
 <body>
-<div id="droppedCard" style="z-index:3; display:none;"></div>
+<div id="droppedCard" style="z-index:3;"></div>
     <div id="header">
         <a href="../index.php"><h1>MECHAN - The Card Game</h1><hr></a>
     </div>
@@ -40,19 +40,21 @@
             if(isset($_SESSION["username"]))
                 echo "Zalogowany: <span style='color: #398AD7'>" . htmlspecialchars($_SESSION["username"]) . "</span>";
         ?>
-        <br><p>
+        <br>
+    </div>
+
+    <div id="inventoryMain" class="inv">
+        <h2 style="text-align: center;">Twój ekwipunek</h2>
+        <p style="margin-left: 10%;">
             <?php
             $sq0 = "SELECT COUNT(drops.id) as counts FROM drops WHERE drops.user_id = $sesID";
 
             $result = mysqli_query($link, $sq0);
-            echo "Ilość kart: ".mysqli_fetch_assoc($result)['counts'];
+            echo "Ilość kart: <span style='color: #398AD7'>".mysqli_fetch_assoc($result)['counts']."</span>";
             echo "<br>";
         ?>
         </p>
-    </div>
-
-    <div id="inventoryMain" class="inv">
-        <h3 style="text-align: center;">Twój ekwipunek:</h3><hr style="border-color: #398AD7;">
+        <hr style="border-color: #398AD7;">
         <?php
             $sql = "SELECT drops.id, drops.drop_date, drops.user_id,
                 items.id, items.name, items.rarity, items.resource as photo

@@ -30,7 +30,7 @@ session_start();
 </head>
 <body>
     <center>
-        <div id="result_container" style="display: none;" class="droppedCard">
+        <div id="result_container" class="droppedCard">
             &nbsp;
         </div>
     </center>
