@@ -61,7 +61,7 @@ session_start();
             </center>
         </div>
     </div>
-    <div id="inventory">
+    <div id="inventory"  class="inv">
         <a href="../inventory"><h3> Ekwipunek:</h3></a><hr style="border-color: #398AD7;">
     </div>
 </body>

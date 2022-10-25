@@ -51,7 +51,7 @@
         </p>
     </div>
 
-    <div id="inventoryMain">
+    <div id="inventoryMain" class="inv">
         <h3 style="text-align: center;">Twój ekwipunek:</h3><hr style="border-color: #398AD7;">
         <?php
             $sql = "SELECT drops.id, drops.drop_date, drops.user_id,
