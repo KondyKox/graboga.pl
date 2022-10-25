@@ -16,7 +16,7 @@
             <a href="../index.php"><h1>MECHAN - The Card Game</h1><hr></a>
         </div>
 
-        <div class="links" style="margin-top: 2%;">
+        <div class="links" style="margin-top: 10%;">
             <a href="#" target="_blank"><input type="submit" class="button" value="Clicker"></a>
         </div>
 
