@@ -30,7 +30,7 @@
 
 </head>
 <body>
-<div id="droppedCard" style="z-index:3;"></div>
+<div class="droppedCard" style="z-index:3; display:none;"></div>
     <div id="header">
         <a href="../index.php"><h1>MECHAN - The Card Game</h1><hr></a>
     </div>
