@@ -16,11 +16,7 @@
             <a href="../index.php"><h1>MECHAN - The Card Game</h1><hr></a>
         </div>
 
-        <div id="header">
-            <a href="../index.php"><h1>MECHAN - The Card Game</h1><hr></a>
-        </div>
-
-        <div class="links">
+        <div class="links" style="margin-top: 2%;">
             <a href="#" target="_blank"><input type="submit" class="button" value="Clicker"></a>
         </div>
 
@@ -28,7 +24,7 @@
             <a href="#" target="_blank"><input type="submit" class="button" value="TOP SECRET" onclick="alert('Jeszcze w produkcji')"></a>
         </div>
 
-        <p style="text-align: center; font-size: 30px">Inne tryby gry w produkcji</p>
+        <p style="text-align: center; font-size: 20px">Inne tryby gry w produkcji</p>
     </div>
 </body>
 </html>
