@@ -43,6 +43,11 @@
     box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
 }
 
+.links {
+    text-align: center;
+    margin-top: 5%;
+}
+
 /*********************************** Tags ************************************/
 
 a {
