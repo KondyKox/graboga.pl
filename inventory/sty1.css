@@ -1,0 +1,11 @@
+#droppedCard1 {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    height: 60%;
+    width: 20%;
+    margin: 10% 40% 10% 40%;
+}
+#droppedCard1 > .item {
+  zoom:200%;
+}

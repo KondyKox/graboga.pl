@@ -19,9 +19,10 @@
 
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/draw_style.css">
+    <link rel="stylesheet" href="sty1.css">
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="card.js"></script>
+    <script src="car_ds.js"></script>
 
     <?php
     require "../config.php";
@@ -30,7 +31,7 @@
 
 </head>
 <body>
-<div class="droppedCard" style="z-index:3; display:none;"></div>
+<center><div id="droppedCard1" style="z-index:3; display:none;"></div></center>
     <div id="header">
         <a href="../index.php"><h1>MECHAN - The Card Game</h1><hr></a>
     </div>

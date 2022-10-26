@@ -17,11 +17,11 @@
         </div>
 
         <div class="links" style="margin-top: 10%;">
-            <a href="#" target="_blank"><input type="submit" class="button" value="Clicker"></a>
+            <a href="clicker"><input type="submit" class="button" value="Clicker"></a>
         </div>
 
         <div class="links">
-            <a href="#" target="_blank"><input type="submit" class="button" value="TOP SECRET" onclick="alert('Jeszcze w produkcji')"></a>
+            <a href="#"><input type="submit" class="button" value="TOP SECRET" onclick="alert('Jeszcze w produkcji')"></a>
         </div>
 
         <p style="text-align: center; font-size: 20px">Inne tryby gry w produkcji</p>
