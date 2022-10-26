@@ -13,7 +13,7 @@ session_start();
     <link rel="icon" href="../img/mechan_logo.png">
 
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/draw_style.css">
+    <link rel="stylesheet" href="../css/inventory_style.css">
 
     <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="array.js"></script>

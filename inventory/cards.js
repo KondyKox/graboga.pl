@@ -1,17 +1,18 @@
-let dc = document.getElementById('result');
+
 
 function show(img) {
+    let dc = document.getElementById('cards');
     let item = "<div id='res_show' class='item class_red_item' style='background-image:" + img.style.backgroundImage + "'></div>";
-    dc.innerHTML = ".";
-    document.getElementById('result').style.removeProperty('display');
-    $(item).appendTo('#result');
+    document.getElementById('cards').innerHTML = "";
+    dc.style.display = "";
+    $(item).appendTo('#cards');
 
-    let im = "<div id='exit' onclick='hide()'>x</div>";
+    let im = "<div id='exit' onclick='hide()'>X</div>";
     $(im).appendTo('#res_show');
 }
 
 function hide() {
-    $('#result').css({
+    $('#cards').css({
         display: "none"
     });
 }

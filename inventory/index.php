@@ -18,11 +18,10 @@
     <link rel="icon" href="../img/mechan_logo.png">
 
     <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/draw_style.css">
-    <link rel="stylesheet" href="sty1.css">
+    <link rel="stylesheet" href="../css/inventory_style.css">
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="car_ds.js"></script>
+    <script src="cards.js"></script>
 
     <?php
     require "../config.php";
@@ -31,7 +30,7 @@
 
 </head>
 <body>
-<center><div id="droppedCard1" style="z-index:3; display:none;"></div></center>
+<center><div id="cards" class="droppedCard" style="z-index:3; display:none;"></div></center>
     <div id="header">
         <a href="../index.php"><h1>MECHAN - The Card Game</h1><hr></a>
     </div>

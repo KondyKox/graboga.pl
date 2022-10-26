@@ -28,6 +28,15 @@
     top: 15%;
 }
 
+#exit {
+    background: none;
+    color: red;
+    text-align: right;
+}
+#exit:hover {
+    cursor: pointer;
+}
+
 /******************************* Classes ********************************/
 
 .button {
