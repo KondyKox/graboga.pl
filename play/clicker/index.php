@@ -1,6 +1,11 @@
 <?php
-session_start();
+    session_start();
+    if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+        header("location: ../../login");
+        exit;
+    }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pl">
@@ -11,7 +16,13 @@ session_start();
     <meta name="keywords" content="mechan, mechanik, card game, mechan card game">
     <title>MECHAN - The Card Game</title>
     <link rel="icon" href="../../img/mechan_logo.png">
-
+    <style>
+      input[type="submit"]{
+        background-image: url("../../img/cards/kartaMucha2.png"); 
+        height: 80vh;
+        width: 50vh;
+      }
+    </style>
     <link rel="stylesheet" href="../../css/style.css">
 
 </head>
@@ -23,28 +34,34 @@ session_start();
 
         <div id="user">
             <?php
+            require "../../config.php";
+              $sesID = $_SESSION['id'];
                 if(isset($_SESSION["username"]))
                     echo "Zalogowany: <span style='color: #398AD7'>" . htmlspecialchars($_SESSION["username"]) . "</span>";
-            ?>
+                echo "<br>";
+                $sq4 = "SELECT money_count as counts FROM profiles WHERE user_id = $sesID";
+
+                $result4 = mysqli_query($link, $sq4);
+                echo "Ilość monet: <span style='color: #398AD7'>".mysqli_fetch_assoc($result4)['counts']."</span>";
+                echo "<br>";
+      
+        ?>
         </div>
 
         <div id="click">
             <center>
-                <img src="../../img/cards/kartaMucha2.png">
-            </center>
+                <!--<img src="../../img/cards/kartaMucha2.png">-->
+            
             
              <form action="index.php" method="post">
-                <input type="submit" name="submit" value="klik">
+                <input type="submit" name="submit" value="">
             </form>
-
-            <?php
-                require "../../config.php";
-                $sesID = $_SESSION("id");
-                $sq0 = "UPDATE 'profiles' SET 'money_count' = 'money_count' + 1 WHERE 'user_id' = $sesID";
-
-                if(isset($_POST))
-                    mysqli_query($link, $sq0);
+            </center>
+            <?php 
+              $sq0 = "UPDATE `profiles` SET `money_count` = money_count + 1 WHERE user_id = $sesID;";
+              $run = mysqli_query($link, $sq0);
             ?>
+               
         </div>
     </div>
 </body>

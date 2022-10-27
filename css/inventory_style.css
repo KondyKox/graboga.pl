@@ -28,9 +28,10 @@
     overflow-y: scroll;
 }
 
+
 #cards > .item {
-    zoom: 200%;
-    margin: 25%;
+    zoom: 300%;
+    margin: 15%;
 }
 
 /******************************* Classes ********************************/
