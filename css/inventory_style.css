@@ -11,6 +11,7 @@
     height: 10vh;
     transition: all .3s ease-in-out;
     overflow: hidden;
+    margin-top: 10%;
 }
 #inventory > .item {
     display: none;
@@ -27,7 +28,6 @@
     height: 60vh;
     overflow-y: scroll;
 }
-
 
 #cards > .item {
     zoom: 300%;
@@ -59,8 +59,9 @@
 
 .buttonDraw {
     width: 20%;
-    height: 40px;
-    margin: 10px;
+    height: 5%;
+    margin: 1%;
+    border-radius: 10px;
 }
 .raffle-roller {
     height: 165px;
@@ -127,9 +128,13 @@
 /*********************************** Tags ************************************/
 
 h3 {
-    margin-left: 10px;
+    margin: 1%;
     transition: all .3s ease-in-out;
 }
 h3:hover {
     color: #398AD7;
+}
+
+h2 {
+    margin: 1%;
 }

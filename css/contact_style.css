@@ -7,8 +7,8 @@
 }
 
 #smaller {
-    font-size: 10px;
-    padding: 10px;
+    font-size: 65%;
+    padding: 1%;
 }
 
 #footer {
@@ -17,21 +17,21 @@
 }
 
 #bigger {
-    font-size: 45px;
+    font-size: 2.5em;
 }
 
 /*********************************** Tags ************************************/
 
 h2 {
-    font-size: 45px;
+    font-size: 3em;
 }
 
 h3 {
-    font-size: 35px;
+    font-size: 2em;
 }
 
 p {
-    font-size: 25px;
+    font-size: 1.5em;
 }
 
 #main a {

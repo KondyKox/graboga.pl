@@ -4,7 +4,7 @@
     if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         header("location: ../login");
         exit;
-    }
+    } 
 ?>
 
 <!DOCTYPE html>
@@ -17,33 +17,58 @@
     <title>MECHAN - The Card Game</title>
     <link rel="icon" href="../img/mechan_logo.png">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/inventory_style.css">
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="cards.js"></script>
 
-    <?php
-    require "../config.php";
-        $sesID = $_SESSION['id'];
-    ?>
+        <?php
+            require "../config.php";
+            $sesID = $_SESSION['id']; 
+        ?>
 
 </head>
 <body>
 <center><div id="cards" class="droppedCard" style="z-index:3; display:none;"></div></center>
-    <div id="header">
-        <a href="../index.php"><h1>MECHAN - The Card Game</h1><hr></a>
+<nav class="navbar navbar-expand-lg" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-main">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"><img src="../img/mechan_logo.png"></a>
+        </div>
+        <div class="collapse navbar-collapse" id="navbar-collapse-main">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="nav-item"><a href="index.php" class="nav-link active">Strona główna</a></li>
+                <li class="nav-item">
+                    <?php
+                        if(!isset($_SESSION["username"]))
+                            echo '<a href="login" class="nav-link"><input type="submit" class="button" value="Rejestracja / Logowanie"></a>';
+                        else 
+                            echo '<a href="logout" class="nav-link"><input type="submit" class="button" value="Wyloguj"></a>';
+                    ?>
+                </li>
+                <li class="nav-item"><a href="https://www.paypal.me/megakoks" target="_blank" class="nav-link">Donate</a></li>
+                <li class="nav-item"><a href="https://github.com/KondyKox/MECHAN-The-Card-Game" target="_blank" class="nav-link">Github</a></li>
+                <li class="nav-item"><a href="contact/" class="nav-link">Kontakt</a></li>
+                <li class="nav-item">
+                    <?php
+                        if(isset($_SESSION["username"]))
+                            echo "Zalogowany: <span style='color: #398AD7'>" . htmlspecialchars($_SESSION["username"]) . "</span>";
+                    ?>
+                </li>
+            </ul>
+        </div>
     </div>
+</nav>
 
-    <div id="user">
-        <?php
-            if(isset($_SESSION["username"]))
-                echo "Zalogowany: <span style='color: #398AD7'>" . htmlspecialchars($_SESSION["username"]) . "</span>";
-        ?>
-        <br>
-    </div>
-
-    <div id="inventoryMain" class="inv">
+    <div id="inventoryMain" class="inv col-sm-12">
         <h2 style="text-align: center;">Twój ekwipunek</h2>
         <p style="margin-left: 10%;">
             <?php
@@ -51,11 +76,10 @@
 
             $result = mysqli_query($link, $sq0);
             echo "Ilość kart: <span style='color: #398AD7'>".mysqli_fetch_assoc($result)['counts']."</span>";
-            echo "<br>";
-        ?>
+            echo "<br>"; ?> 
         </p>
         <hr style="border-color: #398AD7;">
-        <?php
+            <?php
             $sql = "SELECT drops.id, drops.drop_date, drops.user_id,
                 items.id, items.name, items.rarity, items.resource as photo
                 FROM drops INNER JOIN items ON drops.item_id = items.id
@@ -65,9 +89,19 @@
             $result = mysqli_query($link, $sql);
             while($row = mysqli_fetch_assoc($result)) {
                 echo "<div class='item class_red_item' onclick='show(this)' style='background-image: url(".$row["photo"].")'></div>";
-            }
-        ?>
+            } ?>
     </div>
-    <a href="../draw" style="text-align: center;"><h3>Powót do losowania</h3></a>
+
+    <footer class="container-fluid text-center">
+        <div class="row">
+            <div class="col-sm-12">
+                <a href="../draw" style="text-align: center;"><h3>Powót do losowania</h3></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
