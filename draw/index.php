@@ -49,7 +49,7 @@
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse-main">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="nav-item"><a href="index.php" class="nav-link active">Strona główna</a></li>
+                    <li class="nav-item"><a href="../index.php" class="nav-link active">Strona główna</a></li>
                     <li class="nav-item">
                         <?php
                             if(!isset($_SESSION["username"]))
