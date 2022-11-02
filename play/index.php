@@ -29,9 +29,9 @@
                     <li class="nav-item">
                         <?php
                             if(!isset($_SESSION["username"]))
-                                echo '<a href="login" class="nav-link"><input type="submit" class="button" value="Rejestracja / Logowanie"></a>';
+                                echo '<a href="../login" class="nav-link"><input type="submit" class="button" value="Rejestracja / Logowanie"></a>';
                             else 
-                                echo '<a href="logout" class="nav-link"><input type="submit" class="button" value="Wyloguj"></a>';
+                                echo '<a href="../logout" class="nav-link"><input type="submit" class="button" value="Wyloguj"></a>';
                         ?>
                     </li>
                     <li class="nav-item"><a href="https://www.paypal.me/megakoks" target="_blank" class="nav-link">Donate</a></li>
