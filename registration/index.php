@@ -114,7 +114,7 @@
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-main">
                     <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
+                    <span class="icon-bar">---</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
@@ -126,14 +126,14 @@
                     <li class="nav-item">
                         <?php
                             if(!isset($_SESSION["username"]))
-                                echo '<a href="../login" class="nav-link"><input type="submit" class="button" value="Rejestracja / Logowanie"></a>';
+                                echo '<a href="../login" class="nav-link"><input type="submit" value="Rejestracja / Logowanie"></a>';
                             else 
-                                echo '<a href="../logout" class="nav-link"><input type="submit" class="button" value="Wyloguj"></a>';
+                                echo '<a href="../logout" class="nav-link"><input type="submit" value="Wyloguj"></a>';
                         ?>
                     </li>
                     <li class="nav-item"><a href="https://www.paypal.me/megakoks" target="_blank" class="nav-link">Donate</a></li>
                     <li class="nav-item"><a href="https://github.com/KondyKox/MECHAN-The-Card-Game" target="_blank" class="nav-link">Github</a></li>
-                    <li class="nav-item"><a href="contact/" class="nav-link">Kontakt</a></li>
+                    <li class="nav-item"><a href="../contact/" class="nav-link">Kontakt</a></li>
                     <li class="nav-item">
                         <?php
                             if(isset($_SESSION["username"]))
@@ -146,7 +146,7 @@
     </nav>
 
         <div id="login" class="col-sm-12">
-            <form action="" method="post">
+            <form action="index.php" method="post">
                 <h2>Rejestracja</h2>
                 <div class="txtField">
                     <input type="text" name="username" required class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">

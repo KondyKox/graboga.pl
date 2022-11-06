@@ -24,7 +24,7 @@
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-main">
                     <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
+                    <span class="icon-bar">---</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
@@ -36,9 +36,9 @@
                     <li class="nav-item">
                         <?php
                             if(!isset($_SESSION["username"]))
-                                echo '<a href="../login" class="nav-link"><input type="submit" class="button" value="Rejestracja / Logowanie"></a>';
+                                echo '<a href="login" class="nav-link"><input type="submit" value="Rejestracja / Logowanie"></a>';
                             else 
-                                echo '<a href="../logout" class="nav-link"><input type="submit" class="button" value="Wyloguj"></a>';
+                                echo '<a href="logout" class="nav-link"><input type="submit" value="Wyloguj"></a>';
                         ?>
                     </li>
                     <li class="nav-item"><a href="https://www.paypal.me/megakoks" target="_blank" class="nav-link">Donate</a></li>
@@ -80,7 +80,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <img src="img/praktykant.png" alt="ad" class="ad">
+                    <img src="img/donejtor.png" alt="ad" class="ad">
                 </div>
 
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
