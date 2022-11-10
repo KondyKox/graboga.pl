@@ -1,0 +1,21 @@
+#click {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#clicker {
+    background-image: url("../../img/cards/kartaMucha2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 75vh;
+    width: 45vh;
+    border: 1px solid #398AD7;
+    transition: all .3s ease-in-out;
+}
+
+#clicker:hover {
+    height: 70vh;
+    width: 40vh;
+    border-width: 5px;
+}

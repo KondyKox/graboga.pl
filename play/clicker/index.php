@@ -6,7 +6,6 @@
     }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -16,16 +15,13 @@
     <meta name="keywords" content="mechan, mechanik, card game, mechan card game">
     <title>MECHAN - The Card Game</title>
     <link rel="icon" href="../../img/mechan_logo.png">
-    <style>
-      input[type="submit"]{
-        background-image: url("../../img/cards/kartaMucha2.png"); 
-        height: 80vh;
-        width: 50vh;
-      }
-    </style>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/clicker_style.css">
+
+    <script src="../../draw/array.js"></script>
+    <script src="click.js"></script>
 
 </head>
 <body>
@@ -67,12 +63,9 @@
 
         <div id="click">
             <center>
-                <!--<img src="../../img/cards/kartaMucha2.png">-->
-            
-            
-             <form action="index.php" method="post">
-                <input type="submit" name="submit" value="">
-            </form>
+                <form action="index.php" method="post">
+                    <input type="submit" name="submit" value="" onclick="change()" id="clicker">
+                </form>
             </center>
             <?php 
               $sq0 = "UPDATE `profiles` SET `money_count` = money_count + 1 WHERE user_id = $sesID;";

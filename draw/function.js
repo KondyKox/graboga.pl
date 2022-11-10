@@ -82,30 +82,18 @@ function goRoll(rname, rphoto, rrarity, rid) {
 		
 
 		// Gra dźwięki i zmienia kolor tła w <div>
-		if (rrarity == "common") {
+		if (rrarity == "common")
 			comm.play();
-			$('#result_container').css({backgroundColor: 'green'});
-		}
-		else if (rrarity == "rare") {
+		else if (rrarity == "rare")
 			rare.play();
-			$('#result_container').css({backgroundColor: 'blue'});
-		}
-		else if (rrarity == "epic") {
+		else if (rrarity == "epic")
 			epic.play();
-			$('#result_container').css({backgroundColor: 'purple'});
-		}
-		else if (rrarity == "legendary") {
+		else if (rrarity == "legendary")
 			leg.play();
-			$('#result_container').css({backgroundColor: 'gold'});
-		}
-		else if (rrarity == "cursed") {
+		else if (rrarity == "cursed")
 			curs.play();
-			$('#result_container').css({backgroundColor: 'darkblue'});
-		}
-		else if (rrarity == "special") {
+		else if (rrarity == "special")
 			spec.play();
-			$('#result_container').css({backgroundColor: 'darkred'});
-		}
 
 		showCard(win_element); 
 
