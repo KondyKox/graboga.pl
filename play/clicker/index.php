@@ -49,7 +49,7 @@
                     <li class="dropdown-item"><a href="https://www.paypal.me/megakoks" target="_blank" class="nav-link">Donate</a></li>
                     <li class="dropdown-item"><a href="https://github.com/KondyKox/MECHAN-The-Card-Game" target="_blank" class="nav-link">Github</a></li>
                     <li class="dropdown-item"><a href="../../contact/" class="nav-link">Kontakt</a></li>
-                    <li class="dropdown-item">
+                    <li style="margin: 3%;">
                         <?php
                             if(isset($_SESSION["username"]))
                                 echo "Zalogowany: <span style='color: #398AD7'>" . htmlspecialchars($_SESSION["username"]) . "</span>";

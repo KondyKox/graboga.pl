@@ -1,7 +1,7 @@
 // Pokazuje kartę na ekranie po kliknięciu
 function show(img) {
     let dc = document.getElementById('cards');
-    let item = "<div id='res_show' class='item class_red_item' style='background-image:" + img.style.backgroundImage + "'></div>";
+    let item = "<div id='res_show' class='item class_red_item' style='background-image:" + img.style.backgroundImage + ";' onclick='sell(this)'></div>";
     document.getElementById('cards').innerHTML = "";
     dc.style.display = "";
     $(item).appendTo('#cards');
@@ -19,5 +19,17 @@ function hide() {
 
 // Sprzedaje kartę / Usuwa z ekwipunku
 function sell(card) {
-    
+    let wartosc;
+
+    if (confirm("Czy sprzedać" + card + " za <b>" + wartosc + " monet</b>?")) {
+        $.ajax({
+            method: "POST",
+            url: "cards.php",
+            data: {
+                drop_id: rid
+            }
+        });
+
+        alert("Sprzedano " + card + " za <b>" + wartosc + " monet</b>!");
+    }
 }

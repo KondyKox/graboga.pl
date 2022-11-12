@@ -113,6 +113,10 @@
    	background-repeat: no-repeat;
     background-position: center;
 }
+
+.itemHover {
+    transition: all .3s ease-in-out;
+}
 .itemHover:hover {
     border: 3px solid #398AD7;
 }

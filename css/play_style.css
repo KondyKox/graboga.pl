@@ -1,0 +1,15 @@
+/******************************* Classes ********************************/
+
+.links {
+    margin: 3% 0;
+    text-align: center;
+    padding: 5px;
+    position: relative;
+}
+
+/******************************* Tags ********************************/
+
+input[type="submit"] {
+    font-weight: 500;
+    font-size: 150%;
+}

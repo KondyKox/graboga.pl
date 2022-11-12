@@ -10,6 +10,7 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/play_style.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg" role="navigation">
@@ -36,7 +37,7 @@
                     <li class="dropdown-item"><a href="https://www.paypal.me/megakoks" target="_blank" class="nav-link">Donate</a></li>
                     <li class="dropdown-item"><a href="https://github.com/KondyKox/MECHAN-The-Card-Game" target="_blank" class="nav-link">Github</a></li>
                     <li class="dropdown-item"><a href="../contact/" class="nav-link">Kontakt</a></li>
-                    <li class="dropdown-item">
+                    <li style="margin: 3%;">
                         <?php
                             if(isset($_SESSION["username"]))
                                 echo "Zalogowany: <span style='color: #398AD7'>" . htmlspecialchars($_SESSION["username"]) . "</span>";
@@ -47,15 +48,15 @@
         </div>
     </nav>
 
-        <div class="links" style="margin-top: 5%;">
+        <div class="links col-sm-12 lead" style="margin-top: 5%;">
             <a href="clicker"><input type="submit" class="button" value="Clicker"></a>
         </div>
 
-        <div class="links">
+        <div class="links col-sm-12 lead">
             <a href="#"><input type="submit" class="button" value="TOP SECRET" onclick="alert('Jeszcze w produkcji')"></a>
         </div>
 
-        <p style="text-align: center; font-size: 2em">Inne tryby gry w produkcji</p>
+        <p style="text-align: center; font-size: 2em">Inne tryby gry w planach</p>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
