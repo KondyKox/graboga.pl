@@ -1,21 +1,32 @@
+/*********************************** IDs ************************************/
+
 #click {
+    margin: 2%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 #clicker {
-    background-image: url("../../img/cards/kartaMucha2.png");
     background-repeat: no-repeat;
-    background-size: cover;
-    height: 75vh;
-    width: 45vh;
+    background-size: contain;
+    height: 65vh;
+    width: 40vh;
+    padding: 10px;
     border: 1px solid #398AD7;
+    border-radius: 10px;
     transition: all .3s ease-in-out;
 }
 
-#clicker:hover {
-    height: 70vh;
-    width: 40vh;
+#clicker:not(.no-hover):hover {
+    height: 60vh;
+    width: 35vh;
     border-width: 5px;
+}
+
+/*********************************** Tags ************************************/
+
+img {
+    width: 100%;
+    height: 100%;
 }

@@ -6,8 +6,21 @@ function change() {
         card = Math.round(Math.random() * tab.length + 1);
     }
 
+    removeHover();
+
     // Zmienia kartę.
-    $('#clicker').css({
-        backgroundImg: "url(tab.photo[card])"
+    $('img').css({
+        //backgroundImg: "url(" + tab.photo[card] + ")"
     });
+}
+
+// Usuwa :hover, żeby fajnie się zmieniało na kliknięcie
+function removeHover() {
+    $('#clicker').addClass('no-hover');
+
+    setTimeout(restore, 200);
+}
+
+let restore = () => {
+    $('#clicker').removeClass('no-hover');
 }

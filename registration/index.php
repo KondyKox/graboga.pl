@@ -100,7 +100,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="mechan, mechanik, card game, mechan card game">
+    <meta name="keywords" content="mechan, mechanik, card game, mechan card game, gra-bo.ga">
     <title>MECHAN - The Card Game</title>
     <link rel="icon" href="../img/mechan_logo.png">
 
@@ -144,7 +144,7 @@
         </div>
     </nav>
 
-        <div id="login" class="col-sm-12">
+        <div id="login" class="col-sm-6">
             <form action="index.php" method="post">
                 <h2>Rejestracja</h2>
                 <div class="txtField">

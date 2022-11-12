@@ -113,6 +113,9 @@
    	background-repeat: no-repeat;
     background-position: center;
 }
+.itemHover:hover {
+    border: 3px solid #398AD7;
+}
 
 .class_red_item {
 	border-bottom: 4px solid #4e4beb;

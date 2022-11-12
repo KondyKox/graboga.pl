@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="keywords" content="mechan, mechanik, card game, mechan card game">
+    <meta name="keywords" content="mechan, mechanik, card game, mechan card game, gra-bo.ga">
     <title>MECHAN - The Card Game</title>
     <link rel="icon" href="../img/mechan_logo.png">
 

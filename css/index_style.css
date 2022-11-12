@@ -10,12 +10,6 @@
 
 /******************************* Classes ********************************/
 
-.navbar-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .buttonMain {
     font-size: 3em;
     padding: 2%;
@@ -29,11 +23,4 @@
     height: 23vh;
 	border: 0;
 	vertical-align: middle;
-}
-
-/******************************* Tags ********************************/
-
-h1 {
-    font-weight: 700;
-    text-align: center;
 }
