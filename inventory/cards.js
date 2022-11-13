@@ -6,8 +6,9 @@ function show(img) {
     dc.style.display = "";
     $(item).appendTo('#cards');
 
-    let im = "<div id='exit' onclick='hide()'>X</div>";
-    $(im).appendTo('#res_show');
+    let exit = "<div id='exit' onclick='hide()'>X</div>";
+    $(exit).appendTo('#res_show');
+    $('#res_show').append("<input type='submit' class='button buttonInv lead' value='Sprzedaj' onclick='sell(this)'>");
 }
 
 // Chowa kartę
@@ -20,13 +21,14 @@ function hide() {
 // Sprzedaje kartę / Usuwa z ekwipunku
 function sell(card) {
     let wartosc;
+    let cardName = tab[this].name;
 
     if (confirm("Czy sprzedać" + card + " za <b>" + wartosc + " monet</b>?")) {
         $.ajax({
             method: "POST",
             url: "cards.php",
             data: {
-                drop_id: rid
+                drop_id: cardName
             }
         });
 

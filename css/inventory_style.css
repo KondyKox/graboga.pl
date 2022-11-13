@@ -29,6 +29,13 @@
     overflow-y: scroll;
 }
 
+#cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
 #cards > .item {
     zoom: 300%;
     margin: 15%;
@@ -63,6 +70,15 @@
     margin: 1%;
     border-radius: 10px;
 }
+
+.buttonInv {
+    width: 80%;
+    height: 15%;
+    margin: 120% auto 0;
+    position: relative;
+    font-size: 0.5vw;
+}
+
 .raffle-roller {
     height: 165px;
     position: relative;

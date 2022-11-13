@@ -4,7 +4,7 @@
 
     $sesUser = $_SESSION['id'];
     $dropId = $_POST['drop_id'];
-    $sq = "DELETE FROM 'drops' WHERE 'user_id' = $id AND 'drop_id' = $dropId;";
+    $sq = "DELETE FROM 'drops' WHERE 'user_id' = $id AND 'item_id' = $dropId;";
 
     mysqli_query($con, $sq);
 ?>

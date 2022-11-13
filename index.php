@@ -72,19 +72,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <img src="img/donejtor.png" alt="ad" class="ad">
+                    <img src="img/donejtor.png" alt="ad" class="ad" Loading="lazy">
                 </div>
 
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <img src="img/nig.png" alt="ad" class="ad">
+                    <img src="img/nig.png" alt="ad" class="ad" Loading="lazy">
                 </div>
 
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <img src="img/grafika.png" alt="ad" class="ad">
+                    <img src="img/grafika.png" alt="ad" class="ad" Loading="lazy">
                 </div>
 
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <img src="img/praktykant.png" alt="ad" class="ad">
+                    <img src="img/praktykant.png" alt="ad" class="ad" Loading="lazy">
                 </div>
             </div>
         </div>

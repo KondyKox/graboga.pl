@@ -22,4 +22,6 @@ let tab = [
     {name: "drukarka3d",    chances: 20,            rarity: "special",      id: 21,            photo: "../img/cards/kartaDrukarka.png"   },
     {name: "dzwonek",       chances: 20,            rarity: "special",      id: 22,            photo: "../img/cards/kartaDzwonek.png"    },
     {name: "sala205",       chances: 30,            rarity: "place",        id: 23,            photo: "../img/cards/kartaSala205.png"    },
+    {name: "sala305",       chances: 30,            rarity: "place",        id: 24,            photo: "../img/cards/kartaSala305.png"    },
+    {name: "muchaPraga",    chances: 20,            rarity: "special",      id: 25,            photo: "../img/cards/kartaMuchaPraga.png" },
 ]

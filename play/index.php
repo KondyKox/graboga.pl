@@ -49,11 +49,11 @@
     </nav>
 
         <div class="links col-sm-12 lead" style="margin-top: 5%;">
-            <a href="clicker"><input type="submit" class="button" value="Clicker"></a>
+            <a href="clicker"><input type="submit" class="button gameModes" value="Clicker"></a>
         </div>
 
         <div class="links col-sm-12 lead">
-            <a href="#"><input type="submit" class="button" value="TOP SECRET" onclick="alert('Jeszcze w produkcji')"></a>
+            <a href="#"><input type="submit" class="button gameModes" value="TOP SECRET" onclick="alert('Jeszcze w produkcji')"></a>
         </div>
 
         <p style="text-align: center; font-size: 2em">Inne tryby gry w planach</p>

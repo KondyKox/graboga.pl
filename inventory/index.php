@@ -32,7 +32,7 @@
 </head>
 <body>
     <center>
-        <div id="cards" class="droppedCard" style="z-index:3; display:none;"></div>
+        <div id="cards" class="droppedCard col-sm-12" style="z-index:3; display:none;"></div>
     </center>
 
     <nav class="navbar navbar-expand-lg" role="navigation">

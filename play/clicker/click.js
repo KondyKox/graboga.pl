@@ -10,7 +10,7 @@ function change() {
 
     // Zmienia kartę.
     $('img').css({
-        //backgroundImg: "url(" + tab.photo[card] + ")"
+        backgroundImg: "url(../" + tab[card].photo + ")"
     });
 }
 

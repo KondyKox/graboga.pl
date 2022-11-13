@@ -31,7 +31,7 @@
 </head>
 <body>
     <center>
-        <div id="result_container" style="display: none; background: none;" class="droppedCard">
+        <div id="result_container" style="display: none; background: none;" class="droppedCard col-sm-12">
             &nbsp;
         </div>
     </center>

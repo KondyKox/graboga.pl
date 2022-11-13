@@ -9,7 +9,7 @@
 
 /******************************* Tags ********************************/
 
-input[type="submit"] {
+.gameModes {
     font-weight: 500;
     font-size: 150%;
 }
