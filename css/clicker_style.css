@@ -1,13 +1,12 @@
 /*********************************** IDs ************************************/
 
-#click {
-    margin: 2%;
+#clicker {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#clicker {
+#click {
     background-repeat: no-repeat;
     background-size: contain;
     height: 65vh;
@@ -18,7 +17,7 @@
     transition: all .3s ease-in-out;
 }
 
-#clicker:not(.no-hover):hover {
+#click:active {
     height: 60vh;
     width: 35vh;
     border-width: 5px;

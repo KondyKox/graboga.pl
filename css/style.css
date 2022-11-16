@@ -101,6 +101,7 @@ h1 {
 
 /********************************* SCROLLBAR **********************************/
 
+/* Works only on Chrome */
 ::-webkit-scrollbar {
     width: 20px;
 }
@@ -116,13 +117,5 @@ h1 {
 }
   
 ::-webkit-scrollbar-thumb:hover {
-    background: #398AD7; 
-}
-
-/********************************* ANOTHER **********************************/
-
-@media (max-width: 768px) {
-    .landing-text h1 {
-        font-size: 300%;
-    } 
+    background: #398AD7;
 }

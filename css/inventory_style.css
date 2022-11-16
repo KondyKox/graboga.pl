@@ -11,7 +11,7 @@
     height: 10vh;
     transition: all .3s ease-in-out;
     overflow: hidden;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 #inventory > .item {
     display: none;

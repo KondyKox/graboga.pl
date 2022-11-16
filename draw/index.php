@@ -16,9 +16,9 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/inventory_style.css">
 
-    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+    <script src="../jquery-3.6.1.min.js"></script>
     <script src="array.js"></script>
-    <script src="./function.js"></script>
+    <script src="function.js"></script>
     <script>
         function disableF5(e) { 
             if ((e.which || e.keyCode) == 116 || (e.which || e.keyCode) == 82)
@@ -39,7 +39,7 @@
     <nav class="navbar navbar-expand-lg" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#"><img src="../img/mechan_logo.png"></a>
+                <a class="navbar-brand" href="../index.php"><img src="../img/mechan_logo.png"></a>
                 <h1>MECHAN - The Card Game</h1>
                 <button type="button" class="dropdown-toggle" data-toggle="collapse" data-target="#navbar-collapse-main">
                     <span class="sr-only">Toggle navigation</span>

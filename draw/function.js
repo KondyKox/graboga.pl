@@ -81,7 +81,7 @@ function goRoll(rname, rphoto, rrarity, rid) {
 		$(win_element).appendTo('#inventory');
 		
 
-		// Gra dźwięki i zmienia kolor tła w <div>
+		// Gra dźwięki
 		if (rrarity == "common")
 			comm.play();
 		else if (rrarity == "rare")
@@ -99,7 +99,7 @@ function goRoll(rname, rphoto, rrarity, rid) {
 
 	}, 8500);
 
-	$('.raffle-roller-container').css('margin-left', '-6820px');
+	$('.raffle-roller-container').css('margin-left', '-6670px');
 }
 
 function randomInt(min, max) {

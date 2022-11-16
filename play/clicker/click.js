@@ -1,4 +1,9 @@
-function change() {
+function click() {
+    //Odpala dźwięk
+    let audio = new Audio("../../sfx/click.wav");
+    audio.play();
+
+    // Losuje kartę z array.js
     let card = Math.round(Math.random() * tab.length + 1);
 
     // Sprawdzam czy może nie wylosowała się karta "zbanowana".
@@ -6,21 +11,6 @@ function change() {
         card = Math.round(Math.random() * tab.length + 1);
     }
 
-    removeHover();
-
     // Zmienia kartę.
-    $('img').css({
-        backgroundImg: "url(../" + tab[card].photo + ")"
-    });
-}
-
-// Usuwa :hover, żeby fajnie się zmieniało na kliknięcie
-function removeHover() {
-    $('#clicker').addClass('no-hover');
-
-    setTimeout(restore, 200);
-}
-
-let restore = () => {
-    $('#clicker').removeClass('no-hover');
+    $('#click').attr("src", "../" + tab[card].photo);
 }
