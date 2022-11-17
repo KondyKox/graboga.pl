@@ -42,7 +42,7 @@ function Generate() {
     let randed2 = GetIndex();
 
     for(let i = 0; i < 101; i++) {
-		let element = '<div id="CardNumber'+i+'" class="item class_red_item" style="background-image:url('+tab[GetIndex()].photo+');"></div>';
+		let element = '<div id="CardNumber'+i+'" class="item class_red_item" style="background-image:url('+tab[GetIndex()].photo+');" Loading="lazy"></div>';
 		$(element).appendTo('.raffle-roller-container');
 	}
 

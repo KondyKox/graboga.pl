@@ -1,0 +1,94 @@
+* {
+    background-color: #070606;
+    color: white;
+}
+
+*::before,
+*::after {
+    box-sizing: border-box;
+    user-select: none;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #070606;
+}
+
+
+/******************************* Classes ********************************/
+
+.world {
+    overflow: hidden;
+    position: relative;
+}
+
+.score, .best-score {
+    position: absolute;
+    font-size: 3vmin;
+    right: 50%;
+    top: 1vmin;
+}
+
+.best-score {
+    font-size: 2vmin;
+    top: 10%;
+    right: 49%;
+}
+
+.start-screen {
+    position: absolute;
+    font-size: 5vmin;
+    text-align: center;
+    font-weight: 500;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hide {
+    display: none;
+}
+
+.ground {
+    --left: 0;
+    position: absolute;
+    width: 300%;
+    bottom: 0;
+    left: calc(var(--left) * 1%);
+}
+
+.dino {
+    --bottom: 0;
+    position: absolute;
+    left: 1%;
+    height: 30%;
+    bottom: calc(var(--bottom) * 1%);
+}
+
+.cactus {
+    position: absolute;
+    left: calc(var(--left) * 1%);
+    height: 30%;
+    bottom: 0;
+}
+
+.button {
+    padding: 1%;
+    min-width: 30%;
+    border: 1px solid #398AD7;
+    border-radius: 10px;
+    transition: all .3s ease-in-out;
+    position:fixed; 
+    margin-top: 40%;
+    font-weight: 500;
+}
+.button:hover {
+    cursor: pointer;
+    background-color: #398AD7;
+    background-position: 100% 0;
+    box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+}

@@ -1,0 +1,8 @@
+#ranking {
+    width: 125vh;
+    height: 60vh;
+    overflow-y: scroll;
+    margin: auto;
+    display: block;
+    border: 2px solid #398AD7;
+}
