@@ -50,8 +50,8 @@ export function getCactusRects() {
 }
 
 function getRandomEnemy() {
-    let i = Math.floor(Math.random() * 4 + 1);
-    return `./assets/karta-${i}.png`;
+    let i = Math.floor(Math.random() * 28 + 1);
+    return `../` + tab[i].photo;
 }
 
 function createCactus() {

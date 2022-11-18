@@ -1,8 +1,16 @@
+/******************************* IDs ********************************/
+
 #ranking {
-    width: 125vh;
+    width: 90%;
     height: 60vh;
     overflow-y: scroll;
     margin: auto;
     display: block;
     border: 2px solid #398AD7;
+}
+
+/******************************* Tags ********************************/
+
+hr {
+    border-color: #398AD7;
 }

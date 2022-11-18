@@ -64,13 +64,13 @@
         <div id="clicker" class="col-sm-12">
             <center>
                 <form action="index.php" method="post">
-                    <button type="button" name="submit" onclick="click()" id="click">
+                    <button type="submit" name="submit" onclick="click()" id="click">
                         <img src="../../img/cards/kartaMucha2.png">
                     </button>
                 </form>
             </center>
             <?php 
-              $sq0 = "UPDATE `profiles` SET `money_count` = money_count + 1 WHERE user_id = $sesID;";
+              $sq0 = "UPDATE `users` SET `money_count` = money_count + 1 WHERE 'id' = $sesID;";
               $run = mysqli_query($link, $sq0);
             ?>
         </div>

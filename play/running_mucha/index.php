@@ -1,7 +1,3 @@
-<?php
-    session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -17,6 +13,7 @@
 
     <script src="skrypt.js" type="module"></script>
     <script src="../../jquery-3.6.1.min.js"></script>
+    <script src="../../draw/array.js"></script>
 </head>
 <body>
     <button id="btn" class="button lead">SKOK</button>

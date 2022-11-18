@@ -7,7 +7,7 @@ import {
 
 const JUMP_SPEED = 0.45;
 const GRAVITY = 0.0015;
-const DINO_FRAME_COUNT = 1;
+const DINO_FRAME_COUNT = 2;
 const FRAME_TIME = 100;
 
 const dinoElem = document.querySelector('[data-dino]');
@@ -39,16 +39,25 @@ export function getDinoRects() {
 }
 
 export function setDinoLose() {
+    let lose = new Audio("../../sfx/lose.wav");
+    lose.play();
+
     dinoElem.src = './assets/ludzik-stoi.png';
 }
 
 function handleRun(delta, speedScale) {
     if (isJumping) {
+        let jump = new Audio("../../sfx/jump.wav");
+        jump.play();
+
         dinoElem.src = `./assets/ludzik-skacze.png`;
         return;
     }
 
     if (currentFrameTime >= FRAME_TIME) {
+        let run = new Audio("../../sfx/run.wav");
+        run.play();
+
         dinoFrame = (dinoFrame + 1) % DINO_FRAME_COUNT;
         dinoElem.src = `./assets/ludzik-biega-${dinoFrame}.png`;
         currentFrameTime -= FRAME_TIME;

@@ -26,6 +26,7 @@ let tab = [
     {name: "sala305",       chances: 30,            rarity: "place",        id: 25,     photo: "../img/cards/kartaSala306.png",     level: 1,   value: 150,     upgrade: 2000   },
     {name: "muchaPraga",    chances: 20,            rarity: "special",      id: 26,     photo: "../img/cards/kartaMuchaPraga.png",  level: 1,   value: 350,     upgrade: 4000   },
     {name: "grobMuchy",     chances: 30,            rarity: "place",        id: 27,     photo: "../img/cards/kartaGrobMuchy.png",   level: 1,   value: 150,     upgrade: 2000   },
+    {name: "ottoMucha",     chances: 1.5,           rarity: "legendary",    id: 28,     photo: "../img/cards/kartaOttoMucha.png",   level: 1,   value: 1200,    upgrade: 7000   },
 ]
 
 // VALUE: Level 2 - razy 3, Level 3 - razy 5
