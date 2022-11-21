@@ -86,6 +86,18 @@ function handleLose() {
         document.addEventListener('keydown', handleStart, { once: true });
         startScreenElem.classList.remove('hide');
     }, 100);
+    let wynik = document.getElementById("wynik").textContent;
+    if(wynik > rekord){
+        document.getElementById("rekord").innerText = wynik;
+        rekord = wynik
+        $.ajax({
+			method: "POST",
+			url: "update.php",
+			data: { 
+				rekord: rekord
+			}
+		});
+    }
 }
 
 function setPixelToWorldScale() {

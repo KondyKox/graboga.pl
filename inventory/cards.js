@@ -20,10 +20,10 @@ function hide() {
 
 // Sprzedaje kartę / Usuwa z ekwipunku
 function sell(card) {
-    let wartosc;
+    let cardValue = tab[this].value;
     let cardName = tab[this].name;
 
-    if (confirm("Czy sprzedać" + card + " za <b>" + wartosc + " monet</b>?")) {
+    if (confirm("Czy sprzedać" + card + " za <b>" + cardValue + " monet</b>?")) {
         $.ajax({
             method: "POST",
             url: "cards.php",
@@ -32,6 +32,6 @@ function sell(card) {
             }
         });
 
-        alert("Sprzedano " + card + " za <b>" + wartosc + " monet</b>!");
+        alert("Sprzedano " + card + " za <b>" + cardValue + " monet</b>!");
     }
 }

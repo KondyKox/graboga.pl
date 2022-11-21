@@ -1,5 +1,8 @@
 <?php
     session_start(); 
+
+    $sesID = $_SESSION['id'];
+    require "../config.php";
 ?>
 
 <!DOCTYPE html>
@@ -36,13 +39,12 @@
         </div>
     </center>
 
-    <nav class="navbar navbar-expand-lg" role="navigation">
+    <nav class="navbar navbar-dark" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="../index.php"><img src="../img/mechan_logo.png"></a>
                 <h1>MECHAN - The Card Game</h1>
-                <button type="button" class="dropdown-toggle" data-toggle="collapse" data-target="#navbar-collapse-main">
-                    <span class="sr-only">Toggle navigation</span>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse-main">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
@@ -60,10 +62,16 @@
                     <li class="dropdown-item"><a href="https://www.paypal.me/megakoks" target="_blank" class="nav-link">Donate</a></li>
                     <li class="dropdown-item"><a href="https://github.com/KondyKox/MECHAN-The-Card-Game" target="_blank" class="nav-link">Github</a></li>
                     <li class="dropdown-item"><a href="../contact/" class="nav-link">Kontakt</a></li>
+                    <li class="dropdown-item"><a href="#" target="_blank" class="nav-link">Zwiastun</a></li>
                     <li style="margin: 3%;">
                         <?php
-                            if(isset($_SESSION["username"]))
-                                echo "Zalogowany: <span style='color: #398AD7'>" . htmlspecialchars($_SESSION["username"]) . "</span>";
+                            $sq4 = "SELECT money_count as monety FROM users WHERE id = $sesID";
+                            $resul = mysqli_query($link, $sq4);
+
+                            if(isset($_SESSION["username"])) {
+                                while($row = mysqli_fetch_assoc($resul))                                   
+                                    echo "Zalogowany: <span style='color: #398AD7' id='monety'>" . htmlspecialchars($_SESSION["username"]) . " (" . $row['monety'] . " boskich dukatów)</span>";
+                            }                           
                         ?>
                     </li>
                 </ul>
@@ -85,7 +93,7 @@
     </center>
 
     <div id="inventory" class="inv col-sm-12">
-        <a href="../inventory"><h3> Ekwipunek:</h3></a><hr style="border-color: #398AD7;">
+        <a href="../inventory"><h3> Ekwipunek</h3></a><hr style="border-color: #398AD7;">
     </div>
 
     

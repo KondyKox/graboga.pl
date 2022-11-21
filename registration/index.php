@@ -67,7 +67,7 @@
         if(empty($username_err) && empty($password_err) && empty($confirm_password_err)){
             
             // Prepare an insert statement
-            $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+            $sql = "INSERT INTO users (username, password, money_count, best_record) VALUES (?, ?,0,0)";
             
             if($stmt = mysqli_prepare($link, $sql)){
                 // Bind variables to the prepared statement as parameters
@@ -111,13 +111,12 @@
     <script src="../jquery-3.6.1.min.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg" role="navigation">
+    <nav class="navbar navbar-dark" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="../index.php"><img src="../img/mechan_logo.png"></a>
                 <h1>MECHAN - The Card Game</h1>
-                <button type="button" class="dropdown-toggle" data-toggle="collapse" data-target="#navbar-collapse-main">
-                    <span class="sr-only">Toggle navigation</span>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse-main">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
@@ -135,12 +134,7 @@
                     <li class="dropdown-item"><a href="https://www.paypal.me/megakoks" target="_blank" class="nav-link">Donate</a></li>
                     <li class="dropdown-item"><a href="https://github.com/KondyKox/MECHAN-The-Card-Game" target="_blank" class="nav-link">Github</a></li>
                     <li class="dropdown-item"><a href="../contact/" class="nav-link">Kontakt</a></li>
-                    <li style="margin: 3%;">
-                        <?php
-                            if(isset($_SESSION["username"]))
-                                echo "Zalogowany: <span style='color: #398AD7'>" . htmlspecialchars($_SESSION["username"]) . "</span>";
-                        ?>
-                    </li>
+                    <li class="dropdown-item"><a href="#" target="_blank" class="nav-link">Zwiastun</a></li>
                 </ul>
             </div>
         </div>

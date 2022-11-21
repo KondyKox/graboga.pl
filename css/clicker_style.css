@@ -6,17 +6,6 @@
     align-items: center;
 }
 
-#click {
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 65vh;
-    width: 40vh;
-    padding: 10px;
-    border: 1px solid #398AD7;
-    border-radius: 10px;
-    transition: all .3s ease-in-out;
-}
-
 #click:active {
     height: 60vh;
     width: 35vh;
@@ -28,4 +17,15 @@
 img {
     width: 100%;
     height: 100%;
+}
+
+button[type=submit] {
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 65vh;
+    width: 40vh;
+    padding: 10px;
+    border: 1px solid #398AD7;
+    border-radius: 10px;
+    transition: all .3s ease-in-out;
 }

@@ -18,9 +18,11 @@ html, body {
     background: none;
     color: red;
     text-align: right;
+    transition: all .3 ease-in-out;
 }
 #exit:hover {
     cursor: pointer;
+    color: rgb(233, 89, 89);
 }
 
 /******************************* Classes ********************************/

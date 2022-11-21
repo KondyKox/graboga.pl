@@ -48,7 +48,7 @@ export function setDinoLose() {
 function handleRun(delta, speedScale) {
     if (isJumping) {
         let jump = new Audio("../../sfx/jump.wav");
-        jump.play();
+        //jump.play();
 
         dinoElem.src = `./assets/ludzik-skacze.png`;
         return;
@@ -56,7 +56,7 @@ function handleRun(delta, speedScale) {
 
     if (currentFrameTime >= FRAME_TIME) {
         let run = new Audio("../../sfx/run.wav");
-        run.play();
+        //run.play();
 
         dinoFrame = (dinoFrame + 1) % DINO_FRAME_COUNT;
         dinoElem.src = `./assets/ludzik-biega-${dinoFrame}.png`;

@@ -50,7 +50,7 @@ export function getCactusRects() {
 }
 
 function getRandomEnemy() {
-    let i = Math.floor(Math.random() * 28 + 1);
+    let i = Math.floor(Math.random() * tab.length -1);
     return `../` + tab[i].photo;
 }
 

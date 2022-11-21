@@ -1,3 +1,12 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+        header("location: ../../login");
+        exit;
+    }
+    require "../../config.php";
+    $sesID = $_SESSION['id'];
+?>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -11,18 +20,31 @@
     <link rel="icon" href="../../img/mechan_logo.png">
     <link rel="stylesheet" href="../../css/runner_style.css"/>
 
-    <script src="skrypt.js" type="module"></script>
     <script src="../../jquery-3.6.1.min.js"></script>
     <script src="../../draw/array.js"></script>
+<?php 
+        $sq4 = "SELECT best_record FROM users WHERE id = $sesID";
+        $resul = mysqli_query($link, $sq4);
+        while($row = mysqli_fetch_assoc($resul)) {
+            echo "<script>let rekord = ".$row['best_record'].";</script>";
+        }
+    ?>
+    
+    <script src="skrypt.js" type="module"></script>
 </head>
 <body>
     <button id="btn" class="button lead">SKOK</button>
     <div class="world" style="float:left" data-world>
-        <div class="score" data-score>
+        <div class="score" id="wynik" data-score>
             0
         </div>
         <div class="best-score" data-score>
-            Twój rekord: <span style="color: #398AD7;">0</span>
+            Twój rekord: <span id="rekord" style="color: #398AD7;"><?php 
+                $sq4 = "SELECT best_record FROM users WHERE id = $sesID";
+                $resul = mysqli_query($link, $sq4);
+                while($row = mysqli_fetch_assoc($resul)) {
+                    echo $row['best_record'];
+                }?></span>
         </div>
         <div class="start-screen" data-start-screen>
             Klikaj cokolwiek, żeby zacząć

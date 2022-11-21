@@ -4,6 +4,8 @@
         header("location: ../../login");
         exit;
     }
+    $sesID = $_SESSION['id'];
+    require "../../config.php";
 ?>
 
 <!DOCTYPE html>
@@ -26,13 +28,12 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg" role="navigation">
+    <nav class="navbar navbar-dark" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="../../index.php"><img src="../../img/mechan_logo.png"></a>
                 <h1>MECHAN - The Card Game</h1>
-                <button type="button" class="dropdown-toggle" data-toggle="collapse" data-target="#navbar-collapse-main">
-                    <span class="sr-only">Toggle navigation</span>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse-main">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
@@ -50,10 +51,16 @@
                     <li class="dropdown-item"><a href="https://www.paypal.me/megakoks" target="_blank" class="nav-link">Donate</a></li>
                     <li class="dropdown-item"><a href="https://github.com/KondyKox/MECHAN-The-Card-Game" target="_blank" class="nav-link">Github</a></li>
                     <li class="dropdown-item"><a href="../../contact/" class="nav-link">Kontakt</a></li>
+                    <li class="dropdown-item"><a href="#" target="_blank" class="nav-link">Zwiastun</a></li>
                     <li style="margin: 3%;">
                         <?php
-                            if(isset($_SESSION["username"]))
-                                echo "Zalogowany: <span style='color: #398AD7'>" . htmlspecialchars($_SESSION["username"]) . "</span>";
+                            $sq4 = "SELECT money_count as monety FROM users WHERE id = $sesID";
+                            $resul = mysqli_query($link, $sq4);
+
+                            if(isset($_SESSION["username"])) {
+                                while($row = mysqli_fetch_assoc($resul))                                   
+                                    echo "Zalogowany: <span style='color: #398AD7' id='monety'>" . htmlspecialchars($_SESSION["username"]) . " (" . $row['monety'] . " boskich dukatów)</span>";
+                            }                           
                         ?>
                     </li>
                 </ul>
@@ -61,19 +68,19 @@
         </div>
     </nav>
 
-        <div id="clicker" class="col-sm-12">
-            <center>
-                <form action="index.php" method="post">
-                    <button type="submit" name="submit" onclick="click()" id="click">
-                        <img src="../../img/cards/kartaMucha2.png">
-                    </button>
-                </form>
-            </center>
-            <?php 
-              $sq0 = "UPDATE `users` SET `money_count` = money_count + 1 WHERE 'id' = $sesID;";
-              $run = mysqli_query($link, $sq0);
-            ?>
-        </div>
+    <div id="clicker" class="col-sm-12">
+        <center>
+            <form action="index.php" method="post">
+                <button type="submit" name="submit" onclick="click()">
+                    <img src="../../img/cards/kartaMucha2.png" id="click">
+                </button>
+            </form>
+        </center>
+        <?php 
+            $sq0 = "UPDATE `users` SET `money_count` = money_count + 1 WHERE id = $sesID;";
+            mysqli_query($link, $sq0);
+        ?>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

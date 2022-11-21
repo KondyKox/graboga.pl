@@ -1,5 +1,7 @@
 <?php
     session_start();
+    require "../config.php";
+    $sesID = $_SESSION['id']; 
 ?>
 
 <!DOCTYPE html>
@@ -15,16 +17,15 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/ranking_style.css">
 
-    <script src="jquery-3.6.1.min.js"></script>
+    <script src="../jquery-3.6.1.min.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg" role="navigation">
+    <nav class="navbar navbar-dark" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="../index.php"><img src="../img/mechan_logo.png"></a>
                 <h1>MECHAN - The Card Game</h1>
-                <button type="button" class="dropdown-toggle" data-toggle="collapse" data-target="#navbar-collapse-main">
-                    <span class="sr-only">Toggle navigation</span>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse-main">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
@@ -42,10 +43,16 @@
                     <li class="dropdown-item"><a href="https://www.paypal.me/megakoks" target="_blank" class="nav-link">Donate</a></li>
                     <li class="dropdown-item"><a href="https://github.com/KondyKox/MECHAN-The-Card-Game" target="_blank" class="nav-link">Github</a></li>
                     <li class="dropdown-item"><a href="contact/" class="nav-link">Kontakt</a></li>
+                    <li class="dropdown-item"><a href="#" target="_blank" class="nav-link">Zwiastun</a></li>
                     <li style="margin: 3%;">
                         <?php
-                            if(isset($_SESSION["username"]))
-                                echo "Zalogowany: <span style='color: #398AD7'>" . htmlspecialchars($_SESSION["username"]) . "</span>";
+                            $sq4 = "SELECT money_count as monety FROM users WHERE id = $sesID";
+                            $resul = mysqli_query($link, $sq4);
+
+                            if(isset($_SESSION["username"])) {
+                                while($row = mysqli_fetch_assoc($resul))
+                                    echo "Zalogowany: <span style='color: #398AD7' id='monety'>" . htmlspecialchars($_SESSION["username"]) . " (" . $row['monety'] . " boskich dukatów)</span>";
+                            }                           
                         ?>
                     </li>
                 </ul>
@@ -57,7 +64,10 @@
         <?php
             $sql = "SELECT username, money_count FROM users ORDER BY money_count DESC";
             $result = mysqli_query($link, $sql);
-            $lp = 1;
+
+            $rank = 1;
+            $last_score = false;
+            $rows = 0;
         ?>
 
         <table class="col-sm-12">
@@ -68,9 +78,18 @@
             </tr>
         
             <?php
+            $sql = "SELECT username, money_count FROM users ORDER BY money_count DESC";
+            $result = mysqli_query($link, $sql);
                 while ($row = mysqli_fetch_assoc($result)) {
+                    $rows++;
+
+                    if ($last_score != $row['money_count']) {
+                        $last_score = $row['money_count'];
+                        $rank = $rows;
+                    }
+
                     echo "<tr>";
-                    echo "<td>" . $lp . "</td>";
+                    echo "<td>" . $rank . "</td>";
                     echo "<td>" . $row . "</td>";
                     echo "</tr>"
                     $lp++;
