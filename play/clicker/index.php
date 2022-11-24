@@ -59,7 +59,7 @@
 
                             if(isset($_SESSION["username"])) {
                                 while($row = mysqli_fetch_assoc($resul))                                   
-                                    echo "Zalogowany: <span style='color: #398AD7' id='monety'>" . htmlspecialchars($_SESSION["username"]) . " (" . $row['monety'] . " boskich dukatów)</span>";
+                                    echo "Zalogowany: <span style='color: #398AD7' id='monety'>" . htmlspecialchars($_SESSION["username"]) . " (" . $row['monety'] . " <img src='../../img/boski_dukat.png' alt='Boski Dukat' style='width: 20px; height: 20px;'>)</span>";
                             }                           
                         ?>
                     </li>
@@ -76,10 +76,6 @@
                 </button>
             </form>
         </center>
-        <?php 
-            $sq0 = "UPDATE `users` SET `money_count` = money_count + 1 WHERE id = $sesID;";
-            mysqli_query($link, $sq0);
-        ?>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

@@ -1,16 +1,28 @@
-function click() {
-    //Odpala dźwięk
-    let audio = new Audio("../../sfx/click.wav");
-    audio.play();
+$(document).ready(function () {
+    $("#update").off().click(function () {
+        //Odpala dwięk
+        let audio = new Audio("../../sfx/click.wav");
+        audio.play();
 
-    // Losuje kartę z array.js
-    let card = Math.round(Math.random() * tab.length + 1);
+        // Losuje kartę z array.js
+        let card = Math.round(Math.random() * tab.length + 1);
 
-    // Sprawdzam czy może nie wylosowała się karta "zbanowana".
-    while (card == 4 || card == 24) {
-        card = Math.round(Math.random() * tab.length + 1);
-    }
+        // Sprawdzam czy może nie wylosowała się karta "zbanowana".
+        while (card == 4 || card == 24) {
+            card = Math.round(Math.random() * tab.length + 1);
+        }
 
-    // Zmienia kartę.
-    $('#click').attr("src", "../" + tab[card].photo);
-}
+        // Zmienia kartę.
+        $('#click').attr("src", "../" + tab[card].photo);
+
+        // Uruchamia funkcję php aktualizującą monety i w razie powodzenia zwiększa wyświetlaną liczbę monet o 1
+        $.ajax({
+            method: "POST",
+            url: "update.php",
+            success: function () {
+                $("#monety").text(parseFloat($("#monety").text()) + 1);
+            }
+        });
+    });
+});
+

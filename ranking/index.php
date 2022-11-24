@@ -51,7 +51,7 @@
 
                             if(isset($_SESSION["username"])) {
                                 while($row = mysqli_fetch_assoc($resul))
-                                    echo "Zalogowany: <span style='color: #398AD7' id='monety'>" . htmlspecialchars($_SESSION["username"]) . " (" . $row['monety'] . " boskich dukatów)</span>";
+                                    echo "Zalogowany: <span style='color: #398AD7' id='monety'>" . htmlspecialchars($_SESSION["username"]) . " (" . $row['monety'] . " <img src='../img/boski_dukat.png' alt='Boski Dukat' style='width: 20px; height: 20px;'>)</span>";
                             }                           
                         ?>
                     </li>
@@ -89,12 +89,14 @@
                         $rank = $rows;
                     }
 
-                    echo "<tr>";
-                    echo "<td>" . $rank . "</td>";
-                    echo "<td>" . $row['username'] . "</td>";
-                    echo "<td>" . $row['money_count']. "</td>";
-                    echo "</tr>";
-                    $lp++;
+                    if ($row['money_count'] != 0) {
+                        echo "<tr>";
+                        echo "<td>" . $rank . "</td>";
+                        echo "<td>" . $row['username'] . "</td>";
+                        echo "<td>" . $row['money_count']. "</td>";
+                        echo "</tr>";
+                        $lp++;
+                    }
                 }
             ?>
         </table>
