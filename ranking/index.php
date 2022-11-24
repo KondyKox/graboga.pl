@@ -68,6 +68,7 @@
             $rank = 1;
             $last_score = false;
             $rows = 0;
+            $lp = 1;
         ?>
 
         <table class="col-sm-12">
@@ -90,8 +91,9 @@
 
                     echo "<tr>";
                     echo "<td>" . $rank . "</td>";
-                    echo "<td>" . $row . "</td>";
-                    echo "</tr>"
+                    echo "<td>" . $row['username'] . "</td>";
+                    echo "<td>" . $row['money_count']. "</td>";
+                    echo "</tr>";
                     $lp++;
                 }
             ?>
