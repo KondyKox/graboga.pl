@@ -49,13 +49,14 @@ export function getCactusRects() {
     });
 }
 
+let index;
 function getRandomEnemy() {
-    let i = Math.floor(Math.random() * tab.length + 1);
+    index = Math.floor(Math.random() * tab.length + 1);
 
-    while (i == 4 || i == 24)
-        i = Math.floor(Math.random() * tab.length + 1);
+    while (index == 4 || index == 24)
+        getRandomEnemy();
 
-    return `../` + tab[i].photo;
+    return `../` + tab[index].photo;
 }
 
 function createCactus() {

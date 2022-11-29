@@ -110,7 +110,7 @@
                     <li class="dropdown-item"><a href="https://www.paypal.me/megakoks" target="_blank" class="nav-link">Donate</a></li>
                     <li class="dropdown-item"><a href="https://github.com/KondyKox/MECHAN-The-Card-Game" target="_blank" class="nav-link">Github</a></li>
                     <li class="dropdown-item"><a href="../contact/" class="nav-link">Kontakt</a></li>
-                    <li class="dropdown-item"><a href="#" target="_blank" class="nav-link">Zwiastun</a></li>
+                    <li class="dropdown-item"><a href="https://youtu.be/Slz3vTqsKLg" target="_blank" class="nav-link">Zwiastun</a></li>
                 </ul>
             </div>
         </div>

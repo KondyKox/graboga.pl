@@ -45,6 +45,7 @@
                     <li class="dropdown-item"><a href="https://www.paypal.me/megakoks" target="_blank" class="nav-link">Donate</a></li>
                     <li class="dropdown-item"><a href="https://github.com/KondyKox/MECHAN-The-Card-Game" target="_blank" class="nav-link">Github</a></li>
                     <li class="dropdown-item"><a href="contact/" class="nav-link">Kontakt</a></li>
+                    <li class="dropdown-item"><a href="https://youtu.be/Slz3vTqsKLg" target="_blank" class="nav-link">Zwiastun</a></li>
                     <li style="margin: 3%;">
                         <?php
                             $sq4 = "SELECT money_count as monety FROM users WHERE id = $sesID";
@@ -52,7 +53,7 @@
 
                             if(isset($_SESSION["username"])) {
                                 while($row = mysqli_fetch_assoc($resul))   
-                                    echo "Zalogowany: <span style='color: #398AD7' id='monety'>" . htmlspecialchars($_SESSION["username"]) . " (" . $row['monety'] . " boskich dukatów)</span>";
+                                    echo "Zalogowany: <span style='color: #398AD7' id='monety'>" . htmlspecialchars($_SESSION["username"]) . " (" . $row['monety'] . " <img src='img/boski_dukat.png' alt='Boski Dukat' style='width: 20px; height: 20px;'>)</span>";
                             }                           
                         ?>
                     </li>

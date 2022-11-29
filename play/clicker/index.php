@@ -51,7 +51,7 @@
                     <li class="dropdown-item"><a href="https://www.paypal.me/megakoks" target="_blank" class="nav-link">Donate</a></li>
                     <li class="dropdown-item"><a href="https://github.com/KondyKox/MECHAN-The-Card-Game" target="_blank" class="nav-link">Github</a></li>
                     <li class="dropdown-item"><a href="../../contact/" class="nav-link">Kontakt</a></li>
-                    <li class="dropdown-item"><a href="#" target="_blank" class="nav-link">Zwiastun</a></li>
+                    <li class="dropdown-item"><a href="https://youtu.be/Slz3vTqsKLg" target="_blank" class="nav-link">Zwiastun</a></li>
                     <li style="margin: 3%;">
                         <?php
                             $sq4 = "SELECT money_count as monety FROM users WHERE id = $sesID";
@@ -70,11 +70,9 @@
 
     <div id="clicker" class="col-sm-12">
         <center>
-            <form action="index.php" method="post">
                 <button type="submit" name="submit" onclick="click()">
                     <img src="../../img/cards/kartaMucha2.png" id="click">
                 </button>
-            </form>
         </center>
     </div>
 
