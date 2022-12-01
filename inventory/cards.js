@@ -8,7 +8,7 @@ function show(img) {
 
     let exit = "<div id='exit' onclick='hide()'>X</div>";
     $(exit).appendTo('#res_show');
-    $('#res_show').append("<input type='submit' class='button buttonInv lead' value='Sprzedaj' onclick='sell(this)'>");
+    //$('#res_show').append("<input type='submit' class='button buttonInv lead' value='Sprzedaj' onclick='sell(this)'>");
 }
 
 // Chowa kartę

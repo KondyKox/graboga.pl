@@ -1,15 +1,15 @@
 $(document).ready(function () {
     $("#update").off().click(function () {
-        //Odpala dwięk
+        //Odpala dwik
         let audio = new Audio("../../sfx/click.wav");
         audio.play();
 
         // Losuje kartę z array.js
-        let card = Math.round(Math.random() * tab.length + 1);
+        let card = Math.round(Math.random() * tab.length);
 
-        // Sprawdzam czy może nie wylosowała się karta "zbanowana".
+        // Sprawdzam czy może nie wylosowała si karta "zbanowana".
         while (card == 4 || card == 24) {
-            card = Math.round(Math.random() * tab.length + 1);
+            card = Math.round(Math.random() * tab.length);
         }
 
         // Zmienia kartę.

@@ -64,6 +64,12 @@
     margin: 10% 40% 10% 40%;
 }
 
+.selectedCard {
+	width: 100%;
+  	background: none;
+  	margin: auto;
+}
+
 .buttonDraw {
     width: 20%;
     height: 5%;

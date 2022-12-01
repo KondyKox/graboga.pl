@@ -59,7 +59,7 @@
 
                             if(isset($_SESSION["username"])) {
                                 while($row = mysqli_fetch_assoc($resul))                                   
-                                    echo "Zalogowany: <span style='color: #398AD7' id='monety'>" . htmlspecialchars($_SESSION["username"]) . " (" . $row['monety'] . " <img src='../../img/boski_dukat.png' alt='Boski Dukat' style='width: 20px; height: 20px;'>)</span>";
+                                    echo "Zalogowany: <span style='color: #398AD7'>" . htmlspecialchars($_SESSION["username"]) . " (<b id='monety'>" . $row['monety'] . "</b> <img src='../../img/boski_dukat.png' alt='Boski Dukat' style='width: 20px; height: 20px;'>)</span>";
                             }                           
                         ?>
                     </li>
@@ -70,7 +70,7 @@
 
     <div id="clicker" class="col-sm-12">
         <center>
-                <button type="submit" name="submit" onclick="click()">
+                <button type="submit" name="submit" id="update">
                     <img src="../../img/cards/kartaMucha2.png" id="click">
                 </button>
         </center>

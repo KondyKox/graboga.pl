@@ -42,7 +42,7 @@ function Generate() {
     let randed2 = GetIndex();
 
     for(let i = 0; i < 101; i++) {
-		let element = '<div id="CardNumber'+i+'" class="item class_red_item" style="background-image:url('+tab[GetIndex()].photo+');" Loading="lazy"></div>';
+		let element = '<div id="CardNumber'+i+'" class="item class_red_item " style="background-image:url('+tab[GetIndex()].photo+');" Loading="lazy"></div>';
 		$(element).appendTo('.raffle-roller-container');
 	}
 
@@ -110,8 +110,8 @@ function showCard(card) {
 	document.getElementById('result_container').innerHTML = "";
 	document.getElementById('result_container').style.removeProperty('display');
 	$(card).css({
-		width: '80%',
-		height: '95%',
+		width: '100%',
+		height: '100%',
 		margin: '2%'
 	}).appendTo('#result_container');
 

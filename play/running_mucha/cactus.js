@@ -51,11 +51,13 @@ export function getCactusRects() {
 
 let index;
 function getRandomEnemy() {
-    index = Math.floor(Math.random() * tab.length + 1);
+    index = Math.floor(Math.random() * tab.length);
 
-    while (index == 4 || index == 24)
+     while(index == 4 || index == 24) {
         getRandomEnemy();
-
+      	break;
+    }
+  
     return `../` + tab[index].photo;
 }
 

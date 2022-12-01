@@ -19,7 +19,8 @@
     <link rel="stylesheet" href="css/index_style.css">
 
     <script src="jquery-3.6.1.min.js"></script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2534586073857624" crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2534586073857624"
+     crossorigin="anonymous"></script>
 </head>
 <body>
     <nav class="navbar navbar-dark" role="navigation">

@@ -42,24 +42,18 @@ export function setDinoLose() {
     let lose = new Audio("../../sfx/lose.wav");
     lose.play();
 
-    dinoElem.src = './assets/ludzik-stoi.png';
+    dinoElem.src = './assets/white/ludzik-stoi.png';
 }
 
 function handleRun(delta, speedScale) {
     if (isJumping) {
-        let jump = new Audio("../../sfx/jump.wav");
-        //jump.play();
-
-        dinoElem.src = `./assets/ludzik-skacze.png`;
+        dinoElem.src = `./assets/white/ludzik-skacze.png`;
         return;
     }
 
     if (currentFrameTime >= FRAME_TIME) {
-        let run = new Audio("../../sfx/run.wav");
-        //run.play();
-
         dinoFrame = (dinoFrame + 1) % DINO_FRAME_COUNT;
-        dinoElem.src = `./assets/ludzik-biega-${dinoFrame}.png`;
+        dinoElem.src = `./assets/white/ludzik-biega-${dinoFrame}.png`;
         currentFrameTime -= FRAME_TIME;
     }
 

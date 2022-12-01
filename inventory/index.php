@@ -36,7 +36,7 @@
 </head>
 <body>
     <center>
-        <div id="cards" class="droppedCard col-sm-12" style="z-index:3; display:none;"></div>
+        <div id="cards" class="droppedCard col-sm-12 selectedCard" style="z-index:3; display:none;"></div>
     </center>
 
     <nav class="navbar navbar-dark" role="navigation">
@@ -100,7 +100,7 @@
 
                 $result = mysqli_query($link, $sql);
                 while($row = mysqli_fetch_assoc($result)) {
-                    echo "<div class='item class_red_item itemHover' onclick='show(this)' style='background-image: url(".$row["photo"].")'></div>";
+                    echo "<div class='item class_red_item itemHover' onclick='show(this)' style='background-image: url(../img/cards/".$row["photo"].")'></div>";
                 } 
             ?>
     </div>

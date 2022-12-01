@@ -75,7 +75,7 @@
             <tr>
                 <th>Lp</th>
                 <th>Nick</th>
-                <th>Ilość <i>Boskich Dukatów</i></th>
+                <th>Ilość <i>Boskich Dukatów </i><img src="../img/boski_dukat.png" alt="Boski Dukat" style='width: 20px; height: 20px;'></th>
             </tr>
         
             <?php
