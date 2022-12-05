@@ -22,15 +22,6 @@
     <script src="../jquery-3.6.1.min.js"></script>
     <script src="array.js"></script>
     <script src="function.js"></script>
-    <script>
-        function disableF5(e) { 
-            if ((e.which || e.keyCode) == 116 || (e.which || e.keyCode) == 82)
-                e.preventDefault(); 
-        };
-        $(document).ready(function(){
-            $(document).on("keydown", disableF5);
-        });
-    </script>
 </head>
 <body>
     <center>
@@ -93,9 +84,10 @@
     </center>
 
     <div id="inventory" class="inv col-sm-12">
-        <a href="../inventory"><h3> Ekwipunek</h3></a><hr style="border-color: #398AD7;">
+        <h3 style="text-align: center;"> Ekwipunek (obecny)</h3><hr>
     </div>
 
+    <a href="../inventory" style="text-align: center;"><h3>Przejdź do swojego ekwipunku</h3></a>
     
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>

@@ -158,9 +158,12 @@
 
 h3 {
     margin: 1%;
+}
+
+a {
     transition: all .3s ease-in-out;
 }
-h3:hover {
+a:hover {
     color: #398AD7;
 }
 

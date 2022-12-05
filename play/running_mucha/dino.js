@@ -4,6 +4,7 @@ import {
     getCustomProperty,
     setCustomProperty,
 } from './updateCustomProperty.js';
+//import { select } from './skins.js';
 
 const JUMP_SPEED = 0.45;
 const GRAVITY = 0.0015;
@@ -47,13 +48,13 @@ export function setDinoLose() {
 
 function handleRun(delta, speedScale) {
     if (isJumping) {
-        dinoElem.src = `./assets/white/ludzik-skacze.png`;
+        dinoElem.src = './assets/white/ludzik-skacze.png';
         return;
     }
 
     if (currentFrameTime >= FRAME_TIME) {
         dinoFrame = (dinoFrame + 1) % DINO_FRAME_COUNT;
-        dinoElem.src = `./assets/white/ludzik-biega-${dinoFrame}.png`;
+        dinoElem.src = './assets/white/ludzik-biega-${dinoFrame}.png';
         currentFrameTime -= FRAME_TIME;
     }
 
@@ -79,7 +80,8 @@ function onJump(e) {
     yVelocity = JUMP_SPEED;
     isJumping = true;
 }
-document.getElementById('btn').onclick = function() {
+
+document.getElementById('jump').onclick = function() {
     if (!$(".start-screen").hasClass("hide")) {
         return handleStart();
     }
@@ -89,4 +91,3 @@ document.getElementById('btn').onclick = function() {
     isJumping = true;
     
 }
-

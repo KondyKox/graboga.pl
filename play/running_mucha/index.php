@@ -22,7 +22,8 @@
 
     <script src="../../jquery-3.6.1.min.js"></script>
     <script src="../../draw/array.js"></script>
-<?php 
+
+    <?php 
         $sq4 = "SELECT best_record FROM users WHERE id = $sesID";
         $resul = mysqli_query($link, $sq4);
         while($row = mysqli_fetch_assoc($resul)) {
@@ -31,10 +32,11 @@
     ?>
     
     <script src="skrypt.js" type="module"></script>
+    <script src="skins.js"></script>
 </head>
 <body>
-    <button id="btn" class="button lead">SKOK</button>
-    <div class="world" style="float:left" data-world>
+    <button id="skins" class="button lead" onclick="location.href='skin.html'">SKLEP</button>
+    <div id="jump" class="world" style="float:left" data-world>
         <div class="score" id="wynik" data-score>
             0
         </div>
@@ -51,7 +53,7 @@
         </div>
         <img src="./assets/ground.png" class="ground" data-ground />
         <img src="./assets/ground.png" class="ground" data-ground />
-        <img src="./assets/ludzik-stoi.png" class="dino" data-dino />
+        <img src="./assets/white/ludzik-stoi.png" class="dino" data-dino />
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

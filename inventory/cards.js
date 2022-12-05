@@ -28,7 +28,7 @@ function sell(card) {
             method: "POST",
             url: "cards.php",
             data: {
-                drop_id: cardName
+                drop_id: cardName,
             }
         });
 
