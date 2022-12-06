@@ -98,6 +98,13 @@ function handleLose() {
 			}
 		});
     }
+    $.ajax({
+        method: "POST",
+        url: "money.php",
+        data: { 
+            rekord: wynik
+        }
+    });
 }
 
 function setPixelToWorldScale() {

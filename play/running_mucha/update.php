@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $sesID = 1;
+    $sesID = $_SESSION['id'];
     $rekord = $_POST['rekord'];
     require "../../config.php";
     $sq0 = "UPDATE users SET best_record = $rekord WHERE id = $sesID;";

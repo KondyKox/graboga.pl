@@ -13,6 +13,15 @@ const FRAME_TIME = 100;
 
 const dinoElem = document.querySelector('[data-dino]');
 
+
+if (sessionStorage.getItem("skin") === null){
+    sessionStorage.setItem("skin", "assets/white");
+    var skin = sessionStorage.getItem("skin");
+}
+else{
+    var skin = sessionStorage.getItem("skin");
+}
+
 let isJumping;
 let dinoFrame;
 let currentFrameTime;
@@ -43,18 +52,18 @@ export function setDinoLose() {
     let lose = new Audio("../../sfx/lose.wav");
     lose.play();
 
-    dinoElem.src = './assets/white/ludzik-stoi.png';
+    dinoElem.src = `./${skin}/ludzik-stoi.png`;
 }
 
 function handleRun(delta, speedScale) {
     if (isJumping) {
-        dinoElem.src = './assets/white/ludzik-skacze.png';
+        dinoElem.src = `./${skin}/ludzik-skacze.png`;
         return;
     }
 
     if (currentFrameTime >= FRAME_TIME) {
         dinoFrame = (dinoFrame + 1) % DINO_FRAME_COUNT;
-        dinoElem.src = './assets/white/ludzik-biega-${dinoFrame}.png';
+        dinoElem.src = `./${skin}/ludzik-biega-${dinoFrame}.png`;
         currentFrameTime -= FRAME_TIME;
     }
 

@@ -35,7 +35,7 @@
     <script src="skins.js"></script>
 </head>
 <body>
-    <button id="skins" class="button lead" onclick="location.href='skin.html'">SKLEP</button>
+    <button id="skins" class="button lead" onclick="location.href='skin.php'">SKLEP</button>
     <div id="jump" class="world" style="float:left" data-world>
         <div class="score" id="wynik" data-score>
             0
@@ -53,7 +53,17 @@
         </div>
         <img src="./assets/ground.png" class="ground" data-ground />
         <img src="./assets/ground.png" class="ground" data-ground />
-        <img src="./assets/white/ludzik-stoi.png" class="dino" data-dino />
+        <img id="mucha" src="./assets/white/ludzik-stoi.png" class="dino" data-dino />
+        <script>
+            if(sessionStorage.getItem("skin") === null){
+                sessionStorage.setItem("skin", "assets/white");
+                var skin = sessionStorage.getItem("skin");
+            }
+            else{
+                var skin = sessionStorage.getItem("skin");
+            }
+            document.getElementById('mucha').src = skin+"/ludzik-stoi.png";
+        </script>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

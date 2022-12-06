@@ -66,32 +66,32 @@
             </div>
         </div>
     </nav>
-    
+  
     <a href="index.php"><h3>WRACAJ GRAĆ</h3></a>
     <div id="skins" class="col-sm-12">
     <?php
         $sq5 = "SELECT id, name, value, skin FROM skins;";
         $resul = mysqli_query($link, $sq5);
-      
+
         while($row = mysqli_fetch_assoc($resul)){
             $skin = $row['skin'];
             $name = $row['name'];
             $id = $row['id'];
             $value = $row['value'];
-            $sq6 = "SELECT id, user_id, skin_id FROM transactions WHERE skin_id = $id;";
+            $sq6 = "SELECT id, user_id, skin_id FROM transactions WHERE skin_id = $id AND user_id = $sesID;";
             $resul2 = mysqli_query($link, $sq6);
 
-            if($resul2 && mysqli_num_rows($resul2) == 0) {
+            if($resul2 && mysqli_num_rows($resul2) == 0){
                 ECHO <<< END
-                <div id="$name" class="skin" onclick="main('$name','$id','$value',false)">
+                <div id="$skin" class="skin" onclick="main('$name','$id','$value',false)" value="nie">
                     <img src="$skin/ludzik-stoi.png" alt="$name skin">
                     <h6 id="s$id">$value <img src="../../img/boski_dukat.png" alt="Boski Dukat" style='width: 20px; height: 20px;'></h6>
                     </div>
                 END;
             }
-            else {
+            else{
                 ECHO <<< END
-                <div id="$name" class="skin" onclick="main('$name','$skin','$value',true)">
+                <div id="$skin" class="skin" onclick="main('$name Mucha','$id','$value', true, '$skin')" value="tak">
                     <img src="$skin/ludzik-stoi.png" alt="$name skin">
                     <h6 id="s$id">POSIADANE</h6>
                     </div>

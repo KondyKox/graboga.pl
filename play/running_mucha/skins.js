@@ -1,5 +1,4 @@
-
-function main(skin, id, skinValue, isfalse){
+function main(skin, id, skinValue, isfalse, color){
     if(isfalse == false){
         $('#select').css({
             display: 'none'
@@ -16,6 +15,7 @@ function main(skin, id, skinValue, isfalse){
         $('#select').css({
             display: 'flex'
         });
+        document.getElementById('select').setAttribute('onclick', 'select("' + color + '")');
     }
 }
 
@@ -39,6 +39,12 @@ function buy(skin, skinValue, id) {
         display: 'none'
     });
 }
+
+//dodaje nazwe skina jako zmienną do sesji
+function select(skin) {
+    sessionStorage.setItem("skin", skin);
+}
+
 
 
 let activeSkin = 'white';
@@ -134,11 +140,11 @@ function select(skin) {
 // Tablica ze skinami i ich cenami
 
 let skins = [
-    {   name: 'Biały Mucha',        value: 0,       id: 1,  photo: "assets/white/"   },
-    {   name: 'Czerwony Mucha',     value: 100,     id: 2,  photo: "assets/red/"     },
-    {   name: 'Niebieski Mucha',    value: 200,     id: 3,  photo: "assets/blue/"    },
-    {   name: 'Zielony Mucha',      value: 300,     id: 4,  photo: "assets/green/"   },
-    {   name: 'Rżowy Mucha',       value: 400,     id: 5,  photo: "assets/pink/"    },
-    {   name: 'Fioletowy Mucha',    value: 500,     id: 6,  photo: "assets/purple/"  },
-    {   name: 'Żółty Mucha',        value: 600,     id: 7,  photo: "assets/yellow/"  },
+    {   name: 'Biały Mucha',        value: 0,           id: 1,  photo: "assets/white/"   },
+    {   name: 'Czerwony Mucha',     value: 5000,        id: 2,  photo: "assets/red/"     },
+    {   name: 'Niebieski Mucha',    value: 10000,       id: 3,  photo: "assets/blue/"    },
+    {   name: 'Zielony Mucha',      value: 15000,       id: 4,  photo: "assets/green/"   },
+    {   name: 'Różowy Mucha',       value: 20000,       id: 5,  photo: "assets/pink/"    },
+    {   name: 'Fioletowy Mucha',    value: 25000,       id: 6,  photo: "assets/purple/"  },
+    {   name: 'Żółty Mucha',        value: 30000,       id: 7,  photo: "assets/yellow/"  },
 ];
