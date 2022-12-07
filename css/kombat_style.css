@@ -1,0 +1,40 @@
+/*********************************** IDs ************************************/
+
+#menu {
+    background: none;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+#characters {
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+#maps {
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+/*********************************** Classes ************************************/
+
+.button {
+    margin: 3%;
+}
+
+.row:hover {
+    border: 1px solid #398AD7;
+}
+
+/*********************************** Tags ************************************/
+
+h2 {
+    margin: 3%;
+    text-align: center;
+    padding: 5px;
+}
+
+canvas {
+    background: none;
+}

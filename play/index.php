@@ -37,9 +37,9 @@
                     <li class="dropdown-item">
                         <?php
                             if(!isset($_SESSION["username"]))
-                                echo '<a href="../login" class="nav-link"><input type="submit" value="Rejestracja / Logowanie"></a>';
+                                echo '<a href="../login" class="nav-link">Rejestracja / Logowanie</a>';
                             else 
-                                echo '<a href="../logout" class="nav-link"><input type="submit" value="Wyloguj"></a>';
+                                echo '<a href="../logout" class="nav-link">Wyloguj</a>';
                         ?>
                     </li>
                     <li class="dropdown-item"><a href="https://www.paypal.me/megakoks" target="_blank" class="nav-link">Donate</a></li>
@@ -68,6 +68,10 @@
 
         <div class="links col-sm-12 lead">
             <a href="running_mucha"><input type="submit" class="button gameModes" value="Running Mucha"></a>
+        </div>
+
+        <div class="links col-sm-12 lead">
+            <a href="mechan_kombat"><input type="submit" class="button gameModes" value="Mechan Kombat"></a>
         </div>
 
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

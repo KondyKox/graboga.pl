@@ -35,9 +35,9 @@
                     <li class="dropdown-item">
                         <?php
                             if(!isset($_SESSION["username"]))
-                                echo '<a href="../login" class="nav-link"><input type="submit" value="Rejestracja / Logowanie"></a>';
+                                echo '<a href="../login" class="nav-link">Rejestracja / Logowanie</a>';
                             else 
-                                echo '<a href="../logout" class="nav-link"><input type="submit" value="Wyloguj"></a>';
+                                echo '<a href="../logout" class="nav-link">Wyloguj</a>';
                         ?>
                     </li>
                     <li class="dropdown-item"><a href="https://www.paypal.me/megakoks" target="_blank" class="nav-link">Donate</a></li>
@@ -68,7 +68,6 @@
             $rank = 1;
             $last_score = false;
             $rows = 0;
-            $lp = 1;
         ?>
 
         <table class="col-sm-12">
@@ -95,7 +94,6 @@
                         echo "<td>" . $row['username'] . "</td>";
                         echo "<td>" . $row['money_count']. "</td>";
                         echo "</tr>";
-                        $lp++;
                     }
                 }
             ?>

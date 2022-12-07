@@ -1,6 +1,6 @@
 $(document).ready(function () {
     $("#update").off().click(function () {
-        //Odpala dwik
+        //Odpala dwięk
         let audio = new Audio("../../sfx/click.wav");
         audio.play();
 
