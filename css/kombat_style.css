@@ -1,4 +1,19 @@
+* {
+    box-sizing: border-box;
+}
+
 /*********************************** IDs ************************************/
+#container {
+    position: relative;
+    display: inline-block;
+}
+
+#ui {
+    /*position: absolute;*/
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
 
 #menu {
     background: none;
@@ -17,6 +32,46 @@
     overflow-y: hidden;
 }
 
+#playerUI {
+    position: relative; 
+    height: 30px; 
+    width: 100%; 
+    display: flex; 
+    justify-content: flex-end;
+}
+
+#enemyUI {
+    position: relative; 
+    height: 30px; 
+    width: 100%;
+}
+
+#timer {
+    background-color: red;
+    width: 100px;
+    height: 100px;
+    font-size: 2em;
+    font-style: italic;
+    flex-shrink: 0;
+    border: 3px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#displayText {
+    /*position: absolute;*/
+    display: none;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    font-size: 2em;
+    font-style: italic;
+}
+
 /*********************************** Classes ************************************/
 
 .button {
@@ -25,6 +80,24 @@
 
 .row:hover {
     border: 1px solid #398AD7;
+}
+
+.start-hp {
+    background-color: red; 
+    height: 30px;
+    width: 100%;
+    border-radius: 0;
+}
+
+.hp {
+    border-radius: 0;
+    position: absolute; 
+    background: green; 
+    top: 0; 
+    right: 0; 
+    bottom: 0; 
+    left: 0;
+    width: 100%;
 }
 
 /*********************************** Tags ************************************/
