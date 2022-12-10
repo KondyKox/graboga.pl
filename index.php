@@ -94,7 +94,7 @@
                 </div>
 
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <img src="img/praktykant.png" alt="Any praktykant?" class="ad" Loading="lazy">
+                    <img src="img/idol_blogoslawi.png" alt="Idolu Ufam Tobie" class="ad" Loading="lazy">
                 </div>
             </div>
         </div>
