@@ -1,5 +1,6 @@
 * {
     box-sizing: border-box;
+    overflow-y: hidden;
 }
 
 /*********************************** IDs ************************************/
@@ -34,26 +35,32 @@
 
 #playerUI {
     position: relative; 
-    height: 30px; 
     width: 100%; 
     display: flex; 
     justify-content: flex-end;
+    border-top: 3px solid white;
+    border-left: 3px solid white;
+    border-bottom: 3px solid white;
+    border-radius: 0;
 }
 
 #enemyUI {
     position: relative; 
-    height: 30px; 
     width: 100%;
+    border-top: 3px solid white;
+    border-right: 3px solid white;
+    border-bottom: 3px solid white;
+    border-radius: 0;
 }
 
 #timer {
     background-color: red;
     width: 100px;
-    height: 100px;
+    height: 60px;
     font-size: 2em;
     font-style: italic;
     flex-shrink: 0;
-    border: 3px solid black;
+    border: 3px solid white;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -110,4 +117,11 @@ h2 {
 
 canvas {
     background: none;
+}
+
+label {
+    background: none;
+    display: flex;
+    align-items: center;
+    font-size: 1.25em;
 }
