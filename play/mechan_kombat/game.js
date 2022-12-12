@@ -2,8 +2,8 @@
 const canvas = document.querySelector('canvas');
 const c = canvas.getContext('2d');
 
-canvas.width = 1024;
-canvas.height = 576;
+canvas.width = 1512;
+canvas.height = 850;
 
 c.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -15,13 +15,14 @@ const background = new Sprite({
         x: 0,
         y: 0
     },
-    imageSrc: '../../img/idol_blogoslawi.png'
+    imageSrc: '../../img/idol_blogoslawi.png',
+    scale: 0.8
 });
 
 //Obiekt player
 const player = new Fighter({
     position: {
-        x: 0,
+        x: 100,
         y: 0
     },
 
@@ -44,7 +45,7 @@ player.draw();
 //Obiekt enemy
 const enemy = new Fighter({
     position: {
-        x: 400,
+        x: 1200,
         y: 100
     },
     
@@ -102,6 +103,10 @@ function animate() {
     c.fillRect(0, 0, canvas.width, canvas.height);
     
     background.update();
+
+    c.fillStyle = 'rgba(255, 255, 255, 0.1)';
+    c.fillRect(0, 0, canvas.width, canvas.height);
+
     player.update();
     enemy.update();
 
@@ -110,15 +115,15 @@ function animate() {
 
     // player movement
     if (keys.a.pressed && player.lastKey === "a")
-        player.velocity.x = -5;
+        player.velocity.x = -10;
     else if (keys.d.pressed && player.lastKey === "d")
-        player.velocity.x = 5;
+        player.velocity.x = 10;
 
     // enemy movement
     if (keys.ArrowLeft.pressed && enemy.lastKey === "ArrowLeft")
-        enemy.velocity.x = -5;
+        enemy.velocity.x = -10;
     else if (keys.ArrowRight.pressed && enemy.lastKey === "ArrowRight")
-        enemy.velocity.x = 5;
+        enemy.velocity.x = 10;
 
     // * Wykrywanie kolizji
     // - enemy
@@ -128,8 +133,11 @@ function animate() {
     }) &&
         player.isAttacking) {
             player.isAttacking = false;
-            enemy.health -= 20;
-            document.querySelector("#enemy-hp").style.width = enemy.health + '%';
+            if (enemy.health > 0)
+                enemy.health -= 20;
+            gsap.to('#enemy-hp', {
+                width: enemy.health + '%'
+            });
     }
 
     // - player
@@ -139,8 +147,11 @@ function animate() {
     }) &&
         enemy.isAttacking) {
             enemy.isAttacking = false;
-            player.health -= 20;
-            document.querySelector("#player-hp").style.width = player.health + '%';
+            if (player.health > 0)
+                player.health -= 20;
+            gsap.to('#player-hp', {
+                width: player.health + '%'
+            });
     }
 
     // end game based on health
