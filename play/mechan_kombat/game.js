@@ -134,7 +134,7 @@ function animate() {
         player.isAttacking) {
             player.isAttacking = false;
             if (enemy.health > 0)
-                enemy.health -= 20;
+                enemy.health -= 10;
             gsap.to('#enemy-hp', {
                 width: enemy.health + '%'
             });
@@ -148,7 +148,7 @@ function animate() {
         enemy.isAttacking) {
             enemy.isAttacking = false;
             if (player.health > 0)
-                player.health -= 20;
+                player.health -= 10;
             gsap.to('#player-hp', {
                 width: player.health + '%'
             });
