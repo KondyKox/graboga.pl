@@ -2,7 +2,7 @@
 const nextConfig = {
     env: {
         MONGODB_URI: 'mongodb://localhost:27017/graboga',
-        JWT_SECRET: 'Your-JWT-Secret',
+        JWT_SECRET: 'OswiecNasPanieMucho',
     },
 };
 
