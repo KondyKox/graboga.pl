@@ -17,5 +17,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: '/api/user/:path*', // Tylko chronione trasy
+  matcher: '/api/users/:path*', // Tylko chronione trasy
 };

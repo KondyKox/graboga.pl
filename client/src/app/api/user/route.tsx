@@ -10,7 +10,7 @@ export async function GET(request: any) {
       return NextResponse.json({ message: 'Database connection failed' }, { status: 500 });
     }
 
-    const services = await db.collection('users').find().toArray(); // Retrieve all services
+    const services = await db.collection('profiles').find().toArray(); // Retrieve all services
 
     return NextResponse.json(services); // Return all services as response
   } catch (error) {
