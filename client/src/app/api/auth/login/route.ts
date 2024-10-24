@@ -30,7 +30,7 @@ export async function POST(req: Request) {
     const token = jwt.sign(
         { playerId: user.playerId, username: user.username }, // Ensure playerId is included
         process.env.JWT_SECRET as string,
-        { expiresIn: '1h' }
+        { expiresIn: '1d' }
       );
       
     // Zwracanie tokenu JWT

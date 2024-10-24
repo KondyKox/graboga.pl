@@ -1,15 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { jwtDecode as jwtDecode } from 'jwt-decode';
-import LoadingOverlay from 'comp/Loading'; // Importuj komponent ładowania
+import {jwtDecode} from 'jwt-decode';
 
-const useCheckPermission = (requiredRole: string) => {
+const useCheckSession = () => {
     const router = useRouter();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        const checkPermission = async () => {
+        const checkSession = async () => {
             const token = localStorage.getItem('token'); // Pobierz token z localStorage
 
             if (!token) {
@@ -32,7 +31,7 @@ const useCheckPermission = (requiredRole: string) => {
                 return;
             }
 
-            // Sprawdzenie roli użytkownika przez API
+            // Sprawdzenie poprawności tokenu przez API
             try {
                 const response = await fetch('/api/auth/role', {
                     method: 'GET',
@@ -43,30 +42,24 @@ const useCheckPermission = (requiredRole: string) => {
                 });
 
                 if (!response.ok) {
-                    const data = await response.json();
-                    throw new Error(data.message || 'Failed to fetch user role');
+                    throw new Error('Session expired or invalid token');
                 }
 
                 const { role } = await response.json(); // Zakładamy, że API zwraca { role: "user" }
                 console.log('User role:', role); // Debug: Loguj rolę użytkownika
 
-                // Sprawdź, czy rola użytkownika odpowiada wymaganej roli
-                if (role !== requiredRole) {
-                    router.push('/_not-found'); // Przekieruj do _not-found, jeśli nieautoryzowany
-                }
             } catch (error) {
-                console.error('Permission check failed:', error);
-                setError('Internal Server Error');
-                router.push('/_not-found'); // Przekieruj na błąd w przypadku problemu z API
+                console.error('Session check failed:', error);
+                router.push('/login'); // Przekieruj do logowania
             } finally {
                 setLoading(false);
             }
         };
 
-        checkPermission();
-    }, [requiredRole, router]); // Dodaj requiredRole i router do tablicy zależności
+        checkSession();
+    }, [router]); // Dodaj router do tablicy zależności
 
     return { loading, error }; // Zwracaj loading i error
 };
 
-export default useCheckPermission;
+export default useCheckSession;

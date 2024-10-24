@@ -31,7 +31,8 @@ export async function POST(req: Request) {
             email,
             password: hashedPassword,
             createdAt: new Date(),
-            accountType: 'user',
+            accountType: 1,
+            role: 'user',
             termsAccepted: false,
             sessions: [],
         };

@@ -28,7 +28,7 @@ export async function GET(req: Request) {
             return NextResponse.json({ message: 'User not found' }, { status: 404 });
         }
 
-        return NextResponse.json({ role: user.accountType }, { status: 200 });
+        return NextResponse.json({ role: user.role }, { status: 200 });
     } catch (error) {
         console.error('Error fetching user role:', error); // Log error for debugging
         return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
