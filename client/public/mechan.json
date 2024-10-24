@@ -1,0 +1,65 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "MECHAN - THE CARD GAME API",
+      "version": "1.0.0",
+      "description": "API documentation for the MECHAN - THE CARD GAME."
+    },
+    "paths": {
+      "/shop.json": {
+        "get": {
+          "summary": "Get Store Information",
+          "responses": {
+            "200": {
+              "description": "Successful response",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "items": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "itemId": { "type": "string" },
+                              "quantityAvailable": { "type": "integer" },
+                              "price": { "type": "number" },
+                              "isOnSale": { "type": "boolean" }
+                            }
+                          }
+                        },
+                        "promotions": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "itemId": { "type": "string" },
+                              "discount": { "type": "number" },
+                              "startDate": { "type": "string", "format": "date-time" },
+                              "endDate": { "type": "string", "format": "date-time" }
+                            }
+                          }
+                        },
+                        "createdAt": { "type": "string", "format": "date-time" },
+                        "endDate": { "type": "string", "format": "date-time" }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      }
+    }
+  }
+  

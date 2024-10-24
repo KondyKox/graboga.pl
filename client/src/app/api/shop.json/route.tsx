@@ -12,7 +12,13 @@ export async function GET(request: any) {
 
     const services = await db.collection('shop').find().toArray(); // Retrieve all services
 
-    return NextResponse.json(services); // Return all services as response
+    // Map through the services and remove _id from each one
+    const formattedServices = services.map(service => {
+      const { _id, ...rest } = service; // Destructure _id and the rest of the service object
+      return rest; // Return the object without _id
+    });
+
+    return NextResponse.json(formattedServices); // Return formatted services without _id
   } catch (error) {
     console.error('Error fetching services:', error);
     return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
