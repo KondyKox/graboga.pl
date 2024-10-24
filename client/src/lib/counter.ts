@@ -12,7 +12,7 @@ function generateRandomId(length: number) {
 }
 
 export default async function getUniquePlayerId(db: Db) {
-    const length = 15;
+    const length = 10;
     let playerId;
     let exists = true;
 
