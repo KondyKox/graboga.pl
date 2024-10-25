@@ -4,20 +4,24 @@ import Link from "next/link";
 import React from "react";
 import { FaPlay, FaStore, FaBox, FaUser } from "react-icons/fa";
 import Logo from "./Logo";
+import Tooltip from "./Tooltip";
 
 const Navbar: React.FC = () => {
   // Render nav links with icons
   const renderLinks = () => {
     return (
       <>
-        <Link href={"/inventory"}>
+        <Link href={"/inventory"} className="relative group flex flex-col items-center">
           <FaBox className="icon" />
+          <Tooltip>Ekwipunek</Tooltip>
         </Link>
-        <Link href={"/play"}>
+        <Link href={"/play"} className="relative group flex flex-col items-center">
           <FaPlay className="icon" />
+          <Tooltip>Graj</Tooltip>
         </Link>
-        <Link href={"/store"}>
+        <Link href={"/store"} className="relative group flex flex-col items-center">
           <FaStore className="icon" />
+          <Tooltip>Sklep</Tooltip>
         </Link>
       </>
     );
@@ -36,8 +40,9 @@ const Navbar: React.FC = () => {
           {renderLinks()}
         </div>
         <div className="flex justify-center items-center">
-          <Link href={"/user"}>
+          <Link href={"/user"} className="relative group flex flex-col items-center">
             <FaUser className="icon" />
+            <Tooltip>Konto</Tooltip>
           </Link>
         </div>
       </div>
@@ -47,8 +52,9 @@ const Navbar: React.FC = () => {
         <div className="flex justify-center items-center gap-x-8">
           <Logo />
           {renderLinks()}
-          <Link href={"/user"}>
+          <Link href={"/user"} className="relative group flex flex-col items-center">
             <FaUser className="icon" />
+            <Tooltip>Konto</Tooltip>
           </Link>
         </div>
       </div>
