@@ -4,7 +4,7 @@ import useCheckPermission from 'hooks/useCheckPermission';
 import LoadingSpinner from 'comp/Loading'; // Import the loading spinner component
 
 const ProtectedPage = () => {
-    const requiredRole = 'admin'; // Set this to the role you want to check
+    const requiredRole = 'user'; // Set this to the role you want to check
     const { loading, error } = useCheckPermission(requiredRole);
 
     // Show loading spinner and block content
