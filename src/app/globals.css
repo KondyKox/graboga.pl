@@ -5,12 +5,12 @@
 :root {
   --background: #1a1a1a;
   --foreground: #ffffff;
-  --clr-blue: #007bff;
-  --clr-blue-hover: rgba(0, 123, 255, 0.8);
-  --clr-green: #28a745;
-  --clr-red: #dc3545;
-  --clr-gold: #ffd700;
-  --clr-purple: #6f42c1;
+  --clr-rare: #007bff; /* Blue color */
+  --clr-rare-hover: rgba(0, 123, 255, 0.8);
+  --clr-common: #28a745; /* Green color */
+  --clr-special: #dc3545; /* Red color */
+  --clr-legendary: #ffd700; /* Gold color */
+  --clr-epic: #6f42c1; /* Purple color */
 }
 
 body {
@@ -30,10 +30,99 @@ body {
   @apply w-6 h-6 md:w-8 md:h-8 hover:transition-transform hover:scale-125 ease-in-out duration-300;
 }
 .icon:hover {
-  color: var(--clr-blue-hover);
-  filter: drop-shadow(0 0 0.5rem var(--clr-blue-hover));
+  color: var(--clr-rare-hover);
+  filter: drop-shadow(0 0 0.5rem var(--clr-rare-hover));
 }
 .icon:active {
-  color: var(--clr-blue);
-  filter: drop-shadow(0 0 0.5rem var(--clr-blue));
+  color: var(--clr-rare);
+  filter: drop-shadow(0 0 0.5rem var(--clr-rare));
+}
+
+/* Cards */
+.card {
+  @apply bg-background rounded p-2 flex flex-col justify-around items-center w-52 h-80 border-2 transition duration-300 ease-in-out;
+}
+.card img {
+  @apply w-28 my-2;
+}
+
+/* Card rarities */
+.common {
+  @apply border-common;
+}
+.common:hover {
+  @apply shadow-common;
+}
+.common img {
+  @apply border-common;
+}
+.common:hover img {
+  @apply drop-shadow-common;
+}
+.common h2 {
+  @apply text-common;
+}
+
+.rare {
+  @apply border-rare;
+}
+.rare:hover {
+  @apply shadow-rare;
+}
+.rare img {
+  @apply border-rare;
+}
+.rare:hover img {
+  @apply drop-shadow-rare;
+}
+.rare h2 {
+  @apply text-rare;
+}
+
+.epic {
+  @apply border-epic;
+}
+.epic:hover {
+  @apply shadow-epic;
+}
+.epic img {
+  @apply border-epic;
+}
+.epic:hover img {
+  @apply drop-shadow-epic;
+}
+.epic h2 {
+  @apply text-epic;
+}
+
+.legendary {
+  @apply border-legendary;
+}
+.legendary:hover {
+  @apply shadow-legendary;
+}
+.legendary img {
+  @apply border-legendary;
+}
+.legendary:hover img {
+  @apply drop-shadow-legendary;
+}
+.legendary h2 {
+  @apply text-legendary;
+}
+
+.special {
+  @apply border-special;
+}
+.special:hover {
+  @apply shadow-special;
+}
+.special img {
+  @apply border-special;
+}
+.special:hover img {
+  @apply drop-shadow-special;
+}
+.special h2 {
+  @apply text-special;
 }
