@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <section className="flex flex-col justify-center items-center p-4 mt-4 md:mt-8">
+    <section className="flex flex-col justify-center items-center p-4 mt-4 md:mt-8 pb-20 md:pb-8">
       <div className="p-2 flex flex-col justify-center items-center">
         <h1 className="uppercase font-bold text-4xl text-center md:text-8xl">
           graboga.pl <span className="text-rare">2.0</span>
@@ -68,10 +68,10 @@ export default function Home() {
       </div>
 
       <footer className="text-2xl p-2 text-center mt-8">
-        Twórcy:{" "}
-        <span className="text-rare font-bold">Konrad Ciesielski</span> i{" "}
-        <span className="text-rare font-bold">Michał Wachowski</span>.{" "}
-        <span className="text-rare font-bold">(4ir)</span>
+        Twórcy: <br />
+        <span className="text-rare font-bold">Konrad Ciesielski</span> i <br />
+        <span className="text-common font-bold">Michał Wachowski</span>. <br />
+        <span className="text-legendary font-bold">(4ir)</span>
       </footer>
     </section>
   );

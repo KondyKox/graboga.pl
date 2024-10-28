@@ -25,6 +25,30 @@ body {
   }
 }
 
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 12px; /* szerokość dla pionowego scrollbar */
+  height: 12px; /* wysokość dla poziomego scrollbar */
+}
+
+/* Tor (tło) scrollbara */
+::-webkit-scrollbar-track {
+  background: var(--background); /* kolor tła */
+  border-radius: 10px; /* zaokrąglenie toru */
+}
+
+/* Sam uchwyt (rączka) scrollbara */
+::-webkit-scrollbar-thumb {
+  background: var(--clr-rare);
+  border-radius: 10px; /* zaokrąglenie rączki */
+}
+
+/* Hover nad uchwytem */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--clr-rare-hover);
+  cursor: pointer;
+}
+
 /* Icons */
 .icon {
   @apply w-6 h-6 md:w-8 md:h-8 hover:transition-transform hover:scale-125 ease-in-out duration-300;
