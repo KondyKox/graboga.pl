@@ -38,6 +38,14 @@ body {
   filter: drop-shadow(0 0 0.5rem var(--clr-rare));
 }
 
+/* Home page images */
+.img {
+  @apply rounded-lg transition-all duration-300 ease-in-out;
+}
+.img:hover {
+  @apply rounded-none drop-shadow-rare;
+}
+
 /* Cards */
 .card {
   @apply bg-background rounded p-2 flex flex-col justify-around items-center w-52 h-80 border-2 transition duration-300 ease-in-out;
