@@ -19,7 +19,7 @@ const config: Config = {
         epic: "var(--clr-epic)",
       },
       dropShadow: {
-        logo: "0 0 1rem var(--clr-rare)",
+        logo: "0 0 1rem var(--clr-epic)",
         common: "0 0 0.5rem var(--clr-common)",
         rare: "0 0 0.5rem var(--clr-rare)",
         epic: "0 0 0.5rem var(--clr-epic)",
