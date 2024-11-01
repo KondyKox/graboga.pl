@@ -13,10 +13,27 @@
   --clr-epic: #6f42c1; /* Purple color */
 }
 
+/* Import font for headings */
+@font-face {
+  font-family: "Bebas Neue";
+  src: url("/fonts/BebasNeue-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Bebas Neue", sans-serif !important;
 }
 
 @layer utilities {
@@ -74,6 +91,15 @@ body {
 
 .nav-btn {
   @apply absolute top-1/2 transform -translate-y-1/2 bg-background bg-opacity-50 text-foreground p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity;
+}
+
+/* Inputs */
+.input {
+  @apply px-4 py-1 rounded bg-epic transition-all duration-300 ease-in-out focus:bg-rare outline-none text-lg w-full lg:text-xl;
+}
+
+.btn {
+  @apply py-2 w-full rounded border-2 border-epic font-bold hover:bg-epic transition-all duration-300 ease-in-out;
 }
 
 /* Cards */
