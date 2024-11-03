@@ -58,25 +58,31 @@ const MyProtectedPage = () => {
             <center>
                 <h1>SKLEP</h1>
             </center>
-            
+
 
             {/* Wyświetlenie danych sklepu, jeżeli zostały pobrane */}
             {storeData ? (
                 <div>
                     <h3>Paczki:</h3>
                     <div className={styles.StorePackWrapper}>
-                        <div className={styles.StorePackCost}>
-                            {storeData.pack_cost}
+                        <div className={styles.StorePackTimestamp}>
+                            1h 52m
+                        </div>
+                        <div className={styles.StorePackMark}>
+                            -20%
+                        </div>
+                        <div className={styles.StorePackTitle}>
+                            {storeData.pack_name}
                         </div>
                         <div className={styles.StorePackBuyButton}>
-                            <OpenPack title="OPEN PACK" />
+                            <OpenPack title={`${storeData.pack_cost} COINS`} />
                         </div>
                     </div>
                     <div className={styles.StorePackWrapper}>
-                        <div className={styles.StorePackCost}>
-                            {storeData.pack_cost}
+                        <div className={styles.StorePackMark}>
+                            NEW
                         </div>
-                        <p style={{position: 'relative'}}>{storeData.pack_cost}</p>
+                        <p style={{ position: 'relative' }}>{storeData.pack_cost}</p>
                     </div>
                     {/* <pre>{JSON.stringify(storeData, null, 2)}</pre> Możesz dostosować wyświetlanie */}
                 </div>

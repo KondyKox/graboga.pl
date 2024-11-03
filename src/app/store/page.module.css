@@ -11,20 +11,40 @@
     border: 5px solid rgb(104, 104, 104);
     box-shadow: 5px 5px 0 rgb(53, 53, 53);
 }
-.StorePackCost {
+.StorePackMark {
     position: relative;
     width: max-content;
     background-color: white;
 
     left: 100%;
-    transform: translateX(-75%) translateY(-25%);
+    transform: translateX(-60%) translateY(-67.5%);
     border-radius: 10px;
+    border-top-left-radius: 0px;
     border: 2px solid black;
     padding: 5px 10px;
 }
-.StorePackBuyButton {
+.StorePackTimestamp {
     position: absolute;
-    top: 110%;
+    height: 20px;
+    width: 100%;
+    transform: translateY(-25px);
+    background-color: black;
+    color: white;
+    font-size: smaller;
+    padding: 0 20px;
+    text-align: center;
+}
+.StorePackTitle {
+    position: absolute;
+    top: 0;
+    font-weight: 700;
+    padding: 5px;
+    
+
+}
+.StorePackBuyButton {
+    position: relative;
+    top: 60%;
     width: 200px;
     text-align: center;
 }
