@@ -2,6 +2,8 @@
 import { useEffect, useState } from 'react';
 import useCheckSession from 'hooks/useCheckSession';
 import LoadingOverlay from 'comp/Loading'; // Zakładając, że masz komponent do ładowania
+import styles from './page.module.css';
+import OpenPack from '@/components/pack/OpenPack';
 
 const MyProtectedPage = () => {
     const { loading: sessionLoading, error: sessionError } = useCheckSession();
@@ -12,7 +14,7 @@ const MyProtectedPage = () => {
     useEffect(() => {
         const fetchStoreData = async () => {
             try {
-                const response = await fetch('/api/shop.json', {
+                const response = await fetch('/api/shop.json/v1', {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -53,14 +55,30 @@ const MyProtectedPage = () => {
 
     return (
         <div>
-            <h1>Strona chroniona</h1>
-            <p>Witaj na stronie chronionej!</p>
+            <center>
+                <h1>SKLEP</h1>
+            </center>
+            
 
             {/* Wyświetlenie danych sklepu, jeżeli zostały pobrane */}
             {storeData ? (
                 <div>
-                    <h2>Dane sklepu:</h2>
-                    <pre>{JSON.stringify(storeData, null, 2)}</pre> {/* Możesz dostosować wyświetlanie */}
+                    <h3>Paczki:</h3>
+                    <div className={styles.StorePackWrapper}>
+                        <div className={styles.StorePackCost}>
+                            {storeData.pack_cost}
+                        </div>
+                        <div className={styles.StorePackBuyButton}>
+                            <OpenPack title="OPEN PACK" />
+                        </div>
+                    </div>
+                    <div className={styles.StorePackWrapper}>
+                        <div className={styles.StorePackCost}>
+                            {storeData.pack_cost}
+                        </div>
+                        <p style={{position: 'relative'}}>{storeData.pack_cost}</p>
+                    </div>
+                    {/* <pre>{JSON.stringify(storeData, null, 2)}</pre> Możesz dostosować wyświetlanie */}
                 </div>
             ) : (
                 <p>Brak danych sklepu</p>
