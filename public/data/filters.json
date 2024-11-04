@@ -1,0 +1,24 @@
+{
+  "rarityOptions": ["All", "common", "rare", "epic", "legendary"],
+  "teacherOptions": [
+    "All",
+    "mucha",
+    "graczyk",
+    "grosik",
+    "korzen",
+    "nierychly",
+    "sobczak",
+    "wolska",
+    "libner",
+    "mgr.inz.",
+    "musial",
+    "toporowicz",
+    "mazurek",
+    "pulit",
+    "stasyszyn",
+    "majewska",
+    "czekaj",
+    "ciborowski",
+    "gasiorowska"
+  ]
+}

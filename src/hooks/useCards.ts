@@ -2,24 +2,20 @@ import CardProps from "@/types/CardProps";
 import { useEffect, useState } from "react";
 
 /**
- * Hook to get all info cards.
- * Returns cards as a table.
+ * Hook to fetch and process cards.
  */
-
 const useCards = () => {
-  const [cards, setCards] = useState<CardProps[]>([]);
+  const [cards, setCards] = useState<
+    (CardProps & { rarity: string; teacher: string })[]
+  >([]);
 
   useEffect(() => {
-    fetch("/data/cards.json")
-      .then((response) => response.json())
-      .then((data) => {
-        const flattenedCards = Object.entries(data.cards).flatMap(
-          ([rarity, cards]) =>
-            (cards as CardProps[]).map((card) => ({ ...card, rarity }))
-        );
-        setCards(flattenedCards);
-      })
-      .catch((error) => console.error("Error loading cards:", error));
+    const fetchCards = async () => {
+      const res = await fetch("/data/cards.json");
+      const data = await res.json();
+      setCards(data.cards);
+    };
+    fetchCards();
   }, []);
 
   return cards;

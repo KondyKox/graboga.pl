@@ -1,209 +1,252 @@
 {
-  "rarities": {
-    "common": 0.4,
-    "rare": 0.3,
-    "epic": 0.15,
-    "special": 0.1,
-    "legendary": 0.05
-  },
-
-  "cards": {
-    "legendary": [
-      {
-        "id": 1,
-        "name": "Andrzej Mucha",
-        "description": "Wzór nauczyciela do naśladowania",
-        "img": "/cards_img/mucha.jpg"
-      },
-      {
-        "id": 2,
-        "name": "Boski Mucha",
-        "description": "Błogosławiony Andrzej Mucha",
-        "img": "/cards_img/mucha_boski.jpg"
-      },
-      {
-        "id": 3,
-        "name": "Andrzej Mucha - Myśliciel",
-        "description": "Genialny nauczyciel",
-        "img": "/cards_img/mucha_mysliciel.jpg"
-      },
-      {
-        "id": 4,
-        "name": "Otto Mucha",
-        "description": "Otto Mucha za czasów WW2",
-        "img": "/cards_img/mucha_otto.jpg"
-      },
-      {
-        "id": 5,
-        "name": "Szybki Mucha",
-        "description": "Szybki ten A. Mucha",
-        "img": "/cards_img/mucha_szybki.jpg"
-      },
-      {
-        "id": 6,
-        "name": "Czeski Mucha",
-        "description": "A. Mucha w Pradze",
-        "img": "/cards_img/mucha_czeski.jpg"
-      },
-      {
-        "id": 7,
-        "name": "Andrzej Mucha - Mucha",
-        "description": "To nawet nie jest On",
-        "img": "/cards_img/mucha_mucha.jpg"
-      }
-    ],
-    "epic": [
-      {
-        "id": 8,
-        "name": "Tadeusz Graczyk",
-        "description": "Hasło: toster",
-        "img": "/cards_img/graczyk.jpg"
-      },
-      {
-        "id": 9,
-        "name": "Jan Grosik",
-        "description": "Obali browara szybciej niż zrobisz pompkę",
-        "img": "/cards_img/grosik.jpg"
-      },
-      {
-        "id": 10,
-        "name": "Paweł Korzeń",
-        "description": "'Zamknąć? Zamknąć to wy możecie mordy!'",
-        "img": "/cards_img/korzen.jpg"
-      },
-      {
-        "id": 11,
-        "name": "Paweł Korzeń - Tancerz na rurze",
-        "description": "Fenomenalny dyrektor",
-        "img": "/cards_img/korzen_tancerz.jpg"
-      },
-      {
-        "id": 12,
-        "name": "Paweł Korzeń - Gamer",
-        "description": "TOP 1 Pro Gamer in Mechan",
-        "img": "/cards_img/korzen_gamer.jpg"
-      },
-      {
-        "id": 13,
-        "name": "Artur Nierychły",
-        "description": "'Boli cię ręka i nie możesz grać? Niektórzy w ogóle nie mają rąk!'",
-        "img": "/cards_img/nierychly.jpg"
-      },
-      {
-        "id": 14,
-        "name": "Kamil Sobczak",
-        "description": "'Dlaczego zawsze skaczą z mostu? Są inne obiekty w Głogowie'",
-        "img": "/cards_img/sobczak.jpg"
-      },
-      {
-        "id": 15,
-        "name": "Kamil Sobczak - Zawodowiec",
-        "description": "'Ja podziękuję za taką modę, torby by mi przemarzły'",
-        "img": "/cards_img/sobczak_zawodowiec.jpg"
-      },
-      {
-        "id": 16,
-        "name": "Grażyna Wolska",
-        "description": "'Cicho, cicho bo przyjdzie zdzicho!'",
-        "img": "/cards_img/wolska.jpg"
-      },
-      {
-        "id": 17,
-        "name": "Artur Nierychły - Załamanie",
-        "description": "Nierychle się załamał",
-        "img": "/cards_img/nierychly_zalamanie.jpg"
-      }
-    ],
-    "rare": [
-      {
-        "id": 18,
-        "name": "Artur Libner",
-        "description": "'Jaki ku*wa kabel!'",
-        "img": "/cards_img/libner.jpg"
-      },
-      {
-        "id": 19,
-        "name": "Artur Libner - Zwolennik Faszyzmu",
-        "description": "Artur Hlibner",
-        "img": "/cards_img/libner_faszyzm.jpg"
-      },
-      {
-        "id": 20,
-        "name": "Mgr. inż.",
-        "description": "Magister inżynier Czupryniak Czesław Witold",
-        "img": "/cards_img/mgrinz.jpg"
-      },
-      {
-        "id": 21,
-        "name": "Mgr. inż. - Kebab Master",
-        "description": "Magister inżynier robienia kebsów",
-        "img": "/cards_img/mgrinz_kebab.jpg"
-      },
-      {
-        "id": 22,
-        "name": "Lucyna Musiał",
-        "description": "Słabe samopoczucie to nie wymówka",
-        "img": "/cards_img/musial.jpg"
-      }
-    ],
-    "common": [
-      {
-        "id": 23,
-        "name": "Joanna Toporowicz",
-        "description": "🪓",
-        "img": "/cards_img/toporowicz.jpg"
-      },
-      {
-        "id": 24,
-        "name": "Agnieszka Mazurek",
-        "description": "W czasie lekcji kilkukrotnie powie, że traci cierpliwość",
-        "img": "/cards_img/mazurek.jpg"
-      },
-      {
-        "id": 25,
-        "name": "K. Pulit-Binkowska",
-        "description": "Więcej pie*dolenia niż samej lekcji",
-        "img": "/cards_img/pulit.jpg"
-      },
-      {
-        "id": 26,
-        "name": "Piotr Stasyszyn",
-        "description": "'Piotr Sta-sy-szyn' ~ Grażyna Siwula",
-        "img": "/cards_img/stasyszyn.jpg"
-      },
-      {
-        "id": 27,
-        "name": "Agata Majewska",
-        "description": "Dowódca samorządku uczniowskiego",
-        "img": "/cards_img/majewska.jpg"
-      },
-      {
-        "id": 28,
-        "name": "Paweł Czekaj",
-        "description": "Sam se czekaj",
-        "img": "/cards_img/czekaj.jpg"
-      },
-      {
-        "id": 29,
-        "name": "Krzysztof Ciborowski",
-        "description": "Mistrz układania planu lekcji",
-        "img": "/cards_img/ciborowski.jpg"
-      }
-    ],
-
-    "special": [
-      {
-        "id": 30,
-        "name": "Urszula Gąsiorowska",
-        "description": "'Nie nawidzę szczęśliwych ludzi'",
-        "img": "/cards_img/gasiorowska.jpg"
-      },
-      {
-        "id": 31,
-        "name": "Urszula Gąsiorowska - Makbet",
-        "description": "Makbet na wojnie - koloryzowane",
-        "img": "/cards_img/gasiorowska_makbet.jpg"
-      }
-    ]
-  }
+  "cards": [
+    {
+      "id": 1,
+      "name": "Andrzej Mucha",
+      "description": "Wzór nauczyciela do naśladowania",
+      "img": "/cards_img/mucha.jpg",
+      "teacher": "mucha",
+      "rarity": "legendary"
+    },
+    {
+      "id": 2,
+      "name": "Boski Mucha",
+      "description": "Błogosławiony Andrzej Mucha",
+      "img": "/cards_img/mucha_boski.jpg",
+      "teacher": "mucha",
+      "rarity": "legendary"
+    },
+    {
+      "id": 3,
+      "name": "Andrzej Mucha - Myśliciel",
+      "description": "Genialny nauczyciel",
+      "img": "/cards_img/mucha_mysliciel.jpg",
+      "teacher": "mucha",
+      "rarity": "legendary"
+    },
+    {
+      "id": 4,
+      "name": "Otto Mucha",
+      "description": "Otto Mucha za czasów WW2",
+      "img": "/cards_img/mucha_otto.jpg",
+      "teacher": "mucha",
+      "rarity": "legendary"
+    },
+    {
+      "id": 5,
+      "name": "Szybki Mucha",
+      "description": "Szybki ten A. Mucha",
+      "img": "/cards_img/mucha_szybki.jpg",
+      "teacher": "mucha",
+      "rarity": "legendary"
+    },
+    {
+      "id": 6,
+      "name": "Czeski Mucha",
+      "description": "A. Mucha w Pradze",
+      "img": "/cards_img/mucha_czeski.jpg",
+      "teacher": "mucha",
+      "rarity": "legendary"
+    },
+    {
+      "id": 7,
+      "name": "Andrzej Mucha - Mucha",
+      "description": "To nawet nie jest On",
+      "img": "/cards_img/mucha_mucha.jpg",
+      "teacher": "mucha",
+      "rarity": "legendary"
+    },
+    {
+      "id": 8,
+      "name": "Tadeusz Graczyk",
+      "description": "Hasło: toster",
+      "img": "/cards_img/graczyk.jpg",
+      "teacher": "graczyk",
+      "rarity": "epic"
+    },
+    {
+      "id": 9,
+      "name": "Jan Grosik",
+      "description": "Obali browara szybciej niż zrobisz pompkę",
+      "img": "/cards_img/grosik.jpg",
+      "teacher": "grosik",
+      "rarity": "epic"
+    },
+    {
+      "id": 10,
+      "name": "Paweł Korzeń",
+      "description": "'Zamknąć? Zamknąć to wy możecie mordy!'",
+      "img": "/cards_img/korzen.jpg",
+      "teacher": "korzen",
+      "rarity": "epic"
+    },
+    {
+      "id": 11,
+      "name": "Paweł Korzeń - Tancerz na rurze",
+      "description": "Fenomenalny dyrektor",
+      "img": "/cards_img/korzen_tancerz.jpg",
+      "teacher": "korzen",
+      "rarity": "epic"
+    },
+    {
+      "id": 12,
+      "name": "Paweł Korzeń - Gamer",
+      "description": "TOP 1 Pro Gamer in Mechan",
+      "img": "/cards_img/korzen_gamer.jpg",
+      "teacher": "korzen",
+      "rarity": "epic"
+    },
+    {
+      "id": 13,
+      "name": "Artur Nierychły",
+      "description": "'Boli cię ręka i nie możesz grać? Niektórzy w ogóle nie mają rąk!'",
+      "img": "/cards_img/nierychly.jpg",
+      "teacher": "nierychly",
+      "rarity": "epic"
+    },
+    {
+      "id": 14,
+      "name": "Kamil Sobczak",
+      "description": "'Dlaczego zawsze skaczą z mostu? Są inne obiekty w Głogowie'",
+      "img": "/cards_img/sobczak.jpg",
+      "teacher": "sobczak",
+      "rarity": "epic"
+    },
+    {
+      "id": 15,
+      "name": "Kamil Sobczak - Zawodowiec",
+      "description": "'Ja podziękuję za taką modę, torby by mi przemarzły'",
+      "img": "/cards_img/sobczak_zawodowiec.jpg",
+      "teacher": "sobczak",
+      "rarity": "epic"
+    },
+    {
+      "id": 16,
+      "name": "Grażyna Wolska",
+      "description": "'Cicho, cicho bo przyjdzie zdzicho!'",
+      "img": "/cards_img/wolska.jpg",
+      "teacher": "wolska",
+      "rarity": "epic"
+    },
+    {
+      "id": 17,
+      "name": "Artur Nierychły - Załamanie",
+      "description": "Nierychle się załamał",
+      "img": "/cards_img/nierychly_zalamanie.jpg",
+      "teacher": "nierychly",
+      "rarity": "epic"
+    },
+    {
+      "id": 18,
+      "name": "Artur Libner",
+      "description": "'Jaki ku*wa kabel!'",
+      "img": "/cards_img/libner.jpg",
+      "teacher": "libner",
+      "rarity": "rare"
+    },
+    {
+      "id": 19,
+      "name": "Artur Libner - Zwolennik Faszyzmu",
+      "description": "Artur Hlibner",
+      "img": "/cards_img/libner_faszyzm.jpg",
+      "teacher": "libner",
+      "rarity": "rare"
+    },
+    {
+      "id": 20,
+      "name": "Mgr. inż.",
+      "description": "Magister inżynier Czupryniak Czesław Witold",
+      "img": "/cards_img/mgrinz.jpg",
+      "teacher": "mgr.inz.",
+      "rarity": "rare"
+    },
+    {
+      "id": 21,
+      "name": "Mgr. inż. - Kebab Master",
+      "description": "Magister inżynier robienia kebsów",
+      "img": "/cards_img/mgrinz_kebab.jpg",
+      "teacher": "mgr.inz.",
+      "rarity": "rare"
+    },
+    {
+      "id": 22,
+      "name": "Lucyna Musiał",
+      "description": "Słabe samopoczucie to nie wymówka",
+      "img": "/cards_img/musial.jpg",
+      "teacher": "musial",
+      "rarity": "rare"
+    },
+    {
+      "id": 23,
+      "name": "Joanna Toporowicz",
+      "description": "🪓",
+      "img": "/cards_img/toporowicz.jpg",
+      "teacher": "toporowicz",
+      "rarity": "common"
+    },
+    {
+      "id": 24,
+      "name": "Agnieszka Mazurek",
+      "description": "W czasie lekcji kilkukrotnie powie, że traci cierpliwość",
+      "img": "/cards_img/mazurek.jpg",
+      "teacher": "mazurek",
+      "rarity": "common"
+    },
+    {
+      "id": 25,
+      "name": "K. Pulit-Binkowska",
+      "description": "Więcej pie*dolenia niż samej lekcji",
+      "img": "/cards_img/pulit.jpg",
+      "teacher": "pulit",
+      "rarity": "common"
+    },
+    {
+      "id": 26,
+      "name": "Piotr Stasyszyn",
+      "description": "'Piotr Sta-sy-szyn' ~ Grażyna Siwula",
+      "img": "/cards_img/stasyszyn.jpg",
+      "teacher": "stasyszyn",
+      "rarity": "common"
+    },
+    {
+      "id": 27,
+      "name": "Agata Majewska",
+      "description": "Dowódca samorządku uczniowskiego",
+      "img": "/cards_img/majewska.jpg",
+      "teacher": "majewska",
+      "rarity": "common"
+    },
+    {
+      "id": 28,
+      "name": "Paweł Czekaj",
+      "description": "Sam se czekaj",
+      "img": "/cards_img/czekaj.jpg",
+      "teacher": "czekaj",
+      "rarity": "common"
+    },
+    {
+      "id": 29,
+      "name": "Krzysztof Ciborowski",
+      "description": "Mistrz układania planu lekcji",
+      "img": "/cards_img/ciborowski.jpg",
+      "teacher": "ciborowski",
+      "rarity": "common"
+    },
+    {
+      "id": 30,
+      "name": "Urszula Gąsiorowska",
+      "description": "'Nie nawidzę szczęśliwych ludzi'",
+      "img": "/cards_img/gasiorowska.jpg",
+      "teacher": "gasiorowska",
+      "rarity": "special"
+    },
+    {
+      "id": 31,
+      "name": "Urszula Gąsiorowska - Makbet",
+      "description": "Makbet na wojnie - koloryzowane",
+      "img": "/cards_img/gasiorowska_makbet.jpg",
+      "teacher": "gasiorowska",
+      "rarity": "special"
+    }
+  ]
 }

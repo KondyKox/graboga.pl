@@ -4,6 +4,7 @@ type CardProps = {
   description: string;
   rarity: string;
   img: string;
+  teacher: string;
 };
 
 export default CardProps;
