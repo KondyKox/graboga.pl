@@ -31,8 +31,7 @@ const useProfile = () => {
             // Verify if the token is valid
             try {
                 const decodedToken: any = jwtDecode(token);
-                console.log('Decoded Token:', decodedToken);
-
+                
                 // Check expiration date
                 if (Date.now() >= decodedToken.exp * 1000) {
                     throw new Error('Token has expired');
@@ -59,8 +58,7 @@ const useProfile = () => {
                 }
 
                 const userData = await response.json();
-                console.log('User Data:', userData);
-
+             
                 // Extract and set user profile data
                 setProfile({
                     username: userData[0].username,

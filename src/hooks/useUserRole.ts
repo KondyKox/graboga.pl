@@ -19,8 +19,7 @@ const useUserRole = (token: string | null) => {
             // Check if token is valid
             try {
                 const decodedToken: any = jwtDecode(token);
-                console.log('Decoded Token:', decodedToken); // Log the decoded token
-
+                
                 // Check expiration
                 if (Date.now() >= decodedToken.exp * 1000) {
                     setError('Token has expired');
