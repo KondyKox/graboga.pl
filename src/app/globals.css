@@ -6,11 +6,15 @@
   --background: #1a1a1a;
   --foreground: #ffffff;
   --clr-rare: #007bff; /* Blue color */
-  --clr-rare-hover: rgba(0, 123, 255, 0.8);
   --clr-common: #28a745; /* Green color */
   --clr-special: #dc3545; /* Red color */
   --clr-legendary: #ffd700; /* Gold color */
   --clr-epic: #6f42c1; /* Purple color */
+  --gradient: linear-gradient(
+    45deg,
+    #007bff,
+    #6f42c1
+  ); /* Blue & purple gradient */
 }
 
 /* Import font for headings */
@@ -62,8 +66,16 @@ h6 {
 
 /* Hover nad uchwytem */
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--clr-rare-hover);
+  background: var(--clr-epic);
   cursor: pointer;
+}
+
+/* Text gradient */
+.text-gradient {
+  background: var(--gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 /* Icons */
@@ -72,7 +84,7 @@ h6 {
   transition: all 0.3s ease-in-out;
 }
 .icon:hover {
-  fill: var(--clr-rare-hover);
+  fill: var(--clr-rare);
   filter: drop-shadow(0 0 0.5rem var(--clr-epic));
   transform: scale(1.25);
 }

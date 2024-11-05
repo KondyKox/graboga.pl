@@ -12,11 +12,13 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         rare: "var(--clr-rare)",
-        "rare-hover": "var(--clr-rare-hover)",
         common: "var(--clr-common)",
         special: "var(--clr-special)",
         legendary: "var(--clr-legendary)",
         epic: "var(--clr-epic)",
+      },
+      backgroundImage: {
+        gradient: "var(--gradient)",
       },
       dropShadow: {
         logo: "0 0 1rem var(--clr-epic)",

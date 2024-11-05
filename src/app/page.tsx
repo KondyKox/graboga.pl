@@ -82,7 +82,7 @@ export default function Home() {
     <section className="flex flex-col justify-center items-center p-4 mt-4 md:mt-8 pb-20 md:pb-8">
       <div className="p-2 flex flex-col justify-center items-center">
         <h1 className="uppercase font-bold text-4xl text-center md:text-8xl">
-          graboga.pl <span className="text-rare">2.0</span>
+          graboga.pl <span className="text-gradient">2.0</span>
         </h1>
         <div className="flex flex-col md:flex-row justify-center items-center p-2 mt-5 md:mt-10 gap-6">
           <Image
@@ -109,7 +109,7 @@ export default function Home() {
               {/* Progress bar */}
               <div className="absolute bottom-0 left-0 w-full h-1 bg-none overflow-hidden">
                 <div
-                  className="h-1 bg-rare transition-all rounded"
+                  className="h-1 bg-gradient transition-all rounded"
                   style={{
                     width: `${progress}%`,
                   }}
@@ -128,10 +128,10 @@ export default function Home() {
       </div>
       <div className="border-y-4 w-full md:min-h-60 flex flex-col gap-4 justify-center items-center py-8 my-8">
         {/* Tutaj jakiś panel dac, komponent do tego zrobic */}
-        <div className="w-11/12 md:w-2/3 border-2 rounded-lg border-rare-hover p-2 text-justify">
+        <div className="w-11/12 md:w-2/3 border-2 rounded-lg border-rare p-2 text-justify">
           To do testów. Wstawić tu jakiś dojebany panel.
         </div>
-        <div className="w-11/12 md:w-2/3 border-2 rounded-lg border-rare-hover p-2 text-justify">
+        <div className="w-11/12 md:w-2/3 border-2 rounded-lg border-rare p-2 text-justify">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat
           tenetur consequatur ab. Corporis omnis dolor beatae officiis inventore
           odit provident, impedit sit? Architecto saepe, consequatur optio
