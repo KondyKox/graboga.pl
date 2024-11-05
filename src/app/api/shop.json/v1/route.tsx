@@ -6,6 +6,7 @@ export async function GET(request: any) {
     return NextResponse.json({
         "pack_id": "005",
         "pack_name": "Mixed Rarity Pack",
+        "pack_img": "/cards_img/mucha_boski.jpg",
         "pack_description": "Zróżnicowana paczka z kartami różnych rzadkości.",
         "pack_cost": 500,
         "rarity_odds": {

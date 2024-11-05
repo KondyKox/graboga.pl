@@ -41,7 +41,7 @@ export default function Login() {
 
   return (
     <div className="mt-2 p-4 flex flex-col justify-center items-center w-full">
-      <h1 className="text-6xl p-4 lg:text-8xl">Login</h1>
+      <h1 className="header">Login</h1>
       <form
         onSubmit={handleLogin}
         className="flex flex-col justify-center items-center gap-6"

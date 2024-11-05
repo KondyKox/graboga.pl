@@ -70,12 +70,50 @@ h6 {
   cursor: pointer;
 }
 
-/* Text gradient */
+/* Gradient */
 .text-gradient {
   background: var(--gradient);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
+}
+
+.gradient-border {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 8px; /* Dopasuj do swojego komponentu */
+}
+
+.gradient-border::before,
+.gradient-border::after {
+  content: "";
+  position: absolute;
+}
+
+.gradient-border::before {
+  top: -3px; /* Dopasuj do grubości borderu */
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border-radius: inherit;
+  background: var(--gradient); /* Gradient */
+  background-size: 200% 200%;
+  animation: rotate-border 3s linear infinite;
+  /* inset: -50%; */
+  z-index: -1;
+}
+
+.gradient-border::after {
+  inset: 0.25rem;
+  background-color: var(--background);
+  z-index: -1;
+}
+
+@keyframes rotate-border {
+  to {
+    transform: rotateZ(360deg);
+  }
 }
 
 /* Icons */
@@ -103,6 +141,14 @@ h6 {
 
 .nav-btn {
   @apply absolute top-1/2 transform -translate-y-1/2 bg-background bg-opacity-50 text-foreground p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity;
+}
+
+/* Headers */
+.header {
+  @apply text-6xl p-4 lg:text-8xl;
+}
+.sub-header {
+  @apply text-4xl p-4 lg:text-6xl;
 }
 
 /* Inputs */

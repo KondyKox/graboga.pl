@@ -40,7 +40,7 @@ export default function Register() {
 
   return (
     <div className="mt-2 p-4 flex flex-col justify-center items-center w-full">
-      <h1 className="text-6xl p-4 lg:text-8xl">Register</h1>
+      <h1 className="header">Register</h1>
       <form
         onSubmit={handleRegister}
         className="flex flex-col justify-center items-center gap-6"
