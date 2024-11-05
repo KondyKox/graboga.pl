@@ -1,24 +1,23 @@
-"use client"; // If you're using Next.js 13 with the app directory
-import React from 'react';
-import useCheckPermission from 'hooks/useCheckPermission';
-import LoadingSpinner from 'comp/Loading'; // Import the loading spinner component
+"use client"
+import useProfile from '@/hooks/useProfile';
 
-const ProtectedPage = () => {
-    const requiredRole = 'user'; // Set this to the role you want to check
-    const { loading, error } = useCheckPermission(requiredRole);
+const ProfilePage = () => {
+    const { loading, error, profile } = useProfile();
 
-    // Show loading spinner and block content
-    if (loading) return <LoadingSpinner />;
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error}</p>;
 
-    // Show error state if there's an error
-    if (error) return <div>Error: {error}</div>;
-
-    // Render protected content only when not loading
     return (
         <div>
-            <h1>Page not found</h1>
+            <h1>Welcome, {profile?.displayName}</h1>
+            <p>Username: {profile?.username}</p>
+            <p>Player ID: {profile?.playerId}</p>
+            <p>Experience: {profile?.experience}</p>
+            <p>Ducats: {profile?.ducats}</p>
+            <p>Tickets: {profile?.tickets}</p>
+            <img src={profile?.profilePicture || '/default-profile.png'} alt="Profile Picture" />
         </div>
     );
 };
 
-export default ProtectedPage;
+export default ProfilePage;
