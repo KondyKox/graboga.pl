@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import useCheckSession from "hooks/useCheckSession";
 import LoadingOverlay from "comp/Loading"; // Zakładając, że masz komponent do ładowania
 import Pack from "@/components/pack/Pack";
+import Subscription from "@/components/Subscription";
 
 const MyProtectedPage = () => {
   const { loading: sessionLoading, error: sessionError } = useCheckSession();
@@ -63,12 +64,11 @@ const MyProtectedPage = () => {
         <div className="flex flex-col">
           <h3 className="sub-header text-center">Paczki</h3>
           <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-10 mt-4">
-            <Pack storeData={storeData} />
-            <Pack storeData={storeData} />
-            <Pack storeData={storeData} />
-            <Pack storeData={storeData} />
-            <Pack storeData={storeData} />
-            <Pack storeData={storeData} />
+            {storeData.packs.map((pack: any) => {
+              return (
+                <Pack storeData={pack} />
+              )
+            })}
           </div>
           {/* <div className={styles.StorePackWrapper}>
             <div className={styles.StorePackMark}>NEW</div>
