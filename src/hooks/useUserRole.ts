@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import {jwtDecode} from 'jwt-decode'; // Ensure the import is correct
 
-const useUserRole = (token: string | null) => {
+const useUserRole = () => {
     const [role, setRole] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
@@ -9,6 +9,7 @@ const useUserRole = (token: string | null) => {
     useEffect(() => {
         const fetchUserRole = async () => {
             // Check if token is available
+            const token = localStorage.getItem('token'); 
             if (!token) {
                 console.error('No token found'); // Log if no token
                 setError('Authorization token missing');
@@ -62,7 +63,7 @@ const useUserRole = (token: string | null) => {
         };
 
         fetchUserRole();
-    }, [token]);
+    }, []);
 
     // Returning an object containing only the role if it exists
     return { role: role ? role : null }; // Will return null if role is not set

@@ -19,7 +19,6 @@ const useCheckSession = () => {
             // Sprawdź, czy token jest ważny
             try {
                 const decodedToken: any = jwtDecode(token);
-                console.log('Decoded Token:', decodedToken); // Debug: Loguj zdekodowany token
 
                 // Sprawdź datę wygaśnięcia
                 if (Date.now() >= decodedToken.exp * 1000) {
@@ -46,7 +45,6 @@ const useCheckSession = () => {
                 }
 
                 const { role } = await response.json(); // Zakładamy, że API zwraca { role: "user" }
-                console.log('User role:', role); // Debug: Loguj rolę użytkownika
 
             } catch (error) {
                 console.error('Session check failed:', error);

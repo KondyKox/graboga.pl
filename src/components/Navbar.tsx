@@ -1,12 +1,63 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import React from "react";
 import { FaPlay, FaStore, FaBox, FaUser } from "react-icons/fa";
 import Logo from "./Logo";
 import Tooltip from "./Tooltip";
+import useUserRole from "@/hooks/useUserRole";
+import { FaShield } from "react-icons/fa6";
+import useProfile from "@/hooks/useProfile";
 
 const Navbar: React.FC = () => {
+
+  // Render admin dash with icons
+  const renderAdmin = () => {
+    // get user role
+    const { role } = useUserRole();
+    //check if admin
+    if (role == "admin") {
+      return (
+        <>
+          <Link href={"/admin"} className="relative group flex flex-col items-center">
+            <FaShield className="icon" />
+            <Tooltip>Admin</Tooltip>
+          </Link>
+        </>
+      );
+    }
+    return;
+  };
+
+  // Render profile with pfp and name
+  const renderProfile = () => {
+    // get user profile
+    const { error, profile } = useProfile();
+    //check no logged
+    if (error) {
+      return (
+        <Link href={"/user"} className="relative group flex flex-col items-center">
+          <FaUser className="icon" />
+          <Tooltip>Konto</Tooltip>
+        </Link>
+      )
+    }
+    //display profile pfp
+    else {
+      return (
+        <Link href={"/user"} className="relative group flex flex-col items-center">
+          <img
+            src={profile?.profilePicture || '/donejtor.png'}
+            alt="Profile Picture"
+            className="h-10 rounded-full"
+          />
+          <Tooltip>Konto</Tooltip>
+        </Link>
+      )
+    }
+  }
+
   // Render nav links with icons
   const renderLinks = () => {
     return (
@@ -40,10 +91,8 @@ const Navbar: React.FC = () => {
           {renderLinks()}
         </div>
         <div className="flex justify-center items-center">
-          <Link href={"/user"} className="relative group flex flex-col items-center">
-            <FaUser className="icon" />
-            <Tooltip>Konto</Tooltip>
-          </Link>
+          {renderAdmin()}
+          {renderProfile()}
         </div>
       </div>
 
@@ -52,10 +101,8 @@ const Navbar: React.FC = () => {
         <div className="flex justify-center items-center gap-x-8">
           <Logo />
           {renderLinks()}
-          <Link href={"/user"} className="relative group flex flex-col items-center">
-            <FaUser className="icon" />
-            <Tooltip>Konto</Tooltip>
-          </Link>
+          {renderAdmin()}
+          {renderProfile()}
         </div>
       </div>
     </nav>
