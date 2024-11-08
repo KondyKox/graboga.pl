@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function OpenPack({ packData, onClose }) {
+export default function OpenPack({ packData, onClose }: any) {
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
 
   // Funkcja do odsłonięcia kolejnej karty po kliknięciu na aktualnie wyświetloną kartę
@@ -17,16 +17,17 @@ export default function OpenPack({ packData, onClose }) {
     <div
       onClick={revealNextCard}
       style={{
-        position: "fixed",
+        position: "fixed", // Ensure it covers the full screen
         top: 0,
         left: 0,
-        width: "100vw",
-        height: "100vh",
-        backgroundColor: "rgba(26, 26, 26, 0.85)",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
         zIndex: 1000,
+        width: "100vw", // Full width of the viewport
+        height: "100vh", // Full height of the viewport
+        backgroundColor: "rgba(26, 26, 26)", // Dark background with transparency
+        display: "flex",
+        justifyContent: "center", // Center the card horizontally
+        alignItems: "center", // Center the card vertically
+        overflow: "hidden", // Prevent scrolling
       }}
     >
       <div
@@ -36,14 +37,17 @@ export default function OpenPack({ packData, onClose }) {
           padding: "20px",
           borderRadius: "10px",
           textAlign: "center",
-          maxWidth: "300px",
-          boxShadow: "0 0 15px rgba(0,0,0,0.5)",
+          maxWidth: "90%", // Max width of the card (responsive)
+          maxHeight: "90%", // Max height of the card (responsive)
+          boxShadow: "0 0 15px rgba(0,0,0,0.5)", // Shadow around the card
+          overflowY: "auto", // In case content overflows vertically
         }}
       >
         <img
           src={packData[currentCardIndex].image}
           alt={packData[currentCardIndex].name}
-          width="100%"
+          width="100%" // Image takes up the full width of the card
+          style={{ objectFit: "cover", maxHeight: "300px" }} // Ensures image doesn't overflow
         />
         <h4>{packData[currentCardIndex].name}</h4>
         <p>{packData[currentCardIndex].description}</p>
