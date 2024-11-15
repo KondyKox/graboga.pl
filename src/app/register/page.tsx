@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -75,6 +76,15 @@ export default function Register() {
           {isLoading ? "Registering..." : "Register"}
         </button>
       </form>
+      <p className="mt-4">
+        Masz już konto?{" "}
+        <Link
+          href={"/login"}
+          className="text-rare hover:text-epic transition-all duration-300 ease-in-out"
+        >
+          Zaloguj się tutaj!
+        </Link>
+      </p>
       {error && <p className="text-special mt-2">{error}</p>}
     </div>
   );

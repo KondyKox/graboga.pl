@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Login() {
   const [username, setUsername] = useState("");
@@ -68,6 +69,15 @@ export default function Login() {
           {isLoading ? "Logging in..." : "Login"}
         </button>
       </form>
+      <p className="mt-4">
+        Nie masz konta?{" "}
+        <Link
+          href={"/register"}
+          className="text-rare hover:text-epic transition-all duration-300 ease-in-out"
+        >
+          Zarejestruj się tutaj!
+        </Link>
+      </p>
       {error && <p className="text-special mt-2">{error}</p>}
     </div>
   );
