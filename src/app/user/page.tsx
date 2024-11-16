@@ -1,6 +1,7 @@
 "use client"
 import LoadingOverlay from '@/components/Loading';
 import useProfile from '@/hooks/useProfile';
+import { useRouter } from 'next/navigation';
 
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
@@ -32,13 +33,14 @@ function calculateLevel(points: number | undefined) {
 }
 
 const UserProfilePage = () => {
+    const router = useRouter();
     const { loading, error, profile } = useProfile();
 
     let { level, remainingXP, xpForNextLevel } = calculateLevel(profile?.experience);
     const xpPercentage = (remainingXP / xpForNextLevel) * 100;
 
     if (loading) return <LoadingOverlay message='Wczytywanie danych...' />;
-    if (error) return <p>Error: {error}</p>;
+    if (error) return router.push('/login');
 
     return (
         <div className="flex flex-col lg:flex-row gap-10 w-full max-w-7xl mx-auto mt-12">
