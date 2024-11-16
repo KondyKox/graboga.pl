@@ -8,6 +8,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pl">
+      <head>
+        <link rel="icon" href="/logo.svg" />
+        <title>GRABOGA 2.0</title>
+      </head>
       <body>
         <Navbar />
         <main>{children}</main>
