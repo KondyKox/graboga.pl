@@ -19,11 +19,11 @@ export const LOCATIONS = [
   },
   {
     name: "sala303",
-    background: "/nig.png",
+    background: "/tworcy.png",
   },
   {
     name: "klasaPolski",
-    background: "/nig.png",
+    background: "/donejtor.png",
   },
 ] as const;
 

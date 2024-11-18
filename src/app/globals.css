@@ -165,14 +165,6 @@ h6 {
   @apply p-4 rounded-lg border-2 border-gray-600 shadow-md bg-gray-800 flex justify-between items-center transform transition duration-300 hover:border-legendary hover:scale-105;
 }
 
-/* Cards */
-.card {
-  @apply bg-background rounded p-2 flex flex-col justify-around items-center w-52 h-80 border-2 transition duration-300 ease-in-out;
-}
-.card img {
-  @apply w-28 my-2;
-}
-
 /* Card rarities */
 .common {
   @apply border-common;

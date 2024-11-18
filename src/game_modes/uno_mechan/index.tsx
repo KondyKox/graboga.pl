@@ -1,19 +1,11 @@
 import React, { useEffect, useState } from "react";
 import UnoGame from "./UnoGame";
 import LoadingOverlay from "@/components/Loading";
-import { Location, LOCATIONS } from "./constants";
+import { Location } from "./constants";
 
 const UnoMechanMode = () => {
   const [loading, setLoading] = useState(true);
-  const [currentLocation, setCurrentLocation] = useState<Location>(
-    getRandomLocation()
-  );
-
-  // Funkcja losująca początkową lokację
-  function getRandomLocation(): Location {
-    const randomIndex = Math.floor(Math.random() * LOCATIONS.length);
-    return LOCATIONS[randomIndex];
-  }
+  const [currentLocation, setCurrentLocation] = useState<Location | null>(null);
 
   useEffect(() => {
     // Symulujemy ładowanie przez 2 sekundy
@@ -22,6 +14,7 @@ const UnoMechanMode = () => {
     }, 2000); // Możesz to zmienić w zależności od czasu ładowania danych
   }, []);
 
+  // Change current location in game
   const changeLocation = (location: Location) => {
     setCurrentLocation(location);
   };
@@ -34,13 +27,13 @@ const UnoMechanMode = () => {
         <div
           className="flex flex-col justify-center items-center gap-4 w-full"
           style={{
-            backgroundImage: `url(${currentLocation.background})`,
+            backgroundImage: `url(${currentLocation?.background})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             height: "100vh", // Pełny ekran
           }}
         >
-          <UnoGame />
+          <UnoGame setLocation={changeLocation} />
           {/* Dodaj tutaj logikę dla rozgrywki */}
         </div>
       )}

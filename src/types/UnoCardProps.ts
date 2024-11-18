@@ -1,8 +1,9 @@
+import { ACTIONS, LOCATIONS } from "@/game_modes/uno_mechan/constants";
 import CardProps from "./CardProps";
 
 type UnoCardProps = CardProps & {
-  action: "normal" | "skip" | "draw" | "reverse" | "changeLocation";
-  location: "szatnia" | "sala303" | "klasaPolski";
+  action: (typeof ACTIONS)[number];
+  location: (typeof LOCATIONS)[number]["name"];
 };
 
 export default UnoCardProps;
