@@ -15,15 +15,19 @@ export type Action = (typeof ACTIONS)[number];
 export const LOCATIONS = [
   {
     name: "szatnia",
-    background: "/nig.png",
+    background: "/uno_mechan/locations/szatnia.jpg",
   },
   {
     name: "sala303",
-    background: "/tworcy.png",
+    background: "/uno_mechan/locations/sala303.jpg",
   },
   {
     name: "klasaPolski",
-    background: "/donejtor.png",
+    background: "/uno_mechan/locations/klasaPolski.jpg",
+  },
+  {
+    name: "nagrobekMuchy",
+    background: "/uno_mechan/locations/nagrobekMuchy.jpg",
   },
 ] as const;
 
