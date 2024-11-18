@@ -160,6 +160,11 @@ h6 {
   @apply py-2 w-full rounded border-2 border-epic font-bold hover:bg-epic transition-all duration-300 ease-in-out;
 }
 
+/* User page fields */
+.user-field {
+  @apply p-4 rounded-lg border-2 border-gray-600 shadow-md bg-gray-800 flex justify-between items-center transform transition duration-300 hover:border-legendary hover:scale-105;
+}
+
 /* Cards */
 .card {
   @apply bg-background rounded p-2 flex flex-col justify-around items-center w-52 h-80 border-2 transition duration-300 ease-in-out;
