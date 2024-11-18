@@ -3,32 +3,56 @@
 import Card from "@/components/Card";
 import UnoCardProps from "@/types/UnoCardProps";
 import { useEffect, useState } from "react";
+import { Action, ACTIONS, Location, LOCATIONS } from "./constants";
+import CardProps from "@/types/CardProps";
 
 // Fetch all cards from cards.json
 const fetchDeck = async (): Promise<UnoCardProps[]> => {
   const response = await fetch("/data/cards.json");
   const data: UnoCardProps[] = await response.json();
+  if (!Array.isArray(data)) throw new Error("Fetched data is not an array!");
   return data;
 };
 
+// Random effect for uno card
+// Funkcja losująca akcję
+const getRandomAction = (): Action => {
+  return ACTIONS[Math.floor(Math.random() * ACTIONS.length)];
+};
+
+// Random location for uno card
+const getRandomLocation = (): Location => {
+  return LOCATIONS[Math.floor(Math.random() * LOCATIONS.length)];
+};
+
+const transformDeck = (cards: CardProps[]): UnoCardProps[] =>
+  cards.map((card) => ({
+    ...card,
+    action: ACTIONS[Math.floor(Math.random() * ACTIONS.length)],
+    location: LOCATIONS[Math.floor(Math.random() * LOCATIONS.length)].name,
+  }));
+
 const UnoGame = () => {
-  // Inicjalizacja stanu gry
   const [deck, setDeck] = useState<UnoCardProps[]>([]);
-  const [isTurn, setIsTurn] = useState<boolean>(true); // Czy to tura gracza?
-  const [playerCards, setPlayerCards] = useState<UnoCardProps[]>(
-    deck.slice(0, 7)
-  ); // Gracz ma 7 kart
+  const [playerCards, setPlayerCards] = useState<UnoCardProps[]>([]);
   const [currentCard, setCurrentCard] = useState<UnoCardProps>(
     {} as UnoCardProps
-  ); // Karta na stole
+  );
+  const [isTurn, setIsTurn] = useState<boolean>(true);
 
-  // Załadowanie kart z JSON
   useEffect(() => {
     const loadDeck = async () => {
-      const newDeck = await fetchDeck(); // Pobieramy karty
-      setDeck(newDeck);
-      setPlayerCards(newDeck.slice(0, 7)); // Gracz otrzymuje 7 kart
-      setCurrentCard(newDeck[Math.floor(Math.random() * newDeck.length)]); // Losowanie karty na stole
+      try {
+        const newDeck = await fetchDeck();
+        setDeck(newDeck);
+        console.log(`Deck: ${deck}`);
+
+        // Ustawienie kart gracza i karty na stole
+        setPlayerCards(newDeck.slice(0, 7));
+        setCurrentCard(newDeck[Math.floor(Math.random() * newDeck.length)]);
+      } catch (error) {
+        console.error("Failed to fetch deck:", error);
+      }
     };
 
     loadDeck();
@@ -38,14 +62,11 @@ const UnoGame = () => {
     <div>
       <div>
         <h3>Aktualna Karta</h3>
-        <Card card={currentCard} />
+        {currentCard && <Card card={currentCard} />}
         <h3>Twoje Karty</h3>
         <div>
           {playerCards.map((card) => (
-            <Card
-              key={card.id}
-              card={card} /* onClick={() => playCard(card)} */
-            />
+            <Card key={card.id} card={card} />
           ))}
         </div>
 

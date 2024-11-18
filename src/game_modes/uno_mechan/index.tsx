@@ -1,16 +1,7 @@
 import React, { useEffect, useState } from "react";
 import UnoGame from "./UnoGame";
 import LoadingOverlay from "@/components/Loading";
-
-// Zdefiniowanie typu dla możliwych lokacji
-export type Location = "szatnia" | "klasaPolski" | "sala303";
-
-// Obiekt z tłem dla każdej lokacji
-const locationBackgrounds: Record<Location, string> = {
-  szatnia: "/nig.png",
-  klasaPolski: "/donejtor.png",
-  sala303: "/dyrektor.png", // TODO: Zmienic te ścieżki na normalne zdjęcia
-};
+import { Location, LOCATIONS } from "./constants";
 
 const UnoMechanMode = () => {
   const [loading, setLoading] = useState(true);
@@ -20,9 +11,8 @@ const UnoMechanMode = () => {
 
   // Funkcja losująca początkową lokację
   function getRandomLocation(): Location {
-    const locations: Location[] = ["szatnia", "klasaPolski", "sala303"];
-    const randomIndex = Math.floor(Math.random() * locations.length);
-    return locations[randomIndex];
+    const randomIndex = Math.floor(Math.random() * LOCATIONS.length);
+    return LOCATIONS[randomIndex];
   }
 
   useEffect(() => {
@@ -44,7 +34,7 @@ const UnoMechanMode = () => {
         <div
           className="flex flex-col justify-center items-center gap-4 w-full"
           style={{
-            backgroundImage: `url(${locationBackgrounds[currentLocation]})`,
+            backgroundImage: `url(${currentLocation.background})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             height: "100vh", // Pełny ekran
