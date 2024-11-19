@@ -1,7 +1,7 @@
 "use client";
 
 import UnoCardProps from "@/types/UnoCardProps";
-import UnoCard from "@/components/UnoCard";
+import UnoCard from "@/components/card/UnoCard";
 import Image from "next/image";
 import Tooltip from "@/components/Tooltip";
 
@@ -24,7 +24,14 @@ const UnoGame = ({
     <div className="flex flex-col justify-center items-center gap-8 w-full">
       <div className="flex justify-around items-center w-full">
         <div className="flex flex-col justify-center items-center">
-          <h3 className="text-xl">Aktualna Karta</h3>
+          <h3
+            className="text-4xl text-wrap text-gradient"
+            style={{
+              WebkitTextStroke: ".25px white", // Obrys tekstu
+            }}
+          >
+            Aktualna Karta
+          </h3>
           {currentCard && <UnoCard card={currentCard} />}
         </div>
         <div className="flex justify-center items-center">
@@ -41,7 +48,16 @@ const UnoGame = ({
               <Tooltip>Dobierz Kartę</Tooltip>
             </div>
           )}
-          {!isTurn && <p className="text-center">Teraz tura przeciwnika...</p>}
+          {!isTurn && (
+            <h3
+              className="text-4xl text-wrap text-gradient"
+              style={{
+                WebkitTextStroke: ".25px white", // Obrys tekstu
+              }}
+            >
+              Teraz tura przeciwnika...
+            </h3>
+          )}
         </div>
       </div>
 

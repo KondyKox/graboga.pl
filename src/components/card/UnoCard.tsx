@@ -1,6 +1,6 @@
 import React from "react";
 import UnoCardProps from "@/types/UnoCardProps";
-import Card from "@/components/Card";
+import Card from "@/components/card/Card";
 import { LOCATIONS } from "@/game_modes/uno_mechan/constants";
 
 const UnoCard: React.FC<{ card: UnoCardProps }> = ({ card }) => {
