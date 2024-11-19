@@ -4,6 +4,15 @@ import LoadingOverlay from "@/components/Loading";
 import { Location, LOCATIONS } from "./constants";
 import UnoCardProps from "@/types/UnoCardProps";
 import useUnoDeck from "@/hooks/useUnoDeck";
+import Modal from "@/components/Modal";
+
+// Format location name (split words & make first letter capitalized)
+const formatLocationName = (name: string) => {
+  return name
+    .split("_")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+};
 
 const UnoMechanMode = () => {
   const { deck, loading } = useUnoDeck();
@@ -11,35 +20,28 @@ const UnoMechanMode = () => {
   const [currentCard, setCurrentCard] = useState<UnoCardProps | null>(null);
   const [playerCards, setPlayerCards] = useState<UnoCardProps[]>([]);
   const [isTurn, setIsTurn] = useState<boolean>(true);
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [pendingLegendaryCard, setPendingLegendaryCard] =
+    useState<UnoCardProps | null>(null);
 
   useEffect(() => {
     if (!loading && deck.length > 0) {
-      setPlayerCards(deck.slice(1, 8)); // Gracz dostaje 7 kart
-      const firstCard = deck[0];
-      setCurrentCard(firstCard);
-
-      // Ustaw lokację na podstawie pierwszej karty
-      const initialLocation = LOCATIONS.find(
-        (loc) => loc.name === firstCard.location
+      // Wybierz pierwszą kartę niebędącą `legendary`
+      const firstNonLegendaryCard = deck.find(
+        (card) => card.rarity !== "legendary"
       );
-      setCurrentLocation(initialLocation || null);
+
+      if (firstNonLegendaryCard) {
+        setCurrentCard(firstNonLegendaryCard);
+        const initialLocation = LOCATIONS.find(
+          (loc) => loc.name === firstNonLegendaryCard.location
+        );
+        setCurrentLocation(initialLocation || null);
+      }
+
+      setPlayerCards(deck.slice(1, 8));
     }
   }, [loading, deck]);
-
-  // Change current location in game
-  const changeLocation = (location: Location) => {
-    setCurrentLocation(location);
-  };
-
-  // Drawing a card from the deck
-  const drawCard = () => {
-    if (deck.length === 0) return;
-    const randomIndex = Math.floor(Math.random() * deck.length);
-    const newCard = deck[randomIndex];
-
-    setPlayerCards((prev) => [...prev, newCard]);
-    setIsTurn(false); // Koniec tury gracza
-  };
 
   const canPlay = (card: UnoCardProps): boolean => {
     return (
@@ -50,15 +52,50 @@ const UnoMechanMode = () => {
     );
   };
 
+  // Play clicked card if playable
   const playCard = (card: UnoCardProps) => {
     if (!canPlay(card) || !isTurn) return;
+
+    // Handle legendary card
+    if (card.rarity === "legendary") {
+      setPendingLegendaryCard(card);
+      setIsModalOpen(true);
+      return;
+    }
+
     setCurrentCard(card);
 
-    // Znalezienie pełnego obiektu Location na podstawie nazwy
-    const newLocation = LOCATIONS.find((loc) => loc.name === card.location);
-    setCurrentLocation(newLocation || null);
+    // If card has different location, change it
+    if (card.location && card.location !== currentLocation?.name) {
+      const newLocation = LOCATIONS.find((loc) => loc.name === card.location);
+      setCurrentLocation(newLocation || null); // New location
+    }
 
     setPlayerCards((prev) => prev.filter((c) => c.id !== card.id));
+    setIsTurn(false);
+  };
+
+  // Drawing a card from the deck
+  const drawCard = () => {
+    if (deck.length === 0) return;
+    const randomIndex = Math.floor(Math.random() * deck.length);
+    const newCard = deck[randomIndex];
+
+    setPlayerCards((prev) => [...prev, newCard]);
+    setIsTurn(false); // End player's turn
+  };
+
+  // Select location if legendary card played
+  const handleLocationSelect = (location: Location) => {
+    setCurrentLocation(location);
+    if (pendingLegendaryCard) {
+      setPlayerCards((prev) =>
+        prev.filter((c) => c.id !== pendingLegendaryCard.id)
+      );
+      setCurrentCard(pendingLegendaryCard);
+    }
+    setIsModalOpen(false);
+    setPendingLegendaryCard(null);
     setIsTurn(false);
   };
 
@@ -84,6 +121,20 @@ const UnoMechanMode = () => {
             onPlayCard={playCard}
             onDrawCard={drawCard}
           />
+          <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+            <h3 className="text-xl font-bold mb-6">Wybierz Lokalizację</h3>
+            <div className="grid grid-cols-2 gap-4 mt-4">
+              {LOCATIONS.map((location) => (
+                <button
+                  key={location.name}
+                  onClick={() => handleLocationSelect(location)}
+                  className="btn px-6"
+                >
+                  {formatLocationName(location.name)}
+                </button>
+              ))}
+            </div>
+          </Modal>
         </div>
       )}
     </div>

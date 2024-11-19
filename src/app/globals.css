@@ -71,6 +71,10 @@ h6 {
 }
 
 /* Gradient */
+.gradient-bg {
+  @apply bg-gradient-to-b from-black to-gray-900;
+}
+
 .text-gradient {
   background: var(--gradient);
   background-clip: text;

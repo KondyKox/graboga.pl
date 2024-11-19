@@ -21,7 +21,7 @@ const UnoGame = ({
   onDrawCard: () => void;
 }) => {
   return (
-    <div className="flex flex-col justify-center items-center gap-8">
+    <div className="flex flex-col justify-center items-center gap-8 w-full">
       <div className="flex justify-around items-center w-full">
         <div className="flex flex-col justify-center items-center">
           <h3 className="text-xl">Aktualna Karta</h3>
@@ -45,13 +45,16 @@ const UnoGame = ({
         </div>
       </div>
 
-      <div className="flex flex-wrap justify-center items-center gap-2">
+      {/* <div className="grid grid-cols-7 place-content-center w-full h-auto max-h-[50vh] gap-2 border-t-4 py-2 overflow-y-auto"> */}
+      <div className="flex flex-wrap justify-center items-center w-1/2 h-auto max-h-[50vh] gap-2 border-t-4 py-2 overflow-y-auto">
         {playerCards.map((unoCard, index) => (
           <div
             key={index}
             onClick={() => onPlayCard(unoCard)}
             className={`transition-all ${
-              canPlay(unoCard) ? "" : "opacity-50 hover:opacity-100"
+              canPlay(unoCard)
+                ? "cursor-pointer"
+                : "opacity-50 hover:opacity-100"
             }`}
           >
             <UnoCard card={unoCard} />

@@ -49,7 +49,7 @@ const UserProfilePage = () => {
   return (
     <div className="flex flex-col lg:flex-row gap-10 w-full max-w-7xl mx-auto mt-12">
       {/* Profil po lewej stronie na dużych ekranach, a na telefonach na górze */}
-      <div className="lg:w-2/3 w-full bg-gradient-to-b from-black to-gray-900 text-epic p-10 rounded-xl shadow-2xl border-2 border-epic">
+      <div className="lg:w-2/3 w-full gradient-bg text-epic p-10 rounded-xl shadow-2xl border-2 border-epic">
         <div className="flex justify-center mb-12 relative">
           <div className="relative w-32 h-32 rounded-full border-4 border-background shadow-lg">
             <CircularProgressbar

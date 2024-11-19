@@ -17,15 +17,15 @@ export const LOCATIONS = [
     background: "/uno_mechan/locations/szatnia.jpg",
   },
   {
-    name: "sala303",
+    name: "sala_303",
     background: "/uno_mechan/locations/sala303.jpg",
   },
   {
-    name: "klasaPolski",
+    name: "klasa_polski",
     background: "/uno_mechan/locations/klasaPolski.jpg",
   },
   {
-    name: "nagrobekMuchy",
+    name: "nagrobek_muchy",
     background: "/uno_mechan/locations/nagrobekMuchy.jpg",
   },
 ] as const;
