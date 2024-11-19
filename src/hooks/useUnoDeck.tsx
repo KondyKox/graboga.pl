@@ -4,6 +4,49 @@ import CardProps from "@/types/CardProps";
 import { ACTIONS, LOCATIONS } from "@/game_modes/uno_mechan/constants";
 
 /**
+ * Zwraca losową akcję z listy dostępnych akcji.
+ * @returns {string} Losowa akcja z tablicy ACTIONS.
+ */
+const getRandomAction = () =>
+  ACTIONS[Math.floor(Math.random() * ACTIONS.length)];
+
+/**
+ * Dodaje losowe akcje i lokacje do kart w talii.
+ * @param {CardProps[]} cards Tablica podstawowych kart.
+ * @returns {UnoCardProps[]} Tablica kart z dodatkowymi właściwościami (akcja i lokacja).
+ */
+const transformDeck = (cards: CardProps[]): UnoCardProps[] => {
+  return cards.flatMap((card): UnoCardProps[] => {
+    if (card.rarity === "legendary") {
+      // Legendarne karty: bez lokalizacji, ale mają efekty
+      return [
+        {
+          ...card,
+          action: getRandomAction(), // Efekt dla legendarnych kart
+          location: null, // Brak lokalizacji
+        },
+      ]; // Zwracamy tablicę z jedną kartą
+    }
+
+    if (card.rarity === "epic") {
+      // Epickie karty: każda lokacja + efekty
+      return LOCATIONS.map((location) => ({
+        ...card,
+        action: getRandomAction(), // Efekt dla epickich kart
+        location: location.name, // Lokacja
+      }));
+    }
+
+    // Zwykłe karty: każda lokacja, bez efektów
+    return LOCATIONS.map((location) => ({
+      ...card,
+      action: null, // Brak efektu
+      location: location.name, // Lokacja
+    }));
+  });
+};
+
+/**
  * Przetasowuje elementy w podanej tablicy za pomocą algorytmu Fisher-Yates Shuffle.
  * @template T Typ elementów w tablicy.
  * @param {T[]} array Tablica do przetasowania.
@@ -17,32 +60,6 @@ const shuffleDeck = <T,>(array: T[]): T[] => {
   }
   return shuffled;
 };
-
-/**
- * Zwraca losową akcję z listy dostępnych akcji.
- * @returns {string} Losowa akcja z tablicy ACTIONS.
- */
-const getRandomAction = () =>
-  ACTIONS[Math.floor(Math.random() * ACTIONS.length)];
-
-/**
- * Zwraca losową lokację z listy dostępnych lokacji.
- * @returns {Location} Losowa lokacja z tablicy LOCATIONS.
- */
-const getRandomLocation = () =>
-  LOCATIONS[Math.floor(Math.random() * LOCATIONS.length)];
-
-/**
- * Dodaje losowe akcje i lokacje do kart w talii.
- * @param {CardProps[]} cards Tablica podstawowych kart.
- * @returns {UnoCardProps[]} Tablica kart z dodatkowymi właściwościami (akcja i lokacja).
- */
-const transformDeck = (cards: CardProps[]): UnoCardProps[] =>
-  cards.map((card) => ({
-    ...card,
-    action: getRandomAction(),
-    location: getRandomLocation().name,
-  }));
 
 /**
  * Hook do zarządzania talią kart UNO.

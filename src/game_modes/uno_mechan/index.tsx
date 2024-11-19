@@ -1,22 +1,65 @@
 import React, { useEffect, useState } from "react";
 import UnoGame from "./UnoGame";
 import LoadingOverlay from "@/components/Loading";
-import { Location } from "./constants";
+import { Location, LOCATIONS } from "./constants";
+import UnoCardProps from "@/types/UnoCardProps";
+import useUnoDeck from "@/hooks/useUnoDeck";
 
 const UnoMechanMode = () => {
-  const [loading, setLoading] = useState(true);
+  const { deck, loading } = useUnoDeck();
   const [currentLocation, setCurrentLocation] = useState<Location | null>(null);
+  const [currentCard, setCurrentCard] = useState<UnoCardProps | null>(null);
+  const [playerCards, setPlayerCards] = useState<UnoCardProps[]>([]);
+  const [isTurn, setIsTurn] = useState<boolean>(true);
 
   useEffect(() => {
-    // Symulujemy ładowanie przez 2 sekundy
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000); // Możesz to zmienić w zależności od czasu ładowania danych
-  }, []);
+    if (!loading && deck.length > 0) {
+      setPlayerCards(deck.slice(1, 8)); // Gracz dostaje 7 kart
+      const firstCard = deck[0];
+      setCurrentCard(firstCard);
+
+      // Ustaw lokację na podstawie pierwszej karty
+      const initialLocation = LOCATIONS.find(
+        (loc) => loc.name === firstCard.location
+      );
+      setCurrentLocation(initialLocation || null);
+    }
+  }, [loading, deck]);
 
   // Change current location in game
   const changeLocation = (location: Location) => {
     setCurrentLocation(location);
+  };
+
+  // Drawing a card from the deck
+  const drawCard = () => {
+    if (deck.length === 0) return;
+    const randomIndex = Math.floor(Math.random() * deck.length);
+    const newCard = deck[randomIndex];
+
+    setPlayerCards((prev) => [...prev, newCard]);
+    setIsTurn(false); // Koniec tury gracza
+  };
+
+  const canPlay = (card: UnoCardProps): boolean => {
+    return (
+      card.location === currentLocation ||
+      card.rarity === currentCard?.rarity ||
+      card.id === currentCard?.id ||
+      card.rarity === "legendary"
+    );
+  };
+
+  const playCard = (card: UnoCardProps) => {
+    if (!canPlay(card) || !isTurn) return;
+    setCurrentCard(card);
+
+    // Znalezienie pełnego obiektu Location na podstawie nazwy
+    const newLocation = LOCATIONS.find((loc) => loc.name === card.location);
+    setCurrentLocation(newLocation || null);
+
+    setPlayerCards((prev) => prev.filter((c) => c.id !== card.id));
+    setIsTurn(false);
   };
 
   return (
@@ -33,8 +76,14 @@ const UnoMechanMode = () => {
             height: "100vh", // Pełny ekran
           }}
         >
-          <UnoGame setLocation={changeLocation} />
-          {/* Dodaj tutaj logikę dla rozgrywki */}
+          <UnoGame
+            playerCards={playerCards}
+            currentCard={currentCard}
+            isTurn={isTurn}
+            canPlay={canPlay}
+            onPlayCard={playCard}
+            onDrawCard={drawCard}
+          />
         </div>
       )}
     </div>

@@ -1,50 +1,25 @@
 "use client";
 
 import UnoCardProps from "@/types/UnoCardProps";
-import { useEffect, useState } from "react";
-import { Location, LOCATIONS } from "./constants";
 import UnoCard from "@/components/UnoCard";
 import Image from "next/image";
 import Tooltip from "@/components/Tooltip";
-import useUnoDeck from "@/hooks/useUnoDeck";
 
 const UnoGame = ({
-  setLocation,
+  playerCards,
+  currentCard,
+  isTurn,
+  canPlay,
+  onPlayCard,
+  onDrawCard,
 }: {
-  setLocation: (location: Location) => void;
+  playerCards: UnoCardProps[];
+  currentCard: UnoCardProps | null;
+  isTurn: boolean;
+  canPlay: (card: UnoCardProps) => boolean;
+  onPlayCard: (card: UnoCardProps) => void;
+  onDrawCard: () => void;
 }) => {
-  const { deck, loading } = useUnoDeck();
-  const [playerCards, setPlayerCards] = useState<UnoCardProps[]>([]);
-  const [currentCard, setCurrentCard] = useState<UnoCardProps>(
-    {} as UnoCardProps
-  );
-  const [isTurn, setIsTurn] = useState<boolean>(true);
-
-  useEffect(() => {
-    if (!loading && deck.length > 0) {
-      setPlayerCards(deck.slice(1, 8)); // Gracz dostaje 7 kart
-      const firstCard = deck[0];
-      setCurrentCard(firstCard);
-
-      // Ustaw lokację na podstawie pierwszej karty
-      const initialLocation = LOCATIONS.find(
-        (loc) => loc.name === firstCard.location
-      );
-      if (initialLocation) setLocation(initialLocation);
-    }
-  }, [loading, deck, setLocation]);
-
-  // Drawing a card from the deck
-  const drawCard = () => {
-    if (deck.length === 0) return;
-    const randomIndex = Math.floor(Math.random() * deck.length);
-    const newCard = deck[randomIndex];
-
-    setPlayerCards((prev) => [...prev, newCard]);
-    // setDeck((prev) => prev.filter((_, index) => index !== randomIndex));
-    setIsTurn(false); // Koniec tury gracza
-  };
-
   return (
     <div className="flex flex-col justify-center items-center gap-8">
       <div className="flex justify-around items-center w-full">
@@ -60,7 +35,7 @@ const UnoGame = ({
                 alt="Dobierz kartę"
                 width={128}
                 height={128}
-                onClick={drawCard}
+                onClick={onDrawCard}
                 className="cursor-pointer hover:drop-shadow-special"
               />
               <Tooltip>Dobierz Kartę</Tooltip>
@@ -71,8 +46,16 @@ const UnoGame = ({
       </div>
 
       <div className="flex flex-wrap justify-center items-center gap-2">
-        {playerCards.map((unoCard) => (
-          <UnoCard key={unoCard.id} card={unoCard} />
+        {playerCards.map((unoCard, index) => (
+          <div
+            key={index}
+            onClick={() => onPlayCard(unoCard)}
+            className={`transition-all ${
+              canPlay(unoCard) ? "" : "opacity-50 hover:opacity-100"
+            }`}
+          >
+            <UnoCard card={unoCard} />
+          </div>
         ))}
       </div>
     </div>

@@ -1,6 +1,5 @@
 // List of possible actions for Uno Cards
 export const ACTIONS = [
-  "normal",
   "skip",
   "draw",
   "reverse",
