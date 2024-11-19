@@ -9,7 +9,7 @@ const UnoCard: React.FC<{ card: UnoCardProps }> = ({ card }) => {
 
   return (
     <div
-      className="flex justify-center items-center rounded overflow-hidden duration-300 ease-in-out hover:-translate-y-3 w-52 h-80"
+      className="flex justify-center items-center rounded overflow-hidden duration-300 ease-in-out hover:-translate-y-3 w-52 h-80 bg-background"
       style={{
         backgroundImage: `url(${location?.background})`,
         backgroundSize: "cover",
