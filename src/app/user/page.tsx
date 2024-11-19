@@ -105,12 +105,12 @@ const UserProfilePage = () => {
 
         {/* Opcje dla użytkownika */}
         <div className="flex justify-center mt-4 space-x-4">
-          <div className="user-field w-full">
+          <div className="user-field w-full user-input">
             <button className="text-lg font-bold w-full">
               Edytuj Profil
             </button>
           </div>
-          <div className="user-field w-full">
+          <div className="user-field w-full user-input">
             <button className="text-lg font-bold w-full">
               Zmiana Hasła
             </button>
@@ -120,13 +120,13 @@ const UserProfilePage = () => {
 
       {/* Opcje w panelu po prawej stronie */}
       <div className="lg:w-1/3 w-full space-y-6">
-        <div className="user-field">
+        <div className="user-field user-input">
           <p className="text-lg font-semibold text-gray-300">Moje transakcje</p>
         </div>
-        <div className="user-field">
+        <div className="user-field user-input">
           <p className="text-lg font-semibold text-gray-300">Pomoc</p>
         </div>
-        <div className="user-field">
+        <div className="user-field user-input">
           <p className="text-lg font-semibold text-gray-300">
             Ustawienia konta
           </p>
