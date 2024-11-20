@@ -1,13 +1,15 @@
 "use client";
 import { useState, useEffect } from "react";
 import LoadingOverlay from "@/components/Loading";
-import { FaBan, FaEdit } from "react-icons/fa";
+import { FaBan, FaEdit, FaTrash } from "react-icons/fa";
 import Tooltip from "@/components/Tooltip";
+import { FaDeleteLeft } from "react-icons/fa6";
 
 const AdminPage = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [users, setUsers] = useState([]); // Default to fallback data
+    const [store, setStore] = useState([]); // Default to fallback data
     const [activeTab, setActiveTab] = useState("users");
 
     useEffect(() => {
@@ -26,8 +28,24 @@ const AdminPage = () => {
                 setLoading(false); // Stop loading when the request finishes
             }
         };
+        const fetchStore = async () => {
+            setLoading(true);
+            try {
+                const response = await fetch("/api/admin/store");
+                if (!response.ok) {
+                    throw new Error("Failed to fetch users");
+                }
+                const data = await response.json();
+                setStore(data); // Update users state with fetched data
+            } catch (err) {
+                setError("XD"); // If there's an error, show it
+            } finally {
+                setLoading(false); // Stop loading when the request finishes
+            }
+        };
 
         fetchUsers();
+        fetchStore();
     }, []);
 
     if (loading) return <LoadingOverlay message="Wczytywanie danych..." />;
@@ -44,6 +62,13 @@ const AdminPage = () => {
                         onClick={() => setActiveTab("users")}
                     >
                         Zarządzanie użytkownikami
+                    </button>
+
+                    <button
+                        className={`w-full p-3 rounded-lg text-gray-300 hover:text-gold ${activeTab === "store" ? "bg-gray-700" : "bg-gray-800"}`}
+                        onClick={() => setActiveTab("store")}
+                    >
+                        Sklep
                     </button>
 
                     <button
@@ -73,6 +98,13 @@ const AdminPage = () => {
                     >
                         Ustawienia
                     </button>
+
+                    <button
+                        className={`w-full p-3 rounded-lg text-gray-300 hover:text-gold ${activeTab === "settings" ? "bg-gray-700" : "bg-gray-800"}`}
+                        onClick={() => setActiveTab("others")}
+                    >
+                        Inne
+                    </button>
                 </div>
             </div>
 
@@ -80,41 +112,86 @@ const AdminPage = () => {
             <div className="lg:w-3/4 w-full">
                 {/* Zarządzanie użytkownikami */}
                 {activeTab === "users" && (
-                    <div className="bg-gradient-to-b from-black to-gray-900 text-gold p-8 rounded-xl shadow-xl border-2 border-gold">
+                    <div className="h-full bg-gradient-to-b from-black to-gray-900 text-gold p-8 rounded-xl shadow-xl border-2 border-gold">
                         <h2 className="text-2xl font-semibold text-gray-300 mb-6 text-center">Zarządzanie użytkownikami - {users.length}</h2>
-                        <table className="w-full text-gray-300">
-                            <thead>
-                                <tr>
-                                    <th className="p-3 text-left">Player ID</th>
-                                    <th className="p-3 text-left">Nazwa Użytkownika</th>
-                                    <th className="p-3 text-left">Email</th>
-                                    <th className="p-3 text-left">Role</th>
-                                    <th className="p-3 text-left">Akcje</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {users.map((user) => (
-                                    <tr key={user._id} className="border-t border-gray-600">
-                                        <td className="p-3">{user.playerId}</td>
-                                        <td className="p-3">{user.username}</td>
-                                        <td className="p-3">{user.email}</td>
-                                        <td className="p-3">{user.role}</td>
-                                        <td className="p-3">
-                                            {/* Edytuj */}
-                                            <button className="text-gray-300 bg-transparent border-2 border-yellow-500 rounded-lg py-2 px-4 hover:bg-yellow-500 hover:text-gray-900 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50">
-                                                <FaEdit />
-                                            </button>
-                                            {/* Zablokuj */}
-                                            <button className="text-gray-300 bg-transparent border-2 border-red-500 rounded-lg py-2 px-4 hover:bg-red-500 hover:text-gray-900 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 ml-3">
-                                                <FaBan />
-                                            </button>
-                                        </td>
+                        <div className="overflow-y-auto max-h-96">  {/* Kontener z przewijaniem */}
+                            <table className="w-full text-gray-300">
+                                <thead>
+                                    <tr>
+                                        <th className="p-3 text-left"></th>
+                                        <th className="p-3 text-left">Player ID</th>
+                                        <th className="p-3 text-left">Nazwa Użytkownika</th>
+                                        <th className="p-3 text-left">Email</th>
+                                        <th className="p-3 text-left">Role</th>
+                                        <th className="p-3 text-left">Akcje</th>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    {users.map((user, index) => (
+                                        <tr key={user._id} className="border-t border-gray-600">
+                                            <td className="p-3">{index+1}</td>
+                                            <td className="p-3">{user.playerId}</td>
+                                            <td className="p-3">{user.username}</td>
+                                            <td className="p-3">{user.email}</td>
+                                            <td className="p-3">{user.role}</td>
+                                            <td className="p-3">
+                                                {/* Edytuj */}
+                                                <button className="text-gray-300 bg-transparent border-2 border-yellow-500 rounded-lg py-2 px-4 hover:bg-yellow-500 hover:text-gray-900 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50">
+                                                    <FaEdit />
+                                                </button>
+                                                {/* Zablokuj */}
+                                                <button className="text-gray-300 bg-transparent border-2 border-red-500 rounded-lg py-2 px-4 hover:bg-red-500 hover:text-gray-900 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 ml-3">
+                                                    <FaBan />
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 )}
+
+                {/* Other tabs (transactions, logs, etc.) remain as before */}
+                {activeTab === "store" && (
+                    <div className="min-h-full bg-gradient-to-b from-black to-gray-900 text-gold p-8 rounded-xl shadow-xl border-2 border-gold">
+                        <h2 className="text-center text-2xl font-semibold text-gray-300 mb-6">Sklep</h2>
+                        <div className="overflow-y-auto max-h-96">  {/* Kontener z przewijaniem */}
+                            <table className="w-full text-gray-300">
+                                <thead className="bg-black sticky top-0 z-2"> {/* Sticky header */}
+                                    <tr>
+                                        <th className="p-3 text-left"></th>
+                                        <th className="p-3 text-left">ID</th>
+                                        <th className="p-3 text-left">COST</th>
+                                        <th className="p-3 text-left">Expired date</th>
+                                        <th className="p-3 text-left">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {store.map((item, index) => (
+                                        <tr key={item._id} className="border-t border-gray-600">
+                                            <td className="p-3">{index + 1}</td>
+                                            <td className="p-3">{item.pack}</td>
+                                            <td className="p-3">{item.cost}</td>
+                                            <td className="p-3">{item.expired}</td>
+                                            <td className="p-3">
+                                                {/* Edytuj */}
+                                                <button className="text-gray-300 bg-transparent border-2 border-yellow-500 rounded-lg py-2 px-4 hover:bg-yellow-500 hover:text-gray-900 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50">
+                                                    <FaEdit />
+                                                </button>
+                                                {/* Zablokuj */}
+                                                <button className="text-gray-300 bg-transparent border-2 border-red-500 rounded-lg py-2 px-4 hover:bg-red-500 hover:text-gray-900 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 ml-3">
+                                                    <FaTrash />
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                )}
+
 
                 {/* Other tabs (transactions, logs, etc.) remain as before */}
                 {activeTab === "transactions" && (

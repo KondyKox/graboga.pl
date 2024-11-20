@@ -2,11 +2,26 @@ import PackProps from "@/types/PackProps";
 import { useState } from "react";
 import OpenPack from "./OpenPack";
 import Image from "next/image";
+import { v4 as uuidv4 } from "uuid"; // Aby generować unikalne ID dla powiadomień
+import NotificationBar from "../Notification";
+import NotificationList from "../Notification";
 
 const Pack = ({ storeData }: PackProps) => {
+  const [notifications, setNotifications] = useState<{ id: string; message: string }[]>([]);
   const [packData, setPackData] = useState([]);
   const [packOpened, setPackOpened] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  // Dodaj nowe powiadomienie
+  const addNotification = (message: string) => {
+    const id = uuidv4();
+    setNotifications((prev) => [...prev, { id, message }]);
+  };
+
+  // Usuń powiadomienie
+  const removeNotification = (id: string) => {
+    setNotifications((prev) => prev.filter((notification) => notification.id !== id));
+  };
 
   // Funkcja otwierająca paczkę i pobierająca karty z API
   const openPack = async (id: string) => {
@@ -20,7 +35,8 @@ const Pack = ({ storeData }: PackProps) => {
         // Jeśli odpowiedź jest błędna (np. 500), sprawdź, czy jest wiadomość
         const errorData = await response.json(); // Przekształć odpowiedź na JSON
         const errorMessage = errorData.message || "An error occurred"; // Pobierz wiadomość lub ustaw domyślną
-      
+
+        addNotification(`Error: ${errorMessage}`);
         throw new Error(`Failed to open pak: ${errorMessage}`); // Rzuć błąd z wiadomością
       }
 
@@ -36,7 +52,11 @@ const Pack = ({ storeData }: PackProps) => {
   return (
     <div className="flex flex-col justify-center items-center">
       <h4 className="font-bold tracking-widest text-lg">{storeData.pack_name}</h4>
-
+      {/* Powiadomienia */}
+      <NotificationList
+        notifications={notifications}
+        onRemove={removeNotification}
+      />
       {/* Hide pack UI if the pack is opened or loading */}
       {!packOpened && !loading && (
         <div
