@@ -44,7 +44,7 @@ export default function OpenPack({ packData, onClose }: any) {
         }}
       >
         <img
-          src={packData[currentCardIndex].image}
+          src={packData[currentCardIndex].img}
           alt={packData[currentCardIndex].name}
           width="100%" // Image takes up the full width of the card
           style={{ objectFit: "cover", maxHeight: "300px" }} // Ensures image doesn't overflow

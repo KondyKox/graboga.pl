@@ -1,0 +1,42 @@
+[
+    {
+        "pack_id": "pack_001",
+        "chances": {
+            "common": 10,
+            "rare": 5,
+            "epic": 2,
+            "legendary": 0.1
+        },
+        "cards": [1, 7, 8, 10, 18, 20, 24, 25, 26, 27]
+    },
+    {
+        "pack_id": "pack_002",
+        "chances": {
+            "common": 10,
+            "rare": 5,
+            "epic": 2,
+            "legendary": 0.1
+        },
+        "cards": [3, 9, 5, 6, 12, 25, 23, 26]
+    },
+    {
+        "pack_id": "pack_003",
+        "chances": {
+            "common": 10,
+            "rare": 5,
+            "epic": 2,
+            "legendary": 0.1
+        },
+        "cards": [7, 2, 16, 30, 22, 15, 28]
+    },
+    {
+        "pack_id": "pack_004",
+        "chances": {
+            "common": 10,
+            "rare": 5,
+            "epic": 2,
+            "legendary": 0.1
+        },
+        "cards": [11, 17, 5, 14, 24, 19]
+    }
+]

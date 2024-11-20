@@ -46,14 +46,21 @@ const Navbar: React.FC = () => {
     //display profile pfp
     else {
       return (
-        <Link href={"/user"} className="relative group flex flex-col items-center">
-          <img
-            src={profile?.profilePicture || '/donejtor.png'}
-            alt="Profile Picture"
-            className="h-10 rounded-full"
-          />
-          <Tooltip>Konto</Tooltip>
-        </Link>
+        <div className="mx-2 min-w-32 h-13 border-2 border-sky-500 rounded">
+          <Link href={"/user"} className="relative group">
+            <div className="inline w-12 h-12 float-end">
+              <img
+                src={profile?.profilePicture || '/donejtor.png'}
+                alt="Profile Picture"
+                className="h-10 m-1 w-10 rounded-full border-2 border-sky-500 right align-middle"
+              />
+            </div>
+            <div className="inline min-w-16 h-12 mx-2 float-end text-center">
+              <h1 className="text-xl">{profile?.displayName}</h1>
+              <h3 className="text-xs">{profile?.ducats}/{profile?.tickets}</h3>
+            </div>
+          </Link>
+        </div>
       )
     }
   }

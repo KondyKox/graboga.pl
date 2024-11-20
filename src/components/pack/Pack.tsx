@@ -9,14 +9,20 @@ const Pack = ({ storeData }: PackProps) => {
   const [loading, setLoading] = useState(false);
 
   // Funkcja otwierająca paczkę i pobierająca karty z API
-  const openPack = async () => {
+  const openPack = async (id: string) => {
     if (packOpened || loading) return; // Prevent opening while loading or already opened
 
     setLoading(true);
     try {
-      const response = await fetch("/api/pack/openPack");
+      const response = await fetch(`/api/pack/${id}/open`);
 
-      if (!response.ok) throw new Error("Failed to open pack");
+      if (!response.ok) {
+        // Jeśli odpowiedź jest błędna (np. 500), sprawdź, czy jest wiadomość
+        const errorData = await response.json(); // Przekształć odpowiedź na JSON
+        const errorMessage = errorData.message || "An error occurred"; // Pobierz wiadomość lub ustaw domyślną
+      
+        throw new Error(`Failed to open pak: ${errorMessage}`); // Rzuć błąd z wiadomością
+      }
 
       const data = await response.json();
       setPackData(data.pack.cards); // Ustawiamy wylosowane karty
@@ -35,7 +41,7 @@ const Pack = ({ storeData }: PackProps) => {
       {!packOpened && !loading && (
         <div
           className="relative inline-block h-56 w-48 text-foreground rounded gradient-border shadow-epic group cursor-pointer"
-          onClick={openPack}
+          onClick={() => openPack(`pack_${storeData.pack_id}`)}
         >
           {/* Background for pack */}
           <div

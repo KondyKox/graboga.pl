@@ -49,7 +49,7 @@ const useCheckSession = () => {
 
             } catch (error) {
                 console.error('Session check failed:', error);
-                router.push('/login'); // Przekieruj do logowania
+                router.push('/login?redirect='+pathname); // Przekieruj do logowania
             } finally {
                 setLoading(false);
             }

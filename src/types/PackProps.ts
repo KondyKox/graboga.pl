@@ -1,5 +1,6 @@
 interface PackProps {
   storeData: {
+    pack_id: string;
     pack_name: string;
     pack_img: string;
     pack_description: string;
