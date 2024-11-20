@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 
 export default function Login() {
@@ -10,6 +10,9 @@ export default function Login() {
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const search = useSearchParams();
+
+
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,7 +31,8 @@ export default function Login() {
       if (res.ok) {
         const data = await res.json();
         localStorage.setItem("token", data.token); // Zapisz token JWT do localStorage
-        router.push("/"); // Przekierowanie do chronionej strony po zalogowaniu
+        let redirect = search.get('redirect') || '/';
+        router.push(redirect); // Przekierowanie do chronionej strony po zalogowaniu
       } else {
         const data = await res.json();
         setError(data.message || "Login failed");

@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import {jwtDecode} from 'jwt-decode';
 
 const useCheckSession = () => {
     const router = useRouter();
+    const pathname = usePathname();
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
@@ -12,7 +13,7 @@ const useCheckSession = () => {
             const token = localStorage.getItem('token'); // Pobierz token z localStorage
 
             if (!token) {
-                router.push('/login'); // Przekieruj do logowania, jeśli token jest brakujący
+                router.push('/login?redirect='+pathname); // Przekieruj do logowania, jeśli token jest brakujący
                 return;
             }
 
