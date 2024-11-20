@@ -2,7 +2,7 @@
 const nextConfig = {
     env: {
         MONGODB_URI: process.env.MONGO_DB_URI,
-        JWT_SECRET: 'OswiecNasPanieMucho',
+        JWT_SECRET: process.env.JWT_SECRET,
     },
 };
 
