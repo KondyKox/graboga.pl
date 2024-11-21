@@ -13,7 +13,7 @@ const useCards = () => {
     const fetchCards = async () => {
       const res = await fetch("/data/cards.json");
       const data = await res.json();
-      setCards(data.cards);
+      setCards(data);
     };
     fetchCards();
   }, []);

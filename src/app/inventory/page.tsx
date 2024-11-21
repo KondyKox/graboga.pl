@@ -35,7 +35,7 @@ const Inventory = () => {
       <h1 className="text-6xl">Ekwipunek</h1>
 
       {/* Filter Dropdowns */}
-      <div className="flex flex-col justify-center items-center gap-4 my-4">
+      <div className="flex flex-col justify-center items-stretch gap-4 my-4">
         <FilterDropdown
           label="Rarity"
           options={rarityOptions}
@@ -43,7 +43,7 @@ const Inventory = () => {
           onChange={setFilterRarity}
         />
         <FilterDropdown
-          label="Teacher"
+          label="Nauczyciel"
           options={teacherOptions}
           value={filterTeacher}
           onChange={setFilterTeacher}

@@ -46,13 +46,15 @@ const Navbar: React.FC = () => {
     //display profile pfp
     else {
       return (
-        <div className="mx-2 min-w-32 h-13 border-2 border-sky-500 rounded">
+        <div className="mx-2 min-w-32 h-13 border-l-2 border-rare rounded hover:shadow-rare duration-300 ease-in-out">
           <Link href={"/user"} className="relative group">
             <div className="inline w-12 h-12 float-end">
-              <img
+              <Image
                 src={profile?.profilePicture || '/donejtor.png'}
                 alt="Profile Picture"
-                className="h-10 m-1 w-10 rounded-full border-2 border-sky-500 right align-middle"
+                width={64}
+                height={64}
+                className="h-10 m-1 w-10 rounded-full border-2 border-rare right align-middle"
               />
             </div>
             <div className="inline min-w-16 h-12 mx-2 float-end text-center">

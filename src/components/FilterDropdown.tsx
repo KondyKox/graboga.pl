@@ -7,12 +7,12 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
   onChange,
 }) => {
   return (
-    <div>
-      <label className="mr-2">{label}</label>
+    <div className="flex justify-between items-center gap-2">
+      <label>{label}</label>
       <select
         value={value}
         onChange={(e) => onChange(e.target.value)}
-        className="py-1 px-2 rounded bg-epic outline-none"
+        className="py-1 px-2 rounded bg-epic outline-none cursor-pointer max-w-28 md:min-w-40 md:max-w-40"
       >
         {options.map((option) => (
           <option key={option} value={option === "All" ? "" : option}>

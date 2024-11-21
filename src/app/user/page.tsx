@@ -55,17 +55,17 @@ const UserProfilePage = () => {
             <CircularProgressbar
               value={xpPercentage}
               styles={buildStyles({
-                pathColor: "#ff0000",
+                pathColor: "var(--clr-special)",
                 trailColor: "#000",
                 strokeLinecap: "butt",
               })}
             />
             <Image
-              src={profile?.profilePicture || "/logo.svg"}
+              src={profile?.profilePicture || "/donejtor.png"}
               alt="Profile Picture"
               width={64}
               height={64}
-              className="w-28 h-28 rounded-full absolute top-1 left-1 shadow-epic border-1 border-background"
+              className="w-28 h-28 rounded-full absolute top-1 left-1 shadow-epic border-1 border-background hover:drop-shadow-epic duration-300 ease-in-out"
             />
           </div>
         </div>
@@ -106,14 +106,10 @@ const UserProfilePage = () => {
         {/* Opcje dla użytkownika */}
         <div className="flex justify-center mt-4 space-x-4">
           <div className="user-field w-full user-input">
-            <button className="text-lg font-bold w-full">
-              Edytuj Profil
-            </button>
+            <button className="text-lg font-bold w-full">Edytuj Profil</button>
           </div>
           <div className="user-field w-full user-input">
-            <button className="text-lg font-bold w-full">
-              Zmiana Hasła
-            </button>
+            <button className="text-lg font-bold w-full">Zmiana Hasła</button>
           </div>
         </div>
       </div>
