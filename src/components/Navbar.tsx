@@ -51,7 +51,7 @@ const Navbar: React.FC = () => {
     //display profile pfp
     else {
       return (
-        <div className="mx-2 md:min-w-32 h-13 md:border-l-2 border-rare rounded hover:shadow-rare duration-300 ease-in-out">
+        <div className="mx-2 md:min-w-32 h-13 p-1 md:border-l-2 border-rare rounded hover:shadow-rare duration-300 ease-in-out">
           <Link href={"/user"} className="relative group">
             <div className="inline w-8 md:w-12 h-8 md:h-12 float-end">
               <Image
