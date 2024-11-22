@@ -5,48 +5,56 @@ import { FaBan, FaEdit, FaTrash } from "react-icons/fa";
 import Tooltip from "@/components/Tooltip";
 import { FaDeleteLeft } from "react-icons/fa6";
 
+interface User {
+    _id: string;
+    playerId: string;
+    username: string;
+    email: string;
+    role: string;
+}
+
+interface StoreItem {
+    _id: string;
+    pack: string;
+    cost: number;
+    expired: string; 
+}
+
+
 const AdminPage = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);
-    const [users, setUsers] = useState([]); // Default to fallback data
-    const [store, setStore] = useState([]); // Default to fallback data
+    const [users, setUsers] = useState<User[]>([]);
+    const [store, setStore] = useState<StoreItem[]>([]);
     const [activeTab, setActiveTab] = useState("users");
-
     useEffect(() => {
-        const fetchUsers = async () => {
+        const fetchData = async () => {
             setLoading(true);
             try {
-                const response = await fetch("/api/admin/users");
-                if (!response.ok) {
-                    throw new Error("Failed to fetch users");
+                const [usersResponse, storeResponse] = await Promise.all([
+                    fetch("/api/admin/users"),
+                    fetch("/api/admin/store"),
+                ]);
+    
+                if (!usersResponse.ok || !storeResponse.ok) {
+                    throw new Error("Failed to fetch data");
                 }
-                const data = await response.json();
-                setUsers(data); // Update users state with fetched data
+    
+                const usersData: User[] = await usersResponse.json();
+                const storeData: StoreItem[] = await storeResponse.json();
+    
+                setUsers(usersData);
+                setStore(storeData);
             } catch (err) {
-                setError("XD"); // If there's an error, show it
+                setError("Nie udało się załadować danych");
             } finally {
-                setLoading(false); // Stop loading when the request finishes
+                setLoading(false);
             }
         };
-        const fetchStore = async () => {
-            setLoading(true);
-            try {
-                const response = await fetch("/api/admin/store");
-                if (!response.ok) {
-                    throw new Error("Failed to fetch users");
-                }
-                const data = await response.json();
-                setStore(data); // Update users state with fetched data
-            } catch (err) {
-                setError("XD"); // If there's an error, show it
-            } finally {
-                setLoading(false); // Stop loading when the request finishes
-            }
-        };
-
-        fetchUsers();
-        fetchStore();
+    
+        fetchData();
     }, []);
+    
 
     if (loading) return <LoadingOverlay message="Wczytywanie danych..." />;
     if (error) return <p>Error: {error}</p>;
@@ -100,7 +108,7 @@ const AdminPage = () => {
                     </button>
 
                     <button
-                        className={`w-full p-3 rounded-lg text-gray-300 hover:text-gold ${activeTab === "settings" ? "bg-gray-700" : "bg-gray-800"}`}
+                        className={`w-full p-3 rounded-lg text-gray-300 hover:text-gold ${activeTab === "others" ? "bg-gray-700" : "bg-gray-800"}`}
                         onClick={() => setActiveTab("others")}
                     >
                         Inne
@@ -129,7 +137,7 @@ const AdminPage = () => {
                                 <tbody>
                                     {users.map((user, index) => (
                                         <tr key={user._id} className="border-t border-gray-600">
-                                            <td className="p-3">{index+1}</td>
+                                            <td className="p-3">{index + 1}</td>
                                             <td className="p-3">{user.playerId}</td>
                                             <td className="p-3">{user.username}</td>
                                             <td className="p-3">{user.email}</td>
