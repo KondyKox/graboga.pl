@@ -106,10 +106,10 @@ const UserProfilePage = () => {
         {/* Opcje dla użytkownika */}
         <div className="flex justify-center mt-4 space-x-4">
           <div className="user-field w-full user-input">
-            <button className="text-lg font-bold w-full">Edytuj Profil</button>
+            <button className="user-btn">Edytuj Profil</button>
           </div>
           <div className="user-field w-full user-input">
-            <button className="text-lg font-bold w-full">Zmiana Hasła</button>
+            <button className="user-btn">Zmiana Hasła</button>
           </div>
         </div>
       </div>
