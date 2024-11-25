@@ -162,7 +162,7 @@ const AdminPage = () => {
 
                 {/* Other tabs (transactions, logs, etc.) remain as before */}
                 {activeTab === "store" && (
-                    <div className="min-h-full bg-gradient-to-b from-black to-gray-900 text-gold p-8 rounded-xl shadow-xl border-2 border-gold">
+                    <div className="min-h-full max-h-96 bg-gradient-to-b from-black to-gray-900 text-gold p-8 rounded-xl shadow-xl border-2 border-gold">
                         <h2 className="text-center text-2xl font-semibold text-gray-300 mb-6">Sklep</h2>
                         <div className="overflow-y-auto max-h-96">  {/* Kontener z przewijaniem */}
                             <table className="w-full text-gray-300">
@@ -201,7 +201,7 @@ const AdminPage = () => {
                                 </tbody>
                             </table>
                         </div>
-                        <div className="text-center">
+                        <div className="text-center max-h-8 my-2">
                             {/* Dadaj */}
                             <button className="mx-2 text-gray-300 bg-transparent border-2 border-yellow-500 rounded-lg py-2 px-4 hover:bg-yellow-500 hover:text-gray-900 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50">
                                 <FaPlus />
