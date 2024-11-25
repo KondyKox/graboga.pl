@@ -1,9 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
 import LoadingOverlay from "@/components/Loading";
-import { FaBan, FaEdit, FaTrash } from "react-icons/fa";
+import { FaBan, FaEdit, FaPlus, FaPlusCircle, FaTrash } from "react-icons/fa";
 import Tooltip from "@/components/Tooltip";
-import { FaDeleteLeft } from "react-icons/fa6";
+import { FaDeleteLeft, FaReddit } from "react-icons/fa6";
 
 interface User {
     _id: string;
@@ -17,7 +17,7 @@ interface StoreItem {
     _id: string;
     pack: string;
     cost: number;
-    expired: string; 
+    expired: string;
 }
 
 
@@ -35,14 +35,14 @@ const AdminPage = () => {
                     fetch("/api/admin/users"),
                     fetch("/api/admin/store"),
                 ]);
-    
+
                 if (!usersResponse.ok || !storeResponse.ok) {
                     throw new Error("Failed to fetch data");
                 }
-    
+
                 const usersData: User[] = await usersResponse.json();
                 const storeData: StoreItem[] = await storeResponse.json();
-    
+
                 setUsers(usersData);
                 setStore(storeData);
             } catch (err) {
@@ -51,10 +51,10 @@ const AdminPage = () => {
                 setLoading(false);
             }
         };
-    
+
         fetchData();
     }, []);
-    
+
 
     if (loading) return <LoadingOverlay message="Wczytywanie danych..." />;
     if (error) return <p>Error: {error}</p>;
@@ -170,9 +170,11 @@ const AdminPage = () => {
                                     <tr>
                                         <th className="p-3 text-left"></th>
                                         <th className="p-3 text-left">ID</th>
-                                        <th className="p-3 text-left">COST</th>
-                                        <th className="p-3 text-left">Expired date</th>
-                                        <th className="p-3 text-left">Actions</th>
+                                        <th className="p-3 text-left">Kategoria</th>
+                                        <th className="p-3 text-left">Nazwa</th>
+                                        <th className="p-3 text-left">Cena</th>
+                                        <th className="p-3 text-left">Status</th>
+                                        <th className="p-3 text-left">Akcje</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -180,8 +182,10 @@ const AdminPage = () => {
                                         <tr key={item._id} className="border-t border-gray-600">
                                             <td className="p-3">{index + 1}</td>
                                             <td className="p-3">{item.pack}</td>
+                                            <td className="p-3">{item.category}</td>
+                                            <td className="p-3">{item.name}</td>
                                             <td className="p-3">{item.cost}</td>
-                                            <td className="p-3">{item.expired}</td>
+                                            <td className="p-3">{item.status}</td>
                                             <td className="p-3">
                                                 {/* Edytuj */}
                                                 <button className="text-gray-300 bg-transparent border-2 border-yellow-500 rounded-lg py-2 px-4 hover:bg-yellow-500 hover:text-gray-900 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50">
@@ -196,6 +200,24 @@ const AdminPage = () => {
                                     ))}
                                 </tbody>
                             </table>
+                        </div>
+                        <div className="text-center">
+                            {/* Dadaj */}
+                            <button className="mx-2 text-gray-300 bg-transparent border-2 border-yellow-500 rounded-lg py-2 px-4 hover:bg-yellow-500 hover:text-gray-900 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50">
+                                <FaPlus />
+                            </button>
+                            {/* Inne */}
+                            <button className="mx-2 text-gray-300 bg-transparent border-2 border-yellow-500 rounded-lg py-2 px-4 hover:bg-yellow-500 hover:text-gray-900 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50">
+                                <FaPlusCircle />
+                            </button>
+                            {/* Inne */}
+                            <button className="mx-2 text-gray-300 bg-transparent border-2 border-yellow-500 rounded-lg py-2 px-4 hover:bg-yellow-500 hover:text-gray-900 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50">
+                                <FaPlusCircle />
+                            </button>
+                            {/* Inne */}
+                            <button className="mx-2 text-gray-300 bg-transparent border-2 border-yellow-500 rounded-lg py-2 px-4 hover:bg-yellow-500 hover:text-gray-900 transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50">
+                                <FaPlusCircle />
+                            </button>
                         </div>
                     </div>
                 )}
