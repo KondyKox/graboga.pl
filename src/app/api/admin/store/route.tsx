@@ -11,11 +11,21 @@ export async function GET(request: any) {
     }
 
     const services = await db.collection('shop').find().toArray(); // Retrieve all services
+    const categories = await db.collection('categories').find().toArray(); // Retrieve all services
 
-    // Map through the services and remove _id from each one
+    // Map through the services 
     const formattedServices = services.map(service => {
-      const { _id, ...rest } = service; // Destructure _id and the rest of the service object
-      return rest; // Return the object without _id
+      return {
+        item_id: service.item_id,
+        category_id: service.category_id,
+        stock_quantity: service.stock_quantity,
+        price: service.price,
+        currency: 1,
+        discount: service.discount,
+        status: service.status,
+        created_at: service.created_at,
+        updated_at: service.updated_at,
+      }; 
     });
 
     return NextResponse.json(formattedServices); // Return formatted services without _id
