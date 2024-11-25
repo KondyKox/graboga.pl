@@ -237,18 +237,18 @@ h6 {
   @apply text-legendary;
 }
 
-.special {
+.cursed {
   @apply border-special;
 }
-.special:hover {
+.cursed:hover {
   @apply shadow-special;
 }
-.special img {
+.cursed img {
   @apply border-special;
 }
-.special:hover img {
+.cursed:hover img {
   @apply drop-shadow-special;
 }
-.special h2 {
+.cursed h2 {
   @apply text-special;
 }

@@ -237,7 +237,7 @@
     "description": "'Nie nawidzę szczęśliwych ludzi'",
     "img": "/cards_img/gasiorowska.jpg",
     "teacher": "gasiorowska",
-    "rarity": "special"
+    "rarity": "cursed"
   },
   {
     "id": 31,
@@ -245,6 +245,6 @@
     "description": "Makbet na wojnie - koloryzowane",
     "img": "/cards_img/gasiorowska_makbet.jpg",
     "teacher": "gasiorowska",
-    "rarity": "special"
+    "rarity": "cursed"
   }
 ]

@@ -1,5 +1,5 @@
 {
-  "rarityOptions": ["All", "common", "rare", "epic", "legendary"],
+  "rarityOptions": ["All", "common", "rare", "epic", "legendary", "cursed"],
   "teacherOptions": [
     "All",
     "mucha",
