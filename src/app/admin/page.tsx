@@ -7,9 +7,10 @@ import { tabs } from "./constants";
 import UserPanel from "@/components/admin/UsersPanel";
 import StorePanel from "@/components/admin/StorePanel";
 import TransactionPanel from "@/components/admin/TransactionsPanel";
+import LogsPanel from "@/components/admin/LogsPanel";
 
 const AdminPage = () => {
-  const { loading, error, users, store } = useAdminData();
+  const { loading, error, users, store, logs } = useAdminData();
   const [activeTab, setActiveTab] = useState("users");
   const [showIcons, setShowIcons] = useState(false);
 
@@ -17,6 +18,7 @@ const AdminPage = () => {
     users: <UserPanel users={users} />,
     store: <StorePanel store={store} />,
     transactions: <TransactionPanel />,
+    logs: <LogsPanel logs={logs} />,
   };
 
   if (loading) return <LoadingOverlay message="Wczytywanie danych..." />;

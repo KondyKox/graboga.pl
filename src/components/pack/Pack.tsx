@@ -29,7 +29,19 @@ const Pack = ({ storeData }: PackProps) => {
 
     setLoading(true);
     try {
-      const response = await fetch(`/api/pack/${id}/open`);
+      const token = localStorage.getItem("token");
+
+      if (!token) {
+        addNotification("Error: Missing authentication token.");
+        throw new Error("No token found in localStorage");
+      }
+      const response = await fetch(`/api/pack/${id}/open`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+        },
+    });
 
       if (!response.ok) {
         // Jeśli odpowiedź jest błędna (np. 500), sprawdź, czy jest wiadomość

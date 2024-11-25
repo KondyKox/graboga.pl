@@ -1,4 +1,4 @@
-import { StoreItem, User } from "@/types/AdminProps";
+import { LogsItem, StoreItem, User } from "@/types/AdminProps";
 import { useState, useEffect } from "react";
 
 export const useAdminData = () => {
@@ -6,14 +6,16 @@ export const useAdminData = () => {
   const [error, setError] = useState<string | null>(null);
   const [users, setUsers] = useState<User[]>([]);
   const [store, setStore] = useState<StoreItem[]>([]);
+  const [logs, setLogs] = useState<LogsItem[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const [usersResponse, storeResponse] = await Promise.all([
+        const [usersResponse, storeResponse, logsResponse] = await Promise.all([
           fetch("/api/admin/users"),
           fetch("/api/admin/store"),
+          fetch("/api/logger/view"),
         ]);
 
         if (!usersResponse.ok || !storeResponse.ok) {
@@ -22,6 +24,7 @@ export const useAdminData = () => {
 
         setUsers(await usersResponse.json());
         setStore(await storeResponse.json());
+        setLogs(await logsResponse.json());
       } catch (err) {
         setError("Nie udało się załadować danych");
       } finally {
@@ -32,5 +35,5 @@ export const useAdminData = () => {
     fetchData();
   }, []);
 
-  return { loading, error, users, store };
+  return { loading, error, users, store, logs };
 };

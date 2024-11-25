@@ -1,5 +1,7 @@
 import { connectToDatabase } from '@/lib/db';
 import { NextResponse } from 'next/server';
+import jwt from 'jsonwebtoken';
+import requestIp from 'request-ip';
 
 function findPackById(packs: any[], packId: any) {
     // Przeszukujemy tablicę paczek, aby znaleźć paczkę z pasującym pack_id
@@ -64,14 +66,65 @@ function getRandomCard(cards: any[]): any {
     return cards[randomIndex];
 }
 
-export async function GET(request: any, { params }: any) {
+function cardsIds(data: any) {
+    let x = '';
+    data.map((element: any) => {
+        x += element.id + ','
+    })
+    return x;
+}
+
+function addToLogs(user: any, action: any, details: any, status: any, ip: any) {
+    const logData = {
+        user: user,          // Nazwa użytkownika
+        action: action,  // Akcja użytkownika
+        details: details, // Szczegóły akcji
+        status: status,        // Status akcji
+        ip: ip,        // Adres IP użytkownika
+    };
+
+    fetch('http://localhost:3000/api/logger/add', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json', // Ustawienie typu treści
+        },
+        body: JSON.stringify(logData), // Konwersja danych na JSON
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json(); // Parsowanie odpowiedzi JSON
+        })
+        .catch(error => {
+            console.error('Error:', error); // Obsługa błędów
+        });
+
+}
+
+export async function GET(req: any, { params }: any) {
+    const authHeader = req.headers.get('authorization');
+    const token = authHeader?.split(' ')[1];
+    const ip =  requestIp.getClientIp(req);
+    console.log(ip)
+
+    if (!token) {
+        return NextResponse.json({ message: 'Authorization token missing' }, { status: 401 });
+    }
+
+    // Verify the token
+    const decodedToken = jwt.verify(token, process.env.JWT_SECRET as string);
+
+    const { playerId }: any = decodedToken;
+
     try {
         const db = await connectToDatabase();
         const packsData = await db.collection('packs').find().toArray();
         const cardsData = await db.collection('cards').find().toArray();
 
         let packData = findPackById(packsData, params.id);
-        if(packData == null) {
+        if (packData == null) {
+            addToLogs(playerId, 'Pack open', 'Pack not found', 'failed', ip)
             return NextResponse.json({
                 status: "error",
                 message: "Pack not found",
@@ -85,6 +138,8 @@ export async function GET(request: any, { params }: any) {
 
         let randomCards = getRandomCards(cards, packData.chances, 3);
 
+        addToLogs(playerId, 'Pack open', `Pack opened - cards: ${cardsIds(randomCards)}`, 'success', ip)
+
         return NextResponse.json({
             status: "success",
             message: "Pack opened successfully.",
@@ -95,8 +150,11 @@ export async function GET(request: any, { params }: any) {
             transaction_id: "tx_001",
             timestamp: new Date().toISOString(),
         }, { status: 200 });
+
     } catch (error) {
         console.error('Error fetching cards:', error);
+
+        addToLogs(playerId, 'Pack open', error, 'failed', ip)
         return NextResponse.json({
             status: "error",
             message: "Internal Server Error",
