@@ -11,6 +11,7 @@ import TransactionPanel from "@/components/admin/TransactionsPanel";
 const AdminPage = () => {
   const { loading, error, users, store } = useAdminData();
   const [activeTab, setActiveTab] = useState("users");
+  const [showIcons, setShowIcons] = useState(false);
 
   const panels: Record<string, JSX.Element> = {
     users: <UserPanel users={users} />,
@@ -25,9 +26,31 @@ const AdminPage = () => {
     <div className="flex flex-col lg:flex-row gap-10 w-full max-w-7xl mx-auto mt-12">
       {/* Panel boczny nawigacji */}
       <div className="lg:w-1/4 w-full gradient-bg p-6 rounded-xl shadow-xl border-2 border-epic">
-        <h2 className="text-xl font-semibold mb-6 text-center">
+        <h2 className="text-xl font-semibold text-center mb-6 md:mb-0">
           Panel administracyjny
         </h2>
+        {/* Przełącznik tylko dla desktopu */}
+        <div className="hidden md:block text-center mb-6">
+          <label className="flex items-center justify-center gap-2 cursor-pointer text-sm">
+            <span className="text-gray-700">
+              {showIcons ? "Tekst i ikony" : "Tylko ikony"}
+            </span>
+            <input
+              type="checkbox"
+              checked={showIcons}
+              onChange={() => setShowIcons(!showIcons)}
+              className="sr-only"
+            />
+            <div className="relative">
+              <div className="block bg-gray-300 w-10 h-6 rounded-full"></div>
+              <div
+                className={`absolute left-1 top-1 w-4 h-4 bg-foreground rounded-full transition-transform ${
+                  showIcons ? "transform translate-x-4" : ""
+                }`}
+              ></div>
+            </div>
+          </label>
+        </div>
         <div className="space-y-4">
           {tabs.map((tab) => (
             <button
@@ -37,7 +60,16 @@ const AdminPage = () => {
               }`}
               onClick={() => setActiveTab(tab.id)}
             >
-              {tab.label}
+              <div className="flex items-center gap-4 px-2">
+                {tab.icon}
+                <span
+                  className={`hidden self-center ${
+                    showIcons ? "hidden" : "md:inline"
+                  }`}
+                >
+                  {tab.label}
+                </span>
+              </div>
             </button>
           ))}
         </div>
