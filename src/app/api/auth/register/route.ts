@@ -3,6 +3,34 @@ import bcrypt from 'bcryptjs';
 import { connectToDatabase } from 'lib/db';
 import getNextPlayerId from 'lib/counter';
 
+function addToLogs(user: any, action: any, details: any, status: any, ip: any) {
+    const logData = {
+        user: user,          // Nazwa użytkownika
+        action: action,  // Akcja użytkownika
+        details: details, // Szczegóły akcji
+        status: status,        // Status akcji
+        ip: ip,        // Adres IP użytkownika
+    };
+
+    fetch('http://localhost:3000/api/logger/add', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json', // Ustawienie typu treści
+        },
+        body: JSON.stringify(logData), // Konwersja danych na JSON
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json(); // Parsowanie odpowiedzi JSON
+        })
+        .catch(error => {
+            console.error('Error:', error); // Obsługa błędów
+        });
+
+}
+
 export async function POST(req: Request) {
     const { username, email, password } = await req.json();
 
@@ -55,7 +83,8 @@ export async function POST(req: Request) {
         // Save the user and profile to the database
         await db.collection('users').insertOne(newUser);
         await db.collection('profiles').insertOne(newProfile);
-
+        // Logi
+        addToLogs(playerId, "Register", 'Register successful', 'success', '-');
         // Response 201 Created on successful registration
         return NextResponse.json({ message: 'User registered successfully' }, { status: 201 });
     } catch (error) {
