@@ -2,6 +2,13 @@ import { connectToDatabase } from '@/lib/db';
 import { NextResponse } from 'next/server';
 import jwt from 'jsonwebtoken';
 import requestIp from 'request-ip';
+import { Collection } from "mongodb";
+
+interface Profile {
+    playerId: string;
+    inventory: Array<{ item_id: any; category_id: number }>;
+  }
+  
 
 function findPackById(packs: any[], packId: any) {
     // Przeszukujemy tablicę paczek, aby znaleźć paczkę z pasującym pack_id
@@ -106,7 +113,6 @@ export async function GET(req: any, { params }: any) {
     const authHeader = req.headers.get('authorization');
     const token = authHeader?.split(' ')[1];
     const ip =  requestIp.getClientIp(req);
-    console.log(ip)
 
     if (!token) {
         return NextResponse.json({ message: 'Authorization token missing' }, { status: 401 });
@@ -121,6 +127,7 @@ export async function GET(req: any, { params }: any) {
         const db = await connectToDatabase();
         const packsData = await db.collection('packs').find().toArray();
         const cardsData = await db.collection('cards').find().toArray();
+        const profiles: Collection<Profile> = db.collection("profiles");
 
         let packData = findPackById(packsData, params.id);
         if (packData == null) {
@@ -137,6 +144,17 @@ export async function GET(req: any, { params }: any) {
         )));
 
         let randomCards = getRandomCards(cards, packData.chances, 3);
+
+        const newItems = randomCards.map((card: any) => ({
+            item_id: card.id,
+            category_id: 1,
+            drop_date: new Date()
+        }));
+
+        await profiles.updateOne(
+            { playerId }, // Znajdź dokument gracza po playerId
+            { $push: { inventory: { $each: newItems } } } // Dodaj wszystkie elementy z newItems do inventory
+          );
 
         addToLogs(playerId, 'Pack open', `Pack opened - cards: ${cardsIds(randomCards)}`, 'success', ip)
 
