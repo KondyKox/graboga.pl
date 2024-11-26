@@ -5,9 +5,7 @@ import { useEffect, useState } from "react";
  * Hook to fetch and process cards.
  */
 const useCards = () => {
-  const [cards, setCards] = useState<
-    (CardProps & { rarity: string; teacher: string })[]
-  >([]);
+  const [cards, setCards] = useState<CardProps[]>([]);
 
   useEffect(() => {
     const fetchCards = async () => {

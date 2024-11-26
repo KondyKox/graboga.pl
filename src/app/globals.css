@@ -159,9 +159,8 @@ h6 {
 .input {
   @apply px-4 py-1 rounded bg-epic transition-all duration-300 ease-in-out focus:bg-rare outline-none text-lg w-full lg:text-xl;
 }
-
 .btn {
-  @apply py-2 w-full rounded border-2 border-epic font-bold hover:bg-epic transition-all duration-300 ease-in-out;
+  @apply py-2 rounded border-2 border-epic font-bold hover:bg-epic transition-all duration-300 ease-in-out;
 }
 
 /* User page elements */

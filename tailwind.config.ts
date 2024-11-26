@@ -35,6 +35,15 @@ const config: Config = {
         legendary: "inset 0 0 10px 5px var(--clr-legendary)",
         special: "inset 0 0 10px 5px var(--clr-special)",
       },
+      animation: {
+        rolling: "rolling 0.5s linear infinite", // Animacja przelatywania
+      },
+      keyframes: {
+        rolling: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
+      },
     },
   },
   plugins: [],

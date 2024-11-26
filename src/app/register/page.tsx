@@ -72,7 +72,7 @@ export default function Register() {
             className="input"
           />
         </div>
-        <button type="submit" disabled={isLoading} className="btn">
+        <button type="submit" disabled={isLoading} className="btn w-full">
           {isLoading ? "Registering..." : "Register"}
         </button>
       </form>

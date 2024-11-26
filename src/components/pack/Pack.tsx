@@ -7,7 +7,9 @@ import NotificationBar from "../Notification";
 import NotificationList from "../Notification";
 
 const Pack = ({ storeData }: PackProps) => {
-  const [notifications, setNotifications] = useState<{ id: string; message: string }[]>([]);
+  const [notifications, setNotifications] = useState<
+    { id: string; message: string }[]
+  >([]);
   const [packData, setPackData] = useState([]);
   const [packOpened, setPackOpened] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -20,7 +22,9 @@ const Pack = ({ storeData }: PackProps) => {
 
   // Usuń powiadomienie
   const removeNotification = (id: string) => {
-    setNotifications((prev) => prev.filter((notification) => notification.id !== id));
+    setNotifications((prev) =>
+      prev.filter((notification) => notification.id !== id)
+    );
   };
 
   // Funkcja otwierająca paczkę i pobierająca karty z API
@@ -36,12 +40,12 @@ const Pack = ({ storeData }: PackProps) => {
         throw new Error("No token found in localStorage");
       }
       const response = await fetch(`/api/pack/${id}/open`, {
-        method: 'GET',
+        method: "GET",
         headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
         },
-    });
+      });
 
       if (!response.ok) {
         // Jeśli odpowiedź jest błędna (np. 500), sprawdź, czy jest wiadomość
@@ -63,7 +67,9 @@ const Pack = ({ storeData }: PackProps) => {
 
   return (
     <div className="flex flex-col justify-center items-center">
-      <h4 className="font-bold tracking-widest text-lg">{storeData.pack_name}</h4>
+      <h4 className="font-bold tracking-widest text-lg">
+        {storeData.pack_name}
+      </h4>
       {/* Powiadomienia */}
       <NotificationList
         notifications={notifications}
