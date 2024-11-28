@@ -5,7 +5,11 @@
     "description": "Wzór nauczyciela do naśladowania",
     "img": "/cards_img/mucha.jpg",
     "teacher": "mucha",
-    "rarity": "legendary"
+    "rarity": "legendary",
+    "ez_matura": {
+      "subject": "Informatyka",
+      "category": "vocational"
+    }
   },
   {
     "id": 2,
@@ -13,7 +17,11 @@
     "description": "Błogosławiony Andrzej Mucha",
     "img": "/cards_img/mucha_boski.jpg",
     "teacher": "mucha",
-    "rarity": "legendary"
+    "rarity": "legendary",
+    "ez_matura": {
+      "subject": "Informatyka",
+      "category": "vocational"
+    }
   },
   {
     "id": 3,
@@ -21,7 +29,11 @@
     "description": "Genialny nauczyciel",
     "img": "/cards_img/mucha_mysliciel.jpg",
     "teacher": "mucha",
-    "rarity": "legendary"
+    "rarity": "legendary",
+    "ez_matura": {
+      "subject": "Informatyka",
+      "category": "vocational"
+    }
   },
   {
     "id": 4,
@@ -29,7 +41,11 @@
     "description": "Otto Mucha za czasów WW2",
     "img": "/cards_img/mucha_otto.jpg",
     "teacher": "mucha",
-    "rarity": "legendary"
+    "rarity": "legendary",
+    "ez_matura": {
+      "subject": "Informatyka",
+      "category": "vocational"
+    }
   },
   {
     "id": 5,
@@ -37,7 +53,11 @@
     "description": "Szybki ten A. Mucha",
     "img": "/cards_img/mucha_szybki.jpg",
     "teacher": "mucha",
-    "rarity": "legendary"
+    "rarity": "legendary",
+    "ez_matura": {
+      "subject": "Informatyka",
+      "category": "vocational"
+    }
   },
   {
     "id": 6,
@@ -45,7 +65,11 @@
     "description": "A. Mucha w Pradze",
     "img": "/cards_img/mucha_czeski.jpg",
     "teacher": "mucha",
-    "rarity": "legendary"
+    "rarity": "legendary",
+    "ez_matura": {
+      "subject": "Informatyka",
+      "category": "vocational"
+    }
   },
   {
     "id": 7,
@@ -53,7 +77,11 @@
     "description": "To nawet nie jest On",
     "img": "/cards_img/mucha_mucha.jpg",
     "teacher": "mucha",
-    "rarity": "legendary"
+    "rarity": "legendary",
+    "ez_matura": {
+      "subject": "Informatyka",
+      "category": "vocational"
+    }
   },
   {
     "id": 8,
@@ -61,7 +89,11 @@
     "description": "Hasło: toster",
     "img": "/cards_img/graczyk.jpg",
     "teacher": "graczyk",
-    "rarity": "epic"
+    "rarity": "epic",
+    "ez_matura": {
+      "subject": "Informatyka",
+      "category": "vocational"
+    }
   },
   {
     "id": 9,
@@ -69,7 +101,11 @@
     "description": "Obali browara szybciej niż zrobisz pompkę",
     "img": "/cards_img/grosik.jpg",
     "teacher": "grosik",
-    "rarity": "epic"
+    "rarity": "epic",
+    "ez_matura": {
+      "subject": "W-F",
+      "category": "practical"
+    }
   },
   {
     "id": 10,
@@ -77,7 +113,11 @@
     "description": "'Zamknąć? Zamknąć to wy możecie mordy!'",
     "img": "/cards_img/korzen.jpg",
     "teacher": "korzen",
-    "rarity": "epic"
+    "rarity": "epic",
+    "ez_matura": {
+      "subject": "Polish",
+      "category": "humanities"
+    }
   },
   {
     "id": 11,
@@ -85,7 +125,11 @@
     "description": "Fenomenalny dyrektor",
     "img": "/cards_img/korzen_tancerz.jpg",
     "teacher": "korzen",
-    "rarity": "epic"
+    "rarity": "epic",
+    "ez_matura": {
+      "subject": "Polish",
+      "category": "humanities"
+    }
   },
   {
     "id": 12,
@@ -93,7 +137,11 @@
     "description": "TOP 1 Pro Gamer in Mechan",
     "img": "/cards_img/korzen_gamer.jpg",
     "teacher": "korzen",
-    "rarity": "epic"
+    "rarity": "epic",
+    "ez_matura": {
+      "subject": "Polski",
+      "category": "humanities"
+    }
   },
   {
     "id": 13,
@@ -101,7 +149,11 @@
     "description": "'Boli cię ręka i nie możesz grać? Niektórzy w ogóle nie mają rąk!'",
     "img": "/cards_img/nierychly.jpg",
     "teacher": "nierychly",
-    "rarity": "epic"
+    "rarity": "epic",
+    "ez_matura": {
+      "subject": "Religia",
+      "category": "humanities"
+    }
   },
   {
     "id": 14,
@@ -109,7 +161,11 @@
     "description": "'Dlaczego zawsze skaczą z mostu? Są inne obiekty w Głogowie'",
     "img": "/cards_img/sobczak.jpg",
     "teacher": "sobczak",
-    "rarity": "epic"
+    "rarity": "epic",
+    "ez_matura": {
+      "subject": "Informatyka",
+      "category": "vocational"
+    }
   },
   {
     "id": 15,
@@ -117,7 +173,11 @@
     "description": "'Ja podziękuję za taką modę, torby by mi przemarzły'",
     "img": "/cards_img/sobczak_zawodowiec.jpg",
     "teacher": "sobczak",
-    "rarity": "epic"
+    "rarity": "epic",
+    "ez_matura": {
+      "subject": "Informatyka",
+      "category": "vocational"
+    }
   },
   {
     "id": 16,
@@ -125,7 +185,11 @@
     "description": "'Cicho, cicho bo przyjdzie zdzicho!'",
     "img": "/cards_img/wolska.jpg",
     "teacher": "wolska",
-    "rarity": "epic"
+    "rarity": "epic",
+    "ez_matura": {
+      "subject": "Historia",
+      "category": "humanities"
+    }
   },
   {
     "id": 17,
@@ -133,7 +197,11 @@
     "description": "Nierychle się załamał",
     "img": "/cards_img/nierychly_zalamanie.jpg",
     "teacher": "nierychly",
-    "rarity": "epic"
+    "rarity": "epic",
+    "ez_matura": {
+      "subject": "Religia",
+      "category": "humanities"
+    }
   },
   {
     "id": 18,
@@ -157,7 +225,11 @@
     "description": "Magister inżynier Czupryniak Czesław Witold",
     "img": "/cards_img/mgrinz.jpg",
     "teacher": "mgr.inz.",
-    "rarity": "rare"
+    "rarity": "rare",
+    "ez_matura": {
+      "subject": "Informatyka",
+      "category": "sciences"
+    }
   },
   {
     "id": 21,
@@ -165,7 +237,11 @@
     "description": "Magister inżynier robienia kebsów",
     "img": "/cards_img/mgrinz_kebab.jpg",
     "teacher": "mgr.inz.",
-    "rarity": "rare"
+    "rarity": "rare",
+    "ez_matura": {
+      "subject": "Informatyka",
+      "category": "sciences"
+    }
   },
   {
     "id": 22,
@@ -173,7 +249,11 @@
     "description": "Słabe samopoczucie to nie wymówka",
     "img": "/cards_img/musial.jpg",
     "teacher": "musial",
-    "rarity": "rare"
+    "rarity": "rare",
+    "ez_matura": {
+      "subject": "Matma",
+      "category": "sciences"
+    }
   },
   {
     "id": 23,
@@ -181,7 +261,11 @@
     "description": "🪓",
     "img": "/cards_img/toporowicz.jpg",
     "teacher": "toporowicz",
-    "rarity": "common"
+    "rarity": "common",
+    "ez_matura": {
+      "subject": "BHP",
+      "category": "practical"
+    }
   },
   {
     "id": 24,
@@ -189,7 +273,11 @@
     "description": "W czasie lekcji kilkukrotnie powie, że traci cierpliwość",
     "img": "/cards_img/mazurek.jpg",
     "teacher": "mazurek",
-    "rarity": "common"
+    "rarity": "common",
+    "ez_matura": {
+      "subject": "Podstawy Przedsiębiorczości",
+      "category": "practical"
+    }
   },
   {
     "id": 25,
@@ -197,7 +285,11 @@
     "description": "Więcej pie*dolenia niż samej lekcji",
     "img": "/cards_img/pulit.jpg",
     "teacher": "pulit",
-    "rarity": "common"
+    "rarity": "common",
+    "ez_matura": {
+      "subject": "Niemiecki",
+      "category": "humanities"
+    }
   },
   {
     "id": 26,
@@ -205,7 +297,11 @@
     "description": "'Piotr Sta-sy-szyn' ~ Grażyna Siwula",
     "img": "/cards_img/stasyszyn.jpg",
     "teacher": "stasyszyn",
-    "rarity": "common"
+    "rarity": "common",
+    "ez_matura": {
+      "subject": "Fizyka",
+      "category": "sciences"
+    }
   },
   {
     "id": 27,
@@ -213,7 +309,11 @@
     "description": "Dowódca samorządku uczniowskiego",
     "img": "/cards_img/majewska.jpg",
     "teacher": "majewska",
-    "rarity": "common"
+    "rarity": "common",
+    "ez_matura": {
+      "subject": "Angielski",
+      "category": "humanities"
+    }
   },
   {
     "id": 28,
@@ -221,7 +321,11 @@
     "description": "Sam se czekaj",
     "img": "/cards_img/czekaj.jpg",
     "teacher": "czekaj",
-    "rarity": "common"
+    "rarity": "common",
+    "ez_matura": {
+      "subject": "Niemiecki",
+      "category": "sciences"
+    }
   },
   {
     "id": 29,
@@ -237,7 +341,11 @@
     "description": "'Nie nawidzę szczęśliwych ludzi'",
     "img": "/cards_img/gasiorowska.jpg",
     "teacher": "gasiorowska",
-    "rarity": "cursed"
+    "rarity": "cursed",
+    "ez_matura": {
+      "subject": "Polski",
+      "category": "humanities"
+    }
   },
   {
     "id": 31,
@@ -245,6 +353,10 @@
     "description": "Makbet na wojnie - koloryzowane",
     "img": "/cards_img/gasiorowska_makbet.jpg",
     "teacher": "gasiorowska",
-    "rarity": "cursed"
+    "rarity": "cursed",
+    "ez_matura": {
+      "subject": "Polski",
+      "category": "humanities"
+    }
   }
 ]

@@ -1,0 +1,285 @@
+[
+  {
+    "subject": "W-F",
+    "category": "practical",
+    "question": "Jakie są zasady poprawnego wykonywania przysiadu ze sztangą?",
+    "answers": [
+      "Proste plecy, pełen zakres ruchu",
+      "Skłon w przód, szybki ruch",
+      "Kolana na zewnątrz i wyprost nóg",
+      "Luźna pozycja, brak koncentracji"
+    ],
+    "correctAnswer": "Proste plecy, pełen zakres ruchu"
+  },
+  {
+    "subject": "Polski",
+    "category": "humanities",
+    "question": "Kim był Jacek Soplica w 'Panu Tadeuszu' Adama Mickiewicza?",
+    "answers": [
+      "Księdzem, patriota i ojcem Tadeusza",
+      "Właścicielem Soplicowa",
+      "Przyjacielem Hrabiego",
+      "Zakonem krzyżackim"
+    ],
+    "correctAnswer": "Księdzem, patriota i ojcem Tadeusza"
+  },
+  {
+    "subject": "Religia",
+    "category": "humanities",
+    "question": "Kto jest autorem encykliki 'Centesimus Annus'?",
+    "answers": ["Jan Paweł II", "Benedykt XVI", "Franciszek", "Jan XXIII"],
+    "correctAnswer": "Jan Paweł II"
+  },
+  {
+    "subject": "Historia",
+    "category": "humanities",
+    "question": "W którym roku Polska odzyskała niepodległość?",
+    "answers": ["1914", "1918", "1920", "1939"],
+    "correctAnswer": "1918"
+  },
+  {
+    "subject": "Informatyka",
+    "category": "sciences",
+    "question": "Co oznacza skrót 'HTML'?",
+    "answers": [
+      "HyperText Markup Language",
+      "Hyperlink Transfer Method",
+      "Hyper Tool Machine Learning",
+      "High-Level Markup Language"
+    ],
+    "correctAnswer": "HyperText Markup Language"
+  },
+  {
+    "subject": "Matma",
+    "category": "sciences",
+    "question": "Ile wynosi pierwiastek kwadratowy z liczby 49?",
+    "answers": ["6", "7", "8", "9"],
+    "correctAnswer": "7"
+  },
+  {
+    "subject": "BHP",
+    "category": "practical",
+    "question": "Jakie są trzy podstawowe elementy gaśnicy?",
+    "answers": [
+      "Zawór, manometr, dysza",
+      "Pokrywa, dysza, zbiornik",
+      "Wąż, manometr, zbiornik",
+      "Kabel, zawór, zbiornik"
+    ],
+    "correctAnswer": "Zawór, manometr, dysza"
+  },
+  {
+    "subject": "Podstawy Przedsiębiorczości",
+    "category": "sciences",
+    "question": "Jakie są podstawowe formy prowadzenia działalności gospodarczej w Polsce?",
+    "answers": [
+      "Jednoosobowa działalność gospodarcza, spółka cywilna, spółka z o.o.",
+      "Spółka komandytowa, karta podatkowa, działalność rzemieślnicza",
+      "Fundacja, jednoosobowa działalność gospodarcza, spółka akcyjna",
+      "Rada Nadzorcza, spółka cywilna, fundacja"
+    ],
+    "correctAnswer": "Jednoosobowa działalność gospodarcza, spółka cywilna, spółka z o.o."
+  },
+  {
+    "subject": "Fizyka",
+    "category": "sciences",
+    "question": "Jakie jest przyspieszenie grawitacyjne na powierzchni Ziemi?",
+    "answers": ["9,8 m/s²", "10,2 m/s²", "8,9 m/s²", "12,1 m/s²"],
+    "correctAnswer": "9,8 m/s²"
+  },
+  {
+    "subject": "W-F",
+    "category": "practical",
+    "question": "Który mięsień pracuje głównie podczas pompki?",
+    "answers": [
+      "Mięsień piersiowy większy",
+      "Dwugłowy uda",
+      "Mięsień czworogłowy uda",
+      "Mięsień naramienny"
+    ],
+    "correctAnswer": "Mięsień piersiowy większy"
+  },
+  {
+    "subject": "W-F",
+    "category": "practical",
+    "question": "Jakie są zasady gry w siatkówkę?",
+    "answers": [
+      "Drużyna może wykonać maksymalnie 3 odbicia",
+      "Nie można odbić piłki więcej niż raz na drużynę",
+      "Serwujący zawsze stoi w środku boiska",
+      "Punkty zdobywa się tylko po błędzie przeciwnika"
+    ],
+    "correctAnswer": "Drużyna może wykonać maksymalnie 3 odbicia"
+  },
+  {
+    "subject": "Polski",
+    "category": "humanities",
+    "question": "Co oznacza termin 'treny' w literaturze?",
+    "answers": [
+      "Utwory żałobne",
+      "Opowieści o bohaterach",
+      "Poezję miłosną",
+      "Ballady epickie"
+    ],
+    "correctAnswer": "Utwory żałobne"
+  },
+  {
+    "subject": "Polski",
+    "category": "humanities",
+    "question": "Jaki nurt literacki reprezentuje 'Lalka' Bolesława Prusa?",
+    "answers": ["Realizm", "Romantyzm", "Symbolizm", "Młoda Polska"],
+    "correctAnswer": "Realizm"
+  },
+  {
+    "subject": "Religia",
+    "category": "humanities",
+    "question": "Kto jest uznawany za pierwszego papieża Kościoła Katolickiego?",
+    "answers": ["Św. Piotr", "Jan Paweł II", "Św. Paweł", "Św. Augustyn"],
+    "correctAnswer": "Św. Piotr"
+  },
+  {
+    "subject": "Informatyka",
+    "category": "sciences",
+    "question": "Który protokół internetowy odpowiada za przesyłanie stron WWW?",
+    "answers": ["HTTP", "FTP", "SMTP", "DNS"],
+    "correctAnswer": "HTTP"
+  },
+  {
+    "subject": "Informatyka",
+    "category": "sciences",
+    "question": "Co oznacza skrót 'RAM'?",
+    "answers": [
+      "Random Access Memory",
+      "Read Access Module",
+      "Run And Manage",
+      "Rapid Application Manager"
+    ],
+    "correctAnswer": "Random Access Memory"
+  },
+  {
+    "subject": "Matma",
+    "category": "sciences",
+    "question": "Jakie jest pole koła o promieniu 5 cm?",
+    "answers": ["25π cm²", "50π cm²", "100π cm²", "75π cm²"],
+    "correctAnswer": "25π cm²"
+  },
+  {
+    "subject": "Matma",
+    "category": "sciences",
+    "question": "Rozwiąż równanie: 3x - 5 = 10.",
+    "answers": ["x = 5", "x = 3", "x = 15", "x = 0"],
+    "correctAnswer": "x = 5"
+  },
+  {
+    "subject": "BHP",
+    "category": "practical",
+    "question": "Który rodzaj gaśnicy jest odpowiedni do gaszenia pożarów elektrycznych?",
+    "answers": [
+      "Gaśnica proszkowa",
+      "Gaśnica wodna",
+      "Gaśnica pianowa",
+      "Gaśnica śniegowa (CO2)"
+    ],
+    "correctAnswer": "Gaśnica śniegowa (CO2)"
+  },
+  {
+    "subject": "BHP",
+    "category": "practical",
+    "question": "Jakie są podstawowe środki ochrony indywidualnej w pracy?",
+    "answers": [
+      "Kask, okulary ochronne, rękawice",
+      "Wiertarka, młotek, kombinerki",
+      "Maseczka chirurgiczna, kalosze",
+      "Ręcznik, światełko ostrzegawcze, aparat"
+    ],
+    "correctAnswer": "Kask, okulary ochronne, rękawice"
+  },
+  {
+    "subject": "Podstawy Przedsiębiorczości",
+    "category": "sciences",
+    "question": "Co to jest podatek VAT?",
+    "answers": [
+      "Podatek od wartości dodanej",
+      "Podatek od dochodów osobistych",
+      "Podatek od nieruchomości",
+      "Podatek od spadków"
+    ],
+    "correctAnswer": "Podatek od wartości dodanej"
+  },
+  {
+    "subject": "Matma",
+    "category": "sciences",
+    "question": "Rozwiąż równanie kwadratowe: x² - 4x + 4 = 0.",
+    "answers": ["x = 2", "x = -2", "x = 0", "x = 4"],
+    "correctAnswer": "x = 2"
+  },
+  {
+    "subject": "Matma",
+    "category": "sciences",
+    "question": "Jaki jest promień okręgu o polu 16π?",
+    "answers": ["r = 4", "r = 8", "r = 2", "r = 6"],
+    "correctAnswer": "r = 4"
+  },
+  {
+    "subject": "Polski",
+    "category": "humanities",
+    "question": "Na podstawie fragmentu 'Pana Tadeusza':\n\n\"Litwo! Ojczyzno moja! Ty jesteś jak zdrowie.\"\n\nJakie emocje wyraża autor w tym fragmencie?",
+    "answers": [
+      "Tęsknota i miłość do ojczyzny",
+      "Gniew na sytuację polityczną",
+      "Radość z powrotu do domu",
+      "Obojętność wobec kraju"
+    ],
+    "correctAnswer": "Tęsknota i miłość do ojczyzny"
+  },
+  {
+    "subject": "Polski",
+    "category": "humanities",
+    "question": "Fragment 'Lalki' Bolesława Prusa:\n\n\"Była to jedna z tych istot, które żyją na świecie nie dla siebie, ale dla innych.\"\n\nO kim jest mowa w tym fragmencie?",
+    "answers": ["Izabela Łęcka", "Wokulski", "Rzecki", "Zosia"],
+    "correctAnswer": "Rzecki"
+  },
+  {
+    "subject": "Polski",
+    "category": "humanities",
+    "question": "Z jakiego okresu literackiego pochodzi 'Dziady' Adama Mickiewicza?",
+    "answers": ["Romantyzm", "Młoda Polska", "Pozytywizm", "Oświecenie"],
+    "correctAnswer": "Romantyzm"
+  },
+  {
+    "subject": "Polski",
+    "category": "humanities",
+    "question": "Fragment wiersza Jana Kochanowskiego:\n\n\"Nie porzucaj nadzieje,\nJakoć się kolwiek dzieje.\"\n\nJaki motyw dominuje w tym fragmencie?",
+    "answers": [
+      "Nadzieja i wytrwałość",
+      "Smutek i rezygnacja",
+      "Zemsta",
+      "Miłość"
+    ],
+    "correctAnswer": "Nadzieja i wytrwałość"
+  },
+  {
+    "subject": "Polski",
+    "category": "humanities",
+    "question": "Fragment 'Krzyżaków' Henryka Sienkiewicza:\n\n\"Lecz nie było już komu grać na lutni, bo i Zbyszka nie stało...\"\n\nJakie wydarzenie opisuje ten fragment?",
+    "answers": [
+      "Śmierć Zbyszka z Bogdańca",
+      "Pożegnanie Zbyszka z ukochaną",
+      "Zwycięstwo Zbyszka w turnieju",
+      "Upadek zakonu krzyżackiego"
+    ],
+    "correctAnswer": "Śmierć Zbyszka z Bogdańca"
+  },
+  {
+    "subject": "Polski",
+    "category": "humanities",
+    "question": "Z jakiego utworu pochodzi cytat:\n\n\"Miej serce i patrzaj w serce.\"",
+    "answers": [
+      "Ballady i romanse - Mickiewicz",
+      "Lalka - Prus",
+      "Pan Tadeusz - Mickiewicz",
+      "Kamienie na szaniec - Kamiński"
+    ],
+    "correctAnswer": "Ballady i romanse - Mickiewicz"
+  }
+]
