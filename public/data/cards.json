@@ -6,10 +6,7 @@
     "img": "/cards_img/mucha.jpg",
     "teacher": "mucha",
     "rarity": "legendary",
-    "ez_matura": {
-      "subject": "Informatyka",
-      "category": "vocational"
-    }
+    "subject": "Informatyka"
   },
   {
     "id": 2,
@@ -18,10 +15,7 @@
     "img": "/cards_img/mucha_boski.jpg",
     "teacher": "mucha",
     "rarity": "legendary",
-    "ez_matura": {
-      "subject": "Informatyka",
-      "category": "vocational"
-    }
+    "subject": "Informatyka"
   },
   {
     "id": 3,
@@ -30,10 +24,7 @@
     "img": "/cards_img/mucha_mysliciel.jpg",
     "teacher": "mucha",
     "rarity": "legendary",
-    "ez_matura": {
-      "subject": "Informatyka",
-      "category": "vocational"
-    }
+    "subject": "Informatyka"
   },
   {
     "id": 4,
@@ -42,10 +33,7 @@
     "img": "/cards_img/mucha_otto.jpg",
     "teacher": "mucha",
     "rarity": "legendary",
-    "ez_matura": {
-      "subject": "Informatyka",
-      "category": "vocational"
-    }
+    "subject": "Informatyka"
   },
   {
     "id": 5,
@@ -54,10 +42,7 @@
     "img": "/cards_img/mucha_szybki.jpg",
     "teacher": "mucha",
     "rarity": "legendary",
-    "ez_matura": {
-      "subject": "Informatyka",
-      "category": "vocational"
-    }
+    "subject": "Informatyka"
   },
   {
     "id": 6,
@@ -66,10 +51,7 @@
     "img": "/cards_img/mucha_czeski.jpg",
     "teacher": "mucha",
     "rarity": "legendary",
-    "ez_matura": {
-      "subject": "Informatyka",
-      "category": "vocational"
-    }
+    "subject": "Informatyka"
   },
   {
     "id": 7,
@@ -78,10 +60,7 @@
     "img": "/cards_img/mucha_mucha.jpg",
     "teacher": "mucha",
     "rarity": "legendary",
-    "ez_matura": {
-      "subject": "Informatyka",
-      "category": "vocational"
-    }
+    "subject": "Informatyka"
   },
   {
     "id": 8,
@@ -90,10 +69,7 @@
     "img": "/cards_img/graczyk.jpg",
     "teacher": "graczyk",
     "rarity": "epic",
-    "ez_matura": {
-      "subject": "Informatyka",
-      "category": "vocational"
-    }
+    "subject": "Informatyka"
   },
   {
     "id": 9,
@@ -102,10 +78,7 @@
     "img": "/cards_img/grosik.jpg",
     "teacher": "grosik",
     "rarity": "epic",
-    "ez_matura": {
-      "subject": "W-F",
-      "category": "practical"
-    }
+    "subject": "W-F"
   },
   {
     "id": 10,
@@ -114,10 +87,7 @@
     "img": "/cards_img/korzen.jpg",
     "teacher": "korzen",
     "rarity": "epic",
-    "ez_matura": {
-      "subject": "Polish",
-      "category": "humanities"
-    }
+    "subject": "Polish"
   },
   {
     "id": 11,
@@ -126,10 +96,7 @@
     "img": "/cards_img/korzen_tancerz.jpg",
     "teacher": "korzen",
     "rarity": "epic",
-    "ez_matura": {
-      "subject": "Polish",
-      "category": "humanities"
-    }
+    "subject": "Polish"
   },
   {
     "id": 12,
@@ -138,10 +105,7 @@
     "img": "/cards_img/korzen_gamer.jpg",
     "teacher": "korzen",
     "rarity": "epic",
-    "ez_matura": {
-      "subject": "Polski",
-      "category": "humanities"
-    }
+    "subject": "Polski"
   },
   {
     "id": 13,
@@ -150,10 +114,7 @@
     "img": "/cards_img/nierychly.jpg",
     "teacher": "nierychly",
     "rarity": "epic",
-    "ez_matura": {
-      "subject": "Religia",
-      "category": "humanities"
-    }
+    "subject": "Religia"
   },
   {
     "id": 14,
@@ -162,10 +123,7 @@
     "img": "/cards_img/sobczak.jpg",
     "teacher": "sobczak",
     "rarity": "epic",
-    "ez_matura": {
-      "subject": "Informatyka",
-      "category": "vocational"
-    }
+    "subject": "Informatyka"
   },
   {
     "id": 15,
@@ -174,10 +132,7 @@
     "img": "/cards_img/sobczak_zawodowiec.jpg",
     "teacher": "sobczak",
     "rarity": "epic",
-    "ez_matura": {
-      "subject": "Informatyka",
-      "category": "vocational"
-    }
+    "subject": "Informatyka"
   },
   {
     "id": 16,
@@ -186,10 +141,7 @@
     "img": "/cards_img/wolska.jpg",
     "teacher": "wolska",
     "rarity": "epic",
-    "ez_matura": {
-      "subject": "Historia",
-      "category": "humanities"
-    }
+    "subject": "Historia"
   },
   {
     "id": 17,
@@ -198,10 +150,7 @@
     "img": "/cards_img/nierychly_zalamanie.jpg",
     "teacher": "nierychly",
     "rarity": "epic",
-    "ez_matura": {
-      "subject": "Religia",
-      "category": "humanities"
-    }
+    "subject": "Religia"
   },
   {
     "id": 18,
@@ -226,10 +175,7 @@
     "img": "/cards_img/mgrinz.jpg",
     "teacher": "mgr.inz.",
     "rarity": "rare",
-    "ez_matura": {
-      "subject": "Informatyka",
-      "category": "sciences"
-    }
+    "subject": "Informatyka"
   },
   {
     "id": 21,
@@ -238,10 +184,7 @@
     "img": "/cards_img/mgrinz_kebab.jpg",
     "teacher": "mgr.inz.",
     "rarity": "rare",
-    "ez_matura": {
-      "subject": "Informatyka",
-      "category": "sciences"
-    }
+    "subject": "Informatyka"
   },
   {
     "id": 22,
@@ -250,10 +193,7 @@
     "img": "/cards_img/musial.jpg",
     "teacher": "musial",
     "rarity": "rare",
-    "ez_matura": {
-      "subject": "Matma",
-      "category": "sciences"
-    }
+    "subject": "Matma"
   },
   {
     "id": 23,
@@ -262,10 +202,7 @@
     "img": "/cards_img/toporowicz.jpg",
     "teacher": "toporowicz",
     "rarity": "common",
-    "ez_matura": {
-      "subject": "BHP",
-      "category": "practical"
-    }
+    "subject": "BHP"
   },
   {
     "id": 24,
@@ -274,10 +211,7 @@
     "img": "/cards_img/mazurek.jpg",
     "teacher": "mazurek",
     "rarity": "common",
-    "ez_matura": {
-      "subject": "Podstawy Przedsiębiorczości",
-      "category": "practical"
-    }
+    "subject": "Podstawy Przedsiębiorczości"
   },
   {
     "id": 25,
@@ -286,10 +220,7 @@
     "img": "/cards_img/pulit.jpg",
     "teacher": "pulit",
     "rarity": "common",
-    "ez_matura": {
-      "subject": "Niemiecki",
-      "category": "humanities"
-    }
+    "subject": "Niemiecki"
   },
   {
     "id": 26,
@@ -298,10 +229,7 @@
     "img": "/cards_img/stasyszyn.jpg",
     "teacher": "stasyszyn",
     "rarity": "common",
-    "ez_matura": {
-      "subject": "Fizyka",
-      "category": "sciences"
-    }
+    "subject": "Fizyka"
   },
   {
     "id": 27,
@@ -310,10 +238,7 @@
     "img": "/cards_img/majewska.jpg",
     "teacher": "majewska",
     "rarity": "common",
-    "ez_matura": {
-      "subject": "Angielski",
-      "category": "humanities"
-    }
+    "subject": "Angielski"
   },
   {
     "id": 28,
@@ -322,10 +247,7 @@
     "img": "/cards_img/czekaj.jpg",
     "teacher": "czekaj",
     "rarity": "common",
-    "ez_matura": {
-      "subject": "Niemiecki",
-      "category": "sciences"
-    }
+    "subject": "Niemiecki"
   },
   {
     "id": 29,
@@ -342,10 +264,7 @@
     "img": "/cards_img/gasiorowska.jpg",
     "teacher": "gasiorowska",
     "rarity": "cursed",
-    "ez_matura": {
-      "subject": "Polski",
-      "category": "humanities"
-    }
+    "subject": "Polski"
   },
   {
     "id": 31,
@@ -354,9 +273,6 @@
     "img": "/cards_img/gasiorowska_makbet.jpg",
     "teacher": "gasiorowska",
     "rarity": "cursed",
-    "ez_matura": {
-      "subject": "Polski",
-      "category": "humanities"
-    }
+    "subject": "Polski"
   }
 ]

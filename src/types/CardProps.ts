@@ -5,6 +5,7 @@ type CardProps = {
   rarity: string;
   img: string;
   teacher: string;
+  subject: string;
 };
 
 export default CardProps;

@@ -1,3 +1,4 @@
+import CardProps from "../CardProps";
 import QuestionProps from "./QuestionProps";
 
 interface MaturaGameProps {
@@ -7,6 +8,8 @@ interface MaturaGameProps {
   selectedAnswer: string | null;
   onAnswer: (answer: string) => void;
   score: number;
+  bestScore: number;
+  currentCard: CardProps | null;
   gameOver: boolean;
   onRestart: () => void;
 }
