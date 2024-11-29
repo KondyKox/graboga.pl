@@ -2,10 +2,12 @@
 import LoadingOverlay from "@/components/Loading";
 import useProfile from "@/hooks/useProfile";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import { userFields, userOptions } from "./constants";
+import ProfileData from "@/types/ProfileProps";
 
 function calculateLevel(points: number | undefined) {
   if (points == undefined)
@@ -65,42 +67,26 @@ const UserProfilePage = () => {
               alt="Profile Picture"
               width={64}
               height={64}
-              className="w-28 h-28 rounded-full absolute top-1 left-1 shadow-epic border-1 border-background hover:drop-shadow-epic duration-300 ease-in-out"
+              className="w-28 h-28 rounded-full absolute top-1 left-1 shadow-epic border-1 border-background 
+                          hover:drop-shadow-epic duration-300 ease-in-out"
             />
           </div>
         </div>
 
         <div className="space-y-4">
-          <div className="user-field">
-            <p className="text-md font-semibold text-gray-300">
-              Display Name:{" "}
-              <span className="text-rare font-bold">
-                {profile?.displayName}
-              </span>
-            </p>
-          </div>
-          <div className="user-field">
-            <p className="text-md font-semibold text-gray-300">
-              Username:{" "}
-              <span className="text-rare font-bold">{profile?.username}</span>
-            </p>
-          </div>
-          <div className="user-field">
-            <p className="text-md font-semibold text-gray-300">
-              Player ID:{" "}
-              <span className="text-rare font-bold">{profile?.playerId}</span>
-            </p>
-          </div>
-          <div className="user-field">
-            <p className="text-md font-semibold text-gray-300">
-              Experience:{" "}
-              <span className="text-rare font-bold">{level} LVL</span>
-              <span className="text-gray-400">
-                {" "}
-                ({remainingXP}/{xpForNextLevel})
-              </span>
-            </p>
-          </div>
+          {/* Generate user fields */}
+          {userFields.map((field, index) => (
+            <div key={index} className="user-field">
+              <p className="text-md font-semibold text-gray-300">
+                {field.label}:{" "}
+                <span className="text-rare font-bold">
+                  {field.key === "experience"
+                    ? `${level} LVL (${remainingXP}/${xpForNextLevel})`
+                    : profile?.[field.key as keyof ProfileData]}
+                </span>
+              </p>
+            </div>
+          ))}
         </div>
 
         {/* Opcje dla użytkownika */}
@@ -116,17 +102,17 @@ const UserProfilePage = () => {
 
       {/* Opcje w panelu po prawej stronie */}
       <div className="lg:w-1/3 w-full space-y-6">
-        <div className="user-field user-input">
-          <p className="text-lg font-semibold text-gray-300">Moje transakcje</p>
-        </div>
-        <div className="user-field user-input">
-          <p className="text-lg font-semibold text-gray-300">Pomoc</p>
-        </div>
-        <div className="user-field user-input">
-          <p className="text-lg font-semibold text-gray-300">
-            Ustawienia konta
-          </p>
-        </div>
+        {userOptions.map((option, index) => (
+          <div key={index} className="user-field user-input">
+            {option.link ? (
+              <Link href={option.link} className="w-full">
+                <p className="text-lg font-semibold">{option.label}</p>
+              </Link>
+            ) : (
+              <p className="text-lg font-semibold">{option.label}</p>
+            )}
+          </div>
+        ))}
       </div>
     </div>
   );
