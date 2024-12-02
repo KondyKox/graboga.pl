@@ -2,27 +2,27 @@ import React, { useEffect, useState } from "react";
 import UnoGame from "./UnoGame";
 import LoadingOverlay from "@/components/Loading";
 import { Location, LOCATIONS } from "./constants";
-import UnoCardProps from "@/types/UnoCardProps";
 import useUnoDeck from "@/hooks/useUnoDeck";
 import Modal from "@/components/Modal";
-
-// Format location name (split words & make first letter capitalized)
-const formatLocationName = (name: string) => {
-  return name
-    .split("_")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
-};
+import UnoCardProps from "@/types/uno_mechan/UnoCardProps";
+import { formatLocationName, shuffleDeck } from "./utils";
+import UnoGameState from "@/types/uno_mechan/UnoGameState";
 
 const UnoMechanMode = () => {
   const { deck, loading } = useUnoDeck();
-  const [currentLocation, setCurrentLocation] = useState<Location | null>(null);
-  const [currentCard, setCurrentCard] = useState<UnoCardProps | null>(null);
-  const [playerCards, setPlayerCards] = useState<UnoCardProps[]>([]);
-  const [isTurn, setIsTurn] = useState<boolean>(true);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [pendingLegendaryCard, setPendingLegendaryCard] =
     useState<UnoCardProps | null>(null);
+  const [playerCards, setPlayerCards] = useState<UnoCardProps[]>([]);
+  const [oppenetCards, setOpponentCards] = useState<UnoCardProps[]>([]);
+  const [gameState, setGameState] = useState<UnoGameState>({
+    currentCard: null,
+    currentLocation: null,
+    playerCards: [],
+    botCards: [[], [], []],
+    currentPlayerIndex: 0,
+    isTurn: true,
+  });
 
   useEffect(() => {
     if (!loading && deck.length > 0) {
@@ -32,29 +32,39 @@ const UnoMechanMode = () => {
       );
 
       if (firstNonLegendaryCard) {
-        setCurrentCard(firstNonLegendaryCard);
+        setGameState((prevState) => ({
+          ...prevState,
+          currentCard: firstNonLegendaryCard,
+        }));
+
         const initialLocation = LOCATIONS.find(
           (loc) => loc.name === firstNonLegendaryCard.location
         );
-        setCurrentLocation(initialLocation || null);
+        setGameState((prevState) => ({
+          ...prevState,
+          currentLocation: initialLocation || null,
+        }));
       }
 
-      setPlayerCards(deck.slice(1, 8));
+      // Losuj karty dla graczy
+      shuffleDeck({ deck: deck, setCards: setPlayerCards });
+      shuffleDeck({ deck: deck, setCards: setOpponentCards });
     }
   }, [loading, deck]);
 
+  // Check if card is playable
   const canPlay = (card: UnoCardProps): boolean => {
     return (
-      card.location === currentLocation ||
-      card.rarity === currentCard?.rarity ||
-      card.id === currentCard?.id ||
+      card.location === gameState.currentLocation ||
+      card.rarity === gameState.currentCard?.rarity ||
+      card.id === gameState.currentCard?.id ||
       card.rarity === "legendary"
     );
   };
 
   // Play clicked card if playable
   const playCard = (card: UnoCardProps) => {
-    if (!canPlay(card) || !isTurn) return;
+    if (!canPlay(card) || !gameState.isTurn) return;
 
     // Handle legendary card
     if (card.rarity === "legendary") {
@@ -63,16 +73,25 @@ const UnoMechanMode = () => {
       return;
     }
 
-    setCurrentCard(card);
+    setGameState((prevState) => ({
+      ...prevState,
+      currentCard: card,
+    }));
 
     // If card has different location, change it
-    if (card.location && card.location !== currentLocation?.name) {
+    if (card.location && card.location !== gameState.currentLocation?.name) {
       const newLocation = LOCATIONS.find((loc) => loc.name === card.location);
-      setCurrentLocation(newLocation || null); // New location
+      setGameState((prevState) => ({
+        ...prevState,
+        currentLocation: newLocation || null,
+      }));
     }
 
     setPlayerCards((prev) => prev.filter((c) => c.id !== card.id));
-    setIsTurn(false);
+    setGameState((prevState) => ({
+      ...prevState,
+      isTurn: false,
+    }));
   };
 
   // Drawing a card from the deck
@@ -82,41 +101,61 @@ const UnoMechanMode = () => {
     const newCard = deck[randomIndex];
 
     setPlayerCards((prev) => [...prev, newCard]);
-    setIsTurn(false); // End player's turn
+    setGameState((prevState) => ({
+      ...prevState,
+      isTurn: false,
+    })); // End player's turn
   };
 
   // Select location if legendary card played
   const handleLocationSelect = (location: Location) => {
-    setCurrentLocation(location);
+    setGameState((prevState) => ({
+      ...prevState,
+      currentLocation: location,
+    }));
+
     if (pendingLegendaryCard) {
       setPlayerCards((prev) =>
         prev.filter((c) => c.id !== pendingLegendaryCard.id)
       );
-      setCurrentCard(pendingLegendaryCard);
+
+      setGameState((prevState) => ({
+        ...prevState,
+        currentCard: pendingLegendaryCard,
+      }));
     }
     setIsModalOpen(false);
     setPendingLegendaryCard(null);
-    setIsTurn(false);
+    setGameState((prevState) => ({
+      ...prevState,
+      isTurn: false,
+    }));
   };
 
   return (
     <div className="flex flex-col justify-center items-center w-full">
       {loading ? (
         <LoadingOverlay message="UNO: Mechan Edition" />
+      ) : window.innerWidth < 768 ? (
+        <h2 className="header">
+          Za mały ekran do gierki.
+          <br /> 😢
+        </h2>
       ) : (
         <div
           className="flex flex-col justify-center items-center gap-4 w-full"
           style={{
-            backgroundImage: `url(${currentLocation?.background})`,
+            backgroundImage: `url(${gameState.currentLocation?.background})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            height: "100vh", // Pełny ekran
+            height: "110vh", // Pełny ekran
+            paddingTop: "4rem",
           }}
         >
           <UnoGame
             playerCards={playerCards}
-            currentCard={currentCard}
-            isTurn={isTurn}
+            currentCard={gameState.currentCard}
+            isTurn={gameState.isTurn}
             canPlay={canPlay}
             onPlayCard={playCard}
             onDrawCard={drawCard}

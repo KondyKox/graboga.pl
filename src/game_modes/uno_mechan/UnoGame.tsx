@@ -1,9 +1,9 @@
 "use client";
 
-import UnoCardProps from "@/types/UnoCardProps";
 import UnoCard from "@/components/card/UnoCard";
 import Image from "next/image";
 import Tooltip from "@/components/Tooltip";
+import UnoCardProps from "@/types/uno_mechan/UnoCardProps";
 
 const UnoGame = ({
   playerCards,
@@ -21,13 +21,17 @@ const UnoGame = ({
   onDrawCard: () => void;
 }) => {
   return (
-    <div className="flex flex-col justify-center items-center gap-8 w-full">
-      <div className="flex justify-around items-center w-full">
-        <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center gap-2 w-full">
+      <div className="flex justify-between items-center w-1/2">
+        <div
+          className="flex flex-col justify-center items-center"
+          style={{ scale: 0.9 }}
+        >
           <h3
             className="text-4xl text-wrap text-gradient"
             style={{
               WebkitTextStroke: ".25px white", // Obrys tekstu
+              paddingBottom: "1rem",
             }}
           >
             Aktualna Karta
@@ -61,8 +65,10 @@ const UnoGame = ({
         </div>
       </div>
 
-      {/* <div className="grid grid-cols-7 place-content-center w-full h-auto max-h-[50vh] gap-2 border-t-4 py-2 overflow-y-auto"> */}
-      <div className="flex flex-wrap justify-center items-center w-1/2 h-auto max-h-[50vh] gap-2 border-t-4 py-2 overflow-y-auto">
+      <div
+        className="flex flex-wrap items-center w-1/2 h-auto max-h-[50vh] gap-4 border-t-4 overflow-y-auto"
+        style={{ scale: 0.8, padding: "1.5rem 0" }}
+      >
         {playerCards.map((unoCard, index) => (
           <div
             key={index}
