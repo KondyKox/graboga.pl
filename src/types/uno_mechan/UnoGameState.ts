@@ -1,13 +1,12 @@
 import { Location } from "@/game_modes/uno_mechan/constants";
 import UnoCardProps from "./UnoCardProps";
+import UnoPlayer from "./UnoPlayer";
 
 interface UnoGameState {
   currentCard: UnoCardProps | null;
   currentLocation: Location | null;
-  playerCards: UnoCardProps[];
-  botCards: UnoCardProps[][];
+  players: UnoPlayer[]
   currentPlayerIndex: number;
-  isTurn: boolean;
 }
 
 export default UnoGameState;
