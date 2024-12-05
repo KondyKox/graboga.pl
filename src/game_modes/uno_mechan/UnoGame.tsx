@@ -5,22 +5,23 @@ import Image from "next/image";
 import Tooltip from "@/components/Tooltip";
 import UnoCardProps from "@/types/uno_mechan/UnoCardProps";
 import UnoPlayer from "@/types/uno_mechan/UnoPlayer";
+import UnoGameState from "@/types/uno_mechan/UnoGameState";
+import { canPlay } from "./utils";
 
 const UnoGame = ({
   currentCard,
-  canPlay,
   onPlayCard,
   onDrawCard,
   players,
+  gameState,
 }: {
   currentCard: UnoCardProps | null;
-  canPlay: (card: UnoCardProps) => boolean;
   onPlayCard: (card: UnoCardProps) => void;
   onDrawCard: () => void;
   players: UnoPlayer[];
+  gameState: UnoGameState;
 }) => {
   const humanPlayer = players[0];
-  console.log(players);
 
   return (
     <div className="flex flex-col justify-center items-center gap-2 w-full">
@@ -40,12 +41,12 @@ const UnoGame = ({
             </div>
           ) : (
             <h3
-              className="text-4xl text-wrap text-gradient"
+              className="text-4xl text-wrap text-center text-gradient"
               style={{
                 WebkitTextStroke: ".25px white", // Obrys tekstu
               }}
             >
-              Teraz tura przeciwnika...
+              Teraz tura <br /> przeciwnika...
             </h3>
           )}
         </div>
@@ -71,7 +72,7 @@ const UnoGame = ({
               fontSize: "1.5rem",
             }}
           >
-            Gracze
+            Boty
           </h4>
           {players.map(
             (player) =>
@@ -98,7 +99,9 @@ const UnoGame = ({
       </div>
 
       <div
-        className="flex flex-wrap items-center w-1/2 h-auto max-h-[50vh] gap-4 border-t-4 overflow-y-auto"
+        className={`flex flex-wrap items-center w-1/2 h-auto max-h-[50vh] gap-4 border-t-4 overflow-y-auto ${
+          humanPlayer.isTurn && "border-legendary"
+        }`}
         style={{ scale: 0.8, padding: "1.5rem 0" }}
       >
         {humanPlayer.cards.map((unoCard, index) => (
@@ -107,7 +110,7 @@ const UnoGame = ({
             onClick={() => onPlayCard(unoCard)}
             className={`transition-all ${
               humanPlayer.isTurn
-                ? canPlay(unoCard)
+                ? canPlay(unoCard, gameState)
                   ? "cursor-pointer"
                   : "opacity-50 hover:opacity-100"
                 : "opacity-50 pointer-events-none"

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import UnoCardProps from "@/types/UnoCardProps";
 import CardProps from "@/types/CardProps";
 import { ACTIONS, LOCATIONS } from "@/game_modes/uno_mechan/constants";
+import UnoCardProps from "@/types/uno_mechan/UnoCardProps";
 
 /**
  * Zwraca losową akcję z listy dostępnych akcji.
@@ -52,7 +52,7 @@ const transformDeck = (cards: CardProps[]): UnoCardProps[] => {
  * @param {T[]} array Tablica do przetasowania.
  * @returns {T[]} Przetasowana tablica.
  */
-const shuffleDeck = <T,>(array: T[]): T[] => {
+const shuffleDeck = <T>(array: T[]): T[] => {
   const shuffled = [...array];
   for (let i = shuffled.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -89,6 +89,7 @@ const useUnoDeck = () => {
         const transformedDeck = transformDeck(data);
         const shuffledDeck = shuffleDeck(transformedDeck);
 
+        console.log("Deck fetched and shuffled:", shuffledDeck);
         setDeck(shuffledDeck);
       } catch (error) {
         console.error("Error fetching deck:", error);

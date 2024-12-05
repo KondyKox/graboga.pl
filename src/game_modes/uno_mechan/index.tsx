@@ -5,10 +5,13 @@ import { Location, LOCATIONS } from "./constants";
 import useUnoDeck from "@/hooks/useUnoDeck";
 import Modal from "@/components/Modal";
 import UnoCardProps from "@/types/uno_mechan/UnoCardProps";
-import { formatLocationName, shuffleDeck } from "./utils";
+import { canPlay, changeTurn, dealCards, formatLocationName } from "./utils";
 import UnoGameState from "@/types/uno_mechan/UnoGameState";
 import UnoPlayer from "@/types/uno_mechan/UnoPlayer";
+import { handleBotTurn, initializeBots } from "./bot";
 
+// TODO: Naprawić gre z botami, bo coś sie psuje czasem ostatni.
+// TODO: Dodatkowo z jakiegoś powodu nie mogę rzucić karty z tą samą lokacją co obecna
 const UnoMechanMode = () => {
   const { deck, loading } = useUnoDeck();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -32,14 +35,7 @@ const UnoMechanMode = () => {
       isBot: false,
     };
 
-    const botPlayers: UnoPlayer[] = Array.from({ length: 3 }, (_, index) => ({
-      _id: `bot${index + 1}`,
-      name: `Bot ${index + 1}`,
-      cards: [],
-      isTurn: false,
-      score: 0,
-      isBot: true,
-    }));
+    const botPlayers = initializeBots(3);
 
     setGameState({
       currentCard: null,
@@ -72,11 +68,13 @@ const UnoMechanMode = () => {
         }));
       }
 
-      // Rozdaj karty graczom
-      const shuffledDeck = shuffleDeck(deck);
+      // Używamy funkcji dealCards, aby rozdać karty
+      const dealtCards = dealCards(deck, gameState.players.length);
+
+      // Uaktualniamy stan graczy, przypisując im karty
       const playersWithCards = gameState.players.map((player, index) => ({
         ...player,
-        cards: shuffledDeck.slice(index * 7, (index + 1) * 7),
+        cards: dealtCards[index], // Przypisujemy rozdane karty
       }));
 
       setGameState((prevState) => ({
@@ -94,28 +92,28 @@ const UnoMechanMode = () => {
     initializeDeck();
   }, [loading, deck]);
 
-  // Check if card is playable
-  const canPlay = (card: UnoCardProps): boolean => {
-    return (
-      card.location === gameState.currentLocation ||
-      card.rarity === gameState.currentCard?.rarity ||
-      card.id === gameState.currentCard?.id ||
-      card.rarity === "legendary"
-    );
-  };
+  // Bot turn handling (ai logic)
+  useEffect(() => {
+    const currentPlayer = gameState.players[gameState.currentPlayerIndex];
+    if (currentPlayer?.isBot) {
+      handleBotTurn({
+        gameState,
+        setGameState,
+        playCard,
+        drawCard,
+      });
+    }
+  }, [gameState.currentPlayerIndex]);
 
   // Play clicked card if playable
   const playCard = (card: UnoCardProps) => {
     const currentPlayer = gameState.players[gameState.currentPlayerIndex];
-    if (!canPlay(card) || !currentPlayer.isTurn) return;
-
-    const nextPlayerIndex =
-      (gameState.currentPlayerIndex + 1) % gameState.players.length;
+    if (!canPlay(card, gameState) || !currentPlayer.isTurn) return;
 
     // Handle legendary card
     if (card.rarity === "legendary") {
       setPendingLegendaryCard(card);
-      setIsModalOpen(true);
+      if (!currentPlayer?.isBot) setIsModalOpen(true);
       return;
     }
 
@@ -127,7 +125,6 @@ const UnoMechanMode = () => {
           ? { ...player, cards: player.cards.filter((c) => c.id !== card.id) }
           : player
       ),
-      currentPlayerIndex: nextPlayerIndex,
     }));
 
     // If card has different location, change it
@@ -138,6 +135,9 @@ const UnoMechanMode = () => {
         currentLocation: newLocation || null,
       }));
     }
+
+    // Zmiana tury
+    changeTurn({ setGameState });
   };
 
   // Drawing a card from the deck
@@ -146,8 +146,6 @@ const UnoMechanMode = () => {
 
     const randomIndex = Math.floor(Math.random() * deck.length);
     const newCard = deck[randomIndex];
-    const nextPlayerIndex =
-      (gameState.currentPlayerIndex + 1) % gameState.players.length;
 
     setGameState((prevState) => ({
       ...prevState,
@@ -156,8 +154,10 @@ const UnoMechanMode = () => {
           ? { ...player, cards: [...player.cards, newCard] }
           : player
       ),
-      currentPlayerIndex: nextPlayerIndex,
     }));
+
+    // Zmiana tury
+    changeTurn({ setGameState });
   };
 
   // Select location if legendary card played
@@ -176,8 +176,9 @@ const UnoMechanMode = () => {
             }
           : player
       ),
-      isTurn: false,
     }));
+
+    changeTurn({ setGameState });
 
     setIsModalOpen(false);
     setPendingLegendaryCard(null);
@@ -205,10 +206,10 @@ const UnoMechanMode = () => {
         >
           <UnoGame
             currentCard={gameState.currentCard}
-            canPlay={canPlay}
             onPlayCard={playCard}
             onDrawCard={drawCard}
             players={gameState.players}
+            gameState={gameState}
           />
 
           <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
