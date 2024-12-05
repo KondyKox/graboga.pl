@@ -56,3 +56,21 @@ export const changeTurn = ({
     };
   });
 };
+
+export const checkWinner = (
+  gameState: UnoGameState,
+  setGameState: React.Dispatch<React.SetStateAction<UnoGameState>>
+) => {
+  const winner = gameState.players.find((player) => player.cards.length === 0);
+
+  if (winner) {
+    console.log(`${winner.name} wins!`);
+
+    setGameState((prevState) => ({
+      ...prevState,
+      winner: winner,
+    }));
+    return true;
+  }
+  return false;
+};

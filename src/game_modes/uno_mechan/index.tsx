@@ -5,7 +5,13 @@ import { Location, LOCATIONS } from "./constants";
 import useUnoDeck from "@/hooks/useUnoDeck";
 import Modal from "@/components/Modal";
 import UnoCardProps from "@/types/uno_mechan/UnoCardProps";
-import { canPlay, changeTurn, dealCards, formatLocationName } from "./utils";
+import {
+  canPlay,
+  changeTurn,
+  checkWinner,
+  dealCards,
+  formatLocationName,
+} from "./utils";
 import UnoGameState from "@/types/uno_mechan/UnoGameState";
 import UnoPlayer from "@/types/uno_mechan/UnoPlayer";
 import { handleBotTurn, initializeBots } from "./bot";
@@ -22,6 +28,7 @@ const UnoMechanMode = () => {
     currentLocation: null,
     players: [],
     currentPlayerIndex: 0,
+    winner: null,
   });
 
   // Inicjalizacja gry
@@ -42,6 +49,7 @@ const UnoMechanMode = () => {
       currentLocation: null,
       players: [humanPlayer, ...botPlayers],
       currentPlayerIndex: 0,
+      winner: null,
     });
   };
 
@@ -136,6 +144,8 @@ const UnoMechanMode = () => {
       }));
     }
 
+    checkWinner(gameState, setGameState);
+
     // Zmiana tury
     changeTurn({ setGameState });
   };
@@ -155,6 +165,8 @@ const UnoMechanMode = () => {
           : player
       ),
     }));
+
+    checkWinner(gameState, setGameState);
 
     // Zmiana tury
     changeTurn({ setGameState });

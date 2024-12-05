@@ -8,6 +8,12 @@ import UnoPlayer from "@/types/uno_mechan/UnoPlayer";
 import UnoGameState from "@/types/uno_mechan/UnoGameState";
 import { canPlay } from "./utils";
 
+// Restaruje grę odświeżając stronę (można rozwinąć żeby stan aplikacji resetował zamiast tego)
+const restartGame = () => {
+  // Odświeżenie strony
+  window.location.reload();
+};
+
 const UnoGame = ({
   currentCard,
   onPlayCard,
@@ -23,7 +29,14 @@ const UnoGame = ({
 }) => {
   const humanPlayer = players[0];
 
-  return (
+  return gameState.winner ? (
+    <div className="flex flex-col justify-center items-center w-fit">
+      <h2 className="header text-gradient">{gameState.winner.name} wygrywa!</h2>
+      <button onClick={restartGame} className="btn w-full uppercase">
+        Zagraj jeszcze raz
+      </button>
+    </div>
+  ) : (
     <div className="flex flex-col justify-center items-center gap-2 w-full">
       <div className="flex justify-between items-center w-1/2">
         <div className="flex justify-center items-center">
