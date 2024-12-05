@@ -27,7 +27,10 @@ const UnoGame = ({
   players: UnoPlayer[];
   gameState: UnoGameState;
 }) => {
-  const humanPlayer = players[0];
+  const humanPlayer =
+    players.find((player) => {
+      player._id === "humanPlayer";
+    }) || players[0];
 
   return gameState.winner ? (
     <div className="flex flex-col justify-center items-center w-fit">
@@ -102,9 +105,14 @@ const UnoGame = ({
                     height={64}
                     className="rounded-full"
                   />
-                  <span className={`px-2 ${player.isTurn && "font-bold"}`}>
-                    {player.name}
-                  </span>
+                  <div className="flex flex-col justify-center items-center px-2">
+                    <span className={`px-2 ${player.isTurn && "font-bold"}`}>
+                      {player.name}
+                    </span>
+                    <span className="px-2 italic text-background text-sm">
+                      {player.cards.length} kart
+                    </span>
+                  </div>
                 </div>
               )
           )}
