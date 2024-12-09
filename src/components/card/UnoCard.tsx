@@ -1,5 +1,5 @@
 import React from "react";
-import UnoCardProps from "@/types/UnoCardProps";
+import UnoCardProps from "@/types/uno_mechan/UnoCardProps";
 import Card from "@/components/card/Card";
 import { LOCATIONS } from "@/game_modes/uno_mechan/constants";
 

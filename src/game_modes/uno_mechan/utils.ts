@@ -29,7 +29,7 @@ export const canPlay = (
   gameState: UnoGameState
 ): boolean => {
   return (
-    card.location === gameState.currentLocation ||
+    card.location === gameState.currentLocation?.name ||
     card.rarity === gameState.currentCard?.rarity ||
     card.id === gameState.currentCard?.id ||
     card.rarity === "legendary"
@@ -57,6 +57,7 @@ export const changeTurn = ({
   });
 };
 
+// Check if someone won
 export const checkWinner = (
   gameState: UnoGameState,
   setGameState: React.Dispatch<React.SetStateAction<UnoGameState>>

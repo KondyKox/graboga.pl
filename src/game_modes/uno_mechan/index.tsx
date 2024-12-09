@@ -17,9 +17,9 @@ import UnoPlayer from "@/types/uno_mechan/UnoPlayer";
 import { handleBotTurn, initializeBots } from "./bot";
 
 // TODO: Naprawić gre z botami, bo coś sie psuje czasem ostatni.
-// TODO: Dodatkowo z jakiegoś powodu nie mogę rzucić karty z tą samą lokacją co obecna
 // TODO: Czasem bot rzuca 2 karty naraz
 // TODO: Uprościć ten kod
+// TODO: Wyświetlać efekty kart i zrobić aby działały
 const UnoMechanMode = () => {
   const { deck, loading } = useUnoDeck();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -167,8 +167,6 @@ const UnoMechanMode = () => {
           : player
       ),
     }));
-
-    checkWinner(gameState, setGameState);
 
     // Zmiana tury
     changeTurn({ setGameState });
