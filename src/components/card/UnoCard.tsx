@@ -35,7 +35,7 @@ const UnoCard: React.FC<{ card: UnoCardProps }> = ({ card }) => {
                 : "",
           }}
         >
-          {card.action}
+          {card.action.toUpperCase()}
         </div>
       )}
     </div>

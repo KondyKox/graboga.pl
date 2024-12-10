@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
 import CardProps from "@/types/CardProps";
-import { ACTIONS, LOCATIONS } from "@/game_modes/uno_mechan/constants";
+import { Action, ACTIONS, LOCATIONS } from "@/game_modes/uno_mechan/constants";
 import UnoCardProps from "@/types/uno_mechan/UnoCardProps";
 
-/**
- * Zwraca losową akcję z listy dostępnych akcji.
- * @returns {string} Losowa akcja z tablicy ACTIONS.
- */
-const getRandomAction = () =>
-  ACTIONS[Math.floor(Math.random() * ACTIONS.length)];
+// Funkcja do losowania akcji w zależności od rzadkości
+export const getRandomAction = (
+  rarity: "epic" | "legendary" | "cursed"
+): Action => {
+  const actions = ACTIONS[rarity]; // Wybieramy akcje dla danej rzadkości
+  const randomIndex = Math.floor(Math.random() * actions.length);
+  return actions[randomIndex]; // Zwracamy losową akcję
+};
 
 /**
  * Dodaje losowe akcje i lokacje do kart w talii.
@@ -22,7 +24,7 @@ const transformDeck = (cards: CardProps[]): UnoCardProps[] => {
       return [
         {
           ...card,
-          action: getRandomAction(), // Efekt dla legendarnych kart
+          action: getRandomAction(card.rarity), // Efekt dla legendarnych kart
           location: null, // Brak lokalizacji
         },
       ]; // Zwracamy tablicę z jedną kartą
@@ -32,7 +34,7 @@ const transformDeck = (cards: CardProps[]): UnoCardProps[] => {
       // Epickie karty: każda lokacja + efekty
       return LOCATIONS.map((location) => ({
         ...card,
-        action: getRandomAction(), // Efekt dla epickich kart
+        action: getRandomAction("epic"), // Efekt dla epickich kart
         location: location.name, // Lokacja
       }));
     }

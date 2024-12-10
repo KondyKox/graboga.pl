@@ -7,6 +7,7 @@ import UnoCardProps from "@/types/uno_mechan/UnoCardProps";
 import UnoPlayer from "@/types/uno_mechan/UnoPlayer";
 import UnoGameState from "@/types/uno_mechan/UnoGameState";
 import { canPlay } from "./utils";
+import { SetStateAction } from "react";
 
 // Restaruje grę odświeżając stronę (można rozwinąć żeby stan aplikacji resetował zamiast tego)
 const restartGame = () => {
@@ -20,12 +21,14 @@ const UnoGame = ({
   onDrawCard,
   players,
   gameState,
+  isClockwise,
 }: {
   currentCard: UnoCardProps | null;
   onPlayCard: (card: UnoCardProps) => void;
   onDrawCard: () => void;
   players: UnoPlayer[];
   gameState: UnoGameState;
+  isClockwise: boolean;
 }) => {
   const humanPlayer =
     players.find((player) => {
@@ -81,42 +84,58 @@ const UnoGame = ({
           </h3>
           {currentCard && <UnoCard card={currentCard} />}
         </div>
-        <div className="flex flex-col justify-center items-center gap-2">
-          <h4
-            className="sub-header"
-            style={{
-              fontSize: "1.5rem",
-            }}
-          >
-            Boty
-          </h4>
-          {players.map(
-            (player) =>
-              player !== humanPlayer && (
-                <div
-                  key={player._id}
-                  className={`flex justify-center items-center gap-2 p-2 w-full rounded-full ${
-                    player.isTurn ? "bg-epic" : "bg-rare"
-                  }`}
-                >
-                  <Image
-                    src={"/donejtor.png"}
-                    alt={player.name}
-                    width={64}
-                    height={64}
-                    className="rounded-full"
-                  />
-                  <div className="flex flex-col justify-center items-center px-2">
-                    <span className={`px-2 ${player.isTurn && "font-bold"}`}>
-                      {player.name}
-                    </span>
-                    <span className="px-2 italic text-background text-sm">
-                      {player.cards.length} kart
-                    </span>
+        <div className="flex justify-center items-center gap-4">
+          <div className="flex flex-col justify-center items-center gap-2">
+            <h4
+              className="sub-header"
+              style={{
+                fontSize: "1.5rem",
+              }}
+            >
+              Boty
+            </h4>
+            {players.map(
+              (player) =>
+                player !== humanPlayer && (
+                  <div
+                    key={player._id}
+                    className={`flex justify-center items-center gap-2 p-2 w-full rounded-full ${
+                      player.isTurn ? "bg-epic" : "bg-rare"
+                    }`}
+                  >
+                    <Image
+                      src={"/donejtor.png"}
+                      alt={player.name}
+                      width={64}
+                      height={64}
+                      className="rounded-full"
+                    />
+                    <div className="flex flex-col justify-center items-center px-2">
+                      <span className={`px-2 ${player.isTurn && "font-bold"}`}>
+                        {player.name}
+                      </span>
+                      <span className="px-2 italic text-background text-sm">
+                        {player.cards.length} kart
+                      </span>
+                    </div>
                   </div>
-                </div>
-              )
-          )}
+                )
+            )}
+          </div>
+          <div className="flex justify-center items-center text-center group relative">
+            <Image
+              src={"/uno_mechan/turnDirection.svg"}
+              alt="Turn direction"
+              width={64}
+              height={128}
+              className="transition-transform duration-300 ease-in-out fill-common h-64"
+              style={{
+                rotate: isClockwise ? "0" : "180deg",
+                filter: "drop-shadow(0 0 0.5rem var(--clr-rare))",
+              }}
+            />
+            <Tooltip>Kierunek tury</Tooltip>
+          </div>
         </div>
       </div>
 

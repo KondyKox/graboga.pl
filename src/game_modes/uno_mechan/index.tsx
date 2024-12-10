@@ -11,6 +11,7 @@ import {
   checkWinner,
   dealCards,
   formatLocationName,
+  handleCardAction,
 } from "./utils";
 import UnoGameState from "@/types/uno_mechan/UnoGameState";
 import UnoPlayer from "@/types/uno_mechan/UnoPlayer";
@@ -23,6 +24,7 @@ import { handleBotTurn, initializeBots } from "./bot";
 const UnoMechanMode = () => {
   const { deck, loading } = useUnoDeck();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isClockwise, setIsClockwise] = useState<boolean>(true);
   const [pendingLegendaryCard, setPendingLegendaryCard] =
     useState<UnoCardProps | null>(null);
   const [gameState, setGameState] = useState<UnoGameState>({
@@ -59,7 +61,7 @@ const UnoMechanMode = () => {
   const initializeDeck = () => {
     if (!loading && deck.length > 0) {
       const firstNonLegendaryCard = deck.find(
-        (card) => card.rarity !== "legendary"
+        (card) => card.rarity !== "legendary" && card.rarity !== "cursed"
       );
 
       if (firstNonLegendaryCard) {
@@ -81,28 +83,15 @@ const UnoMechanMode = () => {
       // Używamy funkcji dealCards, aby rozdać karty
       const dealtCards = dealCards(deck, gameState.players.length);
 
-      // Przypisanie kart o rzadkości cursed, legendary i epic
-      // TESTING
-      const testCards = deck.filter((card) =>
-        ["cursed", "legendary", "epic"].includes(card.rarity)
-      );
-
-      const playersWithTestCards = gameState.players.map((player, index) => ({
-        ...player,
-        cards: [
-          ...testCards.slice(index * 7, (index + 1) * 7), // Każdy gracz dostaje 7 kart
-        ],
-      }));
-
       // Uaktualniamy stan graczy, przypisując im karty
-      // const playersWithCards = gameState.players.map((player, index) => ({
-      //   ...player,
-      //   cards: dealtCards[index], // Przypisujemy rozdane karty
-      // }));
+      const playersWithCards = gameState.players.map((player, index) => ({
+        ...player,
+        cards: dealtCards[index], // Przypisujemy rozdane karty
+      }));
 
       setGameState((prevState) => ({
         ...prevState,
-        players: playersWithTestCards,
+        players: playersWithCards,
       }));
     }
   };
@@ -159,8 +148,11 @@ const UnoMechanMode = () => {
       }));
     }
 
-    checkWinner(gameState, setGameState);
+    // Play card action
+    if (card.action) handleCardAction(card.action);
 
+    // Check if player wins
+    checkWinner(gameState, setGameState);
     // Zmiana tury
     changeTurn({ setGameState });
   };
@@ -235,6 +227,7 @@ const UnoMechanMode = () => {
             onDrawCard={drawCard}
             players={gameState.players}
             gameState={gameState}
+            isClockwise={isClockwise}
           />
 
           <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
