@@ -10,18 +10,36 @@ export const formatLocationName = (name: string) => {
 };
 
 // Rozdanie kart
+// export const dealCards = (
+//   deck: UnoCardProps[],
+//   numPlayers: number
+// ): UnoCardProps[][] => {
+//   let dealtCards: UnoCardProps[][] = [];
+
+//   for (let i = 0; i < numPlayers; i++) {
+//     dealtCards.push(deck.slice(i * 7, (i + 1) * 7)); // Każdy gracz dostaje 7 kart
+//   }
+
+//   return dealtCards;
+// };
 export const dealCards = (
   deck: UnoCardProps[],
   numPlayers: number
 ): UnoCardProps[][] => {
+  // Filtrujemy talię, aby zawierała tylko karty cursed, legendary, epic
+  const filteredDeck = deck.filter(
+    (card) => ["cursed", "legendary", "epic"].includes(card.rarity)
+  );
+
   let dealtCards: UnoCardProps[][] = [];
 
   for (let i = 0; i < numPlayers; i++) {
-    dealtCards.push(deck.slice(i * 7, (i + 1) * 7)); // Każdy gracz dostaje 7 kart
+    dealtCards.push(filteredDeck.slice(i * 7, (i + 1) * 7)); // Każdy gracz dostaje 7 kart
   }
 
   return dealtCards;
 };
+
 
 // Check if card is playable
 export const canPlay = (

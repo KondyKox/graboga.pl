@@ -52,7 +52,7 @@ const StorePanel: React.FC<StorePanelProps> = ({ store }) => {
                     <FaEdit />
                   </button>
                   {/* Zablokuj */}
-                  <button className="utility-btn text-special hover:bg-special focus:ring-special">
+                  <button className="utility-btn text-cursed hover:bg-cursed focus:ring-cursed">
                     <FaTrash />
                   </button>
                 </td>

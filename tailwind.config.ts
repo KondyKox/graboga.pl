@@ -13,7 +13,7 @@ const config: Config = {
         foreground: "var(--foreground)",
         rare: "var(--clr-rare)",
         common: "var(--clr-common)",
-        special: "var(--clr-special)",
+        cursed: "var(--clr-cursed)",
         legendary: "var(--clr-legendary)",
         epic: "var(--clr-epic)",
       },
@@ -26,14 +26,14 @@ const config: Config = {
         rare: "0 0 0.5rem var(--clr-rare)",
         epic: "0 0 0.5rem var(--clr-epic)",
         legendary: "0 0 0.5rem var(--clr-legendary)",
-        special: "0 0 0.5rem var(--clr-special)",
+        cursed: "0 0 0.5rem var(--clr-cursed)",
       },
       boxShadow: {
         common: "inset 0 0 10px 5px var(--clr-common)",
         rare: "inset 0 0 10px 5px var(--clr-rare)",
         epic: "inset 0 0 10px 5px var(--clr-epic)",
         legendary: "inset 0 0 10px 5px var(--clr-legendary)",
-        special: "inset 0 0 10px 5px var(--clr-special)",
+        cursed: "inset 0 0 10px 5px var(--clr-cursed)",
       },
       animation: {
         rolling: "rolling 0.5s linear infinite", // Animacja przelatywania

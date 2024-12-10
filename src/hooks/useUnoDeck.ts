@@ -17,7 +17,7 @@ const getRandomAction = () =>
  */
 const transformDeck = (cards: CardProps[]): UnoCardProps[] => {
   return cards.flatMap((card): UnoCardProps[] => {
-    if (card.rarity === "legendary") {
+    if (card.rarity === "legendary" || card.rarity === "cursed") {
       // Legendarne karty: bez lokalizacji, ale mają efekty
       return [
         {

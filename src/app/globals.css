@@ -7,7 +7,7 @@
   --foreground: #ffffff;
   --clr-rare: #007bff; /* Blue color */
   --clr-common: #28a745; /* Green color */
-  --clr-special: #dc3545; /* Red color */
+  --clr-cursed: #dc3545; /* Red color */
   --clr-legendary: #ffd700; /* Gold color */
   --clr-epic: #6f42c1; /* Purple color */
   --gradient: linear-gradient(
@@ -122,8 +122,7 @@ h6 {
 
 /* Icons */
 .icon {
-  @apply w-6 h-6 md:w-8 md:h-8;
-  transition: all 0.3s ease-in-out;
+  @apply w-6 h-6 md:w-8 md:h-8 transition-all duration-300 ease-in-out;
 }
 .icon:hover {
   fill: var(--clr-rare);
@@ -137,14 +136,12 @@ h6 {
 
 /* Home page images */
 .img {
-  @apply rounded-lg transition-all duration-500 ease-in-out;
-}
-.img:hover {
-  @apply rounded-none drop-shadow-epic;
+  @apply rounded-lg transition-all duration-500 ease-in-out hover:rounded-none hover:drop-shadow-epic;
 }
 
 .nav-btn {
-  @apply absolute top-1/2 transform -translate-y-1/2 bg-background bg-opacity-50 text-foreground p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity;
+  @apply absolute top-1/2 transform -translate-y-1/2 bg-background bg-opacity-50 text-foreground p-2 rounded-full opacity-0 
+          group-hover:opacity-100 transition-opacity;
 }
 
 /* Headers */
@@ -175,85 +172,4 @@ h6 {
 }
 .utility-btn {
   @apply bg-transparent rounded-lg py-2 px-4 hover:text-background transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-opacity-50;
-}
-
-/* Card rarities */
-.common {
-  @apply border-common;
-}
-.common:hover {
-  @apply shadow-common;
-}
-.common img {
-  @apply border-common;
-}
-.common:hover img {
-  @apply drop-shadow-common;
-}
-.common h2 {
-  @apply text-common;
-}
-
-.rare {
-  @apply border-rare;
-}
-.rare:hover {
-  @apply shadow-rare;
-}
-.rare img {
-  @apply border-rare;
-}
-.rare:hover img {
-  @apply drop-shadow-rare;
-}
-.rare h2 {
-  @apply text-rare;
-}
-
-.epic {
-  @apply border-epic;
-}
-.epic:hover {
-  @apply shadow-epic;
-}
-.epic img {
-  @apply border-epic;
-}
-.epic:hover img {
-  @apply drop-shadow-epic;
-}
-.epic h2 {
-  @apply text-epic;
-}
-
-.legendary {
-  @apply border-legendary;
-}
-.legendary:hover {
-  @apply shadow-legendary;
-}
-.legendary img {
-  @apply border-legendary;
-}
-.legendary:hover img {
-  @apply drop-shadow-legendary;
-}
-.legendary h2 {
-  @apply text-legendary;
-}
-
-.cursed {
-  @apply border-special;
-}
-.cursed:hover {
-  @apply shadow-special;
-}
-.cursed img {
-  @apply border-special;
-}
-.cursed:hover img {
-  @apply drop-shadow-special;
-}
-.cursed h2 {
-  @apply text-special;
 }

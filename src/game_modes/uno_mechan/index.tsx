@@ -81,15 +81,28 @@ const UnoMechanMode = () => {
       // Używamy funkcji dealCards, aby rozdać karty
       const dealtCards = dealCards(deck, gameState.players.length);
 
-      // Uaktualniamy stan graczy, przypisując im karty
-      const playersWithCards = gameState.players.map((player, index) => ({
+      // Przypisanie kart o rzadkości cursed, legendary i epic
+      // TESTING
+      const testCards = deck.filter((card) =>
+        ["cursed", "legendary", "epic"].includes(card.rarity)
+      );
+
+      const playersWithTestCards = gameState.players.map((player, index) => ({
         ...player,
-        cards: dealtCards[index], // Przypisujemy rozdane karty
+        cards: [
+          ...testCards.slice(index * 7, (index + 1) * 7), // Każdy gracz dostaje 7 kart
+        ],
       }));
+
+      // Uaktualniamy stan graczy, przypisując im karty
+      // const playersWithCards = gameState.players.map((player, index) => ({
+      //   ...player,
+      //   cards: dealtCards[index], // Przypisujemy rozdane karty
+      // }));
 
       setGameState((prevState) => ({
         ...prevState,
-        players: playersWithCards,
+        players: playersWithTestCards,
       }));
     }
   };

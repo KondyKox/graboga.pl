@@ -94,6 +94,7 @@ const UnoGame = ({
             (player) =>
               player !== humanPlayer && (
                 <div
+                  key={player._id}
                   className={`flex justify-center items-center gap-2 p-2 w-full rounded-full ${
                     player.isTurn ? "bg-epic" : "bg-rare"
                   }`}
