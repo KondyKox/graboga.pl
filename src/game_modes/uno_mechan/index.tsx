@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import UnoGame from "./UnoGame";
 import LoadingOverlay from "@/components/Loading";
-import { Location, LOCATIONS } from "./constants";
+import { LOCATIONS } from "./constants";
 import useUnoDeck from "@/hooks/useUnoDeck";
 import Modal from "@/components/Modal";
 import UnoCardProps from "@/types/uno_mechan/UnoCardProps";
@@ -11,16 +11,17 @@ import {
   checkWinner,
   dealCards,
   formatLocationName,
-  handleCardAction,
+  handleLocationSelect,
 } from "./utils";
 import UnoGameState from "@/types/uno_mechan/UnoGameState";
 import UnoPlayer from "@/types/uno_mechan/UnoPlayer";
 import { handleBotTurn, initializeBots } from "./bot";
+import { drawCardFromDeck, executeAction } from "./cardActions";
 
 // TODO: Naprawić gre z botami, bo coś sie psuje czasem ostatni.
 // TODO: Czasem bot rzuca 2 karty naraz
 // TODO: Uprościć ten kod
-// TODO: Wyświetlać efekty kart i zrobić aby działały
+// TODO: efekty kart zrobić aby działały
 const UnoMechanMode = () => {
   const { deck, loading } = useUnoDeck();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -141,64 +142,37 @@ const UnoMechanMode = () => {
 
     // If card has different location, change it
     if (card.location && card.location !== gameState.currentLocation?.name) {
-      const newLocation = LOCATIONS.find((loc) => loc.name === card.location);
-      setGameState((prevState) => ({
-        ...prevState,
-        currentLocation: newLocation || null,
-      }));
+      const location = LOCATIONS.find((loc) => loc.name === card.location);
+
+      if (location)
+        handleLocationSelect({
+          location,
+          pendingLegendaryCard,
+          setGameState,
+          setIsModalOpen,
+          setPendingLegendaryCard,
+        });
+      else console.error(`Location not found for name: ${card.location}`);
     }
 
     // Play card action
-    if (card.action) handleCardAction(card.action);
+    if (card.action)
+      executeAction(card.action, {
+        setGameState,
+        gameState,
+        deck,
+        drawCard,
+        isClockwise,
+        setIsClockwise,
+      });
 
-    // Check if player wins
-    checkWinner(gameState, setGameState);
-    // Zmiana tury
-    changeTurn({ setGameState });
+    checkWinner(gameState, setGameState); // Check if player wins
+    if (!card.action) changeTurn({ setGameState, isClockwise }); // Zmiana tury
   };
 
   // Drawing a card from the deck
   const drawCard = () => {
-    if (deck.length === 0) return;
-
-    const randomIndex = Math.floor(Math.random() * deck.length);
-    const newCard = deck[randomIndex];
-
-    setGameState((prevState) => ({
-      ...prevState,
-      players: prevState.players.map((player, index) =>
-        index === prevState.currentPlayerIndex
-          ? { ...player, cards: [...player.cards, newCard] }
-          : player
-      ),
-    }));
-
-    // Zmiana tury
-    changeTurn({ setGameState });
-  };
-
-  // Select location if legendary card played
-  const handleLocationSelect = (location: Location) => {
-    setGameState((prevState) => ({
-      ...prevState,
-      currentLocation: location,
-      currentCard: pendingLegendaryCard,
-      players: prevState.players.map((player, index) =>
-        index === prevState.currentPlayerIndex
-          ? {
-              ...player,
-              cards: player.cards.filter(
-                (c) => c.id !== pendingLegendaryCard?.id
-              ),
-            }
-          : player
-      ),
-    }));
-
-    changeTurn({ setGameState });
-
-    setIsModalOpen(false);
-    setPendingLegendaryCard(null);
+    drawCardFromDeck({ deck, setGameState });
   };
 
   return (
@@ -236,7 +210,15 @@ const UnoMechanMode = () => {
               {LOCATIONS.map((location) => (
                 <button
                   key={location.name}
-                  onClick={() => handleLocationSelect(location)}
+                  onClick={() =>
+                    handleLocationSelect({
+                      location,
+                      pendingLegendaryCard,
+                      setGameState,
+                      setIsModalOpen,
+                      setPendingLegendaryCard,
+                    })
+                  }
                   className="btn px-6"
                 >
                   {formatLocationName(location.name)}

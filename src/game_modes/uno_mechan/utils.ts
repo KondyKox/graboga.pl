@@ -1,6 +1,6 @@
 import UnoCardProps from "@/types/uno_mechan/UnoCardProps";
 import UnoGameState from "@/types/uno_mechan/UnoGameState";
-import { Action } from "./constants";
+import { Action, LOCATIONS, Location } from "./constants";
 
 // Format location name for Modal (split words & make first letter capitalized)
 export const formatLocationName = (name: string) => {
@@ -37,15 +37,19 @@ export const canPlay = (
   );
 };
 
-// Change players' turn
+// Change game's turn
 export const changeTurn = ({
   setGameState,
+  isClockwise,
 }: {
   setGameState: React.Dispatch<React.SetStateAction<UnoGameState>>;
+  isClockwise: boolean;
 }) => {
   setGameState((prevState) => {
+    const direction = isClockwise ? 1 : -1;
     const nextPlayerIndex =
-      (prevState.currentPlayerIndex + 1) % prevState.players.length;
+      (prevState.currentPlayerIndex + direction + prevState.players.length) %
+      prevState.players.length;
 
     return {
       ...prevState,
@@ -58,31 +62,47 @@ export const changeTurn = ({
   });
 };
 
-// Card action handler
-export const handleCardAction = (action: Action) => {
-  switch (action) {
-    case "block":
-      console.log("Player blocked");
-      break;
-    case "draw":
-      console.log("Player draws cards");
-      break;
-    case "reverse":
-      console.log("Turn reversed");
-      break;
-    case "reverse & +2":
-      console.log("Turn reversed & next player draws cards");
-      break;
-    case "+2":
-      console.log("Next player draw 2 cards");
-      break;
-    case "+4":
-      console.log("Next player draw 4 cards");
-      break;
-    default:
-      console.log("No card action");
-      break;
-  }
+// Location change handler on legendary card played
+export const handleLocationSelect = ({
+  location,
+  pendingLegendaryCard,
+  setGameState,
+  setIsModalOpen,
+  setPendingLegendaryCard,
+}: {
+  location: Location;
+  pendingLegendaryCard: UnoCardProps;
+  setGameState: React.Dispatch<React.SetStateAction<UnoGameState>>;
+  setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setPendingLegendaryCard: React.Dispatch<
+    React.SetStateAction<UnoCardProps | null>
+  >;
+}) => {
+  setGameState((prevState) => {
+    // Znajdź lokalizację w `LOCATIONS` dla zachowania zgodności typów
+    const matchedLocation = LOCATIONS.find((loc) => loc.name === location.name);
+
+    return {
+      ...prevState,
+      currentLocation: matchedLocation || null,
+      currentCard: pendingLegendaryCard,
+      // players: prevState.players.map((player, index) =>
+      //   index === prevState.currentPlayerIndex
+      //     ? {
+      //         ...player,
+      //         cards: player.cards.filter(
+      //           (card) => card.id !== pendingLegendaryCard?.id
+      //         ),
+      //       }
+      //     : player
+      // ),
+    };
+  });
+
+  // changeTurn({ setGameState, gameState, isClockwise });
+
+  setIsModalOpen(false);
+  setPendingLegendaryCard(null);
 };
 
 // Check if someone won
