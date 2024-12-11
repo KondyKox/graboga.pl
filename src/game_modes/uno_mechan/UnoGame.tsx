@@ -124,7 +124,7 @@ const UnoGame = ({
           </div>
           <div className="flex justify-center items-center text-center group relative">
             <Image
-              src={"/uno_mechan/turnDirection.svg"}
+              src={"/uno_mechan/gameDirection.svg"}
               alt="Turn direction"
               width={64}
               height={128}
