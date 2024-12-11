@@ -1,6 +1,6 @@
 import UnoCardProps from "@/types/uno_mechan/UnoCardProps";
 import UnoGameState from "@/types/uno_mechan/UnoGameState";
-import { Action, LOCATIONS, Location } from "./constants";
+import { LOCATIONS, Location } from "./constants";
 
 // Format location name for Modal (split words & make first letter capitalized)
 export const formatLocationName = (name: string) => {

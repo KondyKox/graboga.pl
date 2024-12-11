@@ -87,7 +87,7 @@ const actionMethods: Record<
 
     // Next player draws 2 cards
     changeTurn({ setGameState, isClockwise });
-    drawCardFromDeck({ deck, setGameState });
+    for (let i = 0; i < 2; i++) drawCardFromDeck({ deck, setGameState });
   },
 
   // Next player draws 2 cards

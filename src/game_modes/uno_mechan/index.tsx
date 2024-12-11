@@ -17,6 +17,7 @@ import UnoGameState from "@/types/uno_mechan/UnoGameState";
 import UnoPlayer from "@/types/uno_mechan/UnoPlayer";
 import { handleBotTurn, initializeBots } from "./bot";
 import { drawCardFromDeck, executeAction } from "./cardActions";
+import UnoInstructions from "@/game_modes/uno_mechan/UnoInstructions";
 
 // TODO: Naprawić gre z botami, bo coś sie psuje czasem ostatni.
 // TODO: Czasem bot rzuca 2 karty naraz
@@ -24,6 +25,7 @@ import { drawCardFromDeck, executeAction } from "./cardActions";
 // TODO: efekty kart zrobić aby działały
 const UnoMechanMode = () => {
   const { deck, loading } = useUnoDeck();
+  const [showGame, setShowGame] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isClockwise, setIsClockwise] = useState<boolean>(true);
   const [pendingLegendaryCard, setPendingLegendaryCard] =
@@ -35,6 +37,7 @@ const UnoMechanMode = () => {
     currentPlayerIndex: 0,
     winner: null,
   });
+  // Show instructions with animation
 
   // Inicjalizacja gry
   const initializeGame = () => {
@@ -118,6 +121,15 @@ const UnoMechanMode = () => {
     }
   }, [gameState.currentPlayerIndex]);
 
+  // Display game instructions at the start of the game
+  useEffect(() => {
+    if (window.innerWidth < 768) return;
+
+    const timer = setTimeout(() => setShowGame(true), 6000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   // Play clicked card if playable
   const playCard = (card: UnoCardProps) => {
     const currentPlayer = gameState.players[gameState.currentPlayerIndex];
@@ -155,6 +167,8 @@ const UnoMechanMode = () => {
       else console.error(`Location not found for name: ${card.location}`);
     }
 
+    checkWinner(gameState, setGameState); // Check if player wins
+
     // Play card action
     if (card.action)
       executeAction(card.action, {
@@ -165,14 +179,13 @@ const UnoMechanMode = () => {
         isClockwise,
         setIsClockwise,
       });
-
-    checkWinner(gameState, setGameState); // Check if player wins
-    if (!card.action) changeTurn({ setGameState, isClockwise }); // Zmiana tury
+    else changeTurn({ setGameState, isClockwise }); // Zmiana tury
   };
 
   // Drawing a card from the deck
   const drawCard = () => {
     drawCardFromDeck({ deck, setGameState });
+    changeTurn({ setGameState, isClockwise });
   };
 
   return (
@@ -184,6 +197,8 @@ const UnoMechanMode = () => {
           Za mały ekran do gierki.
           <br /> 😢
         </h2>
+      ) : !showGame ? (
+        <UnoInstructions />
       ) : (
         <div
           className="flex flex-col justify-center items-center gap-4 w-full"
