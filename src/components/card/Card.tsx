@@ -35,8 +35,8 @@ const rarityStyles: Record<
   },
 };
 
-const Card: React.FC<{ card: CardProps & { rarity: Rarity } }> = ({ card }) => {
-  const rarity = card.rarity;
+const Card: React.FC<{ card: CardProps }> = ({ card }) => {
+  const rarity = card.rarity as Rarity;
 
   return (
     <div

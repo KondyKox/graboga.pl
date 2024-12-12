@@ -4,6 +4,7 @@ import React from "react";
 const Play = () => {
   const gameModes = [
     { name: "UNO: Mechan Edition", path: "uno_mechan" },
+    { name: "Running Mucha", path: "running_mucha" },
     { name: "Ez Matura", path: "ez_matura" },
   ];
 
