@@ -1,6 +1,6 @@
 import UnoGameState from "@/types/uno_mechan/UnoGameState";
 import UnoCardProps from "@/types/uno_mechan/UnoCardProps";
-import { Action } from "./constants";
+import { Action } from "../constants";
 import { changeTurn } from "./utils";
 
 // Draw card from deck
@@ -39,8 +39,10 @@ export const executeAction = (
   }
 ) => {
   const method = actionMethods[action];
-  if (method) method(params);
-  else console.log(`No action defined for ${action}`);
+  if (method) {
+    console.log(`Executing action: ${action}`);
+    method(params);
+  } else console.log(`No action defined for ${action}`);
 };
 
 // Action methods
@@ -57,21 +59,23 @@ const actionMethods: Record<
   // Block action
   block: ({ setGameState, isClockwise }) => {
     console.log("Player blocked");
-    const direction = isClockwise ? 2 : -2;
+    const direction = isClockwise ? 1 : -1;
 
+    // Change turn skipping 1 player (because he's blocked)
     setGameState((prevState) => ({
       ...prevState,
       currentPlayerIndex:
         (prevState.currentPlayerIndex + direction + prevState.players.length) %
         prevState.players.length,
     }));
+    changeTurn({ setGameState, isClockwise });
   },
   // Draw card action
   draw: ({ setGameState, deck, isClockwise }) => {
     console.log("Player draws a card");
 
-    changeTurn({ setGameState, isClockwise });
     drawCardFromDeck({ deck, setGameState });
+    changeTurn({ setGameState, isClockwise });
   },
   // Reverse action
   reverse: ({ setGameState, setIsClockwise, isClockwise }) => {
@@ -82,12 +86,11 @@ const actionMethods: Record<
   },
   // Reverse game direction & next player draw 2 cards
   "reverse & +2": ({ setGameState, deck, isClockwise, setIsClockwise }) => {
-    console.log("Turn reversed & next player draws cards");
+    console.log("Turn reversed & next player draws 2 cards");
     setIsClockwise(!isClockwise);
 
     // Next player draws 2 cards
-    changeTurn({ setGameState, isClockwise });
-    for (let i = 0; i < 2; i++) drawCardFromDeck({ deck, setGameState });
+    handleDrawCardAction({ setGameState, isClockwise, deck, cards: 2 });
   },
 
   // Next player draws 2 cards
@@ -95,17 +98,30 @@ const actionMethods: Record<
     console.log("Next player draws 2 cards");
 
     // Next player draws 2 cards
-    changeTurn({ setGameState, isClockwise });
-    for (let i = 0; i < 2; i++) drawCardFromDeck({ deck, setGameState });
-    changeTurn({ setGameState, isClockwise });
+    handleDrawCardAction({ setGameState, isClockwise, deck, cards: 2 });
   },
   // Next player draws 4 cards
   "+4": ({ setGameState, deck, isClockwise }) => {
     console.log("Next player draws 4 cards");
 
     // Next player draws 4 cards
-    changeTurn({ setGameState, isClockwise });
-    for (let i = 0; i < 4; i++) drawCardFromDeck({ deck, setGameState });
-    changeTurn({ setGameState, isClockwise });
+    handleDrawCardAction({ setGameState, isClockwise, deck, cards: 4 });
   },
+};
+
+// Draw card action handler
+const handleDrawCardAction = ({
+  setGameState,
+  isClockwise,
+  deck,
+  cards,
+}: {
+  setGameState: React.Dispatch<React.SetStateAction<UnoGameState>>;
+  isClockwise: boolean;
+  deck: UnoCardProps[];
+  cards: number;
+}) => {
+  changeTurn({ setGameState, isClockwise });
+  for (let i = 0; i < cards; i++) drawCardFromDeck({ deck, setGameState });
+  changeTurn({ setGameState, isClockwise });
 };

@@ -2,7 +2,7 @@ import UnoCardProps from "@/types/uno_mechan/UnoCardProps";
 import UnoGameState from "@/types/uno_mechan/UnoGameState";
 import { canPlay } from "./utils";
 import UnoPlayer from "@/types/uno_mechan/UnoPlayer";
-import { LOCATIONS } from "./constants";
+import { LOCATIONS } from "../constants";
 import { SetStateAction } from "react";
 
 // Initialize bots to play with
@@ -30,16 +30,17 @@ export const handleBotTurn = ({
   drawCard: () => void;
 }) => {
   const currentPlayer = gameState.players[gameState.currentPlayerIndex];
-
-  if (!currentPlayer.isBot) return; // If player is not bot - return
+  if (!currentPlayer.isBot) return;
 
   // Bot chooses card to play
   const botCards = currentPlayer.cards;
-  const playableCard = botCards.find((card) => canPlay(card, gameState));
+  const priorityCard = botCards.find(
+    (card) => card.action && canPlay(card, gameState)
+  );
 
-  if (playableCard) {
+  if (priorityCard) {
     // Jeśli bot ma kartę do zagrania, gra nią
-    if (playableCard.rarity === "legendary") {
+    if (priorityCard.rarity === "legendary") {
       // Jeśli karta jest legendarna, bot wybiera lokację
       const locationCounts = LOCATIONS.reduce((acc, location) => {
         // Zliczamy karty, które pasują do danej lokacji
@@ -67,7 +68,7 @@ export const handleBotTurn = ({
         }));
       }
     }
-    setTimeout(() => playCard(playableCard), 2000); // Dodajemy lekkie opóźnienie dla realizmu
+    setTimeout(() => playCard(priorityCard), 2000); // Dodajemy lekkie opóźnienie dla realizmu
   }
   // Jeśli bot nie ma kart do zagrania, dobiera kartę
   else setTimeout(() => drawCard(), 2000); // Dodajemy opóźnienie

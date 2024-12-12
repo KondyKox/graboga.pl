@@ -6,7 +6,7 @@ import Tooltip from "@/components/Tooltip";
 import UnoCardProps from "@/types/uno_mechan/UnoCardProps";
 import UnoPlayer from "@/types/uno_mechan/UnoPlayer";
 import UnoGameState from "@/types/uno_mechan/UnoGameState";
-import { canPlay } from "./utils";
+import { canPlay } from "../utils/utils";
 import { SetStateAction } from "react";
 
 // Restaruje grę odświeżając stronę (można rozwinąć żeby stan aplikacji resetował zamiast tego)

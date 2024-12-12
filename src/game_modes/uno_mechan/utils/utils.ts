@@ -1,6 +1,6 @@
 import UnoCardProps from "@/types/uno_mechan/UnoCardProps";
 import UnoGameState from "@/types/uno_mechan/UnoGameState";
-import { LOCATIONS, Location } from "./constants";
+import { LOCATIONS, Location } from "../constants";
 
 // Format location name for Modal (split words & make first letter capitalized)
 export const formatLocationName = (name: string) => {
@@ -65,18 +65,12 @@ export const changeTurn = ({
 // Location change handler on legendary card played
 export const handleLocationSelect = ({
   location,
-  pendingLegendaryCard,
   setGameState,
   setIsModalOpen,
-  setPendingLegendaryCard,
 }: {
   location: Location;
-  pendingLegendaryCard: UnoCardProps;
   setGameState: React.Dispatch<React.SetStateAction<UnoGameState>>;
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  setPendingLegendaryCard: React.Dispatch<
-    React.SetStateAction<UnoCardProps | null>
-  >;
 }) => {
   setGameState((prevState) => {
     // Znajdź lokalizację w `LOCATIONS` dla zachowania zgodności typów
@@ -85,24 +79,10 @@ export const handleLocationSelect = ({
     return {
       ...prevState,
       currentLocation: matchedLocation || null,
-      currentCard: pendingLegendaryCard,
-      // players: prevState.players.map((player, index) =>
-      //   index === prevState.currentPlayerIndex
-      //     ? {
-      //         ...player,
-      //         cards: player.cards.filter(
-      //           (card) => card.id !== pendingLegendaryCard?.id
-      //         ),
-      //       }
-      //     : player
-      // ),
     };
   });
 
-  // changeTurn({ setGameState, gameState, isClockwise });
-
   setIsModalOpen(false);
-  setPendingLegendaryCard(null);
 };
 
 // Check if someone won

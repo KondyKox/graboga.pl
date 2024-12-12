@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import UnoGame from "./UnoGame";
+import UnoGame from "./components/UnoGame";
 import LoadingOverlay from "@/components/Loading";
 import { LOCATIONS } from "./constants";
 import useUnoDeck from "@/hooks/useUnoDeck";
@@ -9,27 +9,23 @@ import {
   canPlay,
   changeTurn,
   checkWinner,
-  dealCards,
   formatLocationName,
   handleLocationSelect,
-} from "./utils";
+} from "./utils/utils";
 import UnoGameState from "@/types/uno_mechan/UnoGameState";
-import UnoPlayer from "@/types/uno_mechan/UnoPlayer";
-import { handleBotTurn, initializeBots } from "./bot";
-import { drawCardFromDeck, executeAction } from "./cardActions";
-import UnoInstructions from "@/game_modes/uno_mechan/UnoInstructions";
+import { handleBotTurn } from "./utils/bot";
+import { drawCardFromDeck, executeAction } from "./utils/cardActions";
+import UnoInstructions from "@/game_modes/uno_mechan/components/UnoInstructions";
+import { initializeDeck, initializeGame } from "./utils/setup";
 
 // TODO: Naprawić gre z botami, bo coś sie psuje czasem ostatni.
 // TODO: Czasem bot rzuca 2 karty naraz
-// TODO: Uprościć ten kod
 // TODO: efekty kart zrobić aby działały
 const UnoMechanMode = () => {
   const { deck, loading } = useUnoDeck();
   const [showGame, setShowGame] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [isClockwise, setIsClockwise] = useState<boolean>(true);
-  const [pendingLegendaryCard, setPendingLegendaryCard] =
-    useState<UnoCardProps | null>(null);
   const [gameState, setGameState] = useState<UnoGameState>({
     currentCard: null,
     currentLocation: null,
@@ -37,75 +33,14 @@ const UnoMechanMode = () => {
     currentPlayerIndex: 0,
     winner: null,
   });
-  // Show instructions with animation
-
-  // Inicjalizacja gry
-  const initializeGame = () => {
-    const humanPlayer: UnoPlayer = {
-      _id: "humanPlayer",
-      name: "Player 1",
-      cards: [],
-      isTurn: true,
-      score: 0,
-      isBot: false,
-    };
-
-    const botPlayers = initializeBots(3);
-
-    setGameState({
-      currentCard: null,
-      currentLocation: null,
-      players: [humanPlayer, ...botPlayers],
-      currentPlayerIndex: 0,
-      winner: null,
-    });
-  };
-
-  // Inicjalizacja talii
-  const initializeDeck = () => {
-    if (!loading && deck.length > 0) {
-      const firstNonLegendaryCard = deck.find(
-        (card) => card.rarity !== "legendary" && card.rarity !== "cursed"
-      );
-
-      if (firstNonLegendaryCard) {
-        setGameState((prevState) => ({
-          ...prevState,
-          currentCard: firstNonLegendaryCard,
-        }));
-
-        const initialLocation = LOCATIONS.find(
-          (loc) => loc.name === firstNonLegendaryCard.location
-        );
-
-        setGameState((prevState) => ({
-          ...prevState,
-          currentLocation: initialLocation || null,
-        }));
-      }
-
-      // Używamy funkcji dealCards, aby rozdać karty
-      const dealtCards = dealCards(deck, gameState.players.length);
-
-      // Uaktualniamy stan graczy, przypisując im karty
-      const playersWithCards = gameState.players.map((player, index) => ({
-        ...player,
-        cards: dealtCards[index], // Przypisujemy rozdane karty
-      }));
-
-      setGameState((prevState) => ({
-        ...prevState,
-        players: playersWithCards,
-      }));
-    }
-  };
 
   useEffect(() => {
-    initializeGame();
+    initializeGame({ setGameState });
   }, []);
 
   useEffect(() => {
-    initializeDeck();
+    if (!loading && deck.length > 0)
+      initializeDeck({ gameState, setGameState, deck });
   }, [loading, deck]);
 
   // Bot turn handling (ai logic)
@@ -136,9 +71,8 @@ const UnoMechanMode = () => {
     if (!canPlay(card, gameState) || !currentPlayer.isTurn) return;
 
     // Handle legendary card
-    if (card.rarity === "legendary") {
-      setPendingLegendaryCard(card);
-      if (!currentPlayer?.isBot) setIsModalOpen(true);
+    if (card.rarity === "legendary" && !currentPlayer?.isBot) {
+      setIsModalOpen(true);
       return;
     }
 
@@ -159,10 +93,8 @@ const UnoMechanMode = () => {
       if (location)
         handleLocationSelect({
           location,
-          pendingLegendaryCard,
           setGameState,
           setIsModalOpen,
-          setPendingLegendaryCard,
         });
       else console.error(`Location not found for name: ${card.location}`);
     }
@@ -228,10 +160,8 @@ const UnoMechanMode = () => {
                   onClick={() =>
                     handleLocationSelect({
                       location,
-                      pendingLegendaryCard,
                       setGameState,
                       setIsModalOpen,
-                      setPendingLegendaryCard,
                     })
                   }
                   className="btn px-6"
