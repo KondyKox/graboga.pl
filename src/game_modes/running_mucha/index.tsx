@@ -1,8 +1,10 @@
-import Card from "@/components/card/Card";
 import LoadingOverlay from "@/components/Loading";
 import useCards from "@/hooks/useCards";
+import Obstacle from "@/types/running_mucha/ObstacleProps";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import Obstacles from "./components/Obstacles";
+import Player from "./components/Player";
 
 const RunningMuchaMode = () => {
   const cards = useCards();
@@ -11,11 +13,9 @@ const RunningMuchaMode = () => {
   const [gameStarted, setGameStarted] = useState<boolean>(false);
   const [gameOver, setGameOver] = useState<boolean>(false);
   const [isJumping, setIsJumping] = useState<boolean>(false);
-  const [obstacles, setObstacles] = useState<
-    { id: number; left: number; cardIndex: number }[]
-  >([]);
-  const [playerColor, setPlayerColor] = useState("white");
-  const playerImg = `/running_mucha/player/${playerColor}`; // Path to player image
+  const [obstacles, setObstacles] = useState<Obstacle[]>([]);
+  const [playerCol, setPlayerColor] = useState("white");
+  const playerRef = useRef<HTMLDivElement>(null);
 
   // Show loading overlay
   useEffect(() => {
@@ -36,23 +36,28 @@ const RunningMuchaMode = () => {
   const handleStartGame = () => {
     console.log("Game started.");
     setGameStarted(true);
+    setGameOver(false);
+    setScore(0);
+    setObstacles([]);
   };
 
   // Generate random obstacles
   const generateObstacles = () => {
     if (cards.length === 0) return;
 
-    const newObstacles: { id: number; left: number; cardIndex: number }[] = [];
-    const baseLeft = 1000;
+    const baseLeft = window.innerWidth;
+    const newObstacles: Obstacle[] = [];
 
-    // Random number of obstacles
-    const numObstacles = Math.random() > 0.5 ? 1 : 2;
+    // Randomly decide if one or two obstacles
+    const obstacleCount = Math.random() > 0.7 ? 2 : 1;
 
-    for (let i = 0; i < numObstacles; i++) {
+    for (let i = 0; i < obstacleCount; i++) {
       newObstacles.push({
-        id: Date.now() + i, // Unikalny ID
-        left: baseLeft + i * 50, // Pozycja przeszkód w grupie
-        cardIndex: Math.floor(Math.random() * cards.length), // Losowa karta
+        id: Date.now() + i,
+        left: baseLeft + i * 60,
+        cardIndex: Math.floor(Math.random() * cards.length),
+        width: 40,
+        height: 40,
       });
     }
 
@@ -72,36 +77,32 @@ const RunningMuchaMode = () => {
 
       // Losowe generowanie przeszkód
       if (Math.random() > 0.9) generateObstacles();
+      setScore((prev) => prev + 1);
     }, 50);
 
     return () => clearInterval(interval);
   }, [gameStarted, gameOver]);
 
-  // Game loop
+  // Check for collision
   useEffect(() => {
-    if (!gameStarted || gameOver) return;
+    if (!gameStarted || gameOver || !playerRef) return;
 
-    // Update score
-    setScore((prevScore) => prevScore + 1);
-
-    const playerBox = {
-      left: 200,
-      right: 260,
-      bottom: 0,
-      top: isJumping ? 150 : 100,
-    };
+    const playerBox = playerRef.current?.getBoundingClientRect();
 
     const collision = obstacles.some((obs) => {
       const obstacleBox = {
         left: obs.left,
-        right: obs.left + 50,
+        right: obs.left + obs.width,
         bottom: 0,
-        top: 100,
+        top: obs.height,
       };
+
       return (
+        playerBox &&
         playerBox.right > obstacleBox.left &&
         playerBox.left < obstacleBox.right &&
-        playerBox.bottom < obstacleBox.top
+        playerBox.bottom < obstacleBox.top &&
+        playerBox.top > obstacleBox.bottom
       );
     });
 
@@ -109,7 +110,7 @@ const RunningMuchaMode = () => {
       setGameOver(true);
       console.log("Game Over");
     }
-  }, [obstacles, isJumping, gameStarted, gameOver]);
+  }, [obstacles, gameStarted, gameOver, isJumping]);
 
   // Jumping
   const handleJump = () => {
@@ -124,22 +125,25 @@ const RunningMuchaMode = () => {
   if (loading) return <LoadingOverlay message="Running Mucha" />; // Loading Overlay
 
   return (
-    <div className="flex flex-col justify-center items-center gap-4 relative overflow-hidden h-screen w-screen">
+    <div
+      className="flex flex-col justify-center items-center gap-4 relative overflow-hidden w-full"
+      style={{ height: "calc(100vh - 100px)" }}
+    >
       <div className="flex flex-col justify-center items-center">
-        <h2 className="sub-header">Running Mucha</h2>
+        <h2 className="header">Running Mucha</h2>
         <p className="text-sm">
           Wynik: <span className="text-epic">{score}</span>
         </p>
       </div>
       {/* Start game screen */}
-      {!gameStarted && (
+      {!gameStarted && !gameOver && (
         <div
-          className="flex flex-col justify-center items-center w-full"
+          className="flex flex-col items-center justify-center w-full h-full"
           onClick={handleStartGame}
         >
-          <h2 className="sub-header">Kliknij, aby zacząć</h2>
+          <h2 className="sub-header text-cursed">Kliknij, aby zacząć</h2>
           <Image
-            src={`${playerImg}/idle.png`}
+            src={`/running_mucha/player/${playerCol}/idle.png`}
             alt="Gracz"
             width={64}
             height={64}
@@ -149,39 +153,19 @@ const RunningMuchaMode = () => {
 
       {/* Game UI */}
       {gameStarted && !gameOver && (
-        <div className="relative w-full h-full">
-          <div
-            className={`absolute bottom-0 left-200 ${
-              isJumping ? "animate-jump" : ""
-            }`}
-          >
-            <Image
-              src={`${playerImg}/${!isJumping ? "run.png" : "jump.png"}`}
-              alt="Gracz"
-              width={64}
-              height={64}
-            />
-          </div>
-          {obstacles.map((obs) => (
-            <div
-              key={obs.id}
-              style={{
-                left: obs.left,
-                bottom: 0,
-                position: "absolute",
-                scale: 0.35,
-              }}
-            >
-              <Card card={cards[obs.cardIndex]} />
-            </div>
-          ))}
+        <div className="w-full h-full relative">
+          <Player isJumping={isJumping} playerCol={playerCol} ref={playerRef} />
+          <Obstacles obstacles={obstacles} cards={cards} />
         </div>
       )}
 
       {/* Game Over screen */}
       {gameOver && (
-        <div className="flex justify-center items-center w-full mt-8">
-          <h2 className="sub-header text-gradient">Przegrałeś frajerze!</h2>
+        <div className="flex flex-col items-center">
+          <h2 className="sub-header text-gradient">Game Over</h2>
+          <button onClick={handleStartGame} className="btn px-6">
+            Zagraj ponownie
+          </button>
         </div>
       )}
     </div>
