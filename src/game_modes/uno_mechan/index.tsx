@@ -21,6 +21,7 @@ import { initializeDeck, initializeGame } from "./utils/setup";
 // TODO: Naprawić gre z botami, bo coś sie psuje czasem ostatni.
 // TODO: Czasem bot rzuca 2 karty naraz
 // TODO: efekty kart zrobić aby działały
+// TODO: Jak rzucam karte legendarną nie mija tura
 const UnoMechanMode = () => {
   const { deck, loading } = useUnoDeck();
   const [showGame, setShowGame] = useState(false);
@@ -65,6 +66,19 @@ const UnoMechanMode = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  // Restart game
+  const handleRestart = () => {
+    setGameState({
+      currentCard: null,
+      currentLocation: null,
+      players: [],
+      currentPlayerIndex: 0,
+      winner: null,
+    });
+    initializeGame({ setGameState });
+    initializeDeck({ gameState, setGameState, deck });
+  };
+
   // Play clicked card if playable
   const playCard = (card: UnoCardProps) => {
     const currentPlayer = gameState.players[gameState.currentPlayerIndex];
@@ -73,6 +87,7 @@ const UnoMechanMode = () => {
     // Handle legendary card
     if (card.rarity === "legendary" && !currentPlayer?.isBot) {
       setIsModalOpen(true);
+      // TODO: Tu dorobic logike jak ponizej
       return;
     }
 
@@ -149,6 +164,7 @@ const UnoMechanMode = () => {
             players={gameState.players}
             gameState={gameState}
             isClockwise={isClockwise}
+            onRestart={handleRestart}
           />
 
           <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>

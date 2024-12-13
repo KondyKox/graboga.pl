@@ -7,13 +7,6 @@ import UnoCardProps from "@/types/uno_mechan/UnoCardProps";
 import UnoPlayer from "@/types/uno_mechan/UnoPlayer";
 import UnoGameState from "@/types/uno_mechan/UnoGameState";
 import { canPlay } from "../utils/utils";
-import { SetStateAction } from "react";
-
-// Restaruje grę odświeżając stronę (można rozwinąć żeby stan aplikacji resetował zamiast tego)
-const restartGame = () => {
-  // Odświeżenie strony
-  window.location.reload();
-};
 
 const UnoGame = ({
   currentCard,
@@ -22,6 +15,7 @@ const UnoGame = ({
   players,
   gameState,
   isClockwise,
+  onRestart,
 }: {
   currentCard: UnoCardProps | null;
   onPlayCard: (card: UnoCardProps) => void;
@@ -29,6 +23,7 @@ const UnoGame = ({
   players: UnoPlayer[];
   gameState: UnoGameState;
   isClockwise: boolean;
+  onRestart: () => void;
 }) => {
   const humanPlayer =
     players.find((player) => {
@@ -38,7 +33,7 @@ const UnoGame = ({
   return gameState.winner ? (
     <div className="flex flex-col justify-center items-center w-fit">
       <h2 className="header text-gradient">{gameState.winner.name} wygrywa!</h2>
-      <button onClick={restartGame} className="btn w-full uppercase">
+      <button onClick={onRestart} className="btn w-full uppercase">
         Zagraj jeszcze raz
       </button>
     </div>
