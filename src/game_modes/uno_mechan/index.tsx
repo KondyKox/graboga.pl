@@ -46,6 +46,8 @@ const UnoMechanMode = () => {
 
   // Bot turn handling (ai logic)
   useEffect(() => {
+    if (!isModalOpen) return;
+
     const currentPlayer = gameState.players[gameState.currentPlayerIndex];
     if (currentPlayer?.isBot) {
       handleBotTurn({
@@ -55,7 +57,7 @@ const UnoMechanMode = () => {
         drawCard,
       });
     }
-  }, [gameState.currentPlayerIndex]);
+  }, [gameState.currentPlayerIndex, isModalOpen]);
 
   // Display game instructions at the start of the game
   useEffect(() => {
@@ -85,11 +87,8 @@ const UnoMechanMode = () => {
     if (!canPlay(card, gameState) || !currentPlayer.isTurn) return;
 
     // Handle legendary card
-    if (card.rarity === "legendary" && !currentPlayer?.isBot) {
+    if (card.rarity === "legendary" && !currentPlayer?.isBot)
       setIsModalOpen(true);
-      // TODO: Tu dorobic logike jak ponizej
-      return;
-    }
 
     setGameState((prevState) => ({
       ...prevState,
