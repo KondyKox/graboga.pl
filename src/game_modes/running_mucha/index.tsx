@@ -83,6 +83,15 @@ const RunningMuchaMode = () => {
     return () => clearInterval(interval);
   }, [gameStarted, gameOver]);
 
+  // Dodaj dynamiczne wymiary przeszkód
+  const handleUpdateObstacleDimensions = (id: number, rect: DOMRect) => {
+    setObstacles((prev) =>
+      prev.map((obs) =>
+        obs.id === id ? { ...obs, width: rect.width, height: rect.height } : obs
+      )
+    );
+  };
+
   // Check for collision
   useEffect(() => {
     if (!gameStarted || gameOver || !playerRef) return;
@@ -155,7 +164,11 @@ const RunningMuchaMode = () => {
       {gameStarted && !gameOver && (
         <div className="w-full h-full relative">
           <Player isJumping={isJumping} playerCol={playerCol} ref={playerRef} />
-          <Obstacles obstacles={obstacles} cards={cards} />
+          <Obstacles
+            obstacles={obstacles}
+            cards={cards}
+            onUpdateDimensions={handleUpdateObstacleDimensions}
+          />
         </div>
       )}
 
