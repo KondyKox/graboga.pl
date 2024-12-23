@@ -1,4 +1,4 @@
-import { Db, MongoClient } from 'mongodb';
+import { Db, MongoClient, ServerApiVersion } from 'mongodb';
 
 let client: MongoClient;
 let clientPromise: Promise<MongoClient>;
@@ -10,7 +10,13 @@ const options = {}; // Add options here if necessary, like useNewUrlParser, useU
 if (process.env.NODE_ENV === 'development') {
   // In development mode, use a global variable to hold the client
   if (!(global as any)._mongoClientPromise) {
-    client = new MongoClient(uri);
+    client = new MongoClient(uri, {
+      serverApi: {
+        version: ServerApiVersion.v1,
+        strict: true,
+        deprecationErrors: true,
+      }
+    });
     (global as any)._mongoClientPromise = client.connect();
   }
   clientPromise = (global as any)._mongoClientPromise;

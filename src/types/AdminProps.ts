@@ -7,11 +7,21 @@ export interface User {
 }
 
 export interface StoreItem {
+  item: {
+    id: string;
+    name: string;
+    description: string;
+    img: string;
+    teacher: string;
+  };
   _id: string;
   pack: string;
   name: string;
-  category: string;
-  cost: number;
+  category: {
+    id: number;
+    name: string;
+  };
+  price: number;
   status: string;
 }
 

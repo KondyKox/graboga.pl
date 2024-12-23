@@ -11,11 +11,24 @@ export const useAdminData = () => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
+      const token = localStorage.getItem("token"); // Retrieve token from localStorage
+
+      if (!token) {
+        setError("Token is missing. Please log in.");
+        setLoading(false);
+        return;
+      }
       try {
+        const options = {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        };
         const [usersResponse, storeResponse, logsResponse] = await Promise.all([
-          fetch("/api/admin/users"),
-          fetch("/api/admin/store"),
-          fetch("/api/logger/view"),
+          fetch("/api/admin/users", options),
+          fetch("/api/admin/store", options),
+          fetch("/api/logger/view", options),
         ]);
 
         if (!usersResponse.ok || !storeResponse.ok) {
