@@ -104,7 +104,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="bg-background fixed bottom-0 md:relative md:top-0 w-full flex justify-between items-center p-4 border-t-2 sm:border-t-0 md:border-b-2 z-10">
+    <nav className="bg-background fixed bottom-0 md:sticky md:top-0 w-full flex justify-between items-center p-4 border-t-2 sm:border-t-0 md:border-b-2 z-10">
       <div className="hidden md:flex justify-between items-center mx-2 w-full">
         <div>
           <Logo />

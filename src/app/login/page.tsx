@@ -82,7 +82,7 @@ export default function Login() {
           Zarejestruj się tutaj!
         </Link>
       </p>
-      {error && <p className="text-special mt-2">{error}</p>}
+      {error && <p className="text-cursed mt-2">{error}</p>}
     </div>
   );
 }

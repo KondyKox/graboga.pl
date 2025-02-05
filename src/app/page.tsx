@@ -80,7 +80,7 @@ export default function Home() {
 
   return (
     <section className="flex flex-col justify-center items-center p-4 mt-4 md:mt-8 pb-20 md:pb-8">
-      <div className="p-2 flex flex-col justify-center items-center">
+      <div className="p-2 flex flex-col justify-center md:justify-stretch items-center md:h-screen">
         <h1 className="uppercase font-bold text-4xl text-center md:text-8xl">
           graboga.pl <span className="text-gradient">2.0</span>
         </h1>
@@ -156,6 +156,7 @@ export default function Home() {
         Twórcy: <br />
         <span className="text-rare font-bold">Konrad Ciesielski</span> i <br />
         <span className="text-epic font-bold">Michał Wachowski</span>. <br />
+        <span className="text-gray-700 text-xs">(i ChatGPT)</span><br />
         <span className="font-bold">(4ir (w 2023r.))</span>
       </footer>
     </section>
