@@ -7,7 +7,7 @@ const Player = forwardRef<
 >(({ isJumping, playerCol }, ref) => (
   <div
     ref={ref}
-    className={`absolute`}
+    className="absolute"
     style={{
       left: "15rem",
       bottom: isJumping ? "150px" : "0px", // Skakanie zmienia bottom

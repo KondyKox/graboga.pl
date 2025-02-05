@@ -5,6 +5,9 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import Obstacles from "./components/Obstacles";
 import Player from "./components/Player";
+import { handleKeyPress, handleStartGame } from "./utils/gameUtils";
+import { generateObstacles, moveObstacles } from "./utils/obstacleUtils";
+import { checkCollision, handleJump } from "./utils/playerUtils";
 
 const RunningMuchaMode = () => {
   const cards = useCards();
@@ -13,6 +16,7 @@ const RunningMuchaMode = () => {
   const [gameStarted, setGameStarted] = useState<boolean>(false);
   const [gameOver, setGameOver] = useState<boolean>(false);
   const [isJumping, setIsJumping] = useState<boolean>(false);
+  const [isGrounded, setIsGrounded] = useState<boolean>(true);
   const [obstacles, setObstacles] = useState<Obstacle[]>([]);
   const [playerCol, setPlayerColor] = useState("white");
   const playerRef = useRef<HTMLDivElement>(null);
@@ -24,44 +28,19 @@ const RunningMuchaMode = () => {
 
   // Jumping on key down
   useEffect(() => {
-    const handleKeyPress = (event: KeyboardEvent) => {
-      if (event.key === " " || event.key === "w" || event.key === "ArrowUp")
-        handleJump();
-    };
-    window.addEventListener("keydown", handleKeyPress);
-    return () => window.removeEventListener("keydown", handleKeyPress);
-  }, [isJumping]);
+    const keyPressHandler = (event: KeyboardEvent) =>
+      handleKeyPress(event, () =>
+        handleJump(isGrounded, setIsGrounded, setIsJumping)
+      );
+    window.addEventListener("keydown", keyPressHandler);
+    return () => window.removeEventListener("keydown", keyPressHandler);
+  }, [isGrounded]);
 
   // Start game on click
-  const handleStartGame = () => {
+  const startGame = () => {
     console.log("Game started.");
-    setGameStarted(true);
-    setGameOver(false);
-    setScore(0);
-    setObstacles([]);
-  };
 
-  // Generate random obstacles
-  const generateObstacles = () => {
-    if (cards.length === 0) return;
-
-    const baseLeft = window.innerWidth;
-    const newObstacles: Obstacle[] = [];
-
-    // Randomly decide if one or two obstacles
-    const obstacleCount = Math.random() > 0.7 ? 2 : 1;
-
-    for (let i = 0; i < obstacleCount; i++) {
-      newObstacles.push({
-        id: Date.now() + i,
-        left: baseLeft + i * 60,
-        cardIndex: Math.floor(Math.random() * cards.length),
-        width: 40,
-        height: 40,
-      });
-    }
-
-    setObstacles((prev) => [...prev, ...newObstacles]);
+    handleStartGame(setGameStarted, setGameOver, setScore, setObstacles);
   };
 
   // Move obstacles
@@ -69,67 +48,25 @@ const RunningMuchaMode = () => {
     if (!gameStarted || gameOver) return;
 
     const interval = setInterval(() => {
-      setObstacles((prev) =>
-        prev
-          .map((obs) => ({ ...obs, left: obs.left - 10 }))
-          .filter((obs) => obs.left > -100)
-      );
-
-      // Losowe generowanie przeszkód
-      if (Math.random() > 0.9) generateObstacles();
-      setScore((prev) => prev + 1);
+      moveObstacles(setObstacles, setScore);
     }, 50);
 
-    return () => clearInterval(interval);
-  }, [gameStarted, gameOver]);
+    // Generate obstacles
+    const obstacleGenInterval = setInterval(() => {
+      generateObstacles(cards, obstacles, setObstacles);
+    }, 3000);
 
-  // Dodaj dynamiczne wymiary przeszkód
-  const handleUpdateObstacleDimensions = (id: number, rect: DOMRect) => {
-    setObstacles((prev) =>
-      prev.map((obs) =>
-        obs.id === id ? { ...obs, width: rect.width, height: rect.height } : obs
-      )
-    );
-  };
+    return () => {
+      clearInterval(interval);
+      clearInterval(obstacleGenInterval);
+    };
+  }, [gameStarted, gameOver]);
 
   // Check for collision
   useEffect(() => {
     if (!gameStarted || gameOver || !playerRef) return;
-
-    const playerBox = playerRef.current?.getBoundingClientRect();
-
-    const collision = obstacles.some((obs) => {
-      const obstacleBox = {
-        left: obs.left,
-        right: obs.left + obs.width,
-        bottom: 0,
-        top: obs.height,
-      };
-
-      return (
-        playerBox &&
-        playerBox.right > obstacleBox.left &&
-        playerBox.left < obstacleBox.right &&
-        playerBox.bottom < obstacleBox.top &&
-        playerBox.top > obstacleBox.bottom
-      );
-    });
-
-    if (collision) {
-      setGameOver(true);
-      console.log("Game Over");
-    }
+    checkCollision(obstacles, playerRef, setGameOver);
   }, [obstacles, gameStarted, gameOver, isJumping]);
-
-  // Jumping
-  const handleJump = () => {
-    if (isJumping) return;
-
-    setIsJumping(true);
-    setTimeout(() => {
-      setIsJumping(false);
-    }, 500);
-  };
 
   if (loading) return <LoadingOverlay message="Running Mucha" />; // Loading Overlay
 
@@ -144,11 +81,12 @@ const RunningMuchaMode = () => {
           Wynik: <span className="text-epic">{score}</span>
         </p>
       </div>
+
       {/* Start game screen */}
       {!gameStarted && !gameOver && (
         <div
           className="flex flex-col items-center justify-center w-full h-full"
-          onClick={handleStartGame}
+          onClick={startGame}
         >
           <h2 className="sub-header text-cursed">Kliknij, aby zacząć</h2>
           <Image
@@ -164,11 +102,7 @@ const RunningMuchaMode = () => {
       {gameStarted && !gameOver && (
         <div className="w-full h-full relative">
           <Player isJumping={isJumping} playerCol={playerCol} ref={playerRef} />
-          <Obstacles
-            obstacles={obstacles}
-            cards={cards}
-            onUpdateDimensions={handleUpdateObstacleDimensions}
-          />
+          <Obstacles obstacles={obstacles} cards={cards} />
         </div>
       )}
 
@@ -176,7 +110,7 @@ const RunningMuchaMode = () => {
       {gameOver && (
         <div className="flex flex-col items-center">
           <h2 className="sub-header text-gradient">Game Over</h2>
-          <button onClick={handleStartGame} className="btn px-6">
+          <button onClick={startGame} className="btn px-6">
             Zagraj ponownie
           </button>
         </div>
