@@ -5,7 +5,6 @@ import { Dispatch, SetStateAction } from "react";
 // Generate random obstacles
 export const generateObstacles = (
   cards: CardProps[],
-  obstacles: Obstacle[],
   setObstacles: Dispatch<SetStateAction<Obstacle[]>>
 ) => {
   if (cards.length === 0) return;
@@ -22,8 +21,8 @@ export const generateObstacles = (
         id: Date.now() + i,
         left: baseLeft + i * 60,
         cardIndex: Math.floor(Math.random() * cards.length),
-        width: 40,
-        height: 40,
+        // width: 40,
+        // height: 40,
       });
     }
 

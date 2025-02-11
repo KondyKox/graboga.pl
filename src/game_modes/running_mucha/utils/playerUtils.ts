@@ -3,34 +3,30 @@ import { Dispatch, MutableRefObject, SetStateAction } from "react";
 
 // Jumping function
 export const handleJump = (
-  isOnGround: boolean,
-  setIsOnGround: Dispatch<SetStateAction<boolean>>,
+  isJumping: boolean,
   setIsJumping: Dispatch<SetStateAction<boolean>>
 ) => {
-  if (!isOnGround) return;
-  setIsOnGround(false);
+  if (!isJumping) return;
   setIsJumping(true);
   setTimeout(() => {
     setIsJumping(false);
-    setIsOnGround(true);
-  }, 500);
+  }, 1000);
 };
 
 // Check collision between player and obstacles
 export const checkCollision = (
   obstacles: Obstacle[],
   playerRef: MutableRefObject<HTMLElement | null>,
+  obstacleRefs: MutableRefObject<Map<number, HTMLElement | null>>,
   setGameOver: Dispatch<SetStateAction<boolean>>
 ) => {
   const playerBox = playerRef.current?.getBoundingClientRect();
 
   const collision = obstacles.some((obs) => {
-    const obstacleBox = {
-      left: obs.left,
-      right: obs.left + obs.width,
-      bottom: window.innerHeight,
-      top: window.innerHeight - obs.height,
-    };
+    const obstacleElement = obstacleRefs.current.get(obs.id);
+    if (!obstacleElement) return false;
+
+    const obstacleBox = obstacleElement.getBoundingClientRect();
 
     return (
       playerBox &&

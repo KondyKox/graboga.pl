@@ -10,8 +10,8 @@ const Player = forwardRef<
     className="absolute"
     style={{
       left: "15rem",
-      bottom: isJumping ? "150px" : "0px", // Skakanie zmienia bottom
-      transition: "bottom 0.3s ease-out", // Płynna animacja
+      bottom: isJumping ? "300px" : "0px", // Skakanie zmienia bottom
+      transition: "bottom 0.5s ease-out", // Płynna animacja
     }}
   >
     <Image

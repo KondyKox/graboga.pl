@@ -16,25 +16,16 @@ const RunningMuchaMode = () => {
   const [gameStarted, setGameStarted] = useState<boolean>(false);
   const [gameOver, setGameOver] = useState<boolean>(false);
   const [isJumping, setIsJumping] = useState<boolean>(false);
-  const [isGrounded, setIsGrounded] = useState<boolean>(true);
   const [obstacles, setObstacles] = useState<Obstacle[]>([]);
   const [playerCol, setPlayerColor] = useState("white");
+
   const playerRef = useRef<HTMLDivElement>(null);
+  const obstacleRefs = useRef<Map<number, HTMLElement | null>>(new Map());
 
   // Show loading overlay
   useEffect(() => {
     setTimeout(() => setLoading(false), 2000);
   }, []);
-
-  // Jumping on key down
-  useEffect(() => {
-    const keyPressHandler = (event: KeyboardEvent) =>
-      handleKeyPress(event, () =>
-        handleJump(isGrounded, setIsGrounded, setIsJumping)
-      );
-    window.addEventListener("keydown", keyPressHandler);
-    return () => window.removeEventListener("keydown", keyPressHandler);
-  }, [isGrounded]);
 
   // Start game on click
   const startGame = () => {
@@ -42,6 +33,14 @@ const RunningMuchaMode = () => {
 
     handleStartGame(setGameStarted, setGameOver, setScore, setObstacles);
   };
+
+  // Jumping on key down
+  useEffect(() => {
+    const keyPressHandler = (event: KeyboardEvent) =>
+      handleKeyPress(event, () => handleJump(isJumping, setIsJumping));
+    window.addEventListener("keydown", keyPressHandler);
+    return () => window.removeEventListener("keydown", keyPressHandler);
+  }, [isJumping]);
 
   // Move obstacles
   useEffect(() => {
@@ -53,7 +52,7 @@ const RunningMuchaMode = () => {
 
     // Generate obstacles
     const obstacleGenInterval = setInterval(() => {
-      generateObstacles(cards, obstacles, setObstacles);
+      generateObstacles(cards, setObstacles);
     }, 3000);
 
     return () => {
@@ -65,7 +64,7 @@ const RunningMuchaMode = () => {
   // Check for collision
   useEffect(() => {
     if (!gameStarted || gameOver || !playerRef) return;
-    checkCollision(obstacles, playerRef, setGameOver);
+    checkCollision(obstacles, playerRef, obstacleRefs, setGameOver);
   }, [obstacles, gameStarted, gameOver, isJumping]);
 
   if (loading) return <LoadingOverlay message="Running Mucha" />; // Loading Overlay
@@ -102,7 +101,11 @@ const RunningMuchaMode = () => {
       {gameStarted && !gameOver && (
         <div className="w-full h-full relative">
           <Player isJumping={isJumping} playerCol={playerCol} ref={playerRef} />
-          <Obstacles obstacles={obstacles} cards={cards} />
+          <Obstacles
+            obstacles={obstacles}
+            cards={cards}
+            obstacleRefs={obstacleRefs}
+          />
         </div>
       )}
 
