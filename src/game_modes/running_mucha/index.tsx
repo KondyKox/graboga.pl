@@ -5,9 +5,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import Obstacles from "./components/Obstacles";
 import Player from "./components/Player";
-import { handleKeyPress, handleStartGame } from "./utils/gameUtils";
-import { generateObstacles, moveObstacles } from "./utils/obstacleUtils";
-import { checkCollision, handleJump } from "./utils/playerUtils";
+import { checkCollision, handleStartGame } from "./utils/gameUtils";
 
 const RunningMuchaMode = () => {
   const cards = useCards();
@@ -15,7 +13,6 @@ const RunningMuchaMode = () => {
   const [score, setScore] = useState<number>(0);
   const [gameStarted, setGameStarted] = useState<boolean>(false);
   const [gameOver, setGameOver] = useState<boolean>(false);
-  const [isJumping, setIsJumping] = useState<boolean>(false);
   const [obstacles, setObstacles] = useState<Obstacle[]>([]);
   const [playerCol, setPlayerColor] = useState("white");
 
@@ -27,6 +24,17 @@ const RunningMuchaMode = () => {
     setTimeout(() => setLoading(false), 2000);
   }, []);
 
+  // Update score
+  useEffect(() => {
+    if (!gameStarted || gameOver) return;
+
+    const interval = setInterval(() => {
+      setScore((prev) => prev + 1);
+    }, 50);
+
+    return () => clearInterval(interval);
+  }, [gameStarted, gameOver]);
+
   // Start game on click
   const startGame = () => {
     console.log("Game started.");
@@ -34,38 +42,11 @@ const RunningMuchaMode = () => {
     handleStartGame(setGameStarted, setGameOver, setScore, setObstacles);
   };
 
-  // Jumping on key down
-  useEffect(() => {
-    const keyPressHandler = (event: KeyboardEvent) =>
-      handleKeyPress(event, () => handleJump(isJumping, setIsJumping));
-    window.addEventListener("keydown", keyPressHandler);
-    return () => window.removeEventListener("keydown", keyPressHandler);
-  }, [isJumping]);
-
-  // Move obstacles
-  useEffect(() => {
-    if (!gameStarted || gameOver) return;
-
-    const interval = setInterval(() => {
-      moveObstacles(setObstacles, setScore);
-    }, 50);
-
-    // Generate obstacles
-    const obstacleGenInterval = setInterval(() => {
-      generateObstacles(cards, setObstacles);
-    }, 3000);
-
-    return () => {
-      clearInterval(interval);
-      clearInterval(obstacleGenInterval);
-    };
-  }, [gameStarted, gameOver]);
-
   // Check for collision
   useEffect(() => {
     if (!gameStarted || gameOver || !playerRef) return;
     checkCollision(obstacles, playerRef, obstacleRefs, setGameOver);
-  }, [obstacles, gameStarted, gameOver, isJumping]);
+  }, [obstacles, gameStarted, gameOver]);
 
   if (loading) return <LoadingOverlay message="Running Mucha" />; // Loading Overlay
 
@@ -100,11 +81,14 @@ const RunningMuchaMode = () => {
       {/* Game UI */}
       {gameStarted && !gameOver && (
         <div className="w-full h-full relative">
-          <Player isJumping={isJumping} playerCol={playerCol} ref={playerRef} />
+          <Player playerCol={playerCol} ref={playerRef} />
           <Obstacles
             obstacles={obstacles}
+            setObstacles={setObstacles}
             cards={cards}
             obstacleRefs={obstacleRefs}
+            gameStarted={gameStarted}
+            gameOver={gameOver}
           />
         </div>
       )}
