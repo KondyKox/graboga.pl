@@ -30,7 +30,8 @@ const Obstacles = ({
 
     setTimeout(() => {
       // Randomly decide if one or two obstacles
-      const obstacleCount = Math.random() > 0.7 ? 2 : 1;
+      const result = Math.random();
+      const obstacleCount = result >= 0.8 ? 3 : result > 0.5 ? 2 : 1;
 
       for (let i = 0; i < obstacleCount; i++) {
         newObstacles.push({

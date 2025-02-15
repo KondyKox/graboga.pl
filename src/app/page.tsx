@@ -156,7 +156,8 @@ export default function Home() {
         Twórcy: <br />
         <span className="text-rare font-bold">Konrad Ciesielski</span> i <br />
         <span className="text-epic font-bold">Michał Wachowski</span>. <br />
-        <span className="text-gray-700 text-xs">(i ChatGPT)</span><br />
+        <span className="text-gray-700 text-xs">(i ChatGPT)</span>
+        <br />
         <span className="font-bold">(4ir (w 2023r.))</span>
       </footer>
     </section>
