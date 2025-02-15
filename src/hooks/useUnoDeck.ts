@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import CardProps from "@/types/CardProps";
-import { Action, ACTIONS, LOCATIONS } from "@/game_modes/uno_mechan/constants";
+import { Action, ACTIONS } from "@/game_modes/uno_mechan/constants";
 import UnoCardProps from "@/types/uno_mechan/UnoCardProps";
+import { LOCATIONS } from "@/game_modes/locations";
 
 // Funkcja do losowania akcji w zależności od rzadkości
 export const getRandomAction = (

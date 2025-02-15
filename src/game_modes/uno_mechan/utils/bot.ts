@@ -2,8 +2,8 @@ import UnoCardProps from "@/types/uno_mechan/UnoCardProps";
 import UnoGameState from "@/types/uno_mechan/UnoGameState";
 import { canPlay } from "./utils";
 import UnoPlayer from "@/types/uno_mechan/UnoPlayer";
-import { LOCATIONS } from "../constants";
 import { SetStateAction } from "react";
+import { LOCATIONS } from "@/game_modes/locations";
 
 // Initialize bots to play with
 export const initializeBots = (numberOfBots: number): UnoPlayer[] => {

@@ -1,6 +1,6 @@
 "use client";
 
-import UnoCard from "@/components/card/UnoCard";
+import UnoCard from "@/game_modes/uno_mechan/components/UnoCard";
 import Image from "next/image";
 import Tooltip from "@/components/Tooltip";
 import UnoCardProps from "@/types/uno_mechan/UnoCardProps";

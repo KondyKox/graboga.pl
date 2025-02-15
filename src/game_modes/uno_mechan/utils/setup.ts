@@ -1,9 +1,9 @@
 import UnoGameState from "@/types/uno_mechan/UnoGameState";
-import { LOCATIONS } from "../constants";
 import { dealCards } from "./utils";
 import UnoCardProps from "@/types/uno_mechan/UnoCardProps";
 import UnoPlayer from "@/types/uno_mechan/UnoPlayer";
 import { initializeBots } from "./bot";
+import { LOCATIONS } from "@/game_modes/locations";
 
 // Inicjalizacja gry
 export const initializeGame = ({

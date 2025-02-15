@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import UnoGame from "./components/UnoGame";
 import LoadingOverlay from "@/components/Loading";
-import { LOCATIONS } from "./constants";
 import useUnoDeck from "@/hooks/useUnoDeck";
 import Modal from "@/components/Modal";
 import UnoCardProps from "@/types/uno_mechan/UnoCardProps";
@@ -17,6 +16,7 @@ import { handleBotTurn } from "./utils/bot";
 import { drawCardFromDeck, executeAction } from "./utils/cardActions";
 import UnoInstructions from "@/game_modes/uno_mechan/components/UnoInstructions";
 import { initializeDeck, initializeGame } from "./utils/setup";
+import { LOCATIONS } from "../locations";
 
 // TODO: Naprawić gre z botami, bo coś sie psuje czasem ostatni.
 // TODO: Czasem bot rzuca 2 karty naraz
