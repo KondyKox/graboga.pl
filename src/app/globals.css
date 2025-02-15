@@ -40,34 +40,8 @@ h6 {
   font-family: "Bebas Neue", sans-serif !important;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 12px; /* szerokość dla pionowego scrollbar */
-  height: 12px; /* wysokość dla poziomego scrollbar */
-}
-
-/* Tor (tło) scrollbara */
-::-webkit-scrollbar-track {
-  background: var(--background); /* kolor tła */
-  border-radius: 10px; /* zaokrąglenie toru */
-}
-
-/* Sam uchwyt (rączka) scrollbara */
-::-webkit-scrollbar-thumb {
-  background: var(--clr-rare);
-  border-radius: 10px; /* zaokrąglenie rączki */
-}
-
-/* Hover nad uchwytem */
-::-webkit-scrollbar-thumb:hover {
-  background: var(--clr-epic);
-  cursor: pointer;
+.text-stroke {
+  -webkit-text-stroke: 1px white;
 }
 
 /* Gradient */
@@ -172,4 +146,28 @@ h6 {
 }
 .utility-btn {
   @apply bg-transparent rounded-lg py-2 px-4 hover:text-background transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-opacity-50;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 12px; /* szerokość dla pionowego scrollbar */
+  height: 12px; /* wysokość dla poziomego scrollbar */
+}
+
+/* Tor (tło) scrollbara */
+::-webkit-scrollbar-track {
+  background: var(--background); /* kolor tła */
+  border-radius: 10px; /* zaokrąglenie toru */
+}
+
+/* Sam uchwyt (rączka) scrollbara */
+::-webkit-scrollbar-thumb {
+  background: var(--clr-rare);
+  border-radius: 10px; /* zaokrąglenie rączki */
+}
+
+/* Hover nad uchwytem */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--clr-epic);
+  cursor: pointer;
 }

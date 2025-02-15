@@ -36,7 +36,7 @@ const Obstacles = ({
       for (let i = 0; i < obstacleCount; i++) {
         newObstacles.push({
           id: Date.now() + i,
-          left: baseLeft + i * 60,
+          left: baseLeft + i * 120,
           cardIndex: Math.floor(Math.random() * cards.length),
           // width: 40,
           // height: 40,
