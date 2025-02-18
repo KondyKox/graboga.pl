@@ -7,6 +7,7 @@ import Obstacles from "./components/Obstacles";
 import Player from "./components/Player";
 import { checkCollision, handleStartGame } from "./utils/gameUtils";
 import { Location, LOCATIONS } from "../locations";
+import Link from "next/link";
 
 const RunningMuchaMode = () => {
   const cards = useCards();
@@ -94,7 +95,7 @@ const RunningMuchaMode = () => {
       {/* Start game screen */}
       {!gameStarted && !gameOver && (
         <div
-          className="flex flex-col items-center justify-center w-full h-full"
+          className="flex flex-col items-center justify-center gap-4 w-full h-full"
           onClick={startGame}
         >
           <h2 className="sub-header text-cursed text-stroke">

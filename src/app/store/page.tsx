@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import useCheckSession from "hooks/useCheckSession";
 import LoadingOverlay from "comp/Loading"; // Zakładając, że masz komponent do ładowania
 import Pack from "@/components/pack/Pack";
+import RunningMuchaStore from "@/game_modes/running_mucha/components/RunningMuchaStore";
 
 const MyProtectedPage = () => {
   const { loading: sessionLoading, error: sessionError } = useCheckSession();
@@ -51,24 +52,29 @@ const MyProtectedPage = () => {
   if (storeError) return <div>Wystąpił błąd z danymi sklepu: {storeError}</div>; // Obsługa błędu danych sklepu
 
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center p-4">
       <h1 className="header">SKLEP</h1>
 
       {/* Wyświetlenie danych sklepu, jeżeli zostały pobrane */}
       {storeData ? (
-        <div className="flex flex-col">
-          <h3 className="sub-header text-center">Paczki</h3>
-          <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-10 mt-4">
-            {storeData.packs.map((pack: any) => {
-              return <Pack storeData={pack} />;
-            })}
-          </div>
-          {/* <div className={styles.StorePackWrapper}>
+        <section className="flex flex-col items-center justify-center gap-4">
+          <div className="flex flex-col border-b-2 p-4 rounded-lg w-full">
+            <h3 className="sub-header text-legendary">Paczki</h3>
+            <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-10">
+              {storeData.packs.map((pack: any) => {
+                return <Pack storeData={pack} />;
+              })}
+            </div>
+            {/* <div className={styles.StorePackWrapper}>
             <div className={styles.StorePackMark}>NEW</div>
             <p style={{ position: "relative" }}>{storeData.pack_cost}</p>
           </div> */}
-          {/* <pre>{JSON.stringify(storeData, null, 2)}</pre> Możesz dostosować wyświetlanie */}
-        </div>
+            {/* <pre>{JSON.stringify(storeData, null, 2)}</pre> Możesz dostosować wyświetlanie */}
+          </div>
+
+          {/* Skiny z Running Mucha */}
+          <RunningMuchaStore />
+        </section>
       ) : (
         <p>Brak danych sklepu</p>
       )}
