@@ -16,11 +16,22 @@ const Play = () => {
           <Link
             key={index}
             href={`/play/${mode.path}`}
-            className="w-full p-2 bg-rare rounded text-xl text-center transition-all duration-300 ease-in-out hover:bg-epic"
+            className="w-full py-2 px-4 bg-rare rounded md:text-xl text-center transition-all duration-300 ease-in-out hover:bg-epic"
           >
             {mode.name}
           </Link>
         ))}
+      </div>
+      <div className="flex flex-col justify-center items-center mt-8 p-4 text-justify border-t-2">
+        <h6 className="text-red-600 text-lg md:text-2xl">Uwaga!</h6>
+        <p className="text-gray-500 text-sm md:text-lg">
+          Każdy z wyżej wymienionych trybów gry jest doskonały.
+          <br /> Ewentualne błędy podczas rozgrywki są wyłączną winą
+          użytkownika.
+          <br /> Wszelkie skargi i zażalenia proszę zatrzymać dla siebie,
+          ponieważ twórcy <span className="text-epic">GRABOGA.PL</span> nie są
+          nimi zainteresowani.
+        </p>
       </div>
     </div>
   );
