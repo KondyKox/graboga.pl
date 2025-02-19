@@ -7,7 +7,6 @@ import Obstacles from "./components/Obstacles";
 import Player from "./components/Player";
 import { checkCollision, handleStartGame } from "./utils/gameUtils";
 import { Location, LOCATIONS } from "../locations";
-import Link from "next/link";
 
 const RunningMuchaMode = () => {
   const cards = useCards();
@@ -20,8 +19,13 @@ const RunningMuchaMode = () => {
   const [location, setLocation] = useState<Location>(LOCATIONS[0]);
   const [fade, setFade] = useState<boolean>(false);
 
+  // Object references
   const playerRef = useRef<HTMLDivElement>(null);
   const obstacleRefs = useRef<Map<number, HTMLElement | null>>(new Map());
+
+  // Music
+  const gameMusicRef = useRef<HTMLAudioElement | null>(null);
+  const loseMusicRef = useRef<HTMLAudioElement | null>(null);
 
   // Show loading overlay
   useEffect(() => {
@@ -46,6 +50,31 @@ const RunningMuchaMode = () => {
 
     return () => clearInterval(interval);
   }, []);
+
+  // Play music
+  useEffect(() => {
+    if (!gameMusicRef.current) {
+      gameMusicRef.current = new Audio("/sfx/running_mucha/game.mp3");
+      gameMusicRef.current.loop = true;
+      gameMusicRef.current.volume = 0.5;
+    }
+    if (!loseMusicRef.current) {
+      loseMusicRef.current = new Audio("/sfx/running_mucha/lose.wav");
+      gameMusicRef.current.volume = 0.7;
+    }
+
+    if (gameStarted) gameMusicRef.current?.play();
+    else {
+      gameMusicRef.current?.pause();
+      gameMusicRef.current!.currentTime = 0;
+    }
+
+    if (gameOver) {
+      gameMusicRef.current?.pause();
+      gameMusicRef.current!.currentTime = 0;
+      loseMusicRef.current?.play();
+    }
+  }, [gameStarted, gameOver]);
 
   // Update score
   useEffect(() => {
