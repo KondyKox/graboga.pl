@@ -1,5 +1,5 @@
 export type Skin = {
-  id: number;
+  id: string;
   name: string;
   price: number;
   image: string;

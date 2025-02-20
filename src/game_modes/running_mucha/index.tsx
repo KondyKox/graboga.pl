@@ -8,6 +8,9 @@ import Player from "./components/Player";
 import { checkCollision, handleStartGame } from "./utils/gameUtils";
 import { Location, LOCATIONS } from "../locations";
 
+const playerColKey =
+  process.env.NEXT_PUBLIC_PLAYER_COLOR_KEY || "GRABOGA_PLAYER_COLOR"; // Local storage key
+
 const RunningMuchaMode = () => {
   const cards = useCards();
   const [loading, setLoading] = useState<boolean>(true);
@@ -15,9 +18,10 @@ const RunningMuchaMode = () => {
   const [gameStarted, setGameStarted] = useState<boolean>(false);
   const [gameOver, setGameOver] = useState<boolean>(false);
   const [obstacles, setObstacles] = useState<Obstacle[]>([]);
-  const [playerCol, setPlayerColor] = useState("white");
   const [location, setLocation] = useState<Location>(LOCATIONS[0]);
   const [fade, setFade] = useState<boolean>(false);
+
+  const playerCol = localStorage.getItem(playerColKey) || "white";
 
   // Object references
   const playerRef = useRef<HTMLDivElement>(null);
@@ -150,6 +154,7 @@ const RunningMuchaMode = () => {
             obstacleRefs={obstacleRefs}
             gameStarted={gameStarted}
             gameOver={gameOver}
+            score={score}
           />
         </div>
       )}

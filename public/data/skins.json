@@ -1,42 +1,42 @@
 [
   {
-    "id": 1,
+    "id": "white",
     "name": "Niewinny Mucha",
     "price": 0,
     "image": "/running_mucha/player/white/"
   },
   {
-    "id": 2,
+    "id": "blue",
     "name": "Niebieski Mucha",
     "price": 100,
     "image": "/running_mucha/player/blue/"
   },
   {
-    "id": 3,
+    "id": "green",
     "name": "Zielony Mucha",
     "price": 100,
     "image": "/running_mucha/player/green/"
   },
   {
-    "id": 4,
+    "id": "pink",
     "name": "Różowiutki Mucha",
     "price": 100,
     "image": "/running_mucha/player/pink/"
   },
   {
-    "id": 5,
+    "id": "purple",
     "name": "Fioletowy Mucha",
     "price": 100,
     "image": "/running_mucha/player/purple/"
   },
   {
-    "id": 6,
+    "id": "red",
     "name": "Czerwony Mucha",
     "price": 100,
     "image": "/running_mucha/player/red/"
   },
   {
-    "id": 7,
+    "id": "yellow",
     "name": "Golden Mucha",
     "price": 100,
     "image": "/running_mucha/player/yellow/"

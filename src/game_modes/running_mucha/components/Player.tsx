@@ -9,7 +9,7 @@ const Player = forwardRef<HTMLDivElement, { playerCol: string }>(
     const [transitionStyle, setTransitionStyle] = useState<string>("ease-out");
     const [isMirrored, setIsMirrored] = useState<boolean>(false);
 
-    const posXSpeed = 5;
+    const posXSpeed = 10;
     const movementDirectionRef = useRef<"left" | "right" | null>(null);
 
     // Check keyboard input

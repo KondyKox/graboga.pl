@@ -10,6 +10,7 @@ const Obstacles = ({
   obstacleRefs,
   gameStarted,
   gameOver,
+  score,
 }: {
   obstacles: Obstacle[];
   setObstacles: Dispatch<SetStateAction<Obstacle[]>>;
@@ -17,7 +18,10 @@ const Obstacles = ({
   obstacleRefs: MutableRefObject<Map<number, HTMLElement | null>>;
   gameStarted: boolean;
   gameOver: boolean;
+  score: number;
 }) => {
+  let speed = 10;
+
   // Generate random obstacles
   const generateObstacles = (
     cards: CardProps[],
@@ -51,7 +55,7 @@ const Obstacles = ({
   const moveObstacles = () => {
     setObstacles((prev) =>
       prev
-        .map((obs) => ({ ...obs, left: obs.left - 10 }))
+        .map((obs) => ({ ...obs, left: obs.left - speed }))
         .filter((obs) => obs.left > -100)
     );
   };
@@ -74,6 +78,11 @@ const Obstacles = ({
       clearInterval(obstacleGenInterval);
     };
   }, [gameStarted, gameOver]);
+
+  // Increase speed
+  useEffect(() => {
+    if (score % 500 === 0) speed += 5;
+  }, [score]);
 
   return (
     <>

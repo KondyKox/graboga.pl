@@ -4,10 +4,16 @@ import { Skin } from "@/types/running_mucha/SkinsProps";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
+const playerColKey =
+  process.env.NEXT_PUBLIC_PLAYER_COLOR_KEY || "GRABOGA_PLAYER_COLOR"; // Local storage key
+
 const imageNames = ["jump.png", "idle.png", "run.png"]; // Skin image names
 
 const RunningMuchaStore = () => {
   const [skins, setSkins] = useState<Skin[]>([]);
+  const [currentPlayerCol, setCurrentPlayerCol] = useState<string>(
+    localStorage.getItem(playerColKey) || "white"
+  );
 
   useEffect(() => {
     const fetchSkins = async () => {
@@ -19,6 +25,12 @@ const RunningMuchaStore = () => {
     fetchSkins();
   }, []);
 
+  // Handle click on skin (select / buy)
+  const handleSkinClick = (skinId: string) => {
+    localStorage.setItem(playerColKey, skinId);
+    setCurrentPlayerCol(skinId);
+  };
+
   return (
     <div className="flex flex-col border-b-2 p-4 rounded-lg w-full">
       <h3 className="sub-header text-legendary">Skiny</h3>
@@ -26,7 +38,10 @@ const RunningMuchaStore = () => {
         {skins.map((skin) => (
           <div
             key={skin.id}
-            className="flex flex-col items-center justify-center cursor-pointer gap-2 rounded-lg transition-colors duration-300 ease-in-out hover:bg-epic p-2"
+            onClick={() => handleSkinClick(skin.id)}
+            className={`flex flex-col items-center justify-center cursor-pointer gap-2 rounded-lg transition-colors duration-300 ease-in-out hover:bg-epic p-2 ${
+              currentPlayerCol === skin.id && "bg-rare"
+            }`}
           >
             <h4 className="font-bold tracking-widest text-lg">{skin.name}</h4>
             <div className="flex flex-col items-center gap-2">
