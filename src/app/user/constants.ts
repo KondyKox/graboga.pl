@@ -9,8 +9,9 @@ export const userFields = [
 
 // Opcje w panelu po prawej stronie (lub na dole na mobile)
 export const userOptions = [
-  { label: "Panel Admina", link: "/admin" },
   { label: "Moje transakcje" },
   { label: "Pomoc" },
   { label: "Ustawienia konta" },
 ];
+
+export const CARD_GABLOTS = 5;

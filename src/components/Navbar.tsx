@@ -11,6 +11,8 @@ import { FaShield } from "react-icons/fa6";
 import useProfile from "@/hooks/useProfile";
 
 const Navbar: React.FC = () => {
+  const { error, profile } = useProfile();
+
   // Render admin dash with icons
   const renderAdmin = () => {
     // get user role
@@ -34,13 +36,11 @@ const Navbar: React.FC = () => {
 
   // Render profile with pfp and name
   const renderProfile = () => {
-    // get user profile
-    const { error, profile } = useProfile();
     //check no logged
     if (error) {
       return (
         <Link
-          href={"/user"}
+          href={`/user/${profile?.playerId}`}
           className="relative group flex flex-col items-center"
         >
           <FaUser className="icon" />
@@ -52,7 +52,7 @@ const Navbar: React.FC = () => {
     else {
       return (
         <div className="mx-2 md:min-w-32 h-13 p-1 md:border-l-2 border-rare rounded hover:shadow-rare duration-300 ease-in-out">
-          <Link href={"/user"} className="relative group">
+          <Link href={`/user/${profile?.playerId}`} className="relative group">
             <div className="inline w-8 md:w-12 h-8 md:h-12 float-end">
               <Image
                 src={profile?.profilePicture || "/donejtor.png"}

@@ -2,39 +2,13 @@
 import LoadingOverlay from "@/components/Loading";
 import useProfile from "@/hooks/useProfile";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import { userFields, userOptions } from "./constants";
 import ProfileData from "@/types/ProfileProps";
-
-function calculateLevel(points: number | undefined) {
-  if (points == undefined)
-    return {
-      level: 0,
-      remainingXP: 0,
-      xpForNextLevel: 0,
-    };
-
-  const baseXP = 200; // Liczba punktów potrzebna do osiągnięcia 1 poziomu
-  const multiplier = 1.13; // Mnożnik wzrostu punktów potrzebnych na kolejne poziomy
-
-  let level = 0;
-  let xpForNextLevel = baseXP;
-
-  while (points >= xpForNextLevel) {
-    points -= xpForNextLevel;
-    level++;
-    xpForNextLevel = Math.floor(baseXP * Math.pow(multiplier, level));
-  }
-
-  return {
-    level: level,
-    remainingXP: points,
-    xpForNextLevel: xpForNextLevel,
-  };
-}
+import { CARD_GABLOTS, userFields, userOptions } from "../constants";
+import { FaPlus } from "react-icons/fa";
+import { calculateLevel } from "../utils";
 
 const UserProfilePage = () => {
   const router = useRouter();
@@ -49,10 +23,10 @@ const UserProfilePage = () => {
   if (error) return router.push("/login");
 
   return (
-    <div className="flex flex-col lg:flex-row gap-10 w-full max-w-7xl mx-auto mt-12">
+    <div className="flex flex-col lg:flex-row gap-10 w-full max-w-7xl mx-auto mt-12 pb-4">
       {/* Profil po lewej stronie na dużych ekranach, a na telefonach na górze */}
       <div className="lg:w-2/3 w-full gradient-bg text-epic p-10 rounded-xl shadow-2xl border-2 border-epic">
-        <div className="flex justify-center mb-12 relative">
+        <div className="flex flex-col items-center justify-center gap-6 mb-12 relative">
           <div className="relative w-32 h-32 rounded-full border-4 border-background shadow-lg">
             <CircularProgressbar
               value={xpPercentage}
@@ -70,6 +44,20 @@ const UserProfilePage = () => {
               className="w-28 h-28 rounded-full absolute top-1 left-1 shadow-epic border-1 border-background 
                           hover:drop-shadow-epic duration-300 ease-in-out"
             />
+          </div>
+
+          {/* Gablotki na karty */}
+          <div className="flex justify-center items-center gap-4">
+            {Array.from({ length: CARD_GABLOTS }).map((_, index) => (
+              <div
+                key={index}
+                className="group rounded-lg p-2 border-2 border-epic transition-colors duration-300 ease-in-out
+                            hover:border-legendary hover:text-legendary cursor-pointer min-w-32 min-h-64
+                            flex justify-center items-center"
+              >
+                <FaPlus className="w-6 h-6 transition-transform duration-300 ease-in-out group-hover:scale-125" />
+              </div>
+            ))}
           </div>
         </div>
 
@@ -104,13 +92,7 @@ const UserProfilePage = () => {
       <div className="lg:w-1/3 w-full space-y-6">
         {userOptions.map((option, index) => (
           <div key={index} className="user-field user-input">
-            {option.link ? (
-              <Link href={option.link} className="w-full">
-                <p className="text-lg font-semibold">{option.label}</p>
-              </Link>
-            ) : (
-              <p className="text-lg font-semibold">{option.label}</p>
-            )}
+            <p className="text-lg font-semibold">{option.label}</p>
           </div>
         ))}
       </div>
