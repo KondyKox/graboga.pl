@@ -1,3 +1,5 @@
+import CardProps from "./CardProps";
+
 interface ProfileData {
   username: string;
   playerId: string;
@@ -6,6 +8,7 @@ interface ProfileData {
   ducats: number;
   tickets: number;
   experience: number;
+  featuredCards: CardProps[];
 }
 
 export default ProfileData;

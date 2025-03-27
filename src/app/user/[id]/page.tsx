@@ -6,18 +6,41 @@ import { useRouter } from "next/navigation";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import ProfileData from "@/types/ProfileProps";
-import { CARD_GABLOTS, userFields, userOptions } from "../constants";
+import { CARD_GABLOTS, USER_FIELDS, USER_OPTIONS } from "../constants";
 import { FaPlus } from "react-icons/fa";
-import { calculateLevel } from "../utils";
+import { calculateLevel, featureCard } from "../utils";
+import { useState } from "react";
+import Modal from "@/components/Modal";
+import useCards from "@/hooks/useCards";
+import Card from "@/components/card/Card";
+import CardProps from "@/types/CardProps";
 
 const UserProfilePage = () => {
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [currentCard, setCurrentCard] = useState<CardProps | null>(null);
   const router = useRouter();
+  const cards = useCards();
   const { loading, error, profile } = useProfile();
+
+  const [testCards, setTestCards] = useState<CardProps[]>([]); // testing
 
   let { level, remainingXP, xpForNextLevel } = calculateLevel(
     profile?.experience
   );
   const xpPercentage = (remainingXP / xpForNextLevel) * 100;
+
+  // Handle click on gablot
+  const handleGablotClick = (card: CardProps) => {
+    if (card) setCurrentCard(card);
+    setIsModalOpen(true);
+  };
+
+  // Handle feature selected card
+  const handleFeatureCard = (card: CardProps) => {
+    if (!profile) return;
+
+    featureCard(profile, card, setTestCards, testCards, currentCard);
+  };
 
   if (loading) return <LoadingOverlay message="Wczytywanie danych..." />;
   if (error) return router.push("/login");
@@ -51,11 +74,20 @@ const UserProfilePage = () => {
             {Array.from({ length: CARD_GABLOTS }).map((_, index) => (
               <div
                 key={index}
-                className="group rounded-lg p-2 border-2 border-epic transition-colors duration-300 ease-in-out
-                            hover:border-legendary hover:text-legendary cursor-pointer min-w-32 min-h-64
-                            flex justify-center items-center"
+                onClick={() => handleGablotClick(testCards[index])}
+                className={`group rounded-lg p-2 transition-colors duration-300 ease-in-out
+                            hover:border-legendary cursor-pointer min-w-32 min-h-52
+                            flex justify-center items-center text-foreground ${
+                              testCards[index] ? "" : "border-2 border-epic"
+                            }`}
               >
-                <FaPlus className="w-6 h-6 transition-transform duration-300 ease-in-out group-hover:scale-125" />
+                {testCards[index] ? (
+                  <div className="w-full">
+                    <Card card={testCards[index]} />
+                  </div>
+                ) : (
+                  <FaPlus className="w-6 h-6 transition-all duration-300 ease-in-out group-hover:scale-125 text-epic group-hover:text-legendary" />
+                )}
               </div>
             ))}
           </div>
@@ -63,18 +95,24 @@ const UserProfilePage = () => {
 
         <div className="space-y-4">
           {/* Generate user fields */}
-          {userFields.map((field, index) => (
-            <div key={index} className="user-field">
-              <p className="text-md font-semibold text-gray-300">
-                {field.label}:{" "}
-                <span className="text-rare font-bold">
-                  {field.key === "experience"
-                    ? `${level} LVL (${remainingXP}/${xpForNextLevel})`
-                    : profile?.[field.key as keyof ProfileData]}
-                </span>
-              </p>
-            </div>
-          ))}
+          {USER_FIELDS.map((field, index) => {
+            const value = profile?.[field.key as keyof ProfileData];
+
+            return (
+              <div key={index} className="user-field">
+                <p className="text-md font-semibold text-gray-300">
+                  {field.label}:{" "}
+                  <span className="text-rare font-bold">
+                    {field.key === "experience"
+                      ? `${level} LVL (${remainingXP}/${xpForNextLevel})`
+                      : Array.isArray(value)
+                      ? "Invalid field"
+                      : value}
+                  </span>
+                </p>
+              </div>
+            );
+          })}
         </div>
 
         {/* Opcje dla użytkownika */}
@@ -90,12 +128,38 @@ const UserProfilePage = () => {
 
       {/* Opcje w panelu po prawej stronie */}
       <div className="lg:w-1/3 w-full space-y-6">
-        {userOptions.map((option, index) => (
+        {USER_OPTIONS.map((option, index) => (
           <div key={index} className="user-field user-input">
             <p className="text-lg font-semibold">{option.label}</p>
           </div>
         ))}
       </div>
+
+      {isModalOpen && (
+        <Modal
+          isOpen={isModalOpen}
+          onClose={() => {
+            setIsModalOpen(false), setCurrentCard(null);
+          }}
+        >
+          <h3 className="sub-header">Wybierz kartę</h3>
+          <div className="flex flex-wrap justify-center items-stretch gap-4 overflow-auto max-h-96 w-full">
+            {/* <div className="grid grid-cols-[repeat(auto-fit, minmax(200px, 1fr))] gap-4"> */}
+            {cards.map((card) => (
+              <div
+                key={card.id}
+                className="w-32 md:w-40"
+                onClick={() => {
+                  handleFeatureCard(card);
+                  setIsModalOpen(false);
+                }}
+              >
+                <Card card={card} />
+              </div>
+            ))}
+          </div>
+        </Modal>
+      )}
     </div>
   );
 };

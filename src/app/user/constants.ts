@@ -1,5 +1,5 @@
 // Dane użytkownika
-export const userFields = [
+export const USER_FIELDS = [
   { label: "Display Name", key: "displayName" },
   { label: "Username", key: "username" },
   { label: "Player ID", key: "playerId" },
@@ -8,10 +8,10 @@ export const userFields = [
 ];
 
 // Opcje w panelu po prawej stronie (lub na dole na mobile)
-export const userOptions = [
+export const USER_OPTIONS = [
   { label: "Moje transakcje" },
   { label: "Pomoc" },
   { label: "Ustawienia konta" },
 ];
 
-export const CARD_GABLOTS = 5;
+export const CARD_GABLOTS = 5; // Liczba gablot na wyróżnione karty

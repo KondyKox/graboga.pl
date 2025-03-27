@@ -150,8 +150,8 @@ h6 {
 
 /* Scrollbar */
 ::-webkit-scrollbar {
-  width: 12px; /* szerokość dla pionowego scrollbar */
-  height: 12px; /* wysokość dla poziomego scrollbar */
+  width: 6px; /* szerokość dla pionowego scrollbar */
+  height: 6px; /* wysokość dla poziomego scrollbar */
 }
 
 /* Tor (tło) scrollbara */
