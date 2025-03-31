@@ -40,8 +40,8 @@ const Card: React.FC<{ card: CardProps }> = ({ card }) => {
 
   return (
     <div
-      className={`bg-none rounded px-1 py-2 md:px-2 md:py-4 flex flex-col flex-grow justify-around gap-2 items-center w-auto h-full min-h-[200px] max-h-52 
-                    md:max-h-56 lg:max-h-72 border-2 transition duration-300 ease-in-out group cursor-pointer ${rarityStyles[rarity].container}`}
+      className={`bg-none rounded px-1 py-2 md:px-2 md:py-4 flex flex-col flex-grow justify-around gap-2 items-center w-auto max-w-[150px] h-full min-h-[200px] 
+                  border-2 transition duration-300 ease-in-out group cursor-pointer ${rarityStyles[rarity].container}`}
     >
       <h2
         className={`text-sm md:text-lg font-bold text-center text-wrap ${rarityStyles[rarity].header}`}

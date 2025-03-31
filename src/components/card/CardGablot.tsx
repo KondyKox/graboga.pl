@@ -14,7 +14,7 @@ const CardGablot = ({ cards, index, onClick }: CardGablotProps) => {
       key={index}
       onClick={() => onClick(cards[index])}
       className={`group rounded-lg transition-colors duration-300 ease-in-out hover:border-legendary cursor-pointer flex justify-center 
-                    items-center text-foreground flex-1 ${
+                    items-center text-foreground flex-1 max-h-52 md:max-h-56 lg:max-h-72 min-h-52 ${
                       cards[index] ? "" : "border-2 border-epic"
                     }`}
     >
