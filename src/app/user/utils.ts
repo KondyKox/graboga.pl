@@ -55,3 +55,15 @@ export const featureCard = (
   // profile.featuredCards.push(card);
   console.log("Card featured!");
 };
+
+// Delete card from featured
+export const deleteFeaturedCard = (
+  card: CardProps,
+  testCards: CardProps[],
+  setTestCards: React.Dispatch<React.SetStateAction<CardProps[]>>
+) => {
+  const updatedCards = testCards.filter((c) => c.id !== card.id);
+  setTestCards(updatedCards);
+
+  console.log("Deleted card from featured!");
+};
