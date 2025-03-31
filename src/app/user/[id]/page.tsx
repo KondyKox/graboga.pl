@@ -87,6 +87,7 @@ const UserProfilePage = () => {
                 cards={testCards}
                 index={index}
                 onClick={handleGablotClick}
+                isOwnProfile={isOwnProfile}
               />
             ))}
           </div>
